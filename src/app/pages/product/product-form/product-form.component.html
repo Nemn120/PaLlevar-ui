@@ -1,0 +1,19 @@
+<mat-form-field>
+    <!-- Los datos ingresados lo guarda en la variable -->
+    <input matInput placeholder="Nombre" [(ngModel)]="productSelect.name">
+
+</mat-form-field>
+<br>
+<mat-form-field>
+    <input matInput placeholder="Descripcion" [(ngModel)]="productSelect.description" type="tel">
+</mat-form-field>
+<!--
+  <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
+  <input id="flArchivo" type="file" (change)="seleccionarArchivo($event)" style="display: none" >
+  
+  <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" width="50%" height="50%" />
+  <p>{{labelFile}}</p>
+  -->
+<br>
+<button mat-raised-button color="primary" (click)="save()">Aceptar</button>
+<button mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
