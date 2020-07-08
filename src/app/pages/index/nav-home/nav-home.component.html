@@ -1,1 +1,27 @@
-<p>nav-home works!</p>
+<mat-toolbar class="toolbar2">
+    <img src={{logo}} routerLink="/index/home">
+    <h1 style="text-align: center;justify-content: center;">PA' LLEVAR</h1>
+</mat-toolbar>
+<mat-toolbar>
+    <a routerLink="/menu">
+        <button mat-fab class="button-toolbar1" aria-label="Example icon-button with menu icon">
+            <div class="dropdown">
+                <mat-icon>menu</mat-icon>
+                <div class="dropdown-content">
+                    <a href="#">Combos</a>
+                    <a href="#">Ofertas</a>
+                </div>
+            </div>
+        </button>
+    </a>
+    <p class="sign-in">Menu</p>
+
+    <div class="example-spacer"></div>
+
+    <a routerLink="/auth/login">
+        <button mat-fab class="button-toolbar1">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+    </a>
+    <p class="sign-in">Sign in</p>
+</mat-toolbar>

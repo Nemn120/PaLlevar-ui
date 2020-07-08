@@ -1,14 +1,14 @@
-<mat-toolbar class="text">Nuestros Productos</mat-toolbar>
+<mat-toolbar class="text">Nuestros Afiliados</mat-toolbar>
 
-<div *ngIf="platillos != null else vacio">
-    <div class="responsive" *ngFor="let item of platillos">
+<div *ngIf="organizaciones != null else vacio">
+    <div class="responsive" *ngFor="let item of organizaciones">
         <div class="gallery">
-            <a target="_blank" href={{item}}>
+            <a target="_blank">
                 <img src="{{imagen}}" alt="Forest" width="600" height="400">
             </a>
             <div class="desc">{{item.nombre}}</div>
             <div class="desc">
-                <button mat-flat-button color="primary">ver productos</button>
+                <button mat-flat-button color="primary" routerLink="/index/shop">ver productos</button>
             </div>
         </div>
     </div>

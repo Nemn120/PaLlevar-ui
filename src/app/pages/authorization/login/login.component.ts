@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   clave: string;
   mensaje: string = "";
   error: string = "";
+  logo = "https://www.pngitem.com/pimgs/m/208-2089100_logos-de-comida-para-llevar-hd-png-download.png";
   profileOption: ProfileMenuOptionBean[];
   constructor(private router: Router,
     private titleService: Title,

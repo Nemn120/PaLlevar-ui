@@ -1,8 +1,15 @@
-<p>
-    <mat-toolbar>
-        <span>pa Llevar, inicio de sesion</span>
-    </mat-toolbar>
-</p>
+<mat-toolbar class="toolbar2">
+    <img src={{logo}}>
+    <h1 style="text-align: center;justify-content: center;">PA' LLEVAR</h1>
+</mat-toolbar>
+<mat-toolbar>
+    <a routerLink="/menu">
+        <button mat-fab class="button-toolbar1" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </a>
+    <p class="menu">Menu</p>
+</mat-toolbar>
 
 <div [ngStyle]="{background: 'url(/assets/images/fast3.jpg) no-repeat center'}">
 

@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    position: relative;
+}
+
+.button-toolbar1 {
+    cursor: pointer;
+    height: 25px;
+    width: 25px;
+    padding: 0px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    background-color: darkorange;
+    border: 0ch;
+    box-shadow: none;
+}
+
+mat-icon {
+    background-color: darkorange;
+}
+
+p {
+    font-size: 20px;
+    margin-left: 5px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: red($color: #000000);
+}
+
+.toolbar2 {
+    opacity: 0.6;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: darkorange;
+    border-color: darkorange;
+    height: 4rem;
+}
+
+.sign-in {
+    color: darkorange;
+    padding-left: 3px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Erica+One);
+h1 {
+    cursor: default;
+    position: relative;
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    margin: auto;
+    display: flex;
+    padding-left: 0px;
+    -webkit-animation: bounce .3s ease infinite alternate;
+    font-family: 'Erica One', cursive, Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: blue($color: #000000);
+    text-align: center;
+    line-height: 100px;
+    text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, .6);
+}
+
+
+/* ANIMATION */
+
+@-webkit-keyframes bounce {
+    100% {
+        top: -30px;
+        text-shadow: 0 1px 0 darkorange, 0 2px 0 darkorange, 0 3px 0 darkorange, 0 4px 0 darkorange, 0 5px 0 darkorange, 0 6px 0 darkorange, 0 7px 0 darkorange, 0 8px 0 darkorange, 0 9px 0 darkorange, 0 30px 30px rgba(0, 0, 0, .3);
+    }
+}
+
+img {
+    width: 5rem;
+    height: 3rem;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+
+/* Style para barra desplegable*/
+
+
+/* Style The Dropdown Button */
+
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    z-index: 0;
+}
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+    padding: 10px 0px;
+    text-decoration: none;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color: darkorange;
+}
+
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    color: darkorange;
+    opacity: 0.6;
+}

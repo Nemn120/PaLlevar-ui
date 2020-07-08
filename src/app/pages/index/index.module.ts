@@ -6,8 +6,7 @@ import { NavHomeComponent } from './nav-home/nav-home.component';
 import { CardProductComponent } from './card-product/card-product.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../_material/material.module';
-
-
+import { CardOrganizationComponent } from './card-organization/card-organization.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent  },
@@ -15,7 +14,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomeComponent, ShoppingComponent, NavHomeComponent, CardProductComponent],
+  declarations: [HomeComponent, ShoppingComponent, NavHomeComponent, CardProductComponent, CardOrganizationComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
