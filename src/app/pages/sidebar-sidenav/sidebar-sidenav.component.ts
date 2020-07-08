@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../../_service/login.service';
-import { MenuService } from '../../_service/menu.service';
+import { MenuOptionService } from '../../_service/menu-option.service';
 import { UserService } from '../../_service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -8,6 +8,7 @@ import { SpinnerService } from '../../_service/spinner.service';
 import { MenuOptionBean } from '../../_model/MenuOptionBean';
 import { UserBean } from '../../_model/UserBean';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
+import { SharedService } from '../../_service/shared.service';
 
 @Component({
   selector: 'app-sidebar-sidenav',
@@ -27,11 +28,12 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy, AfterViewInit
    
     private changeDetectorRef: ChangeDetectorRef,
     public loginService: LoginService,
-    private menuService : MenuService,
+    private menuService : MenuOptionService,
     private usuarioService:UserService,
     private dialog: MatDialog,
     private media: MediaMatcher,
     public spinnerService: SpinnerService,
+    public sharedService:SharedService
     ){
 
       this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');

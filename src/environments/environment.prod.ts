@@ -1,9 +1,12 @@
 export const environment = {
   production: true,
-  HOST: "http://TU_IP_PUBLICA/cineapp-backend",
+  HOST: "https://hidden-wildwood-21108.herokuapp.com",
   PRECIO_ENTRADA: 'ENT',
   TOKEN_NAME : 'access_token',
-  TOKEN_AUTH_USERNAME: 'mitocineapp',
-  TOKEN_AUTH_PASSWORD: 'mito89codex',
+  TOKEN_AUTH_USERNAME: 'pallevarR',
+  TOKEN_AUTH_PASSWORD: 'pallevarx',
   REINTENTOS: 3,
+  MICRO_CRUD: 'micro-crud',
+  MICRO_CR : 'micro-cr',
+  MICRO_AUTH : 'uaa'
 };

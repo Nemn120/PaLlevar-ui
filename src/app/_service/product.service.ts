@@ -10,7 +10,6 @@ import { SharedService } from './shared.service';
 })
 export class ProductService {
   
-  
   productCambio = new Subject<ProductBean[]>();
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/product`; 
@@ -18,7 +17,6 @@ export class ProductService {
   product :ProductBean = new ProductBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
-      this.product.sucursalId = this.sharedService.getSucursalIdByUserSession();
       this.product.organizationId = this.sharedService.getOrganizationIdByUserSession();
     }
 

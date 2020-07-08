@@ -16,6 +16,7 @@ const routes: Routes = [
  { path: '', component: SidebarSidenavComponent ,
   children: [
     { path: 'product', component: ProductListComponent ,canActivate: [GuardService]},
+    { path: 'category', component: CategoryListComponent ,canActivate: [GuardService]},
   ]
    },
 ];

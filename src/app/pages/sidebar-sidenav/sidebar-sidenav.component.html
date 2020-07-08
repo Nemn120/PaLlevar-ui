@@ -54,7 +54,7 @@
             <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
                 <img src="../assets/images/icondelivery.jpg" width="128" style="margin-left: 20px">
                 <mat-nav-list>
-                    <h3 mat-subheader>Pedidos</h3>
+                    <h3 mat-subheader>Mis opciones</h3>
                     <mat-list-item *ngFor="let m of menus">
                         <a mat-list-item routerLink="{{m.urlMenu}}">
                             <mat-icon mat-list-icon>
@@ -66,9 +66,9 @@
 
                     <a id="push-bottom" mat-list-item>
                         <mat-icon mat-list-icon>
-                            info_outline
+                            assignment_ind
                         </mat-icon>
-                        <p mat-line> Sobre nosotros </p>
+                        <p mat-line>{{sharedService.userSession.profile.name}}</p>
                     </a>
                 </mat-nav-list>
             </mat-sidenav>

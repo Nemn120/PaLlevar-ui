@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
-import { MenuService } from './menu.service';
+import { MenuOptionService } from './menu-option.service';
 import { SharedService } from './shared.service';
 import { MenuOptionBean } from '../_model/MenuOptionBean';
 
@@ -14,7 +14,7 @@ import { MenuOptionBean } from '../_model/MenuOptionBean';
 export class GuardService implements CanActivate {
 
   constructor(private loginService: LoginService, private router: Router,
-    public menuService: MenuService,
+    public menuService: MenuOptionService,
     private sharedService: SharedService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
@@ -38,12 +38,13 @@ export class GuardService implements CanActivate {
         const decodedToken = helper.decodeToken(token);
       
         let url = state.url; // /pelicula
-        
-        return this.menuService.listarPorProfileId(this.sharedService.userSession.id).pipe(map((data: MenuOptionBean[]) => {
+        console.log(url);
+        console.log(this.sharedService.userSession.id);
+        return this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).pipe(map((data: MenuOptionBean[]) => {
           this.menuService.menuCambio=data; 
           //this.menuService.menuCambio.next(data);
         
-  
+          console.log(data);
           let cont = 0;
           for (let menuBD of data) {
             if (url.startsWith(menuBD.urlMenu)) {
@@ -58,6 +59,8 @@ export class GuardService implements CanActivate {
             this.router.navigate(['auth/login']);
             return false;
           }
+        }, error =>{
+          console.error(error);
         }));
       } else {
         sessionStorage.clear();

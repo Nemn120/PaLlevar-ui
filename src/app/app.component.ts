@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from './_service/login.service';
-import { MenuService } from './_service/menu.service';
+import { MenuOptionService } from './_service/menu-option.service';
 import { MenuOptionBean } from './_model/MenuOptionBean';
 
 
