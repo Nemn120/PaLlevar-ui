@@ -1,6 +1,7 @@
 import { ProductBean } from './ProductBean';
 import { MenuDayBean } from './MenyDayBean';
-export class MenuDayProductBean{
+import { MainBean } from './MainBean';
+export class MenuDayProductBean extends MainBean{
     id:number;
     product:ProductBean;
     menuDay:MenuDayBean;

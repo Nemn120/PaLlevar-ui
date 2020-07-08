@@ -12,6 +12,7 @@ import { GuardService } from "../../_service/guard.service";
 import { FormsModule } from "@angular/forms";
 
 const routes: Routes = [
+<<<<<<< HEAD
   {
     path: "",
     component: SidebarSidenavComponent,
@@ -23,6 +24,14 @@ const routes: Routes = [
       },
     ],
   },
+=======
+ { path: '', component: SidebarSidenavComponent ,
+  children: [
+    { path: 'product', component: ProductListComponent ,canActivate: [GuardService]},
+    { path: 'category', component: CategoryListComponent ,canActivate: [GuardService]},
+  ]
+   },
+>>>>>>> 0bed9cd7750ba3169463fb4e01a36d6a23334c61
 ];
 
 @NgModule({
@@ -39,7 +48,14 @@ const routes: Routes = [
     SidebarSidenavModule,
     FormsModule,
   ],
+<<<<<<< HEAD
   exports: [RouterModule],
   entryComponents: [ProductFormComponent],
+=======
+  entryComponents:[
+    ProductFormComponent,
+    CategoryFormComponent
+  ]
+>>>>>>> 0bed9cd7750ba3169463fb4e01a36d6a23334c61
 })
 export class ProductModule {}

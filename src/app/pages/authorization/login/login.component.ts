@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { NotificationService } from '../../../_service/notification.service';
 import { AuthenticationService } from '../../../_service/auth.service';
-import { MenuService } from '../../../_service/menu.service';
+import { MenuOptionService } from '../../../_service/menu-option.service';
 import { environment } from '../../../../environments/environment.prod';
 import { LoginService } from '../../../_service/login.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     private titleService: Title,
     private loginService: LoginService,
     private userService: UserService,
-    private menuService: MenuService,
+    private menuService: MenuOptionService,
     private notificationService: NotificationService,
     private sharedService: SharedService,
     private authenticationService: AuthenticationService) {

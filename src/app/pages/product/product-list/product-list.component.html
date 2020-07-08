@@ -23,12 +23,12 @@
                     </ng-container>
 
                     <ng-container matColumnDef="description">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
                         <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="category">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </mat-header-cell>
                         <mat-cell *matCellDef="let row">
                             <div *ngIf="row.categoryProduct">{{row.categoryProduct.name}}</div>
                             <div *ngIf="!row.categoryProduct">Sin categoria</div>

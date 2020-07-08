@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuService } from '../../../_service/menu.service';
+import { MenuOptionService } from '../../../_service/menu-option.service';
 import { ProductService } from '../../../_service/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['id', 'name', 'description','category','actions'];
-  dataSource: MatTableDataSource<ProductBean>;
+  dataSource: MatTableDataSource<ProductBean>;/// tabla 
   titleProductList: string;
   constructor(
     private productService:ProductService, private dialog:MatDialog, private snackBar: MatSnackBar
@@ -27,7 +27,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleProductList="Listar Productos";
-    this.productService.mensajeCambio.subscribe(data => {
+    this.productService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -39,9 +39,9 @@ export class ProductListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
 
-    //this.productService.getListProduct().subscribe(data => {
+    this.productService.getListProduct().subscribe(data => {
     //this.productService.getListProductByOrganization().subscribe(data => {  
-    this.productService.getListProductByOrganizationAndSucursal().subscribe(data => {  
+    //this.productService.getListProductByOrganizationAndSucursal().subscribe(data => {  
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;

@@ -10,7 +10,7 @@ import { ProfileMenuOptionBean } from '../_model/ProfileMenuOptionBean';
 })
 export class UserService {
 
-  UserBeanCambio = new Subject<UserBean[]>();
+  userBeanCambio = new Subject<UserBean[]>();
   mensajeCambio = new Subject<string>();
   menuCambio = new Subject<ProfileMenuOptionBean[]>();
   url: string = `${environment.HOST}`;    

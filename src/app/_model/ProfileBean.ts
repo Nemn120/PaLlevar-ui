@@ -6,4 +6,5 @@ export class ProfileBean extends MainBean{
     shortDescription: string;
     longDescription:string;
     listProfileMenuOption:ProfileMenuOptionBean[];
+    name:string;
 }
