@@ -12,7 +12,7 @@ export class CategoryProductService {
 
   ompanyCambio = new Subject<CategoryProductBean[]>();
   mensajeCambio = new Subject<string>();
-  url: string = `${environment}/categoryproduct`; 
+  url: string = `${environment.HOST}/categoryproduct`; 
 
   CategoryProduct :CategoryProductBean = new CategoryProductBean();
   constructor(private http: HttpClient,
