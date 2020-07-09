@@ -1,7 +1,10 @@
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProductBean } from '../../../_model/ProductBean';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from '../../../_service/product.service';
+import { CategoryProductService } from '../../../_service/category-product.service';
+import { CategoryProductBean } from '../../../_model/CategoryProductBean';
 
 @Component({
   selector: 'app-product-form',
@@ -12,21 +15,40 @@ export class ProductFormComponent implements OnInit {
 
   productSelect: ProductBean;
   
+  categorias: CategoryProductBean[] ;
+  
   constructor(
     private dialogRef: MatDialogRef<ProductFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductBean,
     private productService: ProductService,
+    private categoryProductService:CategoryProductService
   ) { }
 
   ngOnInit(): void {
+
+    this.listarCategorias();    
+
     this.productSelect = new ProductBean();
     if (this.data.id > 0) {
       this.productSelect.id = this.data.id;
       this.productSelect.name = this.data.name;
       this.productSelect.description = this.data.description;
+      this.productSelect.categoryProduct=this.data.categoryProduct;
 
     }
+    
   }
+
+  
+  listarCategorias(){
+    this.categoryProductService.getListCategoryProduct().subscribe(data => {
+      this.categorias=data;
+    });
+  }
+
+
+
+
   save(){
     this.productService.saveProduct(this.productSelect).subscribe(data => {
       this.productService.getListProduct().subscribe(data2 => {
@@ -43,4 +65,10 @@ export class ProductFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  
+ 
+     
+      
 }
+
+
