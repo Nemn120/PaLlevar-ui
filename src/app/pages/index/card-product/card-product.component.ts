@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyBean } from '../../../_model/CompanyBean';
-
+import { ProductBean } from '../../../_model/ProductBean';
+import { CategoryProductBean } from '../../../_model/CategoryProductBean';
 @Component({
   selector: 'app-card-product',
   templateUrl: './card-product.component.html',
@@ -8,25 +8,35 @@ import { CompanyBean } from '../../../_model/CompanyBean';
 })
 export class CardProductComponent implements OnInit {
 
-  imagen = "../../../../assets/images/plato1.png";
+  imagen = '../../../../assets/images/plato1.png';
 
-  platillos: CompanyBean[] = [
-    {id: 1, nombre: 'Producto 1', ruc: 'ruc1', createDate: null, userAdmin: null},
-    {id: 2, nombre: 'Producto 2', ruc: 'ruc2', createDate: null, userAdmin: null},
-    {id: 3, nombre: 'Producto 3', ruc: 'ruc3', createDate: null, userAdmin: null},
-    {id: 4, nombre: 'Producto 4', ruc: 'ruc4', createDate: null, userAdmin: null},
-    {id: 5, nombre: 'Producto 5', ruc: 'ruc5', createDate: null, userAdmin: null},
-    {id: 6, nombre: 'Producto 6', ruc: 'ruc6', createDate: null, userAdmin: null},
-    {id: 7, nombre: 'Producto 7', ruc: 'ruc7', createDate: null, userAdmin: null},
-    {id: 8, nombre: 'Producto 8', ruc: 'ruc8', createDate: null, userAdmin: null}
+  categoria1: CategoryProductBean = {id: 1, name: 'combo', description: 'descripcion 1', pathPhoto: '',
+    createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1};
+
+  platillos: ProductBean[] = [
+    {id: 1, name: 'Producto 1', description: 'descripcion 1', pathPhoto: '', categoryProduct: null,createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1},
+    {id: 1, name: 'Producto 1', description: 'descripcion 1', pathPhoto: '', categoryProduct: null,createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1},
+    {id: 1, name: 'Producto 1', description: 'descripcion 1', pathPhoto: '', categoryProduct: null,createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1},
+    {id: 1, name: 'Producto 1', description: 'descripcion 1', pathPhoto: '', categoryProduct: null,createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1},
+    {id: 1, name: 'Producto 1', description: 'descripcion 1', pathPhoto: '', categoryProduct: null,createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1},
+    {id: 1, name: 'Producto 1', description: 'descripcion 1', pathPhoto: '', categoryProduct: null,createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1},
+    {id: 1, name: 'Producto 1', description: 'descripcion 1', pathPhoto: '', categoryProduct: null,createDate: null, userCreateId: 1, organizationId: 1, sucursalId: 1}
   ];
 
-  platillos2: CompanyBean[] = null;
-
+  panelOpenState = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  agregarCarrito(item) {
+    
+  }
+  verCarrito() {
+    
+  }
 }
+
+
+

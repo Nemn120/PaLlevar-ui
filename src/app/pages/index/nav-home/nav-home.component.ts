@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavHomeComponent implements OnInit {
 
-  logo = "https://www.pngitem.com/pimgs/m/208-2089100_logos-de-comida-para-llevar-hd-png-download.png";
+  logo1 = "https://www.pngitem.com/pimgs/m/208-2089100_logos-de-comida-para-llevar-hd-png-download.png";
+  logo2 = "../../../../assets/images/motoDelivery.gif";
 
   constructor() { }
 

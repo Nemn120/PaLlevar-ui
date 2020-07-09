@@ -1,14 +1,32 @@
-<mat-toolbar class="text">Nuestros Productos</mat-toolbar>
+<mat-toolbar class="text">Nuestros Productos
+    <div class="example-spacer"></div>
+    <button mat-mini-fab color="primary" (click)="verCarrito()">
+        <mat-icon>shopping_cart</mat-icon>
+    </button>
+</mat-toolbar>
 
 <div *ngIf="platillos != null else vacio">
     <div class="responsive" *ngFor="let item of platillos">
         <div class="gallery">
-            <a target="_blank" href={{item}}>
+            <a target="_blank">
+                <div class="desc">{{item.name}}</div>
                 <img src="{{imagen}}" alt="Forest" width="600" height="400">
             </a>
-            <div class="desc">{{item.nombre}}</div>
             <div class="desc">
-                <button mat-flat-button color="primary">ver productos</button>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <p class="detalles">Ver Detalles</p>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p class="detalles" style="font-size: 10px;">Descripción: {{item.description}}</p>
+                        <p class="detalles" style="font-size: 10px;">Nombre: {{item.name}}</p>
+                    </mat-expansion-panel>
+                    <button mat-mini-fab color="primary" style="margin-top: 5px;" (click)="agregarCarrito(item)">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                    </button>
+                </mat-accordion>
             </div>
         </div>
     </div>
