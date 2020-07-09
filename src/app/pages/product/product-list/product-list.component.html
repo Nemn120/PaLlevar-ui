@@ -1,10 +1,19 @@
 <!-- COMPONENTE DE BUSQUEDA -->
 
-<mat-card class="mat-parent">
+
+
+
+
+<div class="mat-parent">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Listado de productos</span>
+
+        </mat-toolbar>
+    </p>
     <div class="carousel-item " style="display: flex; width: 80%;">
 
         <div class="container">
-            <br>
             <mat-table [dataSource]="dataSource" matSort>
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
@@ -58,4 +67,4 @@
       </button>
         </div>
     </div>
-</mat-card>
+</div>

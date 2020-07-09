@@ -1,14 +1,11 @@
 <p>
     <mat-toolbar class="navbar">
-        <span>pa Llevar, inicio de sesion</span>
-        <button mat-raised-button id="login" color="primary" routerLink="/auth/registry">Registra</button>
+        <span routerLink="/index/home">pa Llevar, inicio de sesion</span>
+        <div class="final-position"> <button mat-raised-button id="login" color="primary" routerLink="/auth/registry">Registrate ahora</button></div>
     </mat-toolbar>
 </p>
 
 <div class="background">
-
-
-
     <div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
         <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
             <mat-card>
