@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [LoginComponent, RegistryComponent],
   imports: [
+    
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,

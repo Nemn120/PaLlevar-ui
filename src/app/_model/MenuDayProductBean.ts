@@ -10,5 +10,7 @@ export class MenuDayProductBean extends MainBean{
     available:number;
     status:string;
     type:string;
+    _foto: any;
+    _isFoto: boolean;
 
 }

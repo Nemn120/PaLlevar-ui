@@ -5,5 +5,7 @@ export class CategoryProductBean extends MainBean{
     name:string;
     description:string;
     pathPhoto:string;
+    _foto: any;
+    _isFoto: boolean;
 
 }

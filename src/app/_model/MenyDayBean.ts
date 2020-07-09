@@ -8,5 +8,6 @@ export class MenuDayBean extends MainBean{
     day:String;
     type:string;
     menuDayProduct:MenuDayProductBean[]
+    
 
 }
