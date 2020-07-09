@@ -1,10 +1,15 @@
-<p>
-    <mat-toolbar class="navbar">
-        <span routerLink="/index/home">pa Llevar, inicio de sesion</span>
-        <div> <button style="float:right;" mat-raised-button id="login" color="primary" routerLink="/auth/registry">Registrate ahora</button></div>
-    </mat-toolbar>
-</p>
-
+<mat-toolbar class="toolbar2">
+    <img src={{logo}}>
+    <h1 style="text-align: center;justify-content: center;">PA' LLEVAR</h1>
+</mat-toolbar>
+<mat-toolbar>
+    <a routerLink="/menu">
+        <button mat-fab class="button-toolbar1" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </a>
+    <p class="menu">Menu</p>
+</mat-toolbar>
 <div class="background">
     <div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
         <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">

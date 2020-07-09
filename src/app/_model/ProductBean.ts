@@ -4,7 +4,7 @@ import { MainBean } from './MainBean';
 
 export class ProductBean extends MainBean{
     id:number;
-    name:number;
+    name:string;
     description:string;
     categoryProduct:CategoryProductBean;
     _foto: any;

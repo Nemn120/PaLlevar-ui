@@ -29,7 +29,7 @@ div.gallery {
 
 div.gallery:hover {
     border: 1px solid antiquewhite;
-    box-shadow: 2px 2px 2px darksalmon;
+    box-shadow: 3px 3px 3px darksalmon;
     opacity: 1;
 }
 
@@ -85,12 +85,8 @@ body {
 }
 
 button :hover {
+    background-color: darkorange;
     opacity: 1;
-    text-align: center;
-}
-
-.detalles {
-    font-size: 13px;
 }
 
 img {
@@ -98,27 +94,10 @@ img {
     background-position: relative;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 10%;
+    height: 100%;
     width: 100%;
     align-items: center;
     display: flex;
     text-align: center;
     opacity: 0.5;
-}
-
-mat-expansion-panel {
-    background-color: aliceblue;
-}
-
-mat-expansion-panel-header {
-    background-color: aliceblue;
-}
-
-.detalles {
-    margin: 0;
-    padding: 0;
-}
-
-.example-spacer {
-    flex: 1 1 auto;
 }
