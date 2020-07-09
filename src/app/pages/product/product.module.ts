@@ -34,7 +34,8 @@ const routes: Routes = [
     RouterModule
   ],
   entryComponents:[
-    ProductFormComponent
+    ProductFormComponent,
+    CategoryFormComponent
   ]
 })
 export class ProductModule { }
