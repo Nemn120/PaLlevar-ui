@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from '../../../_service/product.service';
 import { CategoryProductService } from '../../../_service/category-product.service';
 import { CategoryProductBean } from '../../../_model/CategoryProductBean';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-form',
@@ -14,6 +15,12 @@ import { CategoryProductBean } from '../../../_model/CategoryProductBean';
 export class ProductFormComponent implements OnInit {
 
   productSelect: ProductBean;
+
+  imagenData: any;
+  imagenEstado: boolean = false;
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  labelFile: string;
   
   categorias: CategoryProductBean[] ;
   
@@ -21,13 +28,12 @@ export class ProductFormComponent implements OnInit {
     private dialogRef: MatDialogRef<ProductFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductBean,
     private productService: ProductService,
-    private categoryProductService:CategoryProductService
+    private categoryProductService:CategoryProductService,
+    private sanitization: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-
     this.listarCategorias();    
-
     this.productSelect = new ProductBean();
     if (this.data.id > 0) {
       this.productSelect.id = this.data.id;
@@ -36,18 +42,12 @@ export class ProductFormComponent implements OnInit {
       this.productSelect.categoryProduct=this.data.categoryProduct;
 
     }
-    
   }
-
-  
   listarCategorias(){
     this.categoryProductService.getListCategoryProduct().subscribe(data => {
       this.categorias=data;
     });
   }
-
-
-
 
   save(){
     this.productService.saveProduct(this.productSelect).subscribe(data => {
@@ -65,9 +65,12 @@ export class ProductFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  
- 
-     
+  selectFile(e: any) {
+    console.log(e);
+    this.labelFile = e.target.files[0].name;
+    this.selectedFiles = e.target.files;
+    
+  }
       
 }
 
