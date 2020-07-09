@@ -1,65 +1,61 @@
 <!-- COMPONENTE DE BUSQUEDA -->
 
+<mat-card class="mat-parent">
+    <div class="carousel-item " style="display: flex; width: 80%;">
 
-<div class="container" fxLayout="row" fxLayoutAlign="center none">
-    <div fxFlex="80%">
+        <div class="container">
+            <br>
+            <mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
 
-        <mat-card>
-            <mat-card-content>
-                <mat-toolbar>{{titleProductList}}</mat-toolbar>
+                <ng-container matColumnDef="name">
+                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                    <!-- NOMBRE DE LA COLUMNA-->
+                    <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+                </ng-container>
 
-                <mat-table [dataSource]="dataSource" matSort>
-                    <ng-container matColumnDef="id">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                    </ng-container>
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
+                </ng-container>
 
-                    <ng-container matColumnDef="name">
-                        <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-                        <!-- NOMBRE DE LA COLUMNA-->
-                        <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
-                        <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
-                    </ng-container>
+                <ng-container matColumnDef="category">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <div *ngIf="row.categoryProduct">{{row.categoryProduct.name}}</div>
+                        <div *ngIf="!row.categoryProduct">Sin categoria</div>
+                    </mat-cell>
 
-                    <ng-container matColumnDef="description">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
-                    </ng-container>
-
-                    <ng-container matColumnDef="category">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </mat-header-cell>
-                        <mat-cell *matCellDef="let row">
-                            <div *ngIf="row.categoryProduct">{{row.categoryProduct.name}}</div>
-                            <div *ngIf="!row.categoryProduct">Sin categoria</div>
-                        </mat-cell>
-
-                    </ng-container>
+                </ng-container>
 
 
-                    <ng-container matColumnDef="actions">
-                        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-                        <mat-cell *matCellDef="let row">
-                            <button mat-icon-button color="primary" (click)="openDialog(row)">
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <button mat-icon-button color="primary" (click)="openDialog(row)">
                 <mat-icon>ballot</mat-icon>
               </button>
-                            <button mat-icon-button color="accent" (click)="delete(row)">
+                        <button mat-icon-button color="accent" (click)="delete(row)">
                 <mat-icon>delete</mat-icon>
               </button>
-                        </mat-cell>
-                    </ng-container>
+                    </mat-cell>
+                </ng-container>
 
-                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                </mat-table>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
 
-                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
 
-            </mat-card-content>
             <button mat-fab color="accent" style="float: right" (click)="openDialog()">
         <mat-icon>create</mat-icon>
       </button>
-        </mat-card>
+        </div>
     </div>
-</div>
+</mat-card>
