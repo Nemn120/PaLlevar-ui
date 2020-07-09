@@ -48,7 +48,7 @@ export class UserService {
   }
 
   registrar(UserBean: UserBean) {
-    return this.http.post(`${this.url}/${this.subUrl}`, UserBean);
+    return this.http.post(`${this.url}/${this.subUrl}/rcli`, UserBean);
   }
 
   modificar(UserBean: UserBean) {

@@ -6,6 +6,7 @@ export class ProductBean extends MainBean{
     id:number;
     name:number;
     description:string;
-    pathPhoto:string;
     categoryProduct:CategoryProductBean;
+    _foto: any;
+    _isFoto: boolean;
 }

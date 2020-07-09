@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../_service/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserBean } from 'src/app/_model/UserBean';
-
+import { PasswordValidation } from './match';
 @Component({
   selector: 'app-registry',
   templateUrl: './registry.component.html',
@@ -24,32 +24,30 @@ export class RegistryComponent implements OnInit {
     this.form = this.fb.group({
       'nombres': new FormControl(''),
       'apellidos': new FormControl(''),
+      'direccion': new FormControl(''),
+      'telefono': new FormControl(''),
       'dni': new FormControl(''),
       'fechaNac': new Date(),
       usuario: new FormControl(''),
       password: [''],
       confirmPassword: ['']
     }, {
-        //validator: PasswordValidation.MatchPassword
+        validator: PasswordValidation.MatchPassword
       });
   }
 
   registrar() {
-    let cliente = new UserBean();
-    /*
-    cliente.nombre = this.form.value['nombres'];
-    cliente. = this.form.value['apellidos'];
-    cliente.dni = this.form.value['dni'];
-    cliente.fechaNac = this.form.value['fechaNac'];
+    let newUser = new UserBean();
+    
+    newUser.nombre = this.form.value['nombres'];
+    newUser.lastName = this.form.value['apellidos'];
+    newUser.documentNumber = this.form.value['dni'];
+    newUser.dateBirth = this.form.value['fechaNac'];
+    newUser.username = this.form.value['usuario'];
+    newUser.password = this.form.value['password'];
+  
 
-    let usuario = new UserBean();
-    usuario.nombre = this.form.value['usuario'];
-    usuario.clave = this.form.value['password'];
-    usuario.estado = true;
-    usuario.cliente = cliente;
-    */
-
-    this.usuarioService.registrar(cliente).subscribe(() => {
+    this.usuarioService.registrar(newUser).subscribe(() => {
       this.matSnackBar.open('Registro completado con éxito', 'SUCCESS', {
         duration: 2000
       });

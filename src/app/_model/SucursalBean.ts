@@ -8,4 +8,6 @@ export class SucursalBean{
     userAdmin:UserBean;
     company:CompanyBean;
     createDate:Date;
+    _foto: any;
+    _isFoto: boolean;
 }

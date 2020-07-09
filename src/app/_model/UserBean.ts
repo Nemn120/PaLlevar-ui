@@ -13,4 +13,8 @@ export class UserBean extends MainBean{
     employeeCode:string;
     documentTypeId:string;
     documentNumber:string;
+    lastName:string;
+    dateBirth:Date;
+    _foto: any;
+    _isFoto: boolean;
 }

@@ -1,6 +1,6 @@
 <p>
     <mat-toolbar class="navbar">
-        <span>pa Llevar, inicio de sesion</span>
+        <span>Para llevar, formulario de registro</span>
     </mat-toolbar>
 </p>
 <div class="background">
@@ -30,6 +30,16 @@
                             <mat-datepicker #picker></mat-datepicker>
                         </mat-form-field>
                     </mat-tab>
+                    <mat-tab label="Datos de pedido">
+                        <mat-form-field>
+                            <input matInput placeholder="Dirección" formControlName="nombres">
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Telefono" formControlName="apellidos">
+                        </mat-form-field>
+                    </mat-tab>
+
 
                     <mat-tab label="Datos del Usuario">
                         <mat-form-field>
@@ -44,7 +54,7 @@
                             <input matInput type="password" placeholder="Repetir contraseña" formControlName="confirmPassword" [formGroup]="form" required>
                         </mat-form-field>
 
-                        <button mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Registrar</button>
+                        <button style="float: right;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Registrar</button>
                     </mat-tab>
                 </mat-tab-group>
             </mat-card>
