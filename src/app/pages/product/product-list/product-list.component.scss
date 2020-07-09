@@ -1,7 +1,25 @@
-table {
-    width: 80%;
+.title-nav {
+    width: 200px;
+    padding: 0 1rem;
+    margin: 1rem;
+    display: block;
+    margin-bottom: 10px;
 }
 
-th.mat-sort-header-sorted {
-    color: black;
+table {
+    width: 100%;
+    display: block;
+}
+
+.mat-card {
+    position: absolute !important;
+}
+
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: initial;
+    justify-content: center;
+    //flex-direction: row;
+    width: -webkit-fill-available;
 }

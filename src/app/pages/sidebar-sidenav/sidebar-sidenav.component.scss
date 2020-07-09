@@ -64,3 +64,11 @@ a.mat-list-item.active {
     position: absolute;
     bottom: 0;
 }
+
+.background-home {
+    background-image: url('/assets/images/dasboard.jpg');
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    height: 100%;
+}
