@@ -33,10 +33,13 @@ export class NavHomeComponent implements OnInit {
   //abre el perfil del usuario logueado
   openDialog() {
     
-      this.dialog.open(PerfilComponent, {
-      data: {
+      this.dialog.open(PerfilComponent/*, {
+     
+        data: {
         animal: 'panda'
       }
-    });
+    }*/
+    
+    );
   }
 }
