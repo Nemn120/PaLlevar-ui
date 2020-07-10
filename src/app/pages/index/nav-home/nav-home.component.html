@@ -17,11 +17,39 @@
     <p class="sign-in">Menu</p>
 
     <div class="example-spacer"></div>
+    <!--No esta logueado-->
 
-    <a routerLink="/auth/login">
-        <button mat-fab class="button-toolbar1">
+    <div *ngIf="!logueado">
+
+        <!--
+            <button routerLink="/auth/login" (click)="iniciar()" mat-button class="button-toolbar1">
+             Sign in
+            </button>
+        -->
+
+        <button routerLink="/home" (click)="iniciar()" mat-button>
+                
+            Iniciar Session
+        </button>
+
+
+
+    </div>
+
+    <!--Esta logueado-->
+    <div *ngIf="logueado">
+
+        <button mat-icon-button [matMenuTriggerFor]="beforeMenu">
             <mat-icon>account_circle</mat-icon>
         </button>
-    </a>
-    <p class="sign-in">Sign in</p>
+
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button mat-menu-item>Perfil</button>
+            <button mat-menu-item>Pedidos</button>
+            <button mat-menu-item (click)="cerrar()">Cerrar Sesion</button>
+        </mat-menu>
+
+    </div>
+
+
 </mat-toolbar>
