@@ -17,23 +17,19 @@
     <p class="sign-in">Menu</p>
 
     <div class="example-spacer"></div>
+
+
+
     <!--No esta logueado-->
-
     <div *ngIf="!logueado">
-
         <!--
             <button routerLink="/auth/login" (click)="iniciar()" mat-button class="button-toolbar1">
              Sign in
             </button>
         -->
-
-        <button routerLink="/home" (click)="iniciar()" mat-button>
-                
+        <button (click)="iniciar()" mat-button>         
             Iniciar Session
         </button>
-
-
-
     </div>
 
     <!--Esta logueado-->
@@ -48,7 +44,6 @@
             <button mat-menu-item>Pedidos</button>
             <button mat-menu-item (click)="cerrar()">Cerrar Sesion</button>
         </mat-menu>
-
     </div>
 
 
