@@ -36,6 +36,6 @@ const routes: Routes = [
   exports:[
     AttendOrderDetailComponent
   ],
-  entryComponents: [AttendOrderDetailComponent]
+  entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent]
 })
 export class OrderModule { }

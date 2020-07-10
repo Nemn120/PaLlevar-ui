@@ -31,18 +31,7 @@ export class SharedService{
       return this.userSession.profile;
     }
 
-    public convertir(data: any) {
-      let reader = new FileReader();
-      reader.readAsDataURL(data);
-      reader.onloadend = () => {
-        let base64 = reader.result;      
-        this.sanar(base64);
-      }
-    }
   
-    public sanar(base64 : any){
-      return  this.sanitization.bypassSecurityTrustResourceUrl(base64);
-    }
 
 
 }

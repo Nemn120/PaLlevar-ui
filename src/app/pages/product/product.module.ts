@@ -21,6 +21,11 @@ const routes: Routes = [
         component: ProductListComponent,
         canActivate: [GuardService],
       },
+      {
+        path: "category",
+        component: CategoryListComponent,
+        canActivate: [GuardService],
+      }
     ],
   },
 ];
@@ -41,7 +46,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   entryComponents: [ProductFormComponent,
-    ProductFormComponent,
     CategoryFormComponent],
 })
 export class ProductModule {}

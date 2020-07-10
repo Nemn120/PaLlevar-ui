@@ -3,14 +3,12 @@ import { MenuDayBean } from './MenyDayBean';
 import { MainBean } from './MainBean';
 export class MenuDayProductBean extends MainBean{
     id:number;
-    product:ProductBean;
+    product:ProductBean; // 
     menuDay:MenuDayBean;
     price:number;
     quantity:number;
     available:number;
-    status:string;
-    type:string;
-    _foto: any;
-    _isFoto: boolean;
+    status:string; // DISPONIBLE , NO DISPONIBLE
+    type:string; // COMBO, MENU , PAQUETE
 
 }

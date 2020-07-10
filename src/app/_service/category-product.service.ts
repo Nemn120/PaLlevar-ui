@@ -13,16 +13,34 @@ export class CategoryProductService {
   ompanyCambio = new Subject<CategoryProductBean[]>();
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/categoryproduct`; 
-
+  orgId:number;
   CategoryProduct :CategoryProductBean = new CategoryProductBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
+      this.orgId=this.sharedService.getOrganizationIdByUserSession();
     }
   getListCategoryProduct() {
     return this.http.get<CategoryProductBean[]>(`${this.url}/glcp`);
   }
-  saveCategoryProduct(CategoryProduct : CategoryProductBean) {
-    return this.http.post<CategoryProductBean>(`${this.url}/scp`,CategoryProduct);
+  getListCategoryProductByOrganization() {
+    return this.http.get<CategoryProductBean[]>(`${this.url}/glcpbo/${this.orgId}`);
+  }
+
+
+  getPhotoById(id: number) {
+    return this.http.get(`${this.url}/gp/${id}`, {
+      responseType: 'blob'
+    });
+  }
+
+  saveCategoryProduct(categoryProduct : CategoryProductBean,file? :File) {
+    categoryProduct.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    let formdata: FormData = new FormData();
+    formdata.append('file', file);
+    const categoryBlob = new Blob([JSON.stringify(categoryProduct)], { type: "application/json" });
+    formdata.append('category', categoryBlob);
+
+    return this.http.post<CategoryProductBean>(`${this.url}/scp`,categoryProduct);
   }
 
   deleteCategoryProduct(id: number) {

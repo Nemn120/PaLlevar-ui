@@ -24,7 +24,6 @@ export class ProductService {
     return this.http.get<ProductBean[]>(`${this.url}/glp`);
   }
   getListProductByOrganization() {
-    
     return this.http.get<ProductBean[]>(`${this.url}/glpbo/${this.sharedService.getOrganizationIdByUserSession()}`);
   }
 
@@ -34,6 +33,11 @@ export class ProductService {
 
     return this.http.post<ProductBean[]>(`${this.url}/glpbos`,this.product);
   }
+  getPhotoById(id: number) {
+    return this.http.get(`${this.url}/gp/${id}`, {
+      responseType: 'blob'
+    });
+  }
   saveProduct(product : ProductBean, file?:File) {
     product.organizationId = this.sharedService.getOrganizationIdByUserSession();
     let formdata: FormData = new FormData();
@@ -42,7 +46,7 @@ export class ProductService {
     formdata.append('product', productBlob);
     return this.http.post<ProductBean>(`${this.url}/sp`,formdata);
   }
-
+  
 
   deleteProduct(id: number) {
     return this.http.delete(`${this.url}/dp/${id}`);
