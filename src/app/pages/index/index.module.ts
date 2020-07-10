@@ -10,6 +10,7 @@ import { CardOrganizationComponent } from './card-organization/card-organization
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
+import { LoginComponent } from '../authorization/login/login.component';
 
 const routes: Routes = [
 
@@ -21,8 +22,8 @@ const routes: Routes = [
           { path: '', component: HomeComponent  },
           { path: 'shop', component: ShoppingComponent  },
           
-         /* { path: 'perfil', component: PerfilComponent  },*/
-        // { path: 'index',   redirectTo: '/home', pathMatch: 'full' },
+         
+        // { path: '',   redirectTo: '/home', pathMatch: 'full' },
     ]
   }
 ];
@@ -47,7 +48,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
   ],
-  exports: [RouterModule,DetailProductComponent]
+  exports: [RouterModule,DetailProductComponent],
+  entryComponents: [PerfilComponent],
 })
 export class IndexModule { }
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import { PerfilComponent } from '../cliente/perfil/perfil.component';
 
 @Component({
   selector: 'app-nav-home',
@@ -13,7 +15,8 @@ export class NavHomeComponent implements OnInit {
 
   logueado:boolean=false;
 
-  constructor() { }
+  
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
   }
@@ -25,5 +28,15 @@ export class NavHomeComponent implements OnInit {
   cerrar(){
 
     this.logueado=false;
+  }
+
+  //abre el perfil del usuario logueado
+  openDialog() {
+    
+      this.dialog.open(PerfilComponent, {
+      data: {
+        animal: 'panda'
+      }
+    });
   }
 }

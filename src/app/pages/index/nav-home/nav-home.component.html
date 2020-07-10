@@ -40,7 +40,7 @@
         </button>
 
         <mat-menu #beforeMenu="matMenu" xPosition="before">
-            <button mat-menu-item>Perfil</button>
+            <button mat-menu-item (click)="openDialog()">Perfil</button>
             <button mat-menu-item>Pedidos</button>
             <button mat-menu-item (click)="cerrar()">Cerrar Sesion</button>
         </mat-menu>
