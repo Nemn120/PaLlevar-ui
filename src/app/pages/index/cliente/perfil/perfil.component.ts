@@ -1,5 +1,7 @@
-import { Component, OnInit,Inject } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { SharedService } from './../../../../_service/shared.service';
+import { Component, OnInit} from '@angular/core';
+import { UserBean } from '../../../../_model/UserBean';
 
 @Component({
   selector: 'app-perfil',
@@ -8,14 +10,22 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor(/*@Inject(MAT_DIALOG_DATA) public data: DialogData*/) {}
+  user:UserBean;
+
+  constructor(
+
+    private sharedService: SharedService,
+
+  ) {}
 
   ngOnInit(): void {
+    this.obtenerPerfil();
+  }
+
+
+  obtenerPerfil(){
+    this.user=this.sharedService.userSession;
+    console.log('katriel18 : ',this.user);    
   }
 
 }
-
-/*
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}*/

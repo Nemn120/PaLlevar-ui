@@ -1,3 +1,4 @@
+import { SharedService } from './../../../_service/shared.service';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { PerfilComponent } from '../cliente/perfil/perfil.component';
@@ -16,30 +17,22 @@ export class NavHomeComponent implements OnInit {
   logueado:boolean=false;
 
   
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,private sharedService:SharedService) {}
 
   ngOnInit(): void {
-  }
 
-  iniciar(){
-    this.logueado=true;
+    if(this.sharedService.getUserIdSession()>0){
+      this.logueado=true;
+    }
+    
   }
 
   cerrar(){
-
     this.logueado=false;
   }
 
-  //abre el perfil del usuario logueado
   openDialog() {
-    
-      this.dialog.open(PerfilComponent/*, {
-     
-        data: {
-        animal: 'panda'
-      }
-    }*/
-    
-    );
+     this.dialog.open(PerfilComponent);
   }
+
 }
