@@ -3,10 +3,10 @@
     <h1 style="text-align: center;justify-content: center;">PA' LLEVAR</h1>
 </mat-toolbar>
 <mat-toolbar>
-    <a routerLink="/menu">
-        <button mat-fab class="button-toolbar1" aria-label="Example icon-button with menu icon">
+    <a routerLink="">
+        <button mat-icon-button color="primary">
             <div class="dropdown">
-                <mat-icon>menu</mat-icon>
+                <mat-icon >menu</mat-icon>
                 <div class="dropdown-content">
                     <a href="#">Combos</a>
                     <a href="#">Ofertas</a>
@@ -14,7 +14,7 @@
             </div>
         </button>
     </a>
-    <p class="sign-in">Menu</p>
+    <!--<p class="sign-in">Menu</p>-->
 
     <div class="example-spacer"></div>
 
@@ -27,15 +27,15 @@
              Sign in
             </button>
         -->
-        <button routerLink="/auth/login" mat-button>         
+        <button routerLink="/auth/login" mat-button color="primary">         
             Iniciar Session
         </button>
     </div>
 
     <!--Esta logueado-->
     <div *ngIf="logueado">
-
-        <button mat-icon-button [matMenuTriggerFor]="beforeMenu">
+        <!--mat-fab-->
+        <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary">
             <mat-icon>account_circle</mat-icon>
         </button>
 

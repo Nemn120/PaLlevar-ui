@@ -3,9 +3,21 @@
 
 
     <mat-card> DNI:{{user.documentNumber}}</mat-card>
-    <mat-card>Celular: {{user.lastName}}</mat-card>
-    <mat-card>Direccion: {{user.nombre}}</mat-card>
+
+    <mat-card>Nombres: {{user.nombre}}</mat-card>
+    <mat-card>Apellidos: {{user.lastName}}</mat-card>
     <mat-card>F.Nacimiento: {{user.dateBirth | date:'MM/dd/yyyy'}}</mat-card>
+    <mat-card>Celular: {{user.cellPhone}}</mat-card>
+    <mat-card>Direccion: {{user.address}}</mat-card>
     <mat-card>usuario: {{user.username}}</mat-card>
 
+    <!--
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>DNI:</mat-grid-tile>
+        <mat-grid-tile>{{user.documentNumber}}</mat-grid-tile>
+        <mat-grid-tile>Nombres:</mat-grid-tile>
+        <mat-grid-tile> {{user.lastName}}</mat-grid-tile>
+    </mat-grid-list>
+
+-->
 </div>
