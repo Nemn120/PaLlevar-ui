@@ -7,14 +7,15 @@
 <mat-form-field>
     <input matInput placeholder="Descripcion" [(ngModel)]="categoryProductSelect.description" type="tel">
 </mat-form-field>
-
-<!--
-  <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
-  <input id="flArchivo" type="file" (change)="seleccionarArchivo($event)" style="display: none" >
-  
-  <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" width="50%" height="50%" />
-  <p>{{labelFile}}</p>
-  -->
 <br>
-<button mat-raised-button color="primary" (click)="save()">Aceptar</button>
-<button mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+<button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
+<input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+
+<img mat-card-image [src]="imagenData" *ngIf="imagenEstado" width="50%" height="50%" />
+<p>{{labelFile}}</p>
+
+<br>
+<div style="float:right;">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+</div>
