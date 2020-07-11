@@ -78,10 +78,18 @@ export class LoginComponent implements OnInit {
          //this.menuService.menuCambio.next(data); //
             console.log(data);
           
+            if(this.sharedService.userSession.profile.idProfile===6){
+              this.router.navigate(['index/shop']);
+              
+            }else{
+            
            //   setTimeout(x=>{
                 this.router.navigate(['suc/show']); // RUTA REDIRIGIDA AL INICIAR SESION
             //  },1000)
-                      });
+          }
+          
+          
+          });
         });
       }
     });
