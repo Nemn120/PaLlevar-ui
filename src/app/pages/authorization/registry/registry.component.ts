@@ -45,7 +45,9 @@ export class RegistryComponent implements OnInit {
     newUser.dateBirth = this.form.value['fechaNac'];
     newUser.username = this.form.value['usuario'];
     newUser.password = this.form.value['password'];
-  
+    newUser.cellPhone = this.form.value['telefono'];
+    newUser.address = this.form.value['direccion'];
+
 
     this.usuarioService.registrar(newUser).subscribe(() => {
       this.matSnackBar.open('Registro completado con éxito', 'SUCCESS', {
