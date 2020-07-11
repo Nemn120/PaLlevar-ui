@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+
 import { MaterialModule } from './_material/material.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from '../environments/environment';
@@ -12,6 +14,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { VerMasComponent } from './pages/index/ver-mas/ver-mas.component';
+//import { DetallesComponent } from './pages/index/detalles/detalles.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -22,7 +26,9 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    //DetallesComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,7 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
   exports:[
-    FlexLayoutModule,
+    FlexLayoutModule
     
   ],
 })

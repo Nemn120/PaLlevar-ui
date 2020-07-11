@@ -1,0 +1,107 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
+  .sidenav .mat-toolbar {
+    background-color: #e0490d;
+  }
+  .sidenav-container .sidenav{
+    background-color: #e0490d;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  body{
+    font-family: verdana, helvetica;
+    font-weight: bold;
+  }
+  
+  #nav{
+    width: 155px;
+  }
+  
+  .titulonav{
+    border: 1px solid #e0490d;   
+    font-size: 8pt;
+    font-weight: bold;
+    background-color: #e0490d;
+    color: #000;
+    padding: 4px;
+  }
+  
+  .cuerporec{
+    margin-top: 0px;
+    margin-right: 0pt;
+    margin-bottom: 10px;
+    margin-left: 0pt;
+  }
+  
+  .cuerporec ul{
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 0pt;
+    padding-right: 0pt;
+    padding-bottom: 0pt;
+    padding-left: 0px;
+    list-style-type: none;
+    list-style-image: none;
+    list-style-position: outside;
+  }
+  
+  .cuerporec mat-nav-list{
+    border-bottom: 1px solid #e0490d;   
+    border-left: 1px solid #e0490d;  
+    border-right: 1px solid #e0490d;   
+    padding: 1px 0 2px 4px;
+    font-size: 8pt;
+    margin-top: 0px;
+    margin-right: 0pt;
+    margin-bottom: 0px;
+    margin-left: 0pt;
+    background-color: #e0490d;
+  }
+  
+  .cuerporec a{
+    text-decoration: none;
+  }
+  
+  .icon{
+    margin-left: 20px;
+    margin-top: auto;
+  }
+  
+  .opciones{
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: 100;
+    text-align: center;
+  }
+  
+  .ico{
+    margin-left: 90%;
+  }
+
+  .menu{
+    margin-left:70%;
+    border-color: #e0490d;
+    font: bold italic 25px verdana;
+  }
+  .menu1{
+    margin-right:70%;
+    border-color: #e0490d;
+    font: bold italic 25px verdana;
+  }
+  .opc{
+    border-color: #e0490d;
+    font: bold italic 25px verdana;
+  }

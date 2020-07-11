@@ -11,5 +11,8 @@ export class DeliveryOrderDetailComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public sendOrder(e : any){
+
+  }
 
 }

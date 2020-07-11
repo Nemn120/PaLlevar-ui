@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,6 +33,7 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
   ],
   exports: [
     MatButtonModule,
+    MatBottomSheetModule,
     MatTableModule,
     MatIconModule,
     MatFormFieldModule,

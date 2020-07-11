@@ -14,6 +14,7 @@ import { ConsolidatedOrderComponent } from './consolidated-order/consolidated-or
 import { DeliveryOrderDetailComponent } from './delivery-order-detail/delivery-order-detail.component';
 
 
+
 const routes: Routes = [
  { path: '', component: SidebarSidenavComponent ,
   children: [
@@ -36,6 +37,6 @@ const routes: Routes = [
   exports:[
     AttendOrderDetailComponent
   ],
-  entryComponents: [AttendOrderDetailComponent]
+  entryComponents: [AttendOrderDetailComponent, DeliveryOrderDetailComponent]
 })
 export class OrderModule { }
