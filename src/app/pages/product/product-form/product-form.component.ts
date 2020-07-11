@@ -22,7 +22,7 @@ export class ProductFormComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   labelFile: string;
-
+  loadingSpinner:boolean=false;
   categorias: CategoryProductBean[];
 
   constructor(
@@ -35,6 +35,7 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadingSpinner=true;
     this.listarCategorias();
     this.productSelect = new ProductBean();
     if (this.data.id > 0) {
@@ -64,20 +65,21 @@ export class ProductFormComponent implements OnInit {
     this.productService.saveProduct(this.productSelect, this.currentFileUpload).subscribe(data => {
       this.productService.getListProductByOrganization().subscribe(data2 => {
         this.productService.productCambio.next(data2);
+      
         if (this.productSelect.id)
           this.productService.mensajeCambio.next("Se actualizo");
         else
           this.productService.mensajeCambio.next("Se registro");
       });
+    },error =>{
+      this.productService.mensajeCambio.next("Eror al actualizar/modificar producto");
     });
     this.closeDialog();
   }
   closeDialog() {
     this.dialogRef.close();
   }
-
-
-
+  
   selectFile(e: any) {
     console.log(e);
     this.labelFile = e.target.files[0].name;

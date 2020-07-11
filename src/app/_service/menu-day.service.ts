@@ -28,8 +28,8 @@ export class MenuDayService {
     return this.http.get<MenuDayBean[]>(`${this.url}/glpbo/${this.sharedService.getOrganizationIdByUserSession()}`);
   }
 
-  getListMenuDayByStatusAndOrganization() {
-    this.menuDay.organizationId = this.sharedService.getOrganizationIdByUserSession();
+  getListMenuDayByStatusAndOrganization(id:number) {
+    this.menuDay.organizationId= id;
     return this.http.post<MenuDayBean[]>(`${this.url}/gmdbso`,this.menuDay);
   }
   saveMenuDay(menuDay : MenuDayBean) {

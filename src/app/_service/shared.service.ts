@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Subject } from 'rxjs';
 @Injectable({
     providedIn: 'root'
   })
@@ -11,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class SharedService{
 
     userSession: UserBean;
-    
+    loadingSpinner=new Subject<boolean>();
     constructor(private http: HttpClient, private router: Router,
       private sanitization: DomSanitizer
       ) { 
@@ -29,6 +30,13 @@ export class SharedService{
     }
     public getProfileByUserSession(){
       return this.userSession.profile;
+    }
+
+    public closeSpinner(){
+      this.loadingSpinner.next(false);
+    }
+    public openSpinner(){
+      this.loadingSpinner.next(true);
     }
 
   

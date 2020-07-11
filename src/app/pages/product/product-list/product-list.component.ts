@@ -47,6 +47,8 @@ export class ProductListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       
+    },error =>{
+      this.productService.mensajeCambio.next("Error al mostrar productos");
     });
 
   }
@@ -63,7 +65,13 @@ export class ProductListComponent implements OnInit {
         this.productService.getListProductByOrganization().subscribe(data => {
           this.productService.productCambio.next(data);
           this.productService.mensajeCambio.next("Se elimino con éxito");
+        }, error =>{
+          console.error(error);
+          this.productService.mensajeCambio.next("Error al mostrar listado de productos");
         });
+      },error =>{
+        console.error(error);
+        this.productService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
       });
     }
   
