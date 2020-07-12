@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from './_service/login.service';
 import { MenuOptionService } from './_service/menu-option.service';
 import { MenuOptionBean } from './_model/MenuOptionBean';
+import { SharedService } from './_service/shared.service';
 
 
 @Component({
@@ -11,16 +12,26 @@ import { MenuOptionBean } from './_model/MenuOptionBean';
 })
 export class AppComponent {
 
+  loadingSpinner:boolean;
 
   constructor(
-  
+    public sharedService:SharedService
     ){
 
+      this.sharedService.loadingSpinner.subscribe(x =>{
+        this.loadingSpinner=x;
+        console.log(x);
+      })
     
      }
   
     ngOnInit(){
-
+      this.sharedService.loadingSpinner.subscribe(x =>{
+        this.loadingSpinner=x;
+        console.log(x);
+      })
+        
     }
+
    
 }

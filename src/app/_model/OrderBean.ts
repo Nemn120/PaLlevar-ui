@@ -7,6 +7,8 @@ export class OrderBean extends MainBean{
      total:number;
      quantity:number;
      userOrder:UserBean;
+     phone:String;
+     address:String;
      orderDetail:OrderDetailBean[];
      deliveryDate : Date;
      attentDate : Date;
