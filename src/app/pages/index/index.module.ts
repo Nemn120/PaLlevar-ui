@@ -15,6 +15,7 @@ import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.com
 import { DialogAgregarCarritoComponent } from './dialog-agregar-carrito/dialog-agregar-carrito.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { DialogAceptarComponent } from './dialog-aceptar/dialog-aceptar.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -60,6 +61,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
+    FormsModule,
   ],
   exports: [RouterModule],
   entryComponents: 

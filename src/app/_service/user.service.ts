@@ -1,3 +1,4 @@
+import { SharedService } from './shared.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../environments/environment';
 import { Subject } from 'rxjs';
@@ -15,7 +16,7 @@ export class UserService {
   menuCambio = new Subject<ProfileMenuOptionBean[]>();
   url: string = `${environment.HOST}`;    
   subUrl:string="user";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private sharedService:SharedService) { }
 
   listar() {
     let access_token = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -50,6 +51,26 @@ export class UserService {
   registrar(UserBean: UserBean) {
     return this.http.post(`${this.url}/${this.subUrl}/rcli`, UserBean);
   }
+
+////////////////////////katriel
+  getPhotoById(id: number) {
+    return this.http.get(`${this.url}/user/gp/${id}`, {
+      responseType: 'blob'
+    });
+  }
+  
+  actualizarPerfil(user : UserBean, file?:File){
+    user.id = this.sharedService.userSession.id;
+    let formdata: FormData = new FormData();
+    formdata.append('file', file);
+    const productBlob = new Blob([JSON.stringify(user)], { type: "application/json" });
+    formdata.append('user', productBlob);
+    return this.http.post<UserBean>(`${this.url}/user/uu`,formdata);
+  }
+////////////////
+
+
+
 
   modificar(UserBean: UserBean) {
     return this.http.put(`${this.url}/${this.subUrl}`, UserBean);

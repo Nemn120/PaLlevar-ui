@@ -5,6 +5,8 @@ import { CategoryProductService } from './../../../../_service/category-product.
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../../../../_service/user.service';
+import { UserBean } from 'src/app/_model/UserBean';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -14,7 +16,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class EditarPerfilComponent implements OnInit {
 
   
-  categoryProductSelect: CategoryProductBean;
+  userSelect: UserBean;
 
   imagenData: any;
   imagenEstado: boolean = false;
@@ -22,31 +24,42 @@ export class EditarPerfilComponent implements OnInit {
   currentFileUpload: File;
   labelFile: string;
 
+  
+  usuario:UserBean;
   constructor(
     private dialogRef: MatDialogRef<EditarPerfilComponent>,
-   // @Inject(MAT_DIALOG_DATA) public data: CategoryProductBean,
-    private categoryProductService: CategoryProductService,
+   
     private sanitization: DomSanitizer,
 
     private sharedService: SharedService,
+
+ 
+    private userService:UserService
+    
+
   ) { }
 
-  //data=user
-
+  
   ngOnInit(): void {
-/*
-    this.categoryProductSelect = new CategoryProductBean();
-    if (this.data.id > 0) {
-      this.categoryProductSelect.id = this.data.id;
-      this.categoryProductSelect.name = this.data.name;
-      this.categoryProductSelect.description = this.data.description;
-      this.categoryProductSelect.pathPhoto = null;
-      this.categoryProductService.getPhotoById(this.data.id).subscribe(data => {
+
+   /*
+   
+    this.userService.listarPorUsuario('katriel').subscribe(data=>{
+      this.usuario=data;
+    })*/
+ 
+
+    this.userSelect = new UserBean();
+    if (this.sharedService.userSession.id > 0) {
+
+     this.userSelect=this.sharedService.userSession;
+  
+      this.userService.getPhotoById(this.sharedService.userSession.id).subscribe(data => {
         if (data.size > 0)
           this.imagenData = this.convertir(data);
       });
 
-    }*/
+    }
   }
 
 
@@ -59,12 +72,12 @@ export class EditarPerfilComponent implements OnInit {
     } else {
       this.currentFileUpload = new File([""], "blanco");
     }
-    this.categoryProductService.saveCategoryProduct(this.categoryProductSelect,this.currentFileUpload).subscribe(data => {
+    this.userService.actualizarPerfil(this.userSelect,this.currentFileUpload).subscribe(data => {
      
-        if(this.categoryProductSelect.id)
-        this.categoryProductService.mensajeCambio.next("Se actualizo");
+        if(this.userSelect.id)
+        this.userService.mensajeCambio.next("Se actualizo");
         else
-        this.categoryProductService.mensajeCambio.next("Se registro");
+        this.userService.mensajeCambio.next("Se registro");
       
     });
     this.closeDialog();

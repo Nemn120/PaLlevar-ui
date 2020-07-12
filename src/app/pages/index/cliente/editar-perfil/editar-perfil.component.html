@@ -1,12 +1,11 @@
-<!--
-    <mat-form-field>
-    
-    <input matInput placeholder="Nombre" [(ngModel)]="categoryProductSelect.name">
+<mat-form-field>
+
+    <input matInput placeholder="Nombres" [(ngModel)]="userSelect.nombre">
 
 </mat-form-field>
 <br>
 <mat-form-field>
-    <input matInput placeholder="Descripcion" [(ngModel)]="categoryProductSelect.description" type="tel">
+    <input matInput placeholder="Apellidos" [(ngModel)]="userSelect.lastName" type="tel">
 </mat-form-field>
 <br>
 <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
@@ -20,4 +19,3 @@
     <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
     <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
 </div>
--->
