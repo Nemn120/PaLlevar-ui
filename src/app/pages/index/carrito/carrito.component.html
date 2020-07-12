@@ -1,0 +1,6 @@
+<p>********** Mi Carrito *********</p>
+<div *ngFor="let item of data">
+    <mat-card>Nombre: {{item.name}} **** Precio: 150.00 Cantidad: 2</mat-card>
+</div>
+<button mat-flat-button color="primary" (click)="realizarPedido()">Confirmar pedido</button>
+<button mat-flat-button color="primary" routerLink="../index/shop">Seguir comprando</button>

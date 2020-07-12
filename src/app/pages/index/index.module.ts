@@ -7,10 +7,11 @@ import { CardProductComponent } from './card-product/card-product.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../_material/material.module';
 import { CardOrganizationComponent } from './card-organization/card-organization.component';
-import { DetailProductComponent } from './detail-product/detail-product.component';
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
 import { LoginComponent } from '../authorization/login/login.component';
+import { DialogAgregarCarritoComponent } from './dialog-agregar-carrito/dialog-agregar-carrito.component';
+import { CarritoComponent } from './carrito/carrito.component';
 
 const routes: Routes = [
 
@@ -20,7 +21,7 @@ const routes: Routes = [
     children: [
           
           { path: '', component: HomeComponent  },
-          { path: 'shop', component: ShoppingComponent  },
+          { path: 'shop/:idOrg?', component: ShoppingComponent  },
           
          
         // { path: '',   redirectTo: '/home', pathMatch: 'full' },
@@ -37,10 +38,10 @@ const routes: Routes = [
   NavHomeComponent, 
   CardProductComponent,
   CardOrganizationComponent, 
-  DetailProductComponent,
- 
- 
-  PerfilComponent//katriel
+  PerfilComponent,
+  DialogAgregarCarritoComponent,
+  CarritoComponent,
+
 
   ],
   imports: [
@@ -48,8 +49,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
   ],
-  exports: [RouterModule,DetailProductComponent],
-  entryComponents: [PerfilComponent],
+  exports: [RouterModule,],
+  entryComponents: [PerfilComponent, DialogAgregarCarritoComponent, CarritoComponent],
 })
 export class IndexModule { }
 

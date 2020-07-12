@@ -57,7 +57,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatChipsModule,
     MatTabsModule,
     MatProgressBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }

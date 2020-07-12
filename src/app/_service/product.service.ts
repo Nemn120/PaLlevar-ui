@@ -51,5 +51,9 @@ export class ProductService {
   deleteProduct(id: number) {
     return this.http.delete(`${this.url}/dp/${id}`);
   }
+
+  /*getListProductOrganization(id: number) {
+    return this.http.get<ProductBean[]>(`${this.url}/glpbo/${id}`);
+  }*/
 }
 

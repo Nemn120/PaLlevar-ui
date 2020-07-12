@@ -9,7 +9,7 @@ import { OrganizationService } from '../../../_service/organization.service';
 })
 export class CardOrganizationComponent implements OnInit {
 
-  imagen = "https://www.pngitem.com/pimgs/m/208-2089100_logos-de-comida-para-llevar-hd-png-download.png";
+  imagen = "../../../../assets/orga.png";
 
 
   organizaciones: CompanyBean[] = [
@@ -20,10 +20,13 @@ export class CardOrganizationComponent implements OnInit {
     {id: 5, nombre: 'Organizacion 5', ruc: 'ruc5', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
     {id: 6, nombre: 'Organizacion 6', ruc: 'ruc6', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
     {id: 7, nombre: 'Organizacion 7', ruc: 'ruc7', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
+    {id: 8, nombre: 'Organizacion 8', ruc: 'ruc8', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
+    {id: 7, nombre: 'Organizacion 7', ruc: 'ruc7', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
+    {id: 8, nombre: 'Organizacion 8', ruc: 'ruc8', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
     {id: 8, nombre: 'Organizacion 8', ruc: 'ruc8', createDate: null, userAdmin: null, _foto: null, _isFoto: null}
   ];
 
-  organizaciones2 = null;
+  organizacionesBD: CompanyBean[] = []; //Las organizaciones recuperadas del servicio
   
   constructor(private organizationService: OrganizationService) { }
 
@@ -32,9 +35,17 @@ export class CardOrganizationComponent implements OnInit {
   }
 
   listarOrganizaciones(): void {
-    /*this.organizationService.getListCompany().subscribe(
-      data => this.organizaciones2 = data
-    );*/
+    this.organizationService.getListCompany().subscribe(
+      data => this.organizacionesBD = data
+    );
   }
+
+  /* verificarInmagen(item) {
+    if(item._isFoto != null) {
+      return item._foto;
+    } else {
+      return this.imagen;
+    }
+  } */
 
 }
