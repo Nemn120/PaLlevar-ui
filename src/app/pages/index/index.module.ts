@@ -12,6 +12,7 @@ import { IndexComponent } from './index.component';
 import { LoginComponent } from '../authorization/login/login.component';
 import { DialogAgregarCarritoComponent } from './dialog-agregar-carrito/dialog-agregar-carrito.component';
 import { CarritoComponent } from './carrito/carrito.component';
+import { DialogAceptarComponent } from './dialog-aceptar/dialog-aceptar.component';
 
 const routes: Routes = [
 
@@ -41,6 +42,7 @@ const routes: Routes = [
   PerfilComponent,
   DialogAgregarCarritoComponent,
   CarritoComponent,
+  DialogAceptarComponent,
 
 
   ],
