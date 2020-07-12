@@ -12,6 +12,8 @@ export class PerfilComponent implements OnInit {
 
   user:UserBean;
 
+  mostrar:boolean=false;
+
   constructor(
 
     private sharedService: SharedService,
@@ -25,6 +27,10 @@ export class PerfilComponent implements OnInit {
 
   obtenerPerfil(){
     this.user=this.sharedService.userSession;
+    //  _isFoto: boolean;
+   if(this.user._foto==null){
+      this.mostrar=true;
+    }
     console.log('katriel18 : ',this.user);    
   }
 

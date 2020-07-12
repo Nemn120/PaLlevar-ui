@@ -2,6 +2,7 @@ import { SharedService } from './../../../_service/shared.service';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { PerfilComponent } from '../cliente/perfil/perfil.component';
+import { PedidosComponent } from '../cliente/pedidos/pedidos.component';
 
 @Component({
   selector: 'app-nav-home',
@@ -31,8 +32,12 @@ export class NavHomeComponent implements OnInit {
     this.logueado=false;
   }
 
-  openDialog() {
+  openPerfil() {
      this.dialog.open(PerfilComponent);
   }
+
+  openPedidos() {
+    this.dialog.open(PedidosComponent);
+ }
 
 }

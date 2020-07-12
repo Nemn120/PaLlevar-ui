@@ -1,7 +1,11 @@
 <h1 mat-dialog-title style="text-align: center;">{{user.username}}</h1>
 <div mat-dialog-content>
 
-    <img mat-card-image src="assets/images/fast.jpg" alt="Photo of profile" class="example-header-image">
+
+    <img *ngIf="!mostrar" mat-card-image src="assets/images/fast.jpg" alt="Photo of profile" class="example-header-image">
+
+    <img *ngIf="mostrar" mat-card-image src="assets/images/perfil/perfil.jpg" alt="Photo of profile" class="example-header-image">
+
 
     <mat-form-field style="display: block;text-align: center;">
         <mat-label>DNI</mat-label>

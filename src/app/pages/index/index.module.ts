@@ -11,6 +11,7 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
 import { LoginComponent } from '../authorization/login/login.component';
+import { PedidosComponent } from './cliente/pedidos/pedidos.component';
 
 const routes: Routes = [
 
@@ -40,7 +41,10 @@ const routes: Routes = [
   DetailProductComponent,
  
  
-  PerfilComponent//katriel
+  PerfilComponent,
+ 
+ 
+  PedidosComponent//katriel
 
   ],
   imports: [
@@ -49,7 +53,7 @@ const routes: Routes = [
     MaterialModule,
   ],
   exports: [RouterModule,DetailProductComponent],
-  entryComponents: [PerfilComponent],
+  entryComponents: [PerfilComponent,PedidosComponent],
 })
 export class IndexModule { }
 
