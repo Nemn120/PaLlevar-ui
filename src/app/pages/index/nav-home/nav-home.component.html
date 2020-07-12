@@ -1,43 +1,52 @@
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer class="sidenav" fixedInViewport
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'"
-        [opened]="(isHandset$ | async) === false">
-      <mat-toolbar><img src="assets/images/icondelivery.jpg" width="128" class="icon"></mat-toolbar>
-      <div class="cuerporec">
-      <mat-nav-list>
-        <br><br><br><br><br>
-        <h3 class="opciones">Mis Opciones</h3>
-        <a class="opc" mat-list-item routerLink="../mostrar">Mostrar Pedidos</a>
-        <a class="opc" mat-list-item routerLink="../listar">Listar Pedidos</a>
-      </mat-nav-list>
-     </div> 
-       
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <button
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+
+<mat-toolbar class="toolbar2">
+    <img src={{logo2}} routerLink="/index/home">
+    <h1 style="text-align: center;justify-content: center;">PA' LLEVAR</h1>
+</mat-toolbar>
+<mat-toolbar>
+    <a routerLink="/menu">
+        <button mat-fab class="button-toolbar1" aria-label="Example icon-button with menu icon">
+            <div class="dropdown">
+                <mat-icon>menu</mat-icon>
+                <div class="dropdown-content">
+                    <a href="#">Combos</a>
+                    <a href="#">Ofertas</a>
+                </div>
+            </div>
         </button>
-        
-        <span>Pa Llevar</span>
-          <button class="menu" mat-menu-item (click)="openUserPerfil()">
-              <mat-icon>account_box</mat-icon>
-              <span>Mi Perfil</span>
-         </button>
-          <button class="menu1" mat-menu-item (click)="sidenav.opened = false" (click)="loginService.cerrarSesion()">
-             <mat-icon>exit_to_app</mat-icon>
-             <span>Cerrar Sesión</span>
-          </button>
-      </mat-toolbar>
-      <!-- Add Content Here -->
-        
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+    </a>
+    <p class="sign-in">Menu</p>
+
+    <div class="example-spacer"></div>
+
+
+
+    <!--No esta logueado-->
+    <div *ngIf="!logueado">
+        <!--
+            <button routerLink="/auth/login" (click)="iniciar()" mat-button class="button-toolbar1">
+             Sign in
+            </button>
+        -->
+        <button routerLink="/auth/login" mat-button>         
+            Iniciar Session
+        </button>
+    </div>
+
+    <!--Esta logueado-->
+    <div *ngIf="logueado">
+
+        <button mat-icon-button [matMenuTriggerFor]="beforeMenu">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+            <button mat-menu-item (click)="openDialog()">Perfil</button>
+            <button mat-menu-item>Pedidos</button>
+            <button mat-menu-item (click)="cerrar()">Cerrar Sesion</button>
+        </mat-menu>
+    </div>
+
+
+</mat-toolbar>
+

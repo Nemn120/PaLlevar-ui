@@ -39,8 +39,8 @@ export class ProductListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
 
-    this.productService.getListProduct().subscribe(data => {
-    //this.productService.getListProductByOrganization().subscribe(data => {  
+    //this.productService.getListProduct().subscribe(data => {
+    this.productService.getListProductByOrganization().subscribe(data => {  
     //this.productService.getListProductByOrganizationAndSucursal().subscribe(data => {  
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
@@ -60,7 +60,7 @@ export class ProductListComponent implements OnInit {
   }
   public delete(product:ProductBean){
       this.productService.deleteProduct(product.id).subscribe(data => {
-        this.productService.getListProduct().subscribe(data => {
+        this.productService.getListProductByOrganization().subscribe(data => {
           this.productService.productCambio.next(data);
           this.productService.mensajeCambio.next("Se elimino con éxito");
         });

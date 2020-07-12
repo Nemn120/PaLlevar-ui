@@ -5,4 +5,6 @@ export class CompanyBean{
     ruc:string;
     createDate:Date;
     userAdmin:UserBean
+    _foto: any;
+    _isFoto: boolean;
 }

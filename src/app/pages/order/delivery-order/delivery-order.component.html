@@ -1,10 +1,10 @@
-<div class="ico">
+<div class="mat-parent" fxLayout="row" fxLayoutAlign="center none">
     <div class="container" fxLayout="row" fxLayoutAlign="center none">
         <div fxFlex="90%">
     
             <mat-card>
                 <mat-card-content>
-                    <h2>Atender Pedidos Recibidos</h2>
+                    <h2>Entregar Pedidos Atendidos</h2>
                     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
                         <!--- Note that these columns can be defined in any order.
@@ -23,9 +23,9 @@
                         </ng-container>
     
                         <!-- Weight Column -->
-                        <ng-container matColumnDef="weight">
-                            <th mat-header-cell *matHeaderCellDef> Weight </th>
-                            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                        <ng-container matColumnDef="precio">
+                            <th mat-header-cell *matHeaderCellDef> Precio </th>
+                            <td mat-cell *matCellDef="let element"> {{element.precio}} </td>
                         </ng-container>
     
                         <!-- Symbol Column -->

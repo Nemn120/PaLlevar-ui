@@ -12,6 +12,8 @@ import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module'
 import { AttendOrderDetailComponent } from './attend-order-detail/attend-order-detail.component';
 import { ConsolidatedOrderComponent } from './consolidated-order/consolidated-order.component';
 import { DeliveryOrderDetailComponent } from './delivery-order-detail/delivery-order-detail.component';
+import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
+import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
 
 
 
@@ -27,16 +29,18 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DialogoConfirmacionComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,
     RouterModule.forChild(routes),
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports:[
     AttendOrderDetailComponent
   ],
-  entryComponents: [AttendOrderDetailComponent, DeliveryOrderDetailComponent]
+  entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DialogoConfirmacionComponent]
 })
 export class OrderModule { }

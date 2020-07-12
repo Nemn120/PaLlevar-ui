@@ -1,12 +1,37 @@
+.title-nav {
+    width: 200px;
+    padding: 0 1rem;
+    margin: 1rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
 table {
     width: 100%;
+    display: block;
 }
 
-th.mat-sort-header-sorted {
-    color: black;
+.mat-card {
+    position: absolute !important;
 }
 
-.ico{
-    margin-left: 15%;
-    margin-top: auto;
-  }
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: initial;
+    justify-content: center;
+    //flex-direction: row;
+    width: -webkit-fill-available;
+}
+
+.title-component {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 16px;
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 80%;
+    flex-direction: row;
+    align-items: center; 
+    white-space: nowrap;
+}

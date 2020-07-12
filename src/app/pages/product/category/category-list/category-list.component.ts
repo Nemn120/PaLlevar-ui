@@ -40,7 +40,7 @@ export class CategoryListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
 
-    this.categoryProductService.getListCategoryProduct().subscribe(data => {
+    this.categoryProductService.getListCategoryProductByOrganization().subscribe(data => {
     //this.productService.getListProductByOrganization().subscribe(data => {  
     //this.productService.getListProductByOrganizationAndSucursal().subscribe(data => {  
       console.log(data);
@@ -61,7 +61,7 @@ export class CategoryListComponent implements OnInit {
   }
   public delete(categoryProduct:CategoryProductBean){
       this.categoryProductService.deleteCategoryProduct(categoryProduct.id).subscribe(data => {
-        this.categoryProductService.getListCategoryProduct().subscribe(data => {
+        this.categoryProductService.getListCategoryProductByOrganization().subscribe(data => {
           this.categoryProductService.ompanyCambio.next(data);
           this.categoryProductService.mensajeCambio.next("Se elimino con éxito");
         });

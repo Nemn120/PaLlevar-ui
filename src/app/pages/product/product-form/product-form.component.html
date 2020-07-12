@@ -7,14 +7,26 @@
 <mat-form-field>
     <input matInput placeholder="Descripcion" [(ngModel)]="productSelect.description" type="tel">
 </mat-form-field>
-
-<!--
-  <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
-  <input id="flArchivo" type="file" (change)="seleccionarArchivo($event)" style="display: none" >
-  
-  <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" width="50%" height="50%" />
-  <p>{{labelFile}}</p>
-  -->
 <br>
-<button mat-raised-button color="primary" (click)="save()">Aceptar</button>
-<button mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+<div>
+    <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
+    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+
+    <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" width="50%" height="50%" />
+    <p>{{labelFile}}</p>
+    <br>
+</div>
+<mat-form-field appearance="fill">
+    <mat-label>Categoria</mat-label>
+    <mat-select [(ngModel)]="productSelect.categoryProduct">
+        <mat-option *ngFor="let cat of categorias" [value]="cat">
+            {{cat.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<br>
+<div style="float:right;">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+</div>

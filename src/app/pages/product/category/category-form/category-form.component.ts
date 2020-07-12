@@ -35,7 +35,7 @@ export class CategoryFormComponent implements OnInit {
   }
   save(){
     this.categoryProductService.saveCategoryProduct(this.categoryProductSelect).subscribe(data => {
-      this.categoryProductService.getListCategoryProduct().subscribe(data2 => {
+      this.categoryProductService.getListCategoryProductByOrganization().subscribe(data2 => {
         this.categoryProductService.ompanyCambio.next(data2);
         if(this.categoryProductSelect.id)
         this.categoryProductService.mensajeCambio.next("Se actualizo");

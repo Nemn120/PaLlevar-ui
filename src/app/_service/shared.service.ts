@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-
+import { DomSanitizer } from '@angular/platform-browser';
 @Injectable({
     providedIn: 'root'
   })
@@ -12,8 +12,10 @@ export class SharedService{
 
     userSession: UserBean;
     
-    constructor(private http: HttpClient, private router: Router) { 
-
+    constructor(private http: HttpClient, private router: Router,
+      private sanitization: DomSanitizer
+      ) { 
+      
     }
 
     public getOrganizationIdByUserSession(){
@@ -28,6 +30,8 @@ export class SharedService{
     public getProfileByUserSession(){
       return this.userSession.profile;
     }
+
+  
 
 
 }
