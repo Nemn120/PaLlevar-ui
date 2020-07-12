@@ -12,6 +12,7 @@ import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
 import { LoginComponent } from '../authorization/login/login.component';
 import { PedidosComponent } from './cliente/pedidos/pedidos.component';
+import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
 
 const routes: Routes = [
 
@@ -44,7 +45,10 @@ const routes: Routes = [
   PerfilComponent,
  
  
-  PedidosComponent//katriel
+  PedidosComponent,
+ 
+ 
+  EditarPerfilComponent//katriel
 
   ],
   imports: [
@@ -53,7 +57,7 @@ const routes: Routes = [
     MaterialModule,
   ],
   exports: [RouterModule,DetailProductComponent],
-  entryComponents: [PerfilComponent,PedidosComponent],
+  entryComponents: [PerfilComponent,PedidosComponent,EditarPerfilComponent],
 })
 export class IndexModule { }
 
