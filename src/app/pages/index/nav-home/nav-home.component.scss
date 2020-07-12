@@ -98,8 +98,8 @@ h1 {
 
 img {
     width: 8rem;
-    height: 3.5rem;
-    border-radius: 6px;
+    height: 3rem;
+    border-radius: 20px;
     opacity: 1;
 }
 
@@ -150,5 +150,6 @@ img {
 .dropdown:hover .dropdown-content {
     display: block;
     color: darkorange;
-    opacity: 0.6;
+    opacity: 1;
+    height: auto;
 }
