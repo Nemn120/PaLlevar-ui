@@ -10,14 +10,11 @@ import { CardOrganizationComponent } from './card-organization/card-organization
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
 import { LoginComponent } from '../authorization/login/login.component';
-<<<<<<< HEAD
 import { PedidosComponent } from './cliente/pedidos/pedidos.component';
 import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
-=======
 import { DialogAgregarCarritoComponent } from './dialog-agregar-carrito/dialog-agregar-carrito.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { DialogAceptarComponent } from './dialog-aceptar/dialog-aceptar.component';
->>>>>>> b5b72fbdf66b29d9df4567754ee3fd4a877c8e8d
 
 const routes: Routes = [
 
@@ -44,24 +41,19 @@ const routes: Routes = [
   NavHomeComponent, 
   CardProductComponent,
   CardOrganizationComponent, 
-<<<<<<< HEAD
-  DetailProductComponent,
+  
  
- 
-  PerfilComponent,
- 
- 
+ //katriel
   PedidosComponent,
- 
- 
-  EditarPerfilComponent//katriel
-=======
+
+  EditarPerfilComponent,
   PerfilComponent,
+
+  
   DialogAgregarCarritoComponent,
   CarritoComponent,
   DialogAceptarComponent,
 
->>>>>>> b5b72fbdf66b29d9df4567754ee3fd4a877c8e8d
 
   ],
   imports: [
@@ -69,13 +61,16 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
   ],
-<<<<<<< HEAD
-  exports: [RouterModule,DetailProductComponent],
-  entryComponents: [PerfilComponent,PedidosComponent,EditarPerfilComponent],
-=======
-  exports: [RouterModule,],
-  entryComponents: [PerfilComponent, DialogAgregarCarritoComponent, CarritoComponent],
->>>>>>> b5b72fbdf66b29d9df4567754ee3fd4a877c8e8d
+  exports: [RouterModule],
+  entryComponents: 
+  [
+
+  PerfilComponent,PedidosComponent,EditarPerfilComponent,
+
+   DialogAgregarCarritoComponent, CarritoComponent
+  ],
+
+ 
 })
 export class IndexModule { }
 
