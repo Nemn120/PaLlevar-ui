@@ -43,7 +43,7 @@ export class OrganizationService {
     formdata.append('file', file);
     const productBlob = new Blob([JSON.stringify(company)], { type: "application/json" });
     formdata.append('company', productBlob);
-    return this.http.post<CompanyBean>(`${this.url}/sp`,formdata);
+    return this.http.post<CompanyBean>(`${this.url}/sco`,formdata);
   }
 
   deleteCompany(id: number) {

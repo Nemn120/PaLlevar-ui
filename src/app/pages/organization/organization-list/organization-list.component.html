@@ -1,13 +1,7 @@
-<!-- COMPONENTE DE BUSQUEDA -->
-
-
-
-
-
 <div class="mat-parent">
     <p>
         <mat-toolbar class="title-component">
-            <span>Listado de productos</span>
+            <span>Listado de compañias</span>
 
         </mat-toolbar>
     </p>
@@ -18,36 +12,20 @@
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                </ng-container> 
+                </ng-container>
 
-                <ng-container matColumnDef="name">
+                <ng-container matColumnDef="ruc">
                     <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Ruc </mat-header-cell>
                     <!-- NOMBRE DE LA COLUMNA-->
-                    <mat-cell *matCellDef="let row"> {{row.nombre}}</mat-cell>
+                    <mat-cell *matCellDef="let row"> {{row.ruc}}</mat-cell>
                     <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
                 </ng-container>
 
-                <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> RUC </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.ruc}}</mat-cell>
+                <ng-container matColumnDef="nombre">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.nombre}}</mat-cell>
                 </ng-container>
-
-                <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Creacion </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.createDate}}</mat-cell>
-                </ng-container>
-
-
-                <ng-container matColumnDef="category">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> User </mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <div *ngIf="row.userBean">{{row.userBean.nombre}}</div>
-                        <div *ngIf="!row.userBean">Sin categoria</div>
-                    </mat-cell>
-
-                </ng-container>
-
 
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
