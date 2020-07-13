@@ -13,6 +13,6 @@ export class OrderDetailBean extends MainBean{
     order:OrderBean;
     deliveryDate:Date;
     attendDate:Date;
-    menuDayProductId:number;
+    menuProductId:number;
 
 }

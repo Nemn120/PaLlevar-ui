@@ -11,6 +11,8 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
 import { LoginComponent } from '../authorization/login/login.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { CarDialogComponent } from './car-dialog/car-dialog.component';
 
 const routes: Routes = [
 
@@ -18,11 +20,8 @@ const routes: Routes = [
     path: "",
     component: IndexComponent,
     children: [
-          
           { path: '', component: HomeComponent  },
           { path: 'shop', component: ShoppingComponent  },
-          
-         
         // { path: '',   redirectTo: '/home', pathMatch: 'full' },
     ]
   }
@@ -30,18 +29,17 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    IndexComponent,//katriel
-
+  IndexComponent,
   HomeComponent,
   ShoppingComponent,
   NavHomeComponent, 
   CardProductComponent,
   CardOrganizationComponent, 
   DetailProductComponent,
- 
- 
-  PerfilComponent//katriel
-
+  PerfilComponent,
+  SidebarComponent,
+  CarDialogComponent
+  
   ],
   imports: [
     CommonModule,
@@ -49,7 +47,7 @@ const routes: Routes = [
     MaterialModule,
   ],
   exports: [RouterModule,DetailProductComponent],
-  entryComponents: [PerfilComponent],
+  entryComponents: [PerfilComponent,SidebarComponent, CarDialogComponent],
 })
 export class IndexModule { }
 

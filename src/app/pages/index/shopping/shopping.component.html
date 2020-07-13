@@ -1,2 +1,33 @@
-<app-card-product>
-</app-card-product>
+<div class="app-container">
+    <div class="restaurant-info">
+        <div class="restaurant-image">
+            <H1>IMAGE RESUTANRT</H1>
+        </div>
+
+        <div class="restaurant-data">
+            <H1>IMAGE CONTAINER</H1>
+
+        </div>
+
+
+
+    </div>
+    <mat-divider></mat-divider>
+    <div class="menu-bodycat">
+        <div class="menu-category">
+            <app-sidebar></app-sidebar>
+        </div>
+    </div>
+    <div class="menu-body">
+        <h2 class="f-headline">Precios y Menus</h2>
+        <h2 class="f-headline">Pardos No Chiken</h2>
+        <mat-divider></mat-divider>
+        <div class="menuProduct-container">
+            <div *ngFor="let menuDayProduct of menuProductList">
+                <div class="card">
+                    <app-card-product [menuProduct]="menuDayProduct"></app-card-product>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

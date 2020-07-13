@@ -2,6 +2,7 @@ import { SharedService } from './../../../_service/shared.service';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { PerfilComponent } from '../cliente/perfil/perfil.component';
+import { CarDialogComponent } from '../car-dialog/car-dialog.component';
 
 @Component({
   selector: 'app-nav-home',
@@ -33,6 +34,12 @@ export class NavHomeComponent implements OnInit {
 
   openDialog() {
      this.dialog.open(PerfilComponent);
+  }
+  openDialogCar(){
+      this.dialog.open(CarDialogComponent, {
+        width: '600',
+        height: '600',
+      });
   }
 
 }

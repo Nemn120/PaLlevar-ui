@@ -1,0 +1,21 @@
+<ng-template [ngIf]="odList.length>0">
+    <p>
+        Carrito de pedidos
+    </p>
+    <mat-selection-list #product>
+        <mat-list-option *ngFor="let od of odList">
+            <p> {{od.product.name}} - S/.{{od.price}} </p> <span color="accent">{{od.product.organizationId}} </span>
+        </mat-list-option>
+    </mat-selection-list>
+
+    <p>
+        Cantidad de productos: {{product.selectedOptions.selected.length}}
+    </p>
+
+    <button (click)="sendOrder()" color="accent">Enviar pedido</button>
+</ng-template>
+<ng-template [ngIf]="odList.length==0">
+    <p>
+        Aun no ha agregado productos al carrito.
+    </p>
+</ng-template>
