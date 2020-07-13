@@ -15,7 +15,6 @@ export class MenuDayService {
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/menuDay`; 
 
-  menuDay :MenuDayBean = new MenuDayBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
     }
@@ -23,24 +22,25 @@ export class MenuDayService {
   getListMenuDay() {
     return this.http.get<MenuDayBean[]>(`${this.url}/glmd`);
   }
-  getListMenuDayByOrganization() {
+  getListMenuDayByOrganization() { // ESTE LISTAR
     return this.http.get<MenuDayBean[]>(`${this.url}/glpbo/${this.sharedService.getOrganizationIdByUserSession()}`);
   }
 
-  getListMenuDayByStatusAndOrganization(id:number) {
-    this.menuDay.organizationId= id;
-    return this.http.post<MenuDayBean[]>(`${this.url}/gmdbso`,this.menuDay);
+  getListMenuDayByStatusAndOrganization() { 
+    let menu =new MenuDayBean();
+    menu.organizationId= this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<MenuDayBean[]>(`${this.url}/gmdbso`,menu);
   }
-  saveMenuDay(menuDay : MenuDayBean) {
+  saveMenuDay(menuDay : MenuDayBean) { // S
     menuDay.organizationId = this.sharedService.getOrganizationIdByUserSession();
      console.log(menuDay);
     return this.http.post<MenuDayBean>(`${this.url}/smd`,menuDay);
   }
 
-  deleteMenuDay(id: number) {
+  deleteMenuDay(id: number) { 
     return this.http.delete(`${this.url}/dmd/${id}`);
   }
-  editMenuDay(menuDay : MenuDayBean) {
+  editMenuDay(menuDay : MenuDayBean) { // MENUDAY
     return this.http.post<MenuDayBean>(`${this.url}/emd`,menuDay);
   }
 

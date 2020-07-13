@@ -31,8 +31,19 @@ export class OrganizationService {
 
     return this.http.post<CompanyBean[]>(`${this.url}/glcoa`,this.company);
   }
-  saveCompany(company : CompanyBean) {
-    return this.http.post<CompanyBean>(`${this.url}/sco`,company);
+  getPhotoById(id: number) {
+    return this.http.get(`${this.url}/gp/${id}`, {
+      responseType: 'blob'
+    });
+  }
+
+  saveCompany(company : CompanyBean, file?:File) {
+    //return this.http.post<CompanyBean>(`${this.url}/sco`,company);
+    let formdata: FormData = new FormData();
+    formdata.append('file', file);
+    const productBlob = new Blob([JSON.stringify(company)], { type: "application/json" });
+    formdata.append('company', productBlob);
+    return this.http.post<CompanyBean>(`${this.url}/sp`,formdata);
   }
 
   deleteCompany(id: number) {
