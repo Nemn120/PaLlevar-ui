@@ -14,9 +14,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CarDialogComponent } from './car-dialog/car-dialog.component';
 import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
 import { PedidosComponent } from './cliente/pedidos/pedidos.component';
-import { DialogAgregarCarritoComponent } from './dialog-agregar-carrito/dialog-agregar-carrito.component';
-import { CarritoComponent } from './carrito/carrito.component';
-import { DialogAceptarComponent } from './dialog-aceptar/dialog-aceptar.component';
 import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
@@ -51,11 +48,6 @@ const routes: Routes = [
   EditarPerfilComponent,
   PerfilComponent,
 
-  
-  DialogAgregarCarritoComponent,
-  CarritoComponent,
-  DialogAceptarComponent,
-
 
   ],
   imports: [
@@ -69,7 +61,6 @@ const routes: Routes = [
   [
 
   PerfilComponent,PedidosComponent,EditarPerfilComponent,
-   DialogAgregarCarritoComponent, CarritoComponent,
    SidebarComponent, CarDialogComponent
   ],
 
