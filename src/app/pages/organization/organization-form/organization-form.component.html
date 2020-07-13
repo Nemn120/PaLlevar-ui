@@ -1,1 +1,27 @@
-<p>organization-form works!</p>
+<mat-form-field>
+    <!-- Los datos ingresados lo guarda en la variable -->
+    <input matInput placeholder="Nombre" [(ngModel)]="companySelect.nombre">
+
+</mat-form-field>
+<br>
+<mat-form-field>
+    <input matInput placeholder="Ruc" [(ngModel)]="companySelect.ruc" type="tel">
+</mat-form-field>
+<br>
+
+
+<br>
+<div>
+    <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
+    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+    <br>
+    <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+    <p>{{labelFile}}</p>
+    <br>
+</div>
+<br>
+
+<div style="float:right;">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+</div>

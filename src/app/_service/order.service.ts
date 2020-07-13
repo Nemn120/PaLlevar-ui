@@ -12,7 +12,7 @@ export class OrderService {
 
   orderCambio = new Subject<OrderBean[]>();
   mensajeCambio = new Subject<string>();
-  url: string = `${environment.HOST}/Order`; 
+  url: string = `${environment.HOST}/order`; 
 
   order :OrderBean = new OrderBean();
   constructor(private http: HttpClient,

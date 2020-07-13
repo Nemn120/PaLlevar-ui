@@ -31,6 +31,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     FormsModule
+  ],
+  entryComponents:[
+    OrganizationFormComponent
   ]
 })
 export class OrganizationModule { }
