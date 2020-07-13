@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CompanyBean } from '../_model/CompanyBean';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { environment } from 'src/environments/environment';
@@ -13,6 +13,10 @@ export class OrganizationService {
   
   companyCambio = new Subject<CompanyBean[]>();
   mensajeCambio = new Subject<string>();
+
+  id = new Subject<number>();
+
+
   url: string = `${environment.HOST}/company`; 
 
   company :CompanyBean = new CompanyBean();
@@ -48,5 +52,13 @@ export class OrganizationService {
 
   deleteCompany(id: number) {
     return this.http.delete(`${this.url}/dco/${id}`);
+  }
+
+  setCompanyCambio(idCompany: number) {
+    this.id.next(idCompany);
+  }
+
+  getCompanyCambio(): Observable<number> {
+    return this.id.asObservable();
   }
 }

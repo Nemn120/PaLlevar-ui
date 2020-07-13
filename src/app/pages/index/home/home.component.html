@@ -1,1 +1,43 @@
-<app-card-organization></app-card-organization>
+<mat-toolbar class="text" color="accent">Nuestros Afiliados</mat-toolbar>
+<div class="background">
+
+    <div class="menu-bodycat" style="margin-left: 10px;">
+        <div class="menu-category">
+
+            <div class="categories">
+                <mat-list>
+                    <div class="title-categories">
+                        <mat-list-item>
+                            <h3>Te lo llevamos a tu casa</h3>
+                        </mat-list-item>
+                    </div>
+                    <div class="categories-item">
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Ahorra tiempo</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>Calidad 100%</mat-list-item>
+                        <mat-divider></mat-divider>
+                        <mat-list-item>
+                            <p>Asegura tu negocio</p>
+                        </mat-list-item>
+                    </div>
+                </mat-list>
+
+            </div>
+
+        </div>
+    </div>
+
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="app-container">
+        <div class="menu-body">
+            <div class="menuProduct-container">
+                <div *ngFor="let menuOrg of menuOrgList">
+                    <div class="card">
+                        <app-card-organization [menuOrg]="menuOrg"></app-card-organization>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

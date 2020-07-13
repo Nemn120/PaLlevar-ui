@@ -1,104 +1,118 @@
-.example-small-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 16px;
-    padding: 16px;
-    border-radius: 8px;
-}
-
-.example-small-box {
-    height: 80px;
-    width: 80px;
-}
-
-
-/* card-images*/
-
-div.gallery {
-    margin: 4px;
-    border: 1px solid #ccc;
-    float: left;
-    width: 100%;
-    border-radius: 40px;
-    border-color: white;
-    border: 1px solid whitesmoke;
-    padding-bottom: 20px;
-    opacity: 0.6;
-}
-
-div.gallery:hover {
-    border: 1px solid antiquewhite;
-    box-shadow: 3px 3px 3px darksalmon;
-    cursor: pointer;
-    opacity: 1;
-}
-
-div.gallery img {
-    width: 100%;
-    height: auto;
-}
-
-div.desc {
-    padding: 15px;
-    text-align: center;
-}
-
-body {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding-top: 5px;
-}
-
-.text {
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 20px;
-    color: black;
-    background-color: cornsilk;
-}
-
-.responsive {
-    padding: 0 6px;
-    float: left;
-    width: 24%;
-}
-
-@media only screen and (max-width: 700px) {
-    .responsive {
-        width: 45%;
-        margin: 6px 0;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .responsive {
+.app-container {
+    transition: all .3s ease;
+    width: 1440px;
+    min-height: 900px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+    // background-color: cornflowerblue;
+    @media only screen and (max-width: 1280px), screen and (orientation: portrait) {
+        max-width: 1240px;
         width: 100%;
     }
 }
 
-* {
-    box-sizing: border-box;
+body {
+    background-color: #FAFAF8;
 }
 
-button :hover {
-    background-color: darkorange;
-    opacity: 1;
+.menu-bodycat {
+    border-radius: 8px;
+    background-color: #fff;
+    max-width: 1560px;
+    padding: 20px 20px;
+    margin-top: 20px;
+    display: auto;
+    float: left;
+    // width: 15%;
 }
 
-img {
+.restaurant-info {
+    margin: 0 auto;
+    width: 100%;
+    transition: .3s;
+    display: flex;
+    align-items: initial;
+    justify-content: initial;
+    flex-direction: row;
+    background-color: red;
+    border: 1px solid slategrey;
+    padding: 4px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.f-headline {
+    font-family: Poppins-SemiBold, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    letter-spacing: 0;
+}
+
+.restaurant-image {
+    width: 100%;
+    max-width: 400px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 0 0 15px 15px;
     background-size: cover;
-    background-position: relative;
+    background-color: rgb(160, 253, 131);
+}
+
+.menu-body {
+    border-radius: 8px;
+    // background-color: rgb(160, 253, 131);
+    max-width: 1560px;
+    //padding: 30px 20px;
+    margin-top: 0px;
+    width: 100%;
+    margin-left: 20px;
+    display: auto;
+    float: inherit;
+    height: initial;
+    //height: 70%;
+}
+
+.restaurant-data {
+    display: flex;
+    align-items: initial;
+    justify-content: initial;
+    flex-direction: column;
+}
+
+.menuProduct-container {
+    display: flex;
+    //justify-content: space-between;
+    //flex-direction: row;
+    flex-wrap: wrap;
+    //align-items: stretch;
+    justify-items: stretch;
+    margin: auto;
+    .card {
+        flex: 0 0 200px;
+        margin: 10px;
+        justify-items: stretch;
+        width: 400px;
+    }
+}
+
+.text {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.background {
+    background-image: url('../../../../assets/images/vista.jpg');
+    background-position: center center;
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    position: relative;
     height: 100%;
     width: 100%;
-    align-items: center;
-    display: flex;
-    text-align: center;
-    opacity: 0.5;
+    margin: 0px;
+    opacity: 0.7;
 }
