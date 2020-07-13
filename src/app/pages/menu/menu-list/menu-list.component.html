@@ -1,1 +1,68 @@
-<p>menu-list works!</p>
+<div class="mat-parent">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Listado de menus</span>
+
+        </mat-toolbar>
+    </p>
+    <div class="carousel-item " style="display: flex; width: 80%;">
+
+        <div class="container">
+            <mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                    <!-- NOMBRE DE LA COLUMNA-->
+                    <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="day">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Dia </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.day}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.type}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.status}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <button mat-icon-button color="primary" (click)="openDialog(row)">
+                <mat-icon>ballot</mat-icon>
+              </button>
+                        <button mat-icon-button color="accent" (click)="delete(row)">
+                <mat-icon>delete</mat-icon>
+              </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+
+            <button mat-fab color="accent" style="float: right" (click)="openDialog()">
+        <mat-icon>create</mat-icon>
+      </button>
+        </div>
+    </div>
+</div>
