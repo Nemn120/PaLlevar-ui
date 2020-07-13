@@ -9,31 +9,6 @@ body {
     position: relative;
 }
 
-//NO JOSE NO VA :v
-
-/*
-.button-toolbar1 {
-    cursor: pointer;
-    height: 25px;
-    width: 25px;
-    padding: 0px;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    color: aliceblue;
-    background-color: darkorange;
-    border: 0ch;
-    box-shadow: none;
-}
-*/
-
-
-/*
-mat-icon {
-    background-color: darkorange;
-}*/
-
 p {
     font-size: 20px;
     margin-left: 5px;
@@ -44,7 +19,6 @@ p {
 }
 
 .toolbar2 {
-    opacity: 1;
     padding-left: 10px;
     padding-right: 10px;
     background-color: darkorange;
@@ -96,13 +70,6 @@ h1 {
     }
 }
 
-img {
-    width: 8rem;
-    height: 3rem;
-    border-radius: 20px;
-    opacity: 1;
-}
-
 
 /* Style para barra desplegable*/
 
@@ -150,6 +117,5 @@ img {
 .dropdown:hover .dropdown-content {
     display: block;
     color: darkorange;
-    opacity: 1;
     height: auto;
 }

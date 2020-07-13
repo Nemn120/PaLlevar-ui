@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CompanyBean } from 'src/app/_model/CompanyBean';
 import { OrganizationService } from '../../../_service/organization.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-card-organization',
@@ -9,43 +10,24 @@ import { OrganizationService } from '../../../_service/organization.service';
 })
 export class CardOrganizationComponent implements OnInit {
 
-  imagen = "../../../../assets/orga.png";
+  @Input() menuOrg: CompanyBean;
 
-
-  organizaciones: CompanyBean[] = [
-    {id: 1, nombre: 'Organizacion 1', ruc: 'ruc1', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 2, nombre: 'Organizacion 2', ruc: 'ruc2', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 3, nombre: 'Organizacion 3', ruc: 'ruc3', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 4, nombre: 'Organizacion 4', ruc: 'ruc4', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 5, nombre: 'Organizacion 5', ruc: 'ruc5', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 6, nombre: 'Organizacion 6', ruc: 'ruc6', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 7, nombre: 'Organizacion 7', ruc: 'ruc7', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 8, nombre: 'Organizacion 8', ruc: 'ruc8', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 7, nombre: 'Organizacion 7', ruc: 'ruc7', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 8, nombre: 'Organizacion 8', ruc: 'ruc8', createDate: null, userAdmin: null, _foto: null, _isFoto: null},
-    {id: 8, nombre: 'Organizacion 8', ruc: 'ruc8', createDate: null, userAdmin: null, _foto: null, _isFoto: null}
-  ];
-
-  organizacionesBD: CompanyBean[] = []; //Las organizaciones recuperadas del servicio
+  orgSelect: CompanyBean;
+  imgDefault = '../../../../assets/icon-cubiertos.jpg';
   
-  constructor(private organizationService: OrganizationService) { }
+  constructor(
+    private dialog: MatDialog,
+    private orgService: OrganizationService
+  ) { }
+
 
   ngOnInit(): void {
-    this.listarOrganizaciones();
+    this.orgSelect = new CompanyBean();
+    this.orgSelect = this.menuOrg;
+    this.sendCambioOrganization();
   }
 
-  listarOrganizaciones(): void {
-    this.organizationService.getListCompany().subscribe(
-      data => this.organizacionesBD = data
-    );
+  sendCambioOrganization(): void {
+    this.orgService.setCompanyCambio(this.orgSelect.id);
   }
-
-  /* verificarInmagen(item) {
-    if(item._isFoto != null) {
-      return item._foto;
-    } else {
-      return this.imagen;
-    }
-  } */
-
 }

@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
 import { ActivatedRoute } from '@angular/router';
+import { OrganizationService } from '../../../_service/organization.service';
 
 @Component({
   selector: 'app-shopping',
@@ -16,25 +17,30 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ShoppingComponent implements OnInit {
 
-  orgId:string
+  orgId: number;
   menuProductList: MenuDayProductBean[];
-  param:string;
+  param: string;
   
-  mProduct:MenuDayProductBean;
+  mProduct: MenuDayProductBean;
 
-  constructor(private menuDayService:MenuDayService,
-    private menuDayProductService:MenuDayProductService,
-    private productService:ProductService,
-    private snackBar: MatSnackBar,
-    private sanitization: DomSanitizer,
-    private cardService: CarServiceService,
-    private activatedRoute:ActivatedRoute
-    ) { }
+  constructor(private menuDayService: MenuDayService,
+              private menuDayProductService: MenuDayProductService,
+              private productService: ProductService,
+              private snackBar: MatSnackBar,
+              private sanitization: DomSanitizer,
+              private cardService: CarServiceService,
+              private activatedRoute: ActivatedRoute,
+              private organizationService: OrganizationService
+    ) { 
+      this.obtenerIdOrganization();
+
+    }
 
   ngOnInit(): void {
-     //this.menuDayService.getListMenuDay().subscribe(data =>{
-       this.mProduct  = new MenuDayProductBean();
-      this.mProduct.organizationId=1; // = new MenuDayProductBean();
+
+     // this.menuDayService.getListMenuDay().subscribe(data =>{
+      this.mProduct  = new MenuDayProductBean();
+      this.mProduct.organizationId = 1; // = new MenuDayProductBean();
       this.getListMenuProduct();
       /*this.activatedRoute.queryParams.subscribe(params => {
         this.param = params['type'] || null;
@@ -67,6 +73,12 @@ export class ShoppingComponent implements OnInit {
        console.log(error);
      })
 
+  }
+
+  obtenerIdOrganization() {
+    this.organizationService.getCompanyCambio().subscribe(
+      data => this.orgId = data
+    );
   }
 
   activatedPhoto(){

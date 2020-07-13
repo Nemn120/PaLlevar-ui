@@ -20,6 +20,7 @@ export class OrganizationFormComponent implements OnInit {
   currentFileUpload: File;
   labelFile: string;
   loadingSpinner:boolean=false;
+  companias: CompanyBean[];
 
   constructor(
     private dialogRef: MatDialogRef<OrganizationFormComponent>,
@@ -45,6 +46,15 @@ export class OrganizationFormComponent implements OnInit {
 
     }
   }
+
+  listarOrganizaciones() {
+    this.companyService.getListCompany().subscribe(
+      data => {
+        this.companias = data;
+      }
+    );
+  }
+
   save() {
     if (this.selectedFiles != null) {
       this.currentFileUpload = this.selectedFiles.item(0);
