@@ -25,7 +25,7 @@ export class OrganizationListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.titleProductList="Listar Productos";
+    this.titleProductList="Listar Organizaciones";
     this.companyService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
       this.snackBar.open(data, 'INFO', {
         duration: 2000
@@ -47,7 +47,7 @@ export class OrganizationListComponent implements OnInit {
       this.dataSource.sort = this.sort;
       
     },error =>{
-      this.companyService.mensajeCambio.next("Error al mostrar productos");
+      this.companyService.mensajeCambio.next("Error al mostrar compañia");
     });
 
   }
@@ -66,11 +66,11 @@ export class OrganizationListComponent implements OnInit {
           this.companyService.mensajeCambio.next("Se elimino con éxito");
         }, error =>{
           console.error(error);
-          this.companyService.mensajeCambio.next("Error al mostrar listado de productos");
+          this.companyService.mensajeCambio.next("Error al mostrar listado de compañias");
         });
       },error =>{
         console.error(error);
-        this.companyService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
+        this.companyService.mensajeCambio.next("La organizacion que desea eliminar esta siendo usada");
       });
     }
 

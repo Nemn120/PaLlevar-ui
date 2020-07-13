@@ -1,16 +1,21 @@
-<mat-toolbar class="text">Nuestros Afiliados</mat-toolbar>
+<div class="menu-org-detail" style="float: right;">
+    <div class="menu-org-item">
+        <div class="image-item">
+            <img class="image-position" [src]="orgSelect._foto" *ngIf="orgSelect._isFoto; else fotoDefault" />
+            <ng-template #fotoDefault><img class="image-position" src="{{imgDefault}}" /></ng-template>
+        </div>
+        <div class="data-item">
 
-<div *ngIf="organizaciones != null else vacio">
-    <div class="responsive" *ngFor="let item of organizaciones">
-        <div class="gallery">
-            <img src="{{imagen}}" width="600" height="400">
-            <div class="desc">{{item.nombre}}</div>
-            <div class="desc">
-                <button mat-flat-button color="primary" routerLink="/index/shop">ver productos</button>
+            <h3 class="title-item">{{orgSelect.nombre}}</h3>
+            <p class="description-item">
+                <u></u><br>
+            </p>
+            <div class="price-item">
+                <span class="price-org">
+                    <b></b>
+                  </span>
+                <button mat-raised-button color="primary" routerLink="/index/shop" class="buton-product">Ver productos</button>
             </div>
         </div>
     </div>
 </div>
-<ng-template #vacio>
-    <img src="../../../../assets/images/portada.jpg">
-</ng-template>
