@@ -27,8 +27,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    //DetallesComponent
-    
   ],
   imports: [
     BrowserModule,
