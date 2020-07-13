@@ -5,9 +5,6 @@
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
-}
-
-.example-small-box {
     height: 80px;
     width: 80px;
 }
@@ -20,11 +17,12 @@ div.gallery {
     border: 1px solid #ccc;
     float: left;
     width: 100%;
-    border-radius: 40px;
+    border-radius: 10px;
     border-color: white;
     border: 1px solid whitesmoke;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     opacity: 0.6;
+    padding-right: 6px;
 }
 
 div.gallery:hover {
@@ -33,13 +31,8 @@ div.gallery:hover {
     opacity: 1;
 }
 
-div.gallery img {
-    width: 100%;
-    height: auto;
-}
-
 div.desc {
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -64,10 +57,10 @@ body {
 .responsive {
     padding: 0 6px;
     float: left;
-    width: 24%;
+    width: 10%;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
     .responsive {
         width: 45%;
         margin: 6px 0;
@@ -76,7 +69,7 @@ body {
 
 @media only screen and (max-width: 500px) {
     .responsive {
-        width: 100%;
+        width: 50%;
     }
 }
 
@@ -94,10 +87,15 @@ img {
     background-position: relative;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100%;
+    height: 40%;
     width: 100%;
     align-items: center;
     display: flex;
     text-align: center;
     opacity: 0.5;
+}
+
+button {
+    width: auto;
+    font-size: 10px;
 }

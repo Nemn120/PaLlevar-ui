@@ -1,11 +1,11 @@
 <mat-form-field>
-    <!-- Los datos ingresados lo guarda en la variable -->
-    <input matInput placeholder="Nombre" [(ngModel)]="categoryProductSelect.name">
+
+    <input matInput placeholder="Nombres" [(ngModel)]="userSelect.nombre">
 
 </mat-form-field>
 <br>
 <mat-form-field>
-    <input matInput placeholder="Descripcion" [(ngModel)]="categoryProductSelect.description" type="tel">
+    <input matInput placeholder="Apellidos" [(ngModel)]="userSelect.lastName" type="tel">
 </mat-form-field>
 <br>
 <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>

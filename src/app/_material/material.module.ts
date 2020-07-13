@@ -27,7 +27,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -35,6 +35,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     CommonModule,
   ],
   exports: [
+    MatProgressSpinnerModule,
     MatButtonModule,
     MatBottomSheetModule,
     MatTableModule,
@@ -61,7 +62,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatChipsModule,
     MatTabsModule,
     MatProgressBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }

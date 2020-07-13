@@ -40,7 +40,7 @@ export class CategoryProductService {
     const categoryBlob = new Blob([JSON.stringify(categoryProduct)], { type: "application/json" });
     formdata.append('category', categoryBlob);
 
-    return this.http.post<CategoryProductBean>(`${this.url}/scp`,categoryProduct);
+    return this.http.post<CategoryProductBean>(`${this.url}/scp`,formdata);
   }
 
   deleteCategoryProduct(id: number) {

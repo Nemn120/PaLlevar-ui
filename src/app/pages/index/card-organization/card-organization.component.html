@@ -3,12 +3,10 @@
 <div *ngIf="organizaciones != null else vacio">
     <div class="responsive" *ngFor="let item of organizaciones">
         <div class="gallery">
-            <a target="_blank">
-                <img src="{{imagen}}" alt="Forest" width="600" height="400">
-            </a>
+            <img src="{{imagen}}" width="600" height="400">
             <div class="desc">{{item.nombre}}</div>
             <div class="desc">
-                <button mat-flat-button color="primary" routerLink="/index/shop">ver productos</button>
+                <button mat-flat-button color="primary" routerLink="/index/shop/{{item.id}}">ver productos</button>
             </div>
         </div>
     </div>

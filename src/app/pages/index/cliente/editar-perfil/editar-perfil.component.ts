@@ -1,63 +1,84 @@
+import { SharedService } from './../../../../_service/shared.service';
+import { Component, OnInit ,Inject} from '@angular/core';
 import { CategoryProductBean } from './../../../../_model/CategoryProductBean';
 import { CategoryProductService } from './../../../../_service/category-product.service';
 
-import { Component, OnInit, Inject } from '@angular/core';
-
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
-
+import { UserService } from '../../../../_service/user.service';
+import { UserBean } from 'src/app/_model/UserBean';
 
 @Component({
-  selector: 'app-category-form',
-  templateUrl: './category-form.component.html',
-  styleUrls: ['./category-form.component.scss']
+  selector: 'app-editar-perfil',
+  templateUrl: './editar-perfil.component.html',
+  styleUrls: ['./editar-perfil.component.scss']
 })
-export class CategoryFormComponent implements OnInit {
+export class EditarPerfilComponent implements OnInit {
 
   
-  categoryProductSelect: CategoryProductBean;
+  userSelect: UserBean;
 
   imagenData: any;
   imagenEstado: boolean = false;
   selectedFiles: FileList;
   currentFileUpload: File;
   labelFile: string;
+
   
+  usuario:UserBean;
   constructor(
-    private dialogRef: MatDialogRef<CategoryFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: CategoryProductBean,
-    private categoryProductService: CategoryProductService,
+    private dialogRef: MatDialogRef<EditarPerfilComponent>,
+   
     private sanitization: DomSanitizer,
+
+    private sharedService: SharedService,
+
+ 
+    private userService:UserService
+    
+
   ) { }
 
+  
   ngOnInit(): void {
-    this.categoryProductSelect = new CategoryProductBean();
-    if (this.data.id > 0) {
-      this.categoryProductSelect.id = this.data.id;
-      this.categoryProductSelect.name = this.data.name;
-      this.categoryProductSelect.description = this.data.description;
-      this.categoryProductSelect.pathPhoto = null;
-      this.categoryProductService.getPhotoById(this.data.id).subscribe(data => {
+
+   /*
+   
+    this.userService.listarPorUsuario('katriel').subscribe(data=>{
+      this.usuario=data;
+    })*/
+ 
+
+    this.userSelect = new UserBean();
+    if (this.sharedService.userSession.id > 0) {
+
+     this.userSelect=this.sharedService.userSession;
+  
+      this.userService.getPhotoById(this.sharedService.userSession.id).subscribe(data => {
         if (data.size > 0)
           this.imagenData = this.convertir(data);
       });
 
     }
   }
+
+
+
+
+
   save(){
     if (this.selectedFiles != null) {
       this.currentFileUpload = this.selectedFiles.item(0);
     } else {
       this.currentFileUpload = new File([""], "blanco");
     }
-    this.categoryProductService.saveCategoryProduct(this.categoryProductSelect,this.currentFileUpload).subscribe(data => {
-      this.categoryProductService.getListCategoryProductByOrganization().subscribe(data2 => {
-        this.categoryProductService.ompanyCambio.next(data2);
-        if(this.categoryProductSelect.id)
-        this.categoryProductService.mensajeCambio.next("Se actualizo");
+    this.userService.actualizarPerfil(this.userSelect,this.currentFileUpload).subscribe(data => {
+     
+        if(this.userSelect.id)
+        this.userService.mensajeCambio.next("Se actualizo");
         else
-        this.categoryProductService.mensajeCambio.next("Se registro");
-      });
+        this.userService.mensajeCambio.next("Se registro");
+      
     });
     this.closeDialog();
   }
@@ -84,6 +105,7 @@ export class CategoryFormComponent implements OnInit {
     this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
     this.imagenEstado=true;
   }
+
 
 
 
