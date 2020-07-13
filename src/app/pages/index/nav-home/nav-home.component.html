@@ -1,19 +1,11 @@
 <mat-toolbar class="toolbar2">
-    <img src={{logo2}} routerLink="/index/home">
+    <button mat-fab color="accent" routerLink="/index">
+        <mat-icon style="width: 30px;">home</mat-icon>
+    </button>
     <h1 style="text-align: center;justify-content: center;">PA' LLEVAR</h1>
 </mat-toolbar>
 <mat-toolbar>
-    <a routerLink="">
-        <button mat-icon-button color="primary">
-            <div class="dropdown">
-                <mat-icon >menu</mat-icon>
-                <div class="dropdown-content">
-                    <a href="#">Combos</a>
-                    <a href="#">Ofertas</a>
-                </div>
-            </div>
-        </button>
-    </a>
+
     <!--<p class="sign-in">Menu</p>-->
 
     <div class="example-spacer"></div>
@@ -41,8 +33,9 @@
         </button>
 
         <mat-menu #beforeMenu="matMenu" xPosition="before">
-            <button mat-menu-item (click)="openDialog()">Perfil</button>
-            <button mat-menu-item>Pedidos</button>
+            <button mat-menu-item (click)="openPerfil()">Mi Perfil</button>
+            <button mat-menu-item (click)="openPedidos()">Mis Pedidos</button>
+            <button mat-menu-item (click)="openEditar()">Editar Perfil</button>
             <button mat-menu-item (click)="cerrar()">Cerrar Sesion</button>
         </mat-menu>
     </div>

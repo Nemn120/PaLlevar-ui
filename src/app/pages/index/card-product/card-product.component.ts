@@ -7,9 +7,9 @@ import { MenuDayProductBean } from '../../../_model/MenuDayProductBean';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
 @Component({
-  selector: 'app-card-product',
-  templateUrl: './card-product.component.html',
-  styleUrls: ['./card-product.component.scss']
+  selector: "app-card-product",
+  templateUrl: "./card-product.component.html",
+  styleUrls: ["./card-product.component.scss"],
 })
 export class CardProductComponent implements OnInit {
 
@@ -40,6 +40,4 @@ export class CardProductComponent implements OnInit {
   }
  
 }
-
-
 

@@ -13,8 +13,6 @@ export class MenuDayProductService {
   menuDayProductCambio = new Subject<MenuDayProductBean[]>();
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/menuDayProduct`; 
-
-  menuDayProduct :MenuDayProductBean = new MenuDayProductBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
     }

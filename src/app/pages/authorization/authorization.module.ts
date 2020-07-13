@@ -8,7 +8,6 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
-
 @NgModule({
   declarations: [LoginComponent, RegistryComponent],
   imports: [
@@ -18,7 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     FormsModule,
     AuthRoutingModule,
-    FlexLayoutModule 
+    FlexLayoutModule,
   ]
 })
 export class AuthorizationModule { }

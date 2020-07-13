@@ -7,12 +7,17 @@ import { CardProductComponent } from './card-product/card-product.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../_material/material.module';
 import { CardOrganizationComponent } from './card-organization/card-organization.component';
-import { DetailProductComponent } from './detail-product/detail-product.component';
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
 import { LoginComponent } from '../authorization/login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CarDialogComponent } from './car-dialog/car-dialog.component';
+import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
+import { PedidosComponent } from './cliente/pedidos/pedidos.component';
+import { DialogAgregarCarritoComponent } from './dialog-agregar-carrito/dialog-agregar-carrito.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { DialogAceptarComponent } from './dialog-aceptar/dialog-aceptar.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
 
@@ -34,20 +39,41 @@ const routes: Routes = [
   ShoppingComponent,
   NavHomeComponent, 
   CardProductComponent,
-  CardOrganizationComponent, 
-  DetailProductComponent,
+  CardOrganizationComponent,
   PerfilComponent,
   SidebarComponent,
-  CarDialogComponent
+  CarDialogComponent,
   
+
+ //katriel
+  PedidosComponent,
+
+  EditarPerfilComponent,
+  PerfilComponent,
+
+  
+  DialogAgregarCarritoComponent,
+  CarritoComponent,
+  DialogAceptarComponent,
+
+
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
+    FormsModule,
   ],
-  exports: [RouterModule,DetailProductComponent],
-  entryComponents: [PerfilComponent,SidebarComponent, CarDialogComponent],
+  exports: [RouterModule],
+  entryComponents: 
+  [
+
+  PerfilComponent,PedidosComponent,EditarPerfilComponent,
+   DialogAgregarCarritoComponent, CarritoComponent,
+   SidebarComponent, CarDialogComponent
+  ],
+
+ 
 })
 export class IndexModule { }
 

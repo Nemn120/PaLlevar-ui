@@ -16,8 +16,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ShoppingComponent implements OnInit {
 
-  
-  array: string[]=["34","24","23","11"];
   orgId:string
   menuProductList: MenuDayProductBean[];
   param:string;

@@ -10,8 +10,8 @@
 <br>
 <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
 <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-
-<img mat-card-image [src]="imagenData" *ngIf="imagenEstado" width="50%" height="50%" />
+<br>
+<img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
 <p>{{labelFile}}</p>
 
 <br>
