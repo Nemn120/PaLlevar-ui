@@ -1,37 +1,21 @@
-<mat-toolbar class="text">Nuestros Productos&nbsp;
+<div class="menu-product-detail">
+    <div class="menu-product-item">
+        <div class="image-item">
+            <img class="image-position" [src]="menuSelect.product._foto" *ngIf="menuSelect.product._isFoto" />
+        </div>
+        <div class="data-item">
 
-    <div class="example-spacer"></div>
-    <button mat-mini-fab color="primary" (click)="verCarrito()">
-        <mat-icon>shopping_cart</mat-icon>
-    </button>
-</mat-toolbar>
+            <h3 class="title-item">{{menuSelect.product.name}}</h3>
 
-<div *ngIf="platillos != null else vacio">
-    <div class="responsive" *ngFor="let item of platillos">
-        <div class="gallery">
-            <a target="_blank">
-                <div class="desc">{{item.name}}</div>
-                <img src="{{imagen}}" alt="Forest" width="600" height="400">
-            </a>
-            <div class="desc">
-                <mat-accordion>
-                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <p class="detalles">Ver Detalles</p>
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <p class="detalles" style="font-size: 10px;">Descripción: {{item.description}}</p>
-                        <p class="detalles" style="font-size: 10px;">Nombre: {{item.name}}</p>
-                    </mat-expansion-panel>
-                    <button mat-mini-fab color="primary" style="margin-top: 5px;" (click)="agregarCarrito(item)">
-                        <mat-icon>add_shopping_cart</mat-icon>
-                    </button>
-                </mat-accordion>
+            <p class="description-item">
+                <u>{{menuSelect.product.categoryProduct.name}}</u><br> {{menuSelect.product.description}}
+            </p>
+            <div class="price-item">
+                <span class="price-product">
+                  <b>  S/. {{menuSelect.price}}</b>
+                </span>
+                <button (click)="agregarCarrito()" class="buton-product">Agregar</button>
             </div>
         </div>
     </div>
 </div>
-<ng-template #vacio>
-    <img src="../../../../assets/images/portada.jpg">
-</ng-template>

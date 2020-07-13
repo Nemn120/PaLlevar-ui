@@ -17,7 +17,6 @@ export class ProductService {
   product :ProductBean = new ProductBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
-      this.product.organizationId = this.sharedService.getOrganizationIdByUserSession();
     }
 
   getListProduct() {

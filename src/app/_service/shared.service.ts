@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
+import { CompanyBean } from '../_model/CompanyBean';
 @Injectable({
     providedIn: 'root'
   })
@@ -12,6 +13,7 @@ import { Subject } from 'rxjs';
 export class SharedService{
 
     userSession: UserBean;
+    organizationSelect:CompanyBean;
     loadingSpinner=new Subject<boolean>();
     constructor(private http: HttpClient, private router: Router,
       private sanitization: DomSanitizer
@@ -37,6 +39,10 @@ export class SharedService{
     }
     public openSpinner(){
       this.loadingSpinner.next(true);
+    }
+
+    public getOrganizationIdSelect(){
+      return this.organizationSelect.id;
     }
 
   

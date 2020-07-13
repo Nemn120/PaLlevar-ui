@@ -2,6 +2,7 @@ import { SharedService } from './../../../_service/shared.service';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { PerfilComponent } from '../cliente/perfil/perfil.component';
+import { CarDialogComponent } from '../car-dialog/car-dialog.component';
 import { PedidosComponent } from '../cliente/pedidos/pedidos.component';
 import { EditarPerfilComponent } from '../cliente/editar-perfil/editar-perfil.component';
 
@@ -23,7 +24,7 @@ export class NavHomeComponent {
 
   ngOnInit(): void {
 
-    if(this.sharedService.getUserIdSession()>0){
+    if(this.sharedService.userSession != null && this.sharedService.getUserIdSession()>0){
       this.logueado=true;
     }
     
@@ -35,6 +36,12 @@ export class NavHomeComponent {
 
   openPerfil() {
      this.dialog.open(PerfilComponent);
+  }
+  openDialogCar(){
+      this.dialog.open(CarDialogComponent, {
+        width: '600',
+        height: '600',
+      });
   }
 
   openPedidos() {

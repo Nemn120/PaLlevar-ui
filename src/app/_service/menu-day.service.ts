@@ -18,7 +18,6 @@ export class MenuDayService {
   menuDay :MenuDayBean = new MenuDayBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
-      this.menuDay.organizationId = this.sharedService.getOrganizationIdByUserSession();
     }
 
   getListMenuDay() {

@@ -26,6 +26,7 @@ export class EditarPerfilComponent implements OnInit {
 
   
   usuario:UserBean;
+  maxFecha: Date;
   constructor(
     private dialogRef: MatDialogRef<EditarPerfilComponent>,
    
@@ -41,13 +42,7 @@ export class EditarPerfilComponent implements OnInit {
 
   
   ngOnInit(): void {
-
-   /*
-   
-    this.userService.listarPorUsuario('katriel').subscribe(data=>{
-      this.usuario=data;
-    })*/
- 
+    this.maxFecha=new Date();
 
     this.userSelect = new UserBean();
     if (this.sharedService.userSession.id > 0) {
@@ -62,10 +57,6 @@ export class EditarPerfilComponent implements OnInit {
     }
   }
 
-
-
-
-
   save(){
     if (this.selectedFiles != null) {
       this.currentFileUpload = this.selectedFiles.item(0);
@@ -74,11 +65,8 @@ export class EditarPerfilComponent implements OnInit {
     }
     this.userService.actualizarPerfil(this.userSelect,this.currentFileUpload).subscribe(data => {
      
-        if(this.userSelect.id)
         this.userService.mensajeCambio.next("Se actualizo");
-        else
-        this.userService.mensajeCambio.next("Se registro");
-      
+        
     });
     this.closeDialog();
   }

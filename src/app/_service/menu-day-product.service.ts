@@ -8,25 +8,17 @@ import { SharedService } from './shared.service';
 @Injectable({
   providedIn: 'root'
 })
-export class menuDayProductService {
+export class MenuDayProductService {
 
   menuDayProductCambio = new Subject<MenuDayProductBean[]>();
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/menuDayProduct`; 
-
-  menuDayProduct :MenuDayProductBean = new MenuDayProductBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
-      this.menuDayProduct.organizationId = this.sharedService.getOrganizationIdByUserSession();
     }
 
   getListMenuDayProduct() {
     return this.http.get<MenuDayProductBean[]>(`${this.url}/glmdp`);
-  }
-
-  getListMenuDayProductByMenuIdAndOrganizationId() {
-    this.menuDayProduct.organizationId = this.sharedService.getOrganizationIdByUserSession();
-    return this.http.post<MenuDayProductBean[]>(`${this.url}/gmdpbmo`,this.menuDayProduct);
   }
 
   saveMenuDayProduct(menuDayProduct : MenuDayProductBean) {
@@ -37,6 +29,14 @@ export class menuDayProductService {
 
   deleteMenuDayProduct(id: number) {
     return this.http.delete(`${this.url}/dmdp/${id}`);
+  }
+
+  getListByOrganization(menuDayProduct : MenuDayProductBean){
+    return this.http.post<MenuDayProductBean[]>(`${this.url}/glmbod`,menuDayProduct);
+  }
+  getListByOrganizationAndType(menuDayProduct : MenuDayProductBean){
+    return this.http.post<MenuDayProductBean[]>(`${this.url}/glmbot`,menuDayProduct);
+
   }
 
 
