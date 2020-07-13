@@ -1,1 +1,41 @@
-<p>pedidos works!</p>
+<mat-card-title style="text-align: center;">Pedidos</mat-card-title>
+<mat-card-content>
+    <mat-selection-list #shoes [multiple]="false">
+        <mat-list-option *ngFor="let shoe of ordenes" [value]="shoe">
+
+            {{shoe.id +' '+shoe.status+' '+shoe.total+' '+shoe.quantity}}
+            <mat-divider></mat-divider>
+
+        </mat-list-option>
+    </mat-selection-list>
+
+
+</mat-card-content>
+
+<mat-card-footer *ngIf="shoes.selectedOptions.selected[0]?.value">
+    Descripcion: {{ shoes.selectedOptions.selected[0]?.value.phone+' '+ shoes.selectedOptions.selected[0]?.value.address }}
+    <span *ngFor="  let o of shoes.selectedOptions.selected[0]?.value.orderDetail">
+        {{o.ProductBean.name +' '+o.price}}
+    </span> {{shoes.selectedOptions.selected[0]?.value.quantity+' '+ shoes.selectedOptions.selected[0]?.value.total }}
+</mat-card-footer>
+<!--
+<table>
+    <thead>
+        <th>id</th>
+        <th>status</th>
+        <th>total</th>
+        <th>quantity</th>
+
+    </thead>
+    <tbody>
+        <tr *ngFor="let o of ordenes">
+            <td>{{o.id}}</td>
+            <td>{{o.status}}</td>
+            <td>{{o.total}}</td>
+            <td>{{o.quantity}}</td>
+
+        </tr>
+    </tbody>
+</table>
+
+-->
