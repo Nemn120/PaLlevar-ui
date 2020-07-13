@@ -14,7 +14,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ServiceWorkerModule } from '@angular/service-worker';
 //import { DetallesComponent } from './pages/index/detalles/detalles.component';
 
 export function tokenGetter() {
@@ -42,7 +41,6 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {
