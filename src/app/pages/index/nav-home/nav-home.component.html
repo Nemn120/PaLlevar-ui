@@ -1,27 +1,22 @@
 <mat-toolbar class="toolbar2">
-    <button mat-fab color="accent" routerLink="/index">
-        <mat-icon style="width: 30px;">home</mat-icon>
-    </button>
+
     <h1 style="text-align: center;justify-content: center;">PA' LLEVAR</h1>
 </mat-toolbar>
 <mat-toolbar color="darkorange" style="height: auto;">
 
-    <!--<p class="sign-in">Menu</p>-->
+
+    <button mat-icon-button color="primary" routerLink="/index">
+        <mat-icon style="width: 30px;">home</mat-icon>
+    </button>
 
     <div class="example-spacer"></div>
 
 
-
     <!--carrito-->
-    <button mat-button color="primary" (click)="openDialogCar()">  <mat-icon>shopping_cart</mat-icon></button>
+    <button mat-icon-button color="primary" (click)="openDialogCar()">  <mat-icon>shopping_cart</mat-icon></button>
 
     <!--No esta logueado-->
     <div *ngIf="!logueado">
-        <!--
-            <button routerLink="/auth/login" (click)="iniciar()" mat-button class="button-toolbar1">
-             Sign in
-            </button>
-        -->
 
         <button routerLink="/auth/login" mat-button color="primary">         
             Iniciar Session
@@ -31,6 +26,7 @@
     <!--Esta logueado-->
     <div *ngIf="logueado">
         <!--mat-fab-->
+        <!--mat-icon-button-->
         <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary">
             <mat-icon>account_circle</mat-icon>
         </button>
@@ -42,6 +38,5 @@
             <button mat-menu-item (click)="cerrar()">Cerrar Sesion</button>
         </mat-menu>
     </div>
-
 
 </mat-toolbar>
