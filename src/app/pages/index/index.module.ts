@@ -23,7 +23,8 @@ const routes: Routes = [
     component: IndexComponent,
     children: [
           { path: '', component: HomeComponent  },
-          { path: 'shop', component: ShoppingComponent  },
+          { path: 'shop/:org', component: ShoppingComponent  },
+          { path: 'shop/:org/:type', component: ShoppingComponent  },
         // { path: '',   redirectTo: '/home', pathMatch: 'full' },
     ]
   }

@@ -14,7 +14,7 @@
                 <span class="price-org">
                     <b></b>
                   </span>
-                <button mat-raised-button color="primary" routerLink="/index/shop" class="buton-product">Ver productos</button>
+                <button [routerLink]="['/index/shop',this.orgSelect.id]" class="buton-product">Ver productos</button>
             </div>
         </div>
     </div>

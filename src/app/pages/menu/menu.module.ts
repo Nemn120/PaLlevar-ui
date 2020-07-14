@@ -19,6 +19,10 @@ const routes: Routes = [
         component: MenuListComponent,
         canActivate: [GuardService],
       },
+      {
+        path: "form",
+        component: MenuFormComponent,
+      },
     ],
   },
 ];

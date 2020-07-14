@@ -52,7 +52,7 @@ export class MenuListComponent implements OnInit {
   }
 
   openDialog(){
-
+      
   }
   delete(){
 

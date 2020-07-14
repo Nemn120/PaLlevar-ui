@@ -13,6 +13,7 @@ import { CompanyBean } from '../_model/CompanyBean';
 export class SharedService{
 
     userSession: UserBean;
+    companyList: Array<CompanyBean> = new Array<CompanyBean>();
     organizationSelect:CompanyBean;
     loadingSpinner=new Subject<boolean>();
     constructor(private http: HttpClient, private router: Router,
@@ -41,8 +42,8 @@ export class SharedService{
       this.loadingSpinner.next(true);
     }
 
-    public getOrganizationIdSelect(){
-      return this.organizationSelect.id;
+    public findOrganizatonById(id:number){
+      return this.companyList.find( x => x.id == id);
     }
 
   
