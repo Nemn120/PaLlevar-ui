@@ -9,6 +9,8 @@ import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { OrganizationService } from '../../../_service/organization.service';
+import { CompanyBean } from '../../../_model/CompanyBean';
+import { SharedService } from '../../../_service/shared.service';
 
 @Component({
   selector: 'app-shopping',
@@ -17,9 +19,10 @@ import { OrganizationService } from '../../../_service/organization.service';
 })
 export class ShoppingComponent implements OnInit {
 
-  orgId: number;
+  orgId: any;
   menuProductList: MenuDayProductBean[];
   param: string;
+  companySelect:CompanyBean;
   
   mProduct: MenuDayProductBean;
 
@@ -30,31 +33,30 @@ export class ShoppingComponent implements OnInit {
               private sanitization: DomSanitizer,
               private cardService: CarServiceService,
               private activatedRoute: ActivatedRoute,
-              private organizationService: OrganizationService
+              private organizationService: OrganizationService,
+              private sharedService:SharedService
     ) { 
-      this.obtenerIdOrganization();
-
     }
 
   ngOnInit(): void {
 
      // this.menuDayService.getListMenuDay().subscribe(data =>{
       this.mProduct  = new MenuDayProductBean();
-      this.mProduct.organizationId = 1; // = new MenuDayProductBean();
-      this.getListMenuProduct();
-      /*this.activatedRoute.queryParams.subscribe(params => {
-        this.param = params['type'] || null;
-        this.orgId = params['org'] || null;
-        console.log(this.orgId);
+      //this.mProduct.organizationId = 1; // = new MenuDayProductBean();
+        this.param = this.activatedRoute.snapshot.paramMap.get('type'); // params['type'] || null;
+        this.orgId = this.activatedRoute.snapshot.paramMap.get('org'); // params['org'] || null;
         this.mProduct.organizationId=parseInt(this.orgId);
-        if(this.param){
-          this.getListMenuProductByType(this.param);
-        }else{
-          this.getListMenuProduct();
-        }    
-        // Código...
-      });
-      */
+        console.log(this.orgId);
+        console.log(this.param);
+        this.organizationService.getPhotoById(this.mProduct.organizationId).subscribe(data =>{
+          if(this.param){
+            this.companySelect=this.sharedService.findOrganizatonById(this.mProduct.organizationId);
+            this.getListMenuProductByType(this.param);
+          }else{
+            this.getListMenuProduct();
+          }   
+        });
+      
   }
   getListMenuProduct(){
     this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data =>{
@@ -75,11 +77,6 @@ export class ShoppingComponent implements OnInit {
 
   }
 
-  obtenerIdOrganization() {
-    this.organizationService.getCompanyCambio().subscribe(
-      data => this.orgId = data
-    );
-  }
 
   activatedPhoto(){
     for( let m of this.menuProductList){

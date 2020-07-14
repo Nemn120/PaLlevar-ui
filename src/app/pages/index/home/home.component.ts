@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   getListOrganization() {
     this.companyService.getListCompany().subscribe(data => {
       this.menuOrgList = data;
+      console.log(data);
       this.activatedPhoto();
     }, error => {
       console.log(error);

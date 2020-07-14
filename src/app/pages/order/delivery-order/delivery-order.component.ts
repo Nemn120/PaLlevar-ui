@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { OrderBean } from 'src/app/_model/OrderBean';
+import { OrderService } from 'src/app/_service/order.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DeliveryOrderDetailComponent} from '../delivery-order-detail/delivery-order-detail.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-delivery-order',
@@ -9,47 +14,46 @@ import { DeliveryOrderDetailComponent} from '../delivery-order-detail/delivery-o
 })
 export class DeliveryOrderComponent implements OnInit {
 
-  
-  displayedColumns: string[] = ['position', 'name', 'precio', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','actions'];
+  dataSource: MatTableDataSource<OrderBean>;/// tabla 
+  titleProductList: string;
 
   constructor(
-    private dialog: MatDialog,
+    private orderService:OrderService, private dialog:MatDialog, private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-  }
-
-  public attendOrder(row :PeriodicElement){
- 
-    this.dialog.open(DeliveryOrderDetailComponent, {
-      width: '400px',
-      data: row
+    this.titleProductList="Listar Productos";
+    this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+      this.snackBar.open(data, 'INFO', {
+        duration: 2000
+      });
     });
+    
+    this.orderService.orderCambio.subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+    this.orderService.getListOrderAttend().subscribe(data => {  
+        console.log(data);
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        
+      },error =>{
+        this.orderService.mensajeCambio.next("Error al mostrar productos");
+      });
+  
   }
-     
+
+  openDialog(){
+
+  }
+  delete(){
+
+  }
 
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  precio: number;
-  symbol: string;
-}
-
- 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Ceviche', precio: 20.00, symbol: 'Cev'},
-  {position: 2, name: 'Pollo a la brasa', precio: 30.00, symbol: 'PB'},
-  {position: 3, name: 'Pescado frito', precio:10.00, symbol: 'PF'},
-  {position: 4, name: 'Jalea mixta', precio: 20.00, symbol: 'JM'},
-  {position: 5, name: 'Arroz con mariscos', precio: 20.00, symbol: 'AM'},
-  {position: 6, name: 'Arroz con pollo', precio: 12.00, symbol: 'AP'},
-  {position: 7, name: 'Tallarin Verde', precio: 12.00, symbol: 'TV'},
-  {position: 8, name: 'Seco a la norteña', precio: 10.00, symbol: 'SN'},
-  {position: 9, name: 'Pollo broaster',precio: 12.00, symbol: 'PB'},
-  {position: 10, name: 'Aji de gallina', precio: 10.00, symbol: 'AG'},
-];
-
-
