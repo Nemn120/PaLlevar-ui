@@ -24,7 +24,8 @@ const routes: Routes = [
     children: [
           { path: '', component: HomeComponent  },
           { path: 'shop/:org', component: ShoppingComponent  },
-          { path: 'shop/:org/:type', component: ShoppingComponent  },
+          //{ path: 'shop/menu', component: ShoppingComponent  },
+          //{ path: 'shop/promo', component: ShoppingComponent  },
         // { path: '',   redirectTo: '/home', pathMatch: 'full' },
     ]
   }

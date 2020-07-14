@@ -14,7 +14,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MenuDetailComponent } from './index/menu/menu-detail/menu-detail.component';
 //import { DetallesComponent } from './pages/index/detalles/detalles.component';
 
 export function tokenGetter() {
@@ -27,7 +26,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    MenuDetailComponent,
   ],
   imports: [
     BrowserModule,

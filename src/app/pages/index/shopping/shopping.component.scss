@@ -1,3 +1,7 @@
+.fondo {
+    background-image: url('/assets/images/menu.jpg');
+}
+
 .app-container {
     transition: all .3s ease;
     width: 1440px;
@@ -5,20 +9,23 @@
     padding-left: 20px;
     padding-right: 20px;
     margin: auto;
-    // background-color: cornflowerblue;
     @media only screen and (max-width: 1280px), screen and (orientation: portrait) {
         max-width: 1240px;
         width: 100%;
     }
 }
 
-body {
-    background-color: #FAFAF8;
+.title-company {
+    font-family: Poppins-SemiBold, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    letter-spacing: -.83px;
+    color: #332927;
+    margin: 5px 12px 2px 20px;
 }
 
 .menu-bodycat {
     border-radius: 8px;
-    background-color: #fff;
+    background-color: #fff !important;
     max-width: 1560px;
     padding: 30px 20px;
     margin-top: 20px;
@@ -35,11 +42,11 @@ body {
     align-items: initial;
     justify-content: initial;
     flex-direction: row;
-    background-color: red;
-    border: 1px solid slategrey;
     padding: 4px;
-    border-radius: 16px;
     margin-bottom: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    background-color: #fff !important;
 }
 
 .f-headline {
@@ -56,12 +63,10 @@ body {
     background-position: center center;
     border-radius: 0 0 15px 15px;
     background-size: cover;
-    background-color: rgb(160, 253, 131);
 }
 
 .menu-body {
     border-radius: 8px;
-    // background-color: rgb(160, 253, 131);
     max-width: 1560px;
     padding: 30px 20px;
     margin-top: 20px;
@@ -70,6 +75,7 @@ body {
     display: auto;
     float: left;
     height: initial;
+    background-color: #fff !important;
     //height: 70%;
 }
 

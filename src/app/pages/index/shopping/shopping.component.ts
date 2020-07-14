@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrganizationService } from '../../../_service/organization.service';
 import { CompanyBean } from '../../../_model/CompanyBean';
 import { SharedService } from '../../../_service/shared.service';
@@ -23,63 +23,79 @@ export class ShoppingComponent implements OnInit {
   menuProductList: MenuDayProductBean[];
   param: string;
   companySelect:CompanyBean;
-  
+  imgDefault = '../../../../assets/icon-cubiertos.jpg';
   mProduct: MenuDayProductBean;
 
-  constructor(private menuDayService: MenuDayService,
+  constructor(
               private menuDayProductService: MenuDayProductService,
               private productService: ProductService,
-              private snackBar: MatSnackBar,
               private sanitization: DomSanitizer,
-              private cardService: CarServiceService,
               private activatedRoute: ActivatedRoute,
               private organizationService: OrganizationService,
-              private sharedService:SharedService
+              private sharedService:SharedService,
+              private router:Router
     ) { 
+      
+    
     }
 
   ngOnInit(): void {
-
-     // this.menuDayService.getListMenuDay().subscribe(data =>{
       this.mProduct  = new MenuDayProductBean();
-      //this.mProduct.organizationId = 1; // = new MenuDayProductBean();
-        this.param = this.activatedRoute.snapshot.paramMap.get('type'); // params['type'] || null;
-        this.orgId = this.activatedRoute.snapshot.paramMap.get('org'); // params['org'] || null;
-        this.mProduct.organizationId=parseInt(this.orgId);
-        console.log(this.orgId);
-        console.log(this.param);
-        this.organizationService.getPhotoById(this.mProduct.organizationId).subscribe(data =>{
-          if(this.param){
-            this.companySelect=this.sharedService.findOrganizatonById(this.mProduct.organizationId);
-            this.getListMenuProductByType(this.param);
-          }else{
+      this.companySelect = new CompanyBean();
+      this.sharedService.subject.subscribe(data =>{
+        this.param=data;
+        if(data != null){
+          this.mProduct.organizationId=this.companySelect.id;
+          this.getListMenuProductByType(this.param);
+        }
+      });
+       this.orgId = this.activatedRoute.snapshot.paramMap.get('org'); 
+      if(this.orgId){
+        this.organizationService.getCompanyById(this.orgId).subscribe(data =>{
+        this.companySelect=data;
+        this.mProduct.organizationId=this.companySelect.id;
+        this.organizationService.getPhotoById(this.mProduct.organizationId).subscribe(photo =>{
+          let reader = new FileReader();
+          reader.readAsDataURL(photo);
+          reader.onload = () => {
+            let base64 = reader.result;
+            this.companySelect._foto = this.setterPhoto(base64);
+            this.companySelect._isFoto = true;
+          }
             this.getListMenuProduct();
-          }   
+             
         });
-      
+      })
+      }else{
+        this.router.navigate(['']); // RUTA REDIRIGIDA AL INICIAR SESION
+      }
+   
   }
   getListMenuProduct(){
+    this.menuProductList=[];
     this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data =>{
       this.menuProductList=data;
-       this.activatedPhoto();   
+       this.activatedPhoto(data); 
+       console.log(this.menuProductList);  
      },error =>{
        console.log(error);
      })
   }
   getListMenuProductByType(type : string){
     this.mProduct.type=type;
-    this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data =>{
+    this.menuProductList=[];
+    this.menuDayProductService.getListByOrganizationAndType(this.mProduct).subscribe(data =>{
       this.menuProductList=data;
-       this.activatedPhoto();   
+       this.activatedPhoto(data);  
+       console.log(this.menuProductList); 
      },error =>{
        console.log(error);
      })
-
   }
 
 
-  activatedPhoto(){
-    for( let m of this.menuProductList){
+  activatedPhoto(data:any){
+    for( let m of data){
       this.productService.getPhotoById(m.product.id).subscribe(photo =>{
         let reader = new FileReader();
         reader.readAsDataURL(photo);

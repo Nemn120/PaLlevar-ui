@@ -8,13 +8,14 @@
             </div>
             <div class="categories-item">
                 <mat-divider></mat-divider>
-                <mat-list-item>Menu</mat-list-item>
+                <mat-list-item><button class="buton-product" (click)="redirectTo('Menu')">Menu </button></mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item>Combos</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item>
-                    <p>Ofertas</p>
+                <mat-list-item><button class="buton-product" (click)="redirectTo('Combo')">Combo </button>
+                    <mat-divider></mat-divider>
                 </mat-list-item>
+                <mat-list-item><button class="buton-product" (click)="redirectTo('Promocion')">Promo </button>
+                </mat-list-item>
+
             </div>
         </mat-list>
 

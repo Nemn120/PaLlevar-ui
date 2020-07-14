@@ -13,8 +13,8 @@ import { CompanyBean } from '../_model/CompanyBean';
 export class SharedService{
 
     userSession: UserBean;
-    companyList: Array<CompanyBean> = new Array<CompanyBean>();
-    organizationSelect:CompanyBean;
+    organizationSelect=new Subject<CompanyBean>();
+    subject =new Subject<string>();
     loadingSpinner=new Subject<boolean>();
     constructor(private http: HttpClient, private router: Router,
       private sanitization: DomSanitizer
@@ -41,11 +41,6 @@ export class SharedService{
     public openSpinner(){
       this.loadingSpinner.next(true);
     }
-
-    public findOrganizatonById(id:number){
-      return this.companyList.find( x => x.id == id);
-    }
-
   
 
 
