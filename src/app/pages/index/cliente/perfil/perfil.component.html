@@ -1,32 +1,32 @@
 <h1 mat-dialog-title style="text-align: center;">{{user.username}}</h1>
-<div mat-dialog-content>
+<div mat-dialog-content style="width: 420px;">
 
 
     <img *ngIf="mostrar" mat-card-image [src]="imagenData" alt="Photo of profile" class="example-header-image">
 
     <img *ngIf="!mostrar" mat-card-image src="assets/images/perfil/perfil.jpg" alt="Photo of profile" class="example-header-image">
 
-    <mat-form-field style="display: block;text-align: center;">
+    <mat-form-field style="display: block;margin: auto;text-align: center;width: 100px;">
         <mat-label>DNI</mat-label>
         <input matInput>{{user.documentNumber}}
     </mat-form-field>
 
-    <mat-form-field style="text-align: center;">
+    <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Nombres</mat-label>
         <input matInput>{{user.nombre}}
     </mat-form-field>
 
-    <mat-form-field style="text-align: center;">
+    <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Apellidos</mat-label>
         <input matInput>{{user.lastName}}
     </mat-form-field>
     <br>
-    <mat-form-field style="text-align: center;">
+    <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>F.Nacimiento</mat-label>
         <input matInput>{{user.dateBirth | date:'dd/MM/yyyy'}}
     </mat-form-field>
 
-    <mat-form-field style="text-align: center;">
+    <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Celular</mat-label>
         <input matInput> {{user.cellPhone}}
     </mat-form-field>
