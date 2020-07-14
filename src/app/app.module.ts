@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 //import { DetallesComponent } from './pages/index/detalles/detalles.component';
+import { NavHomeComponent } from './pages/index/nav-home/nav-home.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -41,6 +42,10 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
+
+
+
+
   ],
   providers: [
     {
@@ -52,7 +57,8 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
   exports:[
-    FlexLayoutModule
+    FlexLayoutModule,
+   
     
   ],
 })
