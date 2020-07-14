@@ -58,7 +58,12 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
   ],
-  exports: [RouterModule],
+  exports: [
+    RouterModule,
+
+    NavHomeComponent,//exportando el componente  
+   
+  ],
   entryComponents: 
   [
 

@@ -1,7 +1,8 @@
-.container {
+/*.container {
     margin-top: 80px;
     margin-bottom: 10px;
 }
+*/
 
 .toolbar2 {
     opacity: 0.6;
@@ -76,6 +77,8 @@ img {
     background-image: url('/assets/images/background1.jpg');
     background-position: center center;
     background-size: cover;
+    height: 100%;
+    width: 100%;
 }
 
 .final-position {

@@ -1,15 +1,14 @@
-<p>
-    <mat-toolbar class="navbar">
-        <span>Para llevar, formulario de registro</span>
-    </mat-toolbar>
-</p>
+<!--menu del cliente final-->
+<app-nav-home></app-nav-home>
+
 <div class="background">
 
-    <div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
+    <div class="login-container" fxLayout="row" fxLayoutAlign="center center">
 
 
         <form [formGroup]="form" (ngSubmit)="registrar()" #frmUsuario="ngForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
             <mat-card>
+                <mat-card-title style="text-align: center;">Registro</mat-card-title>
                 <mat-tab-group>
                     <mat-tab label="Datos Personales">
                         <mat-form-field>

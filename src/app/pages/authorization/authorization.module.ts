@@ -6,10 +6,15 @@ import { MaterialModule } from '../../_material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavHomeComponent } from '../index/nav-home/nav-home.component';
+import { IndexModule } from '../index/index.module';
 
 
 @NgModule({
-  declarations: [LoginComponent, RegistryComponent],
+  declarations: [
+    LoginComponent
+    , RegistryComponent
+  ],
   imports: [
     
     CommonModule,
@@ -18,6 +23,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     AuthRoutingModule,
     FlexLayoutModule,
+
+    IndexModule,//importando modulo para traer el nav-home
+    
   ]
 })
 export class AuthorizationModule { }

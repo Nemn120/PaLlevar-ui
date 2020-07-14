@@ -1,9 +1,14 @@
+<!--menu del cliente final-->
+<app-nav-home></app-nav-home>
+
 <div class="background">
-    <div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
-        <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="50%" fxFlex.xs="90%">
+
+    <div class="login-container" fxLayout="row" fxLayoutAlign="center center">
+
+        <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="60%" fxFlex.xs="90%">
             <mat-card>
-                <mat-card-title>Bienvenido a paLlevar </mat-card-title>
-                <mat-card-subtitle>Ingrese sus credenciales</mat-card-subtitle>
+                <mat-card-title style="text-align: center;">Login</mat-card-title>
+                <mat-card-subtitle style="text-align: center;">Ingrese sus credenciales</mat-card-subtitle>
                 <mat-card-content>
 
                     <mat-form-field class="full-width">
@@ -34,7 +39,7 @@
                 </mat-card-content>
 
                 <mat-card-actions class="login-actions">
-                    <button mat-raised-button id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Ingresa</button>
+                    <button mat-raised-button style="margin-left:80px;" id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Ingresa</button>
                     <button mat-button id="resetPassword" (click)="resetPassword()" type="button">Recuperar contraseña</button>
                 </mat-card-actions>
 
