@@ -1,9 +1,39 @@
-<h1 class="text">Datos</h1>
-<mat-nav-list class="list-horizontal"role="list">
-    <mat-list-item role="listitem">Id: <br>1</mat-list-item>
-    <mat-list-item role="listitem">Nombre: <br>Ceviche</mat-list-item>
-    <mat-list-item role="listitem">Descripcion: <br>Mixto</mat-list-item>
-</mat-nav-list>
-<br><br>
+<div class="example-container mat-elevation-z8">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Detalle del pedido</span>
 
-<button class="pos" color="primary" mat-raised-button >Asignar Repartidor</button>
+        </mat-toolbar>
+    </p>
+    <mat-table #table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="product">
+            <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="createDate">
+            <mat-header-cell *matHeaderCellDef> Fecha creacion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.createDate}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="attendDate">
+            <mat-header-cell *matHeaderCellDef> Fecha Atencion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.attendDate}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+</div>

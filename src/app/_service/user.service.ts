@@ -20,7 +20,6 @@ export class UserService {
 
   listar() {
     let access_token = sessionStorage.getItem(environment.TOKEN_NAME);
-
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/`, {
       headers: new HttpHeaders().set('Authorization', `bearer ${access_token}`).set('Content-Type', 'application/json')
     });
@@ -44,6 +43,11 @@ export class UserService {
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}`);
   }
 
+  getDeliveryUserList(){
+    let user = new UserBean;
+    user.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<UserBean[]>(`${this.url}/${this.subUrl}/guldm`,user);
+  }
   listarPorId(id: number) {
     return this.http.get<UserBean>(`${this.url}/${this.subUrl}/${id}`);
   }

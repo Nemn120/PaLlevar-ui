@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -6,6 +7,8 @@ import { OrderBean } from 'src/app/_model/OrderBean';
 import { OrderService } from 'src/app/_service/order.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DeliveryOrderDetailComponent } from '../delivery-order-detail/delivery-order-detail.component';
+import { DeliveryOrderAsignComponent } from '../delivery-order-asign/delivery-order-asign.component';
 
 @Component({
   selector: 'app-delivery-order',
@@ -49,9 +52,24 @@ export class DeliveryOrderComponent implements OnInit {
   
   }
 
-  openDialog(){
-
+  public openDialogDetail(order: OrderBean) {
+    let orderSelect = order != null ? order : new OrderBean();
+    this.dialog.open(DeliveryOrderDetailComponent, {
+      width: '600',
+      height: '600',
+      data: orderSelect
+    });
   }
+
+  public openDialogAsign(order: OrderBean) {
+    let orderSelect = order != null ? order : new OrderBean();
+    this.dialog.open(DeliveryOrderAsignComponent, {
+      width: '600',
+      height: '600',
+      data: orderSelect
+    });
+  }
+
   delete(){
 
   }

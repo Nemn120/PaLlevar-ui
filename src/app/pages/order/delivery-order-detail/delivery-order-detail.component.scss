@@ -1,11 +1,15 @@
-.text{
-    text-align: center;
-}
-.pos{
-    margin-right: 40%;
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
 }
 
-mat-nav-list.list-horizontal {
-    display: flex;
-    flex-direction: row;
- }
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.mat-column-select {
+    overflow: visible;
+}

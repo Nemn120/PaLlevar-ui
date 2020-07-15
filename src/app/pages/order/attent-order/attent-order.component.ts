@@ -53,11 +53,17 @@ export class AttentOrderComponent implements OnInit {
   }
   public openDialog(order: OrderBean) {
     let orderSelect = order != null ? order : new OrderBean();
-    this.dialog.open(AttendOrderDetailComponent, {
-      width: '600',
-      height: '600',
-      data: orderSelect
-    });
+    let height:any;
+    if(order.orderDetail.length){
+      height=50*order.orderDetail.length + 150;
+      height=height.toString();
+      height=height+'px';
+    }
+      this.dialog.open(AttendOrderDetailComponent, {
+        width: '600px',
+        height: height || '130px',
+        data: orderSelect
+      });
   }
   
      

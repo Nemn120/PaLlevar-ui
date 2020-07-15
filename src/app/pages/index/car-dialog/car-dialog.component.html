@@ -6,9 +6,7 @@
 <ng-template [ngIf]="odList.length>0">
     <h3>Carrito de pedidos Costo total: {{this.carService.costTotal()}} </h3>
     <div class="example-container mat-elevation-z8">
-
         <mat-table #table [dataSource]="dataSource">
-
             <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
                 <mat-header-cell *matHeaderCellDef>

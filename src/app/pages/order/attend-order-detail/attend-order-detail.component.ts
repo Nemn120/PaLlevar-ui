@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit,Inject} from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from "@angular/material/dialog";
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from "../dialogo-confirmacion/dialogo-confirmacion.component";
+import { OrderBean } from '../../../_model/OrderBean';
+import { OrderService } from '../../../_service/order.service';
+
+import { DomSanitizer } from '@angular/platform-browser';
+import { SharedService } from '../../../_service/shared.service';
+import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
+import { OrderDetailService } from 'src/app/_service/order-detail.service';
 
 
 @Component({
@@ -10,18 +18,52 @@ import { DialogoConfirmacionComponent } from "../dialogo-confirmacion/dialogo-co
   templateUrl: './attend-order-detail.component.html',
   styleUrls: ['./attend-order-detail.component.scss']
 })
-export class AttendOrderDetailComponent  {
+export class AttendOrderDetailComponent implements OnInit {
   
+  orderSelect: OrderDetailBean;
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  labelFile: string;
+  loadingSpinner:boolean=false;
+  orderDetailList: OrderDetailBean[];
  
 
-  displayedColumns = ['select', 'position', 'name', 'precio', 'symbol'];
-  data = Object.assign( ELEMENT_DATA);
-  dataSource = new MatTableDataSource<Element>(this.data);
-  selection = new SelectionModel<Element>(true, []);
-  constructor(public dialogo: MatDialog
+  displayedColumns = ['select', 'id','product', 'price', 'attendDate','status'];
+  dataSource : MatTableDataSource<OrderDetailBean>;
+  selection : SelectionModel<OrderDetailBean>;
+
+  constructor(public dialogo: MatDialog,
+    private dialogRef: MatDialogRef<AttendOrderDetailComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: OrderBean,
+    private orderService: OrderService,
+    //private orderDetailService: OrderDetailService,
+    //private sanitization: DomSanitizer,
+    private sharedService: SharedService
     ){
     console.log(this.data);
   }
+
+
+  ngOnInit(): void {
+    this.orderDetailList=this.data.orderDetail;
+    this.dataSource = new MatTableDataSource<OrderDetailBean>(this.orderDetailList);
+    this.selection = new SelectionModel<OrderDetailBean>(true, []);
+    
+    //this.listar();
+    //this.orderSelect = new OrderDetailBean();
+    //if (this.data1.id > 0) {
+      //this.orderSelect.id = this.data1.id;
+      //this.orderSelect.status = this.data1.status;
+     // this.orderSelect.price = this.data1.price;
+      //this.orderSelect.attendDate = this.data1.attendDate;
+    //} 
+  }
+  //listar() {
+    //this.orderDetailService.getListOrderDetail().subscribe(data1 => {
+      //this.orderDetailList = data1;
+    //});
+  //}
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -29,8 +71,6 @@ export class AttendOrderDetailComponent  {
     return numSelected === numRows;
   }
   atenderPedido() : void{
-
-
     this.dialogo
       .open(DialogoConfirmacionComponent, {
         data: '¿Desea atender los pedidos seleccionados?'
@@ -38,16 +78,19 @@ export class AttendOrderDetailComponent  {
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
+          const numSelected = this.selection.selected;
+          let attendODetail= new Array<OrderDetailBean>();
           this.selection.selected.forEach(item => {
-            let index: number = this.data.findIndex(d => d === item);
-            console.log(this.data.findIndex(d => d === item));
-            this.data.splice(index,1)
-            this.dataSource = new MatTableDataSource<Element>(this.data);
+            attendODetail.push(item);
           });
-          this.selection = new SelectionModel<Element>(true, []);
+          this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
+            return numSelected.indexOf(x) == -1;
+          })
+          console.log(attendODetail);
+          this.dataSource.data=this.orderDetailList;
         }
   });
-}
+ }
 
 
 
@@ -59,33 +102,4 @@ export class AttendOrderDetailComponent  {
   }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  precio: number;
-  symbol: string;
-}
 
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Ceviche', precio: 20.00, symbol: 'CEV'},
-  {position: 2, name: 'Pollo a la brasa', precio: 30.00, symbol: 'PB'},
-  {position: 3, name: 'Pescado frito', precio:10.00, symbol: 'PF'},
-  {position: 4, name: 'Jalea mixta', precio: 20.00, symbol: 'JM'},
-  {position: 5, name: 'Arroz con mariscos', precio: 20.00, symbol: 'AM'},
-  {position: 6, name: 'Arroz con pollo', precio: 12.00, symbol: 'AP'},
-  {position: 7, name: 'Tallarin Verde', precio: 12.00, symbol: 'TV'},
-  {position: 8, name: 'Seco de pollo', precio: 10.00, symbol: 'SN'},
-  {position: 9, name: 'Pollo broaster',precio: 12.00, symbol: 'PB'},
-  {position: 10, name: 'Aji de gallina', precio: 10.00, symbol: 'AG'},
-  {position: 11, name: 'Arroz con pato', precio: 20.00, symbol: 'AP'},
-  {position: 12, name: 'Causa', precio: 10.00, symbol: 'CAU'},
-  {position: 13, name: 'Escabeche ', precio:10.00, symbol: 'ES'},
-  {position: 14, name: 'Chicharron ', precio: 20.00, symbol: 'CHI'},
-  {position: 15, name: 'Seco de pollo', precio: 15.00, symbol: 'SP'},
-  {position: 16, name: 'Arroz chaufa', precio: 12.00, symbol: 'AC'},
-  {position: 17, name: 'Tallarin rojo', precio: 12.00, symbol: 'TR'},
-  {position: 18, name: 'Tallarin saltado', precio: 10.00, symbol: 'TS'},
-  {position: 19, name: 'Hamburguesa',precio: 10.00, symbol: 'H'},
-  {position: 20, name: 'Milanesa', precio: 10.00, symbol: 'M'},
-];
