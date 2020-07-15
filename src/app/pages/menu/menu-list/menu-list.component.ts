@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -54,8 +55,22 @@ export class MenuListComponent implements OnInit {
   openDialog(){
       
   }
-  delete(){
 
+
+  
+  delete(menuDay:MenuDayBean){
+    this.menuDayService.deleteMenuDay(menuDay.id).subscribe(data => {
+      this.menuDayService.getListMenuDayByOrganization().subscribe(data => {
+        this.menuDayService.menuDayCambio.next(data);
+        this.menuDayService.mensajeCambio.next("Se elimino con éxito");
+      }, error =>{
+        console.error(error);
+        this.menuDayService.mensajeCambio.next("Error al mostrar listado de menus");
+      });
+    },error =>{
+      console.error(error);
+      this.menuDayService.mensajeCambio.next("El menu que desea eliminar esta siendo usado");
+    });
   }
 
 }
