@@ -30,13 +30,23 @@ export class CarServiceService {
     this.orderHeader.orderDetail=this.orderDetailList;
 
   }
-
-
-
   getItems(){
     return this.orderDetailList;
   }
-
-
+  deleteProductList(orderDetailList: OrderDetailBean[]){
+    this.orderDetailList= this.orderDetailList.filter(x => {
+      return orderDetailList.indexOf(x) == -1;
+    })
+  }
+  costTotal(){
+    let totalCost=0;
+    this.orderDetailList.forEach(x =>{
+      totalCost+=x.price;
+    });
+    return totalCost;
+  }
+  countTotal(){
+    return this.orderDetailList.length;
+  }
 
 }

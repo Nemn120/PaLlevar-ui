@@ -1,21 +1,56 @@
-<ng-template [ngIf]="odList.length>0">
-    <p>
-        Carrito de pedidos
-    </p>
-    <mat-selection-list #product>
-        <mat-list-option *ngFor="let od of odList">
-            <p> {{od.product.name}} - S/.{{od.price}} </p> <span color="accent">{{od.product.organizationId}} </span>
-        </mat-list-option>
-    </mat-selection-list>
-
-    <p>
-        Cantidad de productos: {{product.selectedOptions.selected.length}}
-    </p>
-
-    <button (click)="sendOrder()" color="accent">Enviar pedido</button>
-</ng-template>
 <ng-template [ngIf]="odList.length==0">
     <p>
         Aun no ha agregado productos al carrito.
     </p>
+</ng-template>
+<ng-template [ngIf]="odList.length>0">
+    <h3>Carrito de pedidos Costo total: {{this.carService.costTotal()}} </h3>
+    <div class="example-container mat-elevation-z8">
+
+        <mat-table #table [dataSource]="dataSource">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+                    </mat-checkbox>
+                </mat-cell>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="price">
+                <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+                <mat-cell *matCellDef="let element">S/. {{element.price}} </mat-cell>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="organization">
+                <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.organizationId}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+            </mat-row>
+        </mat-table>
+
+
+    </div>
+    <div style="margin: auto; left: 50%; margin-top: 10px;">
+        <button mat-raised-button color="primary" (click)="sendOrder()">
+        Enviar orden
+      </button>
+        <button style="margin-left:5px;" mat-raised-button color="accent" (click)="deleteProductsSelect()">
+        Eliminar
+      </button>
+    </div>
 </ng-template>

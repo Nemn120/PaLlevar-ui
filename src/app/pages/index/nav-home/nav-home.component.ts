@@ -5,6 +5,7 @@ import { PerfilComponent } from '../cliente/perfil/perfil.component';
 import { CarDialogComponent } from '../car-dialog/car-dialog.component';
 import { PedidosComponent } from '../cliente/pedidos/pedidos.component';
 import { EditarPerfilComponent } from '../cliente/editar-perfil/editar-perfil.component';
+import { CarServiceService } from '../../../_service/car-service.service';
 
 @Component({
   selector: 'app-nav-home',
@@ -20,7 +21,8 @@ export class NavHomeComponent {
   logueado:boolean=false;
 
   
-  constructor(public dialog: MatDialog,private sharedService:SharedService) {}
+  constructor(public dialog: MatDialog,private sharedService:SharedService,
+    public carService:CarServiceService) {}
 
   ngOnInit(): void {
 
@@ -38,9 +40,17 @@ export class NavHomeComponent {
      this.dialog.open(PerfilComponent);
   }
   openDialogCar(){
+    let count=this.carService.getItems().length || null;
+    let height:any;
+    if(count){
+      height=50*count + 205;
+      height=height.toString();
+      height=height+'px';
+    }
+   
       this.dialog.open(CarDialogComponent, {
-        width: '600',
-        height: '600',
+        width: '400px',
+        height: height || '100px'
       });
   }
 

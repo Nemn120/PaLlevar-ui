@@ -14,5 +14,5 @@ export class OrderDetailBean extends MainBean{
     deliveryDate:Date;
     attendDate:Date;
     menuProductId:number;
-
+    organizationName:string;
 }
