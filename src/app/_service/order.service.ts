@@ -55,6 +55,13 @@ export class OrderService {
      console.log(order);
     return this.http.post<OrderBean>(`${this.url}/sobos`,order);
   }
+  saveAttendOrder(order : OrderBean) {
+    return this.http.post<OrderBean>(`${this.url}/saoo`,order);
+  }
+  saveDeliveryOrder(order : OrderBean) {
+    return this.http.post<OrderBean>(`${this.url}/sdoo`,order);
+  }
+
 
   deleteOrder(id: number) {
     return this.http.delete(`${this.url}/do/${id}`);
