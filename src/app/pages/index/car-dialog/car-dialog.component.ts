@@ -4,6 +4,11 @@ import { SharedService } from '../../../_service/shared.service';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
+import { MenuDayService } from '../../../_service/menu-day.service';
+import { OrderService } from '../../../_service/order.service';
+import { LoginService } from '../../../_service/login.service';
+import { Router } from '@angular/router';
+import { OrderBean } from '../../../_model/OrderBean';
 
 @Component({
   selector: 'app-car-dialog',
@@ -17,11 +22,14 @@ export class CarDialogComponent implements OnInit {
   selection: SelectionModel<OrderDetailBean>;
   dataSource: MatTableDataSource<OrderDetailBean>;
   totalRow: number;
-
+  sendOrderCar:OrderBean;
 
   constructor(
     public carService: CarServiceService,
     public sharedService: SharedService,
+    public orderService:OrderService,
+    public loginService:LoginService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,12 +60,30 @@ export class CarDialogComponent implements OnInit {
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
       if (confirm("¿Desea realizar el pedido? ")) {
-         let orderSend:OrderDetailBean[];
-         orderSend=numSelected;
+        if(this.sharedService.userSession){
+          debugger
+          this.sendOrderCar= new OrderBean;
+         // this.sendOrderCar=this.carService.getOrder();
+          this.sendOrderCar.orderDetail=[];
+          numSelected.forEach( x => {
+            this.sendOrderCar.orderDetail.push(x);
+          })
+            
+          this.sendOrderCar.userOrder=this.sharedService.userSession;
+
          console.log(numSelected);
+         this.orderService.saveNewOrder(this.sendOrderCar).subscribe(data =>{
+          this.carService.deleteProductList(numSelected);
+          this.odList=this.carService.getItems();
+          this.dataSource.data=this.odList;
+         })
+        }else{
+          this.router.navigate(['auth/login']);
+        }
+         
       }
     } else {
-      alert("Seleccione el producto a eliminar");
+      alert("Seleccione algun producto");
     }
   }
   deleteProductsSelect(){

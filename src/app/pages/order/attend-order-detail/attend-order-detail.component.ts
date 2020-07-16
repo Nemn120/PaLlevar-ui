@@ -7,11 +7,8 @@ import { DialogoConfirmacionComponent } from "../dialogo-confirmacion/dialogo-co
 import { OrderBean } from '../../../_model/OrderBean';
 import { OrderService } from '../../../_service/order.service';
 
-import { DomSanitizer } from '@angular/platform-browser';
 import { SharedService } from '../../../_service/shared.service';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
-import { OrderDetailService } from 'src/app/_service/order-detail.service';
-import { debug } from 'console';
 import { Message } from '../../../_DTO/messageDTO';
 
 
@@ -38,8 +35,6 @@ export class AttendOrderDetailComponent implements OnInit {
     private dialogRef: MatDialogRef<AttendOrderDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private orderService: OrderService,
-    //private orderDetailService: OrderDetailService,
-    //private sanitization: DomSanitizer,
     private sharedService: SharedService
     ){
     console.log(this.data);
