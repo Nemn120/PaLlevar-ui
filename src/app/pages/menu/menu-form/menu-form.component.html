@@ -47,6 +47,14 @@
                 </mat-form-field>
 
             </form>
+
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="menuDaySelect.status">
+                <mat-radio-button class="example-radio-button" *ngFor="let e of estados" [value]="e">
+                    {{e}}
+                </mat-radio-button>
+            </mat-radio-group>
+
+
             <br>
             <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
 

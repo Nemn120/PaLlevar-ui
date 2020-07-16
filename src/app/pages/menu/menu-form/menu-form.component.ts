@@ -32,6 +32,7 @@ export class MenuFormComponent implements OnInit {
 ];
 
 
+  estados: string[] = ['Actico', 'Desactivo'];
   
   constructor(
     

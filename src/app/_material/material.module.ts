@@ -28,7 +28,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [],
   imports: [
@@ -63,7 +63,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatTabsModule,
     MatProgressBarModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
