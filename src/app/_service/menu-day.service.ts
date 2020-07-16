@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { MenuDayBean } from '../_model/MenyDayBean';
 import { Subject } from 'rxjs';
@@ -10,6 +11,8 @@ import { SharedService } from './shared.service';
 })
 export class MenuDayService {
 
+
+  menuDayEditar:MenuDayBean=null;//katriel//para poder editarlo en otro componente
 
   menuDayCambio = new Subject<MenuDayBean[]>();
   mensajeCambio = new Subject<string>();

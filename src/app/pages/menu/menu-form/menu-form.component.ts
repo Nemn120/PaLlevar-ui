@@ -11,11 +11,12 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MenuFormComponent implements OnInit {
 
-  menuDay:MenuDayBean=new MenuDayBean();
+  
+    menuDaySelect:MenuDayBean;
 
   //value = 'Clear me';
   //value2 = 'Clear me';
-
+/*
   selectedValue: string;
   
   foods: Food[] = [
@@ -23,7 +24,7 @@ export class MenuFormComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
-
+*/
  
   
   constructor(
@@ -35,16 +36,29 @@ export class MenuFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    if(this.menuDayService.menuDayEditar===null){
+
+        this.menuDaySelect=new MenuDayBean();
+
+    }else{
+        this.menuDaySelect=this.menuDayService.menuDayEditar;
+         this.menuDayService.menuDayEditar=null;
+    }
  
   }
 
 
   guardar(){
 
-    //this.menuDay.name='Menu 1';
-    this.menuDayService.saveMenuDay(this.menuDay).subscribe(data => {
+    this.menuDayService.saveMenuDay(this.menuDaySelect).subscribe(data => {
 
-      this.menuDayService.mensajeCambio.next("Se registro");
+      if (this.menuDaySelect.id)
+       this.menuDayService.mensajeCambio.next("Se actualizo");
+     else
+        this.menuDayService.mensajeCambio.next("Se registro");
+
+
     }
 
     );
@@ -59,8 +73,8 @@ export class MenuFormComponent implements OnInit {
 
   
 }
-
+/*
 interface Food {
   value: string;
   viewValue: string;
-}
+}*/

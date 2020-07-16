@@ -7,7 +7,7 @@ import { MenuDayBean } from '../../../_model/MenyDayBean';
 import { MenuDayService } from '../../../_service/menu-day.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Router} from '@angular/router';
 @Component({
   selector: 'app-menu-list',
   templateUrl: './menu-list.component.html',
@@ -23,7 +23,9 @@ export class MenuListComponent implements OnInit {
 
   constructor(
     private menuDayService:MenuDayService, private dialog:MatDialog, private snackBar: MatSnackBar
-  ) {
+  ,private router:Router
+  
+    ) {
 
    }
 
@@ -52,7 +54,10 @@ export class MenuListComponent implements OnInit {
   
   }
 
-  openDialog(){
+  editar(menuDay: MenuDayBean){
+    
+    this.menuDayService.menuDayEditar=menuDay;
+    this.router.navigate(['menu/form']);
       
   }
 

@@ -44,7 +44,7 @@
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
                     <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="openDialog(row)">
+                        <button mat-icon-button color="primary" (click)="editar(row)">
                 <mat-icon>pending_actions</mat-icon>
               </button>
                         <button mat-icon-button color="accent" (click)="delete(row)">
