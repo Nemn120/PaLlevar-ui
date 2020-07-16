@@ -9,7 +9,6 @@
     <div style="display: flex; width: 85%;">
         <mat-card>
 
-
             <mat-form-field class="example-form-field">
                 <mat-label>Nombre</mat-label>
                 <input matInput type="text" [(ngModel)]="menuDaySelect.name">
@@ -27,10 +26,7 @@
                     </button>
             </mat-form-field>
 
-
-
-
-            <form>
+            <form style="display: inline;">
 
                 <mat-form-field appearance="fill" class="example-form-field">
                     <mat-label>Dia</mat-label>
@@ -40,8 +36,6 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-
 
                 <mat-form-field appearance="fill">
                     <mat-label>Tipo</mat-label>
@@ -53,9 +47,9 @@
                 </mat-form-field>
 
             </form>
-
-
+            <br>
             <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+
         </mat-card>
     </div>
 
