@@ -12,52 +12,47 @@
 
             <mat-form-field class="example-form-field">
                 <mat-label>Nombre</mat-label>
-                <input matInput type="text" [(ngModel)]="this.menuDaySelect.name">
-                <button mat-button *ngIf="this.menuDaySelect.name" matSuffix mat-icon-button aria-label="Clear" (click)="this.menuDaySelect.name=''">
+                <input matInput type="text" [(ngModel)]="menuDaySelect.name">
+                <button mat-button *ngIf="menuDaySelect.name" matSuffix mat-icon-button aria-label="Clear" (click)="menuDaySelect.name=''">
                       <mat-icon>close</mat-icon>
                     </button>
             </mat-form-field>
 
-            <!-- 
-                <mat-form-field class="example-form-field">
-                    <mat-label>Clearable input</mat-label>
-                    <input matInput type="text" [(ngModel)]="value">
-                    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+
+            <mat-form-field class="example-form-field">
+                <mat-label>Descripcion</mat-label>
+                <input matInput type="text" [(ngModel)]="menuDaySelect.description">
+                <button mat-button *ngIf="menuDaySelect.description" matSuffix mat-icon-button aria-label="Clear" (click)="menuDaySelect.description=''">
                       <mat-icon>close</mat-icon>
                     </button>
-                </mat-form-field>
--->
+            </mat-form-field>
 
 
 
-
-            <!-- 
             <form>
 
-            
+
                 <mat-form-field appearance="fill" class="example-form-field">
                     <mat-label>Dia</mat-label>
-                    <mat-select [(ngModel)]="selectedValue" name="food">
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
+                    <mat-select [(ngModel)]="menuDaySelect.day" name="dias">
+                        <mat-option *ngFor="let d of dias" [value]="d">
+                            {{d}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                
+
 
 
                 <mat-form-field appearance="fill">
                     <mat-label>Dia</mat-label>
-                    <mat-select [(ngModel)]="selectedValue" name="food">
-                        <mat-option *ngFor="let food of foods" [value]="food.value">
-                            {{food.viewValue}}
+                    <mat-select [(ngModel)]="menuDaySelect.type" name="tipos">
+                        <mat-option *ngFor="let t of tipos" [value]="t">
+                            {{t}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
 
-
             </form>
-            -->
 
 
             <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>

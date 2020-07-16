@@ -14,24 +14,29 @@ export class MenuFormComponent implements OnInit {
   
     menuDaySelect:MenuDayBean;
 
-  //value = 'Clear me';
-  //value2 = 'Clear me';
-/*
-  selectedValue: string;
-  
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+
+  dias: String[] = [
+      'Lunes',
+     'Martes',
+     'Miercoles',
+     'Jueves',
+     'Viernes',
+     'Sabado',
+     'Domingo',
   ];
-*/
- 
+  tipos: String[] = [
+    'Menu',
+   'Combo',
+   'Paquete',
+   
+];
+
+
   
   constructor(
     
     private menuDayService:MenuDayService ,
 
-    
    
   ) { }
 
@@ -57,8 +62,6 @@ export class MenuFormComponent implements OnInit {
        this.menuDayService.mensajeCambio.next("Se actualizo");
      else
         this.menuDayService.mensajeCambio.next("Se registro");
-
-
     }
 
     );
