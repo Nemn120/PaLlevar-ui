@@ -17,8 +17,6 @@ export class OrderService {
   order :OrderBean = new OrderBean();
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
-      this.order.sucursalId = this.sharedService.getSucursalIdByUserSession();
-      this.order.organizationId = this.sharedService.getOrganizationIdByUserSession();
     }
 
   getListOrder() {
@@ -51,7 +49,6 @@ export class OrderService {
   }
 
   saveNewOrder(order : OrderBean) {
-    order.organizationId = this.sharedService.getOrganizationIdByUserSession();
      console.log(order);
     return this.http.post<OrderBean>(`${this.url}/sobos`,order);
   }

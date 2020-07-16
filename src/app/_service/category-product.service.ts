@@ -23,7 +23,7 @@ export class CategoryProductService {
     return this.http.get<CategoryProductBean[]>(`${this.url}/glcp`);
   }
   getListCategoryProductByOrganization() {
-    return this.http.get<CategoryProductBean[]>(`${this.url}/glcpbo/${this.orgId}`);
+    return this.http.get<CategoryProductBean[]>(`${this.url}/glcpbo/${this.sharedService.getOrganizationIdByUserSession()}`);
   }
 
 

@@ -28,10 +28,13 @@ export class CarServiceService {
     this.orderHeader.address=order.address;
     this.orderHeader.phone=order.phone;
     this.orderHeader.orderDetail=this.orderDetailList;
-
+    return this.orderHeader;
   }
   getItems(){
     return this.orderDetailList;
+  }
+  getOrder(){
+    return this.orderHeader;
   }
   deleteProductList(orderDetailList: OrderDetailBean[]){
     this.orderDetailList= this.orderDetailList.filter(x => {
