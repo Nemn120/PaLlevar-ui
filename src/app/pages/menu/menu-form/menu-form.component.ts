@@ -37,7 +37,7 @@ export class MenuFormComponent implements OnInit {
 ];
 
 
-  estados: string[] = ['Actico', 'Desactivo'];
+  estados: string[] = ['Activo', 'Desactivo'];
 
 
   productos:ProductBean[];
