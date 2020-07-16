@@ -11,6 +11,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { SharedService } from '../../../_service/shared.service';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 import { OrderDetailService } from 'src/app/_service/order-detail.service';
+import { debug } from 'console';
+import { Message } from '../../../_DTO/messageDTO';
 
 
 @Component({
@@ -48,32 +50,20 @@ export class AttendOrderDetailComponent implements OnInit {
     this.orderDetailList=this.data.orderDetail;
     this.dataSource = new MatTableDataSource<OrderDetailBean>(this.orderDetailList);
     this.selection = new SelectionModel<OrderDetailBean>(true, []);
-    
-    //this.listar();
-    //this.orderSelect = new OrderDetailBean();
-    //if (this.data1.id > 0) {
-      //this.orderSelect.id = this.data1.id;
-      //this.orderSelect.status = this.data1.status;
-     // this.orderSelect.price = this.data1.price;
-      //this.orderSelect.attendDate = this.data1.attendDate;
-    //} 
-  }
-  //listar() {
-    //this.orderDetailService.getListOrderDetail().subscribe(data1 => {
-      //this.orderDetailList = data1;
-    //});
-  //}
 
-  /** Whether the number of selected elements matches the total number of rows. */
+  }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
   atenderPedido() : void{
+    let ms = new Message();
+    ms.title='Atender pedidos'; 
+    ms.description = '¿Desea atender los pedidos seleccionados?';
     this.dialogo
       .open(DialogoConfirmacionComponent, {
-        data: '¿Desea atender los pedidos seleccionados?'
+        data: ms
       })
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
@@ -83,11 +73,22 @@ export class AttendOrderDetailComponent implements OnInit {
           this.selection.selected.forEach(item => {
             attendODetail.push(item);
           });
-          this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
-            return numSelected.indexOf(x) == -1;
+        
+          this.data.orderDetail=attendODetail;
+          debugger
+          this.orderService.saveAttendOrder(this.data).subscribe(data =>{
+            console.log(attendODetail);
+            this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
+              return numSelected.indexOf(x) == -1;
+            })
+            this.dataSource.data=this.orderDetailList;
+            this.orderService.getListOrderPendding().subscribe(data =>{ // ACTUALIZA
+              this.orderService.orderCambio.next(data); 
+            })
+          }, error =>{
+            console.error(error);
           })
-          console.log(attendODetail);
-          this.dataSource.data=this.orderDetailList;
+        
         }
   });
  }

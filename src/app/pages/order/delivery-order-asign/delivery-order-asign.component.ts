@@ -1,4 +1,5 @@
 
+
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,7 +9,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UserBean } from 'src/app/_model/UserBean';
 import { UserService } from 'src/app/_service/user.service';
 import { OrderBean } from '../../../_model/OrderBean';
-import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
+import { SelectionModel } from '@angular/cdk/collections';
+import { OrderService } from 'src/app/_service/order.service';
+import { DialogoConfirmacionComponent } from '../dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-delivery-order-asign',
@@ -22,15 +25,17 @@ export class DeliveryOrderAsignComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   dataSource: MatTableDataSource<UserBean>;/// tabla 
   titleProductList: string;
-  orderDetailList:OrderDetailBean[];
+
+  displayedColumns = ['select','id', 'nombre','lastName','cellPhone'];
+  selection : SelectionModel<UserBean>;
   constructor(
-    private dialogRef: MatDialogRef<UserBean>,private userService:UserService, private dialog:MatDialog, private snackBar: MatSnackBar,
+    public dialogo: MatDialog,private dialogRef: MatDialogRef<UserBean>,private orderService:OrderService,private userService:UserService, private dialog:MatDialog, private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean
   ) { }
 
   ngOnInit(): void {
     
-    this.orderDetailList=this.data.orderDetail;
+    this.selection = new SelectionModel<UserBean>(true, []);
     this.userService.getDeliveryUserList().subscribe(data => {  
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
@@ -40,8 +45,6 @@ export class DeliveryOrderAsignComponent implements OnInit {
     },error =>{
       this.userService.mensajeCambio.next("Error al mostrar productos");
     });
-    console.log("ASDASD");
-
   
   }
   public sendOrder(e : any){
@@ -52,6 +55,34 @@ export class DeliveryOrderAsignComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  asignarPedido() : void{
+    
+    let params={
+      title:'Asignar delivery',
+      description:'¿Desea asignar el repartidor al pedido?',
 
-
-  }
+    }
+    this.dialogo
+      .open(DialogoConfirmacionComponent, {
+        data: params
+      })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado){
+          debugger
+          this.data.userDeliveryId =this.selection.selected[0].id;
+          this.orderService.saveDeliveryOrder(this.data).subscribe(data =>{ // LLAMADA AL SERVICIO
+            this.dataSource.data=  this.dataSource.data.filter(x => { //ELIMINAR
+              return this.selection.selected.indexOf(x) == -1;
+            })
+           this.orderService.getListOrderAttend().subscribe(data =>{ // ACTUALIZA
+             this.orderService.orderCambio.next(data); 
+           })
+          })
+          
+            
+        }
+        this.dialogRef.close();
+  });
+ }
+}

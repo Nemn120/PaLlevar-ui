@@ -38,9 +38,7 @@ export class AttentOrderComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
 
-    //this.orderService.getListorder().subscribe(data => {
     this.orderService.getListOrderPendding().subscribe(data => {  
-    //this.orderService.getListorderByOrganizationAndSucursal().subscribe(data => {  
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;

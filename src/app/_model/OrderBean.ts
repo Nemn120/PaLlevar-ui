@@ -12,4 +12,6 @@ export class OrderBean extends MainBean{
      orderDetail:OrderDetailBean[];
      deliveryDate : Date;
      attentDate : Date;
+     userAttendId:number;
+     userDeliveryId:number;
 }

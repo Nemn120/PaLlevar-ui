@@ -55,10 +55,11 @@ export class OrderService {
      console.log(order);
     return this.http.post<OrderBean>(`${this.url}/sobos`,order);
   }
-  saveAttendOrder(order : OrderBean) {
+  saveAttendOrder(order : OrderBean) { // IVAN
+    order.userAttendId=this.sharedService.getUserIdSession();
     return this.http.post<OrderBean>(`${this.url}/saoo`,order);
   }
-  saveDeliveryOrder(order : OrderBean) {
+  saveDeliveryOrder(order : OrderBean) { //YORDY
     return this.http.post<OrderBean>(`${this.url}/sdoo`,order);
   }
 

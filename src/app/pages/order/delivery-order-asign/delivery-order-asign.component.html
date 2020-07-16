@@ -1,14 +1,56 @@
-<div class="example-container">
-    <h3>Asignar Pedidos</h3>
+<div class="example-container mat-elevation-z8">
+    <button mat-raised-button color="primary" (click)="asignarPedido()">
+    Atender Pedidos
+  </button>
+    <mat-table #table [dataSource]="dataSource">
 
-    <!--  <mat-selection-list *ngFor="let u of " #repartidor [(ngModel)]="dataSource">
-        <mat-list-option>
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef>
+                <mat-checkbox [checked]="selection.hasValue()">
+                </mat-checkbox>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="($event ? selection.toggle(row) : null)" [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
 
-        </mat-list-option>
-    </mat-selection-list>
-    -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
+        </ng-container>
 
-    <br>
-    <button mat-flat-button color="primary" class="btn-agr" [mat-dialog-close]="true">Asignar</button>
-    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="cellPhone">
+            <mat-header-cell *matHeaderCellDef> Telefono</mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cellPhone}} </mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+        </mat-row>
+    </mat-table>
+
 </div>
