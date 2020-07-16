@@ -6,7 +6,9 @@ export class MenuDayBean extends MainBean{
     description:string;  // fecha de creacion
     day:String; // LUNES, MARTES ,MIERCOLES DOMINGO
     type:string; // COMBO ,MENU , PAQUETE
-    menuDayProduct:MenuDayProductBean[] // PRODUCTOS , PRECIO, CANTIDAD , ESTADO 
+    menuDayProductList:MenuDayProductBean[] // PRODUCTOS , PRECIO, CANTIDAD , ESTADO 
     status:string; // ACTIVO O DESACTIVO
-
+    localDateTime:Date;
+    total:number;
+    countTotal:number;
 }

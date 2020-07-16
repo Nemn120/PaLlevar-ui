@@ -10,5 +10,5 @@ export class MenuDayProductBean extends MainBean{
     available:number;
     status:string; // DISPONIBLE , NO DISPONIBLE
     type:string; // COMBO, MENU , PAQUETE
-
+    menuDayId:number;
 }
