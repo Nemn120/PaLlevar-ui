@@ -32,7 +32,7 @@ export class MenuFormComponent implements OnInit {
   tipos: String[] = [
     'Menu',
    'Combo',
-   'Paquete',
+   'Promocion',
    
 ];
 
@@ -79,6 +79,7 @@ export class MenuFormComponent implements OnInit {
 
  // menuDayProduct:MenuDayProductBean[] // PRODUCTOS , PRECIO, CANTIDAD , ESTADO 
   guardar(){
+    
 
     let menuDayProductList:MenuDayProductBean[]=[];
     let nuevoMenuDayProduct:MenuDayProductBean=new MenuDayProductBean();
