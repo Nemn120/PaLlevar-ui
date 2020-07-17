@@ -1,8 +1,8 @@
 <div class="menu-org-detail" style="float: right;">
     <div class="menu-org-item">
         <div class="image-item">
-            <img class="image-position" [src]="orgSelect._foto" *ngIf="orgSelect._isFoto; else fotoDefault" />
-            <ng-template #fotoDefault><img class="image-position" src="{{imgDefault}}" /></ng-template>
+            <img class="image-position" [src]="orgSelect._foto" *ngIf="orgSelect._isFoto" />
+            <!--    <ng-template #fotoDefault><img class="image-position" src="{{imgDefault}}" /></ng-template>-->
         </div>
         <div class="data-item">
 

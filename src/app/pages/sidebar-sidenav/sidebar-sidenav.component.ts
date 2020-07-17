@@ -15,7 +15,7 @@ import { SharedService } from '../../_service/shared.service';
   templateUrl: './sidebar-sidenav.component.html',
   styleUrls: ['./sidebar-sidenav.component.scss']
 })
-export class SidebarSidenavComponent implements OnInit, OnDestroy, AfterViewInit {
+export class SidebarSidenavComponent implements OnInit, OnDestroy {
   private _mobileQueryListener: () => void;
   title = 'paLlevar-frontend';
   mobileQuery: MediaQueryList;
@@ -64,9 +64,5 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy, AfterViewInit
       // tslint:disable-next-line: deprecation
       this.mobileQuery.removeListener(this._mobileQueryListener);
       //this.autoLogoutSubscription.unsubscribe();
-  }
-
-  ngAfterViewInit(): void {
-      this.changeDetectorRef.detectChanges();
   }
 }

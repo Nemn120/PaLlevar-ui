@@ -11,7 +11,7 @@ import { UserService } from 'src/app/_service/user.service';
 import { OrderBean } from '../../../_model/OrderBean';
 import { SelectionModel } from '@angular/cdk/collections';
 import { OrderService } from 'src/app/_service/order.service';
-import { DialogoConfirmacionComponent } from '../dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-delivery-order-asign',

@@ -14,4 +14,5 @@ export class OrderBean extends MainBean{
      attentDate : Date;
      userAttendId:number;
      userDeliveryId:number;
+     reference:string;
 }

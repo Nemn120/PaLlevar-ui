@@ -3,13 +3,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog } from "@angular/material/dialog";
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogoConfirmacionComponent } from "../dialogo-confirmacion/dialogo-confirmacion.component";
 import { OrderBean } from '../../../_model/OrderBean';
 import { OrderService } from '../../../_service/order.service';
 
 import { SharedService } from '../../../_service/shared.service';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 import { Message } from '../../../_DTO/messageDTO';
+import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 
 @Component({

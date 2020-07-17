@@ -3,6 +3,7 @@ import { MenuDayProductBean } from '../_model/MenuDayProductBean';
 import { OrderDetailBean } from '../_model/OrderDetailBean';
 import { OrderBean } from '../_model/OrderBean';
 import { OrderService } from './order.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ export class CarServiceService {
   orderDetailList:Array<OrderDetailBean> = new Array<OrderDetailBean>();
   orderHeader: OrderBean;
   orderService:OrderService;
+  newOrder=new Subject<OrderBean>();
+
   constructor() {
     
    }

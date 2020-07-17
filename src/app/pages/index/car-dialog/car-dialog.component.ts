@@ -9,6 +9,8 @@ import { OrderService } from '../../../_service/order.service';
 import { LoginService } from '../../../_service/login.service';
 import { Router } from '@angular/router';
 import { OrderBean } from '../../../_model/OrderBean';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-car-dialog',
@@ -18,18 +20,19 @@ import { OrderBean } from '../../../_model/OrderBean';
 export class CarDialogComponent implements OnInit {
 
   odList: Array<OrderDetailBean> = new Array<OrderDetailBean>();
-  displayedColumns = ['select','name', 'price', 'organization'];
+  displayedColumns = ['select', 'name', 'price', 'organization'];
   selection: SelectionModel<OrderDetailBean>;
   dataSource: MatTableDataSource<OrderDetailBean>;
   totalRow: number;
-  sendOrderCar:OrderBean;
+  sendOrderCar: OrderBean;
 
   constructor(
     public carService: CarServiceService,
     public sharedService: SharedService,
-    public orderService:OrderService,
-    public loginService:LoginService,
-    private router: Router
+    public orderService: OrderService,
+    public loginService: LoginService,
+    private router: Router,
+    public dialogo: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -57,42 +60,58 @@ export class CarDialogComponent implements OnInit {
   }
   sendOrder() {
     //debugger;
+    let params = {
+      title: 'Generar pedido',
+      description: 'Ingrese los siguientes datos para completar la orden',
+      inputData:true
+    }
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
-      if (confirm("¿Desea realizar el pedido? ")) {
-        if(this.sharedService.userSession){
-          debugger
-          this.sendOrderCar= new OrderBean;
-         // this.sendOrderCar=this.carService.getOrder();
-          this.sendOrderCar.orderDetail=[];
-          numSelected.forEach( x => {
-            this.sendOrderCar.orderDetail.push(x);
-          })
-            
-          this.sendOrderCar.userOrder=this.sharedService.userSession;
+      debugger
+      this.dialogo
+        .open(DialogoConfirmacionComponent, {
+          data: params
+        })
+        .afterClosed()
+        .subscribe((confirmado: Boolean) => {
+          // if (confirm("¿Desea realizar el pedido? ")) {
+          if (confirmado) {
+            if (this.sharedService.userSession) {
+              this.sendOrderCar = new OrderBean;
+              this.carService.newOrder.subscribe(x =>{
+                this.sendOrderCar=x;
+              })
+              // this.sendOrderCar=this.carService.getOrder();
+              this.sendOrderCar.orderDetail = [];
+              numSelected.forEach(x => {
+                this.sendOrderCar.orderDetail.push(x);
+              })
 
-         console.log(numSelected);
-         this.orderService.saveNewOrder(this.sendOrderCar).subscribe(data =>{
-          this.carService.deleteProductList(numSelected);
-          this.odList=this.carService.getItems();
-          this.dataSource.data=this.odList;
-         })
-        }else{
-          this.router.navigate(['auth/login']);
-        }
-         
-      }
+              this.sendOrderCar.userOrder = this.sharedService.userSession;
+
+              console.log(numSelected);
+              this.orderService.saveNewOrder(this.sendOrderCar).subscribe(data => {
+                this.carService.deleteProductList(numSelected);
+                this.odList = this.carService.getItems();
+                this.dataSource.data = this.odList;
+              })
+            } else {
+              this.router.navigate(['auth/login']);
+            }
+          }
+        });
+
     } else {
       alert("Seleccione algun producto");
     }
   }
-  deleteProductsSelect(){
+  deleteProductsSelect() {
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
       if (confirm("¿Desea borrar los productos seleccionados del carrito? ")) {
-         this.carService.deleteProductList(numSelected);
-         this.odList=this.carService.getItems();
-         this.dataSource.data=this.odList;
+        this.carService.deleteProductList(numSelected);
+        this.odList = this.carService.getItems();
+        this.dataSource.data = this.odList;
       }
     } else {
       alert("Seleccione el producto a eliminar");

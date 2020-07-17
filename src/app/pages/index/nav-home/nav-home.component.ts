@@ -34,6 +34,7 @@ export class NavHomeComponent {
 
   cerrar(){
     this.logueado=false;
+    this.carService.orderDetailList=[];
   }
 
   openPerfil() {

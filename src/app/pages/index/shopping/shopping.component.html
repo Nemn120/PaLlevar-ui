@@ -2,8 +2,8 @@
     <div class="app-container">
         <div class="restaurant-info">
             <div class="restaurant-image">
-                <img class="restaurant-image" [src]="companySelect._foto" *ngIf="companySelect._isFoto; else fotoDefault" />
-                <ng-template #fotoDefault><img class="image-position" src="{{imgDefault}}" /></ng-template>
+                <img class="restaurant-image" [src]="companySelect._foto" *ngIf="companySelect._isFoto" />
+                <!--   <ng-template #fotoDefault><img class="image-position" src="{{imgDefault}}" /></ng-template>-->
             </div>
             <div class="restaurant-data title-company">
                 <H1>{{this.companySelect.nombre}}</H1>
