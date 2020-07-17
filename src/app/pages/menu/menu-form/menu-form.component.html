@@ -71,7 +71,7 @@
             <mat-form-field class="example-form-field">
                 <mat-label>Precio</mat-label>
                 <input matInput type="text" [(ngModel)]="precio">
-                <button mat-button *ngIf="precio" matSuffix mat-icon-button aria-label="Clear" (click)="precio=''">
+                <button mat-button *ngIf="precio" matSuffix mat-icon-button aria-label="Clear" (click)="precio=0">
                       <mat-icon>close</mat-icon>
                     </button>
             </mat-form-field>
@@ -79,7 +79,7 @@
             <mat-form-field class="example-form-field">
                 <mat-label>Cantidad</mat-label>
                 <input matInput type="text" [(ngModel)]="cant">
-                <button mat-button *ngIf="cant" matSuffix mat-icon-button aria-label="Clear" (click)="cant=''">
+                <button mat-button *ngIf="cant" matSuffix mat-icon-button aria-label="Clear" (click)="cant=0">
                       <mat-icon>close</mat-icon>
                     </button>
             </mat-form-field>

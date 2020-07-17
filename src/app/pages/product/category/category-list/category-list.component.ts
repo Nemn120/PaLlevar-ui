@@ -51,7 +51,7 @@ export class CategoryListComponent implements OnInit {
     });
 
   }
-  public openDialog(categoryProduct: CategoryProductBean) {
+  public openDialog(categoryProduct?: CategoryProductBean) {
     let productSelect = categoryProduct != null ? categoryProduct : new CategoryProductBean();
     this.dialog.open(CategoryFormComponent, {
       width: '600',

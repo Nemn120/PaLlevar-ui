@@ -52,7 +52,7 @@ export class ProductListComponent implements OnInit {
     });
 
   }
-  public openDialog(product: ProductBean) {
+  public openDialog(product?: ProductBean) {
     let productSelect = product != null ? product : new ProductBean();
     this.dialog.open(ProductFormComponent, {
       width: '600',
