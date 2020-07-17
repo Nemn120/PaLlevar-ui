@@ -65,8 +65,10 @@ export class MenuFormComponent implements OnInit {
   filteredOptions: Observable<ProductBean[]>;
   //
 
-  productSeleccionado:ProductBean;
-  
+  producto:ProductBean;
+  precio:number;
+  cant:number;
+
   menuDayProductList:MenuDayProductBean[]=[];
   constructor(
     
@@ -106,22 +108,24 @@ export class MenuFormComponent implements OnInit {
   
 
     if(!this.menuDaySelect.id){
-
       this.menuDaySelect.menuDayProductList=this.menuDayProductList;
-    }else{
+   
 
-    }
     this.menuDayService.saveMenuDay(this.menuDaySelect).subscribe(data => {
 
-      console.log('katriel: ',this.menuDaySelect);
-
-      if (this.menuDaySelect.id)
-       this.menuDayService.mensajeCambio.next("Se actualizo");
-     else
+      console.log('katriel creado: ',this.menuDaySelect);
         this.menuDayService.mensajeCambio.next("Se registro");
     }
 
     );
+
+
+  }else{
+
+
+    this.menuDayService.mensajeCambio.next("No se edito nada");
+    console.log('katriel actualizado: ',this.menuDaySelect);
+  }
 
   }
 
@@ -136,18 +140,30 @@ export class MenuFormComponent implements OnInit {
 
   itemSelected(event: MatAutocompleteSelectedEvent,) {
     console.log("Selected item", event.option.value);
-    this.productSeleccionado=event.option.value;
+    this.producto=event.option.value;
   }
   agregarProduct(){
 
-
-    
       let nuevoMenuDayProduct:MenuDayProductBean=new MenuDayProductBean();
-          nuevoMenuDayProduct.product=this.productSeleccionado;
+          nuevoMenuDayProduct.product=this.producto;
+          nuevoMenuDayProduct.price=this.precio;
+          nuevoMenuDayProduct.quantity=this.cant;
           this.menuDayProductList.push(nuevoMenuDayProduct);
          
-          this.menuDayService.mensajeCambio.next("Se agrrego producto");
-        
+          this.menuDayService.mensajeCambio.next("Se agrego el producto");
+
+  }
+
+  
+  remove(theCartItem: MenuDayProductBean) {
+    const itemIndex=this.menuDayProductList.findIndex(temp=>temp.id===theCartItem.id);
+
+    if(itemIndex>-1){
+
+      this.menuDayProductList.splice(itemIndex,1);
+      this.menuDayService.mensajeCambio.next("Se elimino el producto!");
+      
+    }
 
 
   }

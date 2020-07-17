@@ -57,7 +57,7 @@
 
             <form class="example-form">
                 <mat-form-field class="example-full-width">
-                    <mat-label>Assignee</mat-label>
+                    <mat-label>Producto</mat-label>
                     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="itemSelected($event)">
                         <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
@@ -65,15 +65,63 @@
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>
+
             </form>
+
+            <mat-form-field class="example-form-field">
+                <mat-label>Precio</mat-label>
+                <input matInput type="text" [(ngModel)]="precio">
+                <button mat-button *ngIf="precio" matSuffix mat-icon-button aria-label="Clear" (click)="precio=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field">
+                <mat-label>Cantidad</mat-label>
+                <input matInput type="text" [(ngModel)]="cant">
+                <button mat-button *ngIf="cant" matSuffix mat-icon-button aria-label="Clear" (click)="cant=''">
+                      <mat-icon>close</mat-icon>
+                    </button>
+            </mat-form-field>
 
 
             <button mat-raised-button color="primary" (click)="agregarProduct()">Agregar</button>
 
 
+
+            <!--
+            <span *ngFor="let p of menuDayProductList">
+                    {{p.product.name+' '+p.price+' '+p.quantity}}
+                </span>
+-->
+
+
+
+
+
+
+
+            <div *ngIf="menuDayProductList.length>0">
+
+                <table>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                    </tr>
+                    <tr *ngFor="let temp of menuDayProductList">
+                        <td>{{temp.product.name}}</td>
+                        <td> {{temp.price | currency :'USD'}}</td>
+                        <td> {{temp.quantity }}</td>
+                        <td><button (click)="remove(temp)" mat-raised-button color="accent">Remove</button> </td>
+                    </tr>
+
+                </table>
+            </div>
+
             <br>
             <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
-
         </mat-card>
     </div>
 
