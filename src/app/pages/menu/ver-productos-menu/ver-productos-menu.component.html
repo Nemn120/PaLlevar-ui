@@ -1,0 +1,19 @@
+<div *ngIf="data.menuDayProductList.length>0">
+
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+
+        </tr>
+        <tr *ngFor="let temp of data.menuDayProductList">
+            <td>{{temp.product.name}}</td>
+            <td> {{temp.price | currency :'USD'}}</td>
+            <td> {{temp.quantity }}</td>
+            <td> {{temp.status }}</td>
+        </tr>
+
+    </table>
+</div>

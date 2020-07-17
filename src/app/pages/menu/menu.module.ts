@@ -8,6 +8,7 @@ import { GuardService } from '../../_service/guard.service';
 import { MaterialModule } from '../../_material/material.module';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { VerProductosMenuComponent } from './ver-productos-menu/ver-productos-menu.component';
 
 
 const routes: Routes = [
@@ -29,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [MenuListComponent, MenuFormComponent],
+  declarations: [MenuListComponent, MenuFormComponent, VerProductosMenuComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -40,5 +41,10 @@ const routes: Routes = [
  
   ],
   exports: [RouterModule],
+  entryComponents: [
+    VerProductosMenuComponent
+  ],
+  
+
 })
 export class MenuModule { }

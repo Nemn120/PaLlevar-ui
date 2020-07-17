@@ -8,6 +8,7 @@ import { MenuDayService } from '../../../_service/menu-day.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router} from '@angular/router';
+import { VerProductosMenuComponent } from '../ver-productos-menu/ver-productos-menu.component';
 @Component({
   selector: 'app-menu-list',
   templateUrl: './menu-list.component.html',
@@ -78,4 +79,24 @@ export class MenuListComponent implements OnInit {
     });
   }
 
+
+  ver(menuDay:MenuDayBean){
+   
+    this.dialog.open(VerProductosMenuComponent, {
+      width: '1000',
+      //height: '600',
+      data: menuDay
+    });
+
+  }
+  /*
+  public openDialog(product: ProductBean) {
+    let productSelect = product != null ? product : new ProductBean();
+    this.dialog.open(ProductFormComponent, {
+      width: '600',
+      height: '600',
+      data: productSelect
+    });
+  }
+  */
 }

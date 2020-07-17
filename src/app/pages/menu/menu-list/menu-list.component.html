@@ -44,12 +44,21 @@
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
                     <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="editar(row)">
-                <mat-icon>pending_actions</mat-icon>
-              </button>
+
+                        <!--     <button mat-icon-button color="primary" (click)="editar(row)">
+                         <mat-icon>settings</mat-icon>
+                    </button>
+
+ -->
+                        <button mat-icon-button color="primary" (click)="ver(row)">
+                        <mat-icon>info </mat-icon>
+                    </button>
+
                         <button mat-icon-button color="accent" (click)="delete(row)">
-                <mat-icon>fastfood </mat-icon>
-              </button>
+                        <mat-icon>delete </mat-icon>
+                    </button>
+
+
                     </mat-cell>
                 </ng-container>
 
