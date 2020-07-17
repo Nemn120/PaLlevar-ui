@@ -7,7 +7,8 @@ import { SidebarSidenavComponent } from '../sidebar-sidenav/sidebar-sidenav.comp
 import { GuardService } from '../../_service/guard.service';
 import { MaterialModule } from '../../_material/material.module';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 
 const routes: Routes = [
   {
@@ -35,6 +36,8 @@ const routes: Routes = [
     MaterialModule,
     SidebarSidenavModule,
     FormsModule,
+    ReactiveFormsModule,
+ 
   ],
   exports: [RouterModule],
 })

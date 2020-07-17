@@ -1,14 +1,26 @@
 
-import { SharedService } from './../../../_service/shared.service';
+
 import { Component, OnInit } from '@angular/core';
+
 import { MenuDayBean } from '../../../_model/MenyDayBean';
 import { MenuDayService } from '../../../_service/menu-day.service';
 
-import {FormControl, FormGroup} from '@angular/forms';
 import { MenuDayProductBean } from '../../../_model/MenuDayProductBean';
 import { ProductService } from '../../../_service/product.service';
 import { ProductBean } from 'src/app/_model/ProductBean';
-import { MenuDayProductService } from '../../../_service/menu-day-product.service';
+
+//
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+
+
+export interface User {
+  name: string;
+  apellido:string;
+}
+//
 @Component({
   selector: 'app-menu-form',
   templateUrl: './menu-form.component.html',
@@ -41,57 +53,64 @@ export class MenuFormComponent implements OnInit {
 
 
   productos:ProductBean[];
+//
+  myControl = new FormControl();
+  /*options: User[] = [
+    {name: 'Mary',apellido:'uno'},
+    {name: 'Shelley',apellido:'dos'},
+    {name: 'Igor',apellido:'tres'}
+  ];*/
+
+  options:ProductBean[]=[];
+  filteredOptions: Observable<ProductBean[]>;
+  //
+
+  productSeleccionado:ProductBean;
   
+  menuDayProductList:MenuDayProductBean[]=[];
   constructor(
     
     private menuDayService:MenuDayService ,
-
-    private menuDayProductService:MenuDayProductService,
-
     private productService:ProductService,
    
   ) { }
 
   ngOnInit(): void {
-
-   
+    this.listarProductos();
 
     if(this.menuDayService.menuDayEditar===null){
 
         this.menuDaySelect=new MenuDayBean();
-
-
-
-        
-      
 
     }else{
         this.menuDaySelect=this.menuDayService.menuDayEditar;
          this.menuDayService.menuDayEditar=null;
     }
 
-    this.listarProductos();
-
     
+
+//
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.options.slice())
+      );
+      //
  
   }
 
 
  // menuDayProduct:MenuDayProductBean[] // PRODUCTOS , PRECIO, CANTIDAD , ESTADO 
   guardar(){
-    
+  
 
-    let menuDayProductList:MenuDayProductBean[]=[];
-    let nuevoMenuDayProduct:MenuDayProductBean=new MenuDayProductBean();
-        nuevoMenuDayProduct.product=this.productos[0];
-        menuDayProductList.push(nuevoMenuDayProduct);
-       
+    if(!this.menuDaySelect.id){
 
+      this.menuDaySelect.menuDayProductList=this.menuDayProductList;
+    }else{
 
-         this.menuDaySelect.menuDayProductList=menuDayProductList;
-
- 
-
+    }
     this.menuDayService.saveMenuDay(this.menuDaySelect).subscribe(data => {
 
       console.log('katriel: ',this.menuDaySelect);
@@ -109,14 +128,42 @@ export class MenuFormComponent implements OnInit {
   
   listarProductos(){
     this.productService.getListProductByOrganization().subscribe(data=>{
-      this.productos=data;
-      console.log(data);
+     // this.productos=data;
+      this.options=data;
+     console.log('opciones: ',this.options);
     });
   }
 
-  agregarMenuDayProduct(){
+  itemSelected(event: MatAutocompleteSelectedEvent,) {
+    console.log("Selected item", event.option.value);
+    this.productSeleccionado=event.option.value;
+  }
+  agregarProduct(){
+
+
+    
+      let nuevoMenuDayProduct:MenuDayProductBean=new MenuDayProductBean();
+          nuevoMenuDayProduct.product=this.productSeleccionado;
+          this.menuDayProductList.push(nuevoMenuDayProduct);
+         
+          this.menuDayService.mensajeCambio.next("Se agrrego producto");
+        
 
 
   }
+
+
+  //
+
+  displayFn(user: ProductBean): string {
+    return user && user.name ? user.name : '';
+  }
+
+  private _filter(name: string): ProductBean[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+  //
   
 }
