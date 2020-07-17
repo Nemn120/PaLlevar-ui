@@ -1,0 +1,38 @@
+<div class="example-container mat-elevation-z8">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Detalle de pedido</span>
+
+        </mat-toolbar>
+    </p>
+    <mat-table #table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="companyName">
+            <mat-header-cell *matHeaderCellDef> Restaurant </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.companyName}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="product">
+            <mat-header-cell *matHeaderCellDef> Platillo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+            <mat-cell *matCellDef="let element">S/. {{element.price}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip mat-icon-button style="background-color: #e27b5c;">{{element.status}}</mat-chip>
+                </mat-chip-list>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>

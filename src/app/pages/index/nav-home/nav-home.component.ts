@@ -58,7 +58,9 @@ export class NavHomeComponent {
   }
 
   openPedidos() {
-    this.dialog.open(PedidosComponent);
+    this.dialog.open(PedidosComponent,{
+      width: '600px',
+    });
  }
 
  openEditar(){

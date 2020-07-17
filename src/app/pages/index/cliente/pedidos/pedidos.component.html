@@ -1,41 +1,52 @@
-<mat-card-title style="text-align: center;">Pedidos</mat-card-title>
-<mat-card-content>
-    <mat-selection-list #shoes [multiple]="false">
-        <mat-list-option *ngFor="let shoe of ordenes" [value]="shoe">
+<mat-toolbar class="title-component">
+    <span>Mis pedidos pendientes</span>
 
-            {{shoe.id +' '+shoe.status+' '+shoe.total+' '+shoe.quantity}}
-            <mat-divider></mat-divider>
+</mat-toolbar>
 
-        </mat-list-option>
-    </mat-selection-list>
+<div class="container">
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="date">
+            <mat-header-cell fxFlex="150px" *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+            <mat-cell style="width:120px;" fxFlex="150px" *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
+        </ng-container>
 
+        <ng-container matColumnDef="total">
+            <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Costo total </mat-header-cell>
+            <!-- NOMBRE DE LA COLUMNA-->
+            <mat-cell *matCellDef="let row"> S/. {{row.total}}</mat-cell>
+            <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+        </ng-container>
 
-</mat-card-content>
+        <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad total </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.quantity}}</mat-cell>
+        </ng-container>
 
-<mat-card-footer *ngIf="shoes.selectedOptions.selected[0]?.value">
-    Descripcion: {{ shoes.selectedOptions.selected[0]?.value.phone+' '+ shoes.selectedOptions.selected[0]?.value.address }}
-    <span *ngFor="  let o of shoes.selectedOptions.selected[0]?.value.orderDetail">
-        {{o.ProductBean.name +' '+o.price}}
-    </span> {{shoes.selectedOptions.selected[0]?.value.quantity+' '+ shoes.selectedOptions.selected[0]?.value.total }}
-</mat-card-footer>
-<!--
-<table>
-    <thead>
-        <th>id</th>
-        <th>status</th>
-        <th>total</th>
-        <th>quantity</th>
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+            <mat-cell *matCellDef="let row">
 
-    </thead>
-    <tbody>
-        <tr *ngFor="let o of ordenes">
-            <td>{{o.id}}</td>
-            <td>{{o.status}}</td>
-            <td>{{o.total}}</td>
-            <td>{{o.quantity}}</td>
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip mat-icon-button>{{row.status}}</mat-chip>
+                </mat-chip-list>
+            </mat-cell>
+        </ng-container>
 
-        </tr>
-    </tbody>
-</table>
+        <ng-container matColumnDef="detail">
+            <mat-header-cell *matHeaderCellDef> Ver Detalle </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button color="primary" (click)="openDialog(row)">
+          <mat-icon>fastfood</mat-icon>
+        </button>
 
--->
+            </mat-cell>
+
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
