@@ -4,11 +4,11 @@ import { MainBean } from './MainBean';
 export class MenuDayProductBean extends MainBean{
     id:number;
     product:ProductBean; // 
-    menuDay:MenuDayBean;
+    menuDay:MenuDayBean; // NO TIENE
     price:number;
     quantity:number;
     available:number;
     status:string; // DISPONIBLE , NO DISPONIBLE
     type:string; // COMBO, MENU , PAQUETE
-    menuDayId:number;
+    menuDayId:number; // ACA ESTA EL ID
 }

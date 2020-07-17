@@ -30,7 +30,7 @@ export class DeliveryOrderDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  debugger
+  //debugger
     this.orderDetailList=this.data.orderDetail;
     this.dataSource = new MatTableDataSource<OrderDetailBean>(this.orderDetailList);
     this.titleOrderDetailList="Detalle de pedido";   

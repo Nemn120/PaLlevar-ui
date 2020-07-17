@@ -1,28 +1,9 @@
 <h1 mat-dialog-title>{{mensaje.title}}</h1>
 <div mat-dialog-content>
     <p>{{mensaje.description}}</p>
-
-    <form [formGroup]="form" *ngIf="mensaje.inputData" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">
-
-        <mat-form-field style="margin:auto">
-            <input *ngIf="mensaje.inputData" matInput placeholder="Direccion" formControlName="address">
-            <mat-error *ngIf="hasError('address', 'required')">Dirección es requerida</mat-error>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input *ngIf="mensaje.inputData" matInput placeholder="Referencia" formControlName="reference">
-            <mat-error *ngIf="hasError('reference', 'required')">Dirección es requerida</mat-error>
-        </mat-form-field>
-        <br>
-        <mat-form-field>
-            <input *ngIf="mensaje.inputData" matInput placeholder="Telefono" formControlName="phone">
-            <mat-error *ngIf="hasError('phone', 'required')">Telefono es requerido</mat-error>
-        </mat-form-field>
-        <button *ngIf="mensaje.inputData" color="primary" mat-button (click)="confirmado()" cdkFocusInitial>Enviar</button>
-    </form>
 </div>
 <div mat-dialog-actions>
 
-    <button *ngIf="!mensaje.inputData" mat-button (click)="cerrarDialogo()">No</button>
-    <button *ngIf="!mensaje.inputData" mat-button (click)="confirmado()" cdkFocusInitial>Sí</button>
+    <button mat-button (click)="cerrarDialogo()">No</button>
+    <button mat-button (click)="confirmado()" cdkFocusInitial>Sí</button>
 </div>

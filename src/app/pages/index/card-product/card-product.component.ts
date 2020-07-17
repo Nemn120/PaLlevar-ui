@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MenuDayProductBean } from '../../../_model/MenuDayProductBean';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
+import { DataClientDialogComponent } from '../../../_shared/data-client-dialog/data-client-dialog.component';
+import { SharedService } from '../../../_service/shared.service';
 @Component({
   selector: "app-card-product",
   templateUrl: "./card-product.component.html",
@@ -18,7 +20,8 @@ export class CardProductComponent implements OnInit {
   menuSelect:MenuDayProductBean;
   constructor(
     private dialog:MatDialog,
-    private carService:CarServiceService
+    private carService:CarServiceService,
+    private sharedService:SharedService
 
   ) { }
 
@@ -35,9 +38,23 @@ export class CardProductComponent implements OnInit {
     orderDetail.price=this.menuSelect.price
     orderDetail.menuProductId=this.menuSelect.id;
     this.carService.addProduct(orderDetail);
+    if (!this.carService.orderHeader.address) {
+      this.openDialog(orderDetail);
+    }
+
     console.log(this.menuProduct);
     console.log(this.carService.getItems());
   }
+  public openDialog(orderDetail: OrderDetailBean) {
+    let order = orderDetail != null ? orderDetail : new OrderDetailBean();
+    this.dialog.open(DataClientDialogComponent, {
+      width: '600',
+      height: '600',
+      data: order
+    });
+  }
+
+
  
 }
 

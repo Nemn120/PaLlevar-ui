@@ -17,6 +17,7 @@ import { PedidosComponent } from './cliente/pedidos/pedidos.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data-client-dialog.component';
 
 const routes: Routes = [
 
@@ -71,7 +72,7 @@ const routes: Routes = [
   [
 
   PerfilComponent,PedidosComponent,EditarPerfilComponent,
-   SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent
+   SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent,DataClientDialogComponent
   ],
 
  

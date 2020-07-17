@@ -70,7 +70,7 @@ export class AttendOrderDetailComponent implements OnInit {
           });
         
           this.data.orderDetail=attendODetail;
-          debugger
+          //debugger
           this.orderService.saveAttendOrder(this.data).subscribe(data =>{
             console.log(attendODetail);
             this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR

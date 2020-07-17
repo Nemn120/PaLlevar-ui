@@ -69,7 +69,7 @@ export class DeliveryOrderAsignComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
-          debugger
+          //debugger
           this.data.userDeliveryId =this.selection.selected[0].id;
           this.orderService.saveDeliveryOrder(this.data).subscribe(data =>{ // LLAMADA AL SERVICIO
             this.dataSource.data=  this.dataSource.data.filter(x => { //ELIMINAR

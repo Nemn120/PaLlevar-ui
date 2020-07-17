@@ -62,12 +62,12 @@ export class CarDialogComponent implements OnInit {
     //debugger;
     let params = {
       title: 'Generar pedido',
-      description: 'Ingrese los siguientes datos para completar la orden',
+      description: '¿Desea realizar el pedido?',
       inputData:true
     }
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
-      debugger
+      //debugger
       this.dialogo
         .open(DialogoConfirmacionComponent, {
           data: params
@@ -78,9 +78,11 @@ export class CarDialogComponent implements OnInit {
           if (confirmado) {
             if (this.sharedService.userSession) {
               this.sendOrderCar = new OrderBean;
-              this.carService.newOrder.subscribe(x =>{
+              this.sendOrderCar=this.carService.orderHeader;
+              /*this.carService.newOrder.subscribe(x =>{
                 this.sendOrderCar=x;
               })
+              */
               // this.sendOrderCar=this.carService.getOrder();
               this.sendOrderCar.orderDetail = [];
               numSelected.forEach(x => {

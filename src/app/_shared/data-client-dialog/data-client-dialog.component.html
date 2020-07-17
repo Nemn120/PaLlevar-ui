@@ -1,1 +1,21 @@
-<p>data-client-dialog works!</p>
+<h1 mat-dialog-title>
+    Generear pedido, ingreso de datos</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">
+
+        <mat-form-field style="margin:auto">
+            <input matInput placeholder="Direccion" formControlName="address" [formGroup]="form" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Referencia" formControlName="reference" [formGroup]="form" required>
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Telefono" formControlName="phone" [formGroup]="form" required>
+        </mat-form-field>
+        <br>
+        <button style="float: right;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Registrar</button>
+    </form>
+</div>

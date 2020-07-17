@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 export class CarServiceService {
 
   orderDetailList:Array<OrderDetailBean> = new Array<OrderDetailBean>();
-  orderHeader: OrderBean;
+  orderHeader: OrderBean = new OrderBean();
   orderService:OrderService;
   newOrder=new Subject<OrderBean>();
 

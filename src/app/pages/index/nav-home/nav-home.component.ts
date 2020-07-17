@@ -6,6 +6,7 @@ import { CarDialogComponent } from '../car-dialog/car-dialog.component';
 import { PedidosComponent } from '../cliente/pedidos/pedidos.component';
 import { EditarPerfilComponent } from '../cliente/editar-perfil/editar-perfil.component';
 import { CarServiceService } from '../../../_service/car-service.service';
+import { OrderBean } from '../../../_model/OrderBean';
 
 @Component({
   selector: 'app-nav-home',
@@ -35,6 +36,7 @@ export class NavHomeComponent {
   cerrar(){
     this.logueado=false;
     this.carService.orderDetailList=[];
+    this.carService.orderHeader = new OrderBean();
   }
 
   openPerfil() {
