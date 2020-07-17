@@ -29,10 +29,14 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatRadioModule} from '@angular/material/radio';
+
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+   
   ],
   exports: [
     MatProgressSpinnerModule,
@@ -65,6 +69,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatExpansionModule,
     MatDialogModule,
     MatRadioModule,
+    MatAutocompleteModule,
+   
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
