@@ -12,7 +12,7 @@
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                </ng-container> 
+                </ng-container>
 
                 <ng-container matColumnDef="address">
                     <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
@@ -29,19 +29,19 @@
 
                 <ng-container matColumnDef="total">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.total}}</mat-cell>
+                    <mat-cell *matCellDef="let row"> S/. {{row.total}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="createDate">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.createDate}}</mat-cell>
+                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
                 </ng-container>
 
 
-                
 
 
-               
+
+
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></mat-row>
@@ -50,7 +50,7 @@
             <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
 
-            
+
         </div>
     </div>
 </div>

@@ -5,6 +5,12 @@
 
 <div class="container">
     <mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="companyName">
+            <mat-header-cell *matHeaderCellDef> Restaurant </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.companyName}} </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="date">
             <mat-header-cell fxFlex="150px" *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
             <mat-cell style="width:120px;" fxFlex="150px" *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>

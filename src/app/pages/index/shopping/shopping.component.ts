@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OrganizationService } from '../../../_service/organization.service';
 import { CompanyBean } from '../../../_model/CompanyBean';
 import { SharedService } from '../../../_service/shared.service';
+import { OrderBean } from '../../../_model/OrderBean';
 
 @Component({
   selector: 'app-shopping',
@@ -33,7 +34,8 @@ export class ShoppingComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private organizationService: OrganizationService,
               private sharedService:SharedService,
-              private router:Router
+              private router:Router,
+              private carService:CarServiceService
     ) { 
       
     
@@ -46,6 +48,7 @@ export class ShoppingComponent implements OnInit {
         this.param=data;
         if(data != null){
           this.mProduct.organizationId=this.companySelect.id;
+          
           this.getListMenuProductByType(this.param);
         }
       });
@@ -53,6 +56,9 @@ export class ShoppingComponent implements OnInit {
       if(this.orgId){
         this.organizationService.getCompanyById(this.orgId).subscribe(data =>{
         this.companySelect=data;
+        let order = new OrderBean();
+        order.organizationId=this.orgId;
+        this.carService.orderHeader=order;
         this.mProduct.organizationId=this.companySelect.id;
         this.organizationService.getPhotoById(this.mProduct.organizationId).subscribe(photo =>{
           let reader = new FileReader();

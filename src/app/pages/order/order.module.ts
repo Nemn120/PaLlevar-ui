@@ -14,6 +14,8 @@ import { ConsolidatedOrderComponent } from './consolidated-order/consolidated-or
 import { DeliveryOrderDetailComponent } from './delivery-order-detail/delivery-order-detail.component';
 import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
 import { DeliveryOrderAsignComponent } from './delivery-order-asign/delivery-order-asign.component';
+import { SharedModule } from '../../_shared/shared.module';
+import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 
 
@@ -37,10 +39,11 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   exports:[
     AttendOrderDetailComponent
   ],
-  entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent]
+  entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent,DialogoConfirmacionComponent]
 })
 export class OrderModule { }

@@ -24,7 +24,7 @@
 
                 <ng-container matColumnDef="total">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
-                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.total}}</mat-cell>
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)">S/. {{row.total}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="quantity">
@@ -39,6 +39,11 @@
                 <ng-container matColumnDef="address">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
                     <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.address}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="createDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="actions">

@@ -30,23 +30,15 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="price">
             <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+            <mat-cell *matCellDef="let element"> S/. {{element.price}} </mat-cell>
         </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="attendDate">
-            <mat-header-cell *matHeaderCellDef> Dia de atencion </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.attendDate}} </mat-cell>
-        </ng-container>
-
-
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">

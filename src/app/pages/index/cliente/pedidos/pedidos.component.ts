@@ -17,7 +17,7 @@ export class PedidosComponent implements OnInit {
   ordenes:OrderBean[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['date', 'total', 'quantity','status','detail'];
+  displayedColumns: string[] = ['companyName','date', 'total', 'quantity','status','detail'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
 
 

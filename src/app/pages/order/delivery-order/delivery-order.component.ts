@@ -19,7 +19,7 @@ export class DeliveryOrderComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','actions'];
+  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','createDate','actions'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   titleProductList: string;
 
@@ -55,8 +55,7 @@ export class DeliveryOrderComponent implements OnInit {
   public openDialogDetail(order: OrderBean) {
     let orderSelect = order != null ? order : new OrderBean();
     this.dialog.open(DeliveryOrderDetailComponent, {
-      width: '600',
-      height: '600',
+      width: '600px',
       data: orderSelect
     });
   }
@@ -64,8 +63,7 @@ export class DeliveryOrderComponent implements OnInit {
   public openDialogAsign(order: OrderBean) {
     let orderSelect = order != null ? order : new OrderBean();
     this.dialog.open(DeliveryOrderAsignComponent, {
-      width: '600',
-      height: '600',
+      width: '600px',
       data: orderSelect
     });
   }

@@ -20,7 +20,7 @@ import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmac
 export class CarDialogComponent implements OnInit {
 
   odList: Array<OrderDetailBean> = new Array<OrderDetailBean>();
-  displayedColumns = ['select', 'name', 'price', 'organization'];
+  displayedColumns = ['select', 'name', 'price'];
   selection: SelectionModel<OrderDetailBean>;
   dataSource: MatTableDataSource<OrderDetailBean>;
   totalRow: number;

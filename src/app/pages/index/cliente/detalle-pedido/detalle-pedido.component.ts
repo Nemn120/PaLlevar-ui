@@ -20,7 +20,7 @@ export class DetallePedidoComponent implements OnInit {
   
   dataSource: MatTableDataSource<OrderDetailBean>;/// tabla 
   titleOrderDetailList: string;
-  displayedColumns: string[] = [ 'companyName','product','price','status'];
+  displayedColumns: string[] = [ 'product','price','status'];
   constructor(
     private dialogRef: MatDialogRef<DetallePedidoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,

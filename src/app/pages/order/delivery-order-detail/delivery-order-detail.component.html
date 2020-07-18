@@ -20,20 +20,16 @@
         </ng-container>
         <ng-container matColumnDef="price">
             <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="createDate">
-            <mat-header-cell *matHeaderCellDef> Fecha creacion </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.createDate}} </mat-cell>
+            <mat-cell *matCellDef="let element">S/. {{element.price}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="attendDate">
             <mat-header-cell *matHeaderCellDef> Fecha Atencion </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.attendDate}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.attendDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;">
         </mat-row>
     </mat-table>
-    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cerrar</button>
 </div>

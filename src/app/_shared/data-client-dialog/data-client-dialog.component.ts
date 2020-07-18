@@ -27,7 +27,7 @@ export class DataClientDialogComponent implements OnInit {
     this.order.address=this.form.value['address'];
     this.order.reference=this.form.value['reference'];
     this.order.phone=this.form.value['phone'];
-    
+    this.order.organizationId=this.carService.orderHeader.organizationId;
     this.carService.orderHeader=this.order;
     
     //this.carService.newOrder.next(this.order);

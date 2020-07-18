@@ -31,11 +31,6 @@
             </ng-container>
 
             <!-- Symbol Column -->
-            <ng-container matColumnDef="organization">
-                <mat-header-cell *matHeaderCellDef> Empresa </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.organizationId}} </mat-cell>
-            </ng-container>
-
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
             </mat-row>

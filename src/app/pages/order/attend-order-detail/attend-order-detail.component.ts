@@ -27,7 +27,7 @@ export class AttendOrderDetailComponent implements OnInit {
   orderDetailList: OrderDetailBean[];
  
 
-  displayedColumns = ['select', 'id','product', 'price', 'attendDate','status'];
+  displayedColumns = ['select', 'id','product', 'price','status'];
   dataSource : MatTableDataSource<OrderDetailBean>;
   selection : SelectionModel<OrderDetailBean>;
 
@@ -43,6 +43,7 @@ export class AttendOrderDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderDetailList=this.data.orderDetail;
+    this.orderDetailList=this.orderDetailList.filter(x => x.status=="Pendiente");
     this.dataSource = new MatTableDataSource<OrderDetailBean>(this.orderDetailList);
     this.selection = new SelectionModel<OrderDetailBean>(true, []);
 

@@ -12,13 +12,10 @@
                 <mat-card-content>
 
                     <mat-form-field class="full-width">
-                        <input id="emailInput" matInput placeholder="Email" formControlName="email" autocomplete="email" type="email">
+                        <input id="emailInput" matInput placeholder="Username" formControlName="email" autocomplete="email" type="email">
 
-                        <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
-                            Please enter a valid email address
-                        </mat-error>
                         <mat-error id="requiredEmailError" *ngIf="loginForm.controls['email'].hasError('required')">
-                            Correo es
+                            Username es
                             <strong>necesario</strong>
                         </mat-error>
 
