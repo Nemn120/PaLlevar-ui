@@ -19,7 +19,7 @@ export class NavHomeComponent {
   logo2 = "../../../../assets/images/motoDelivery.gif";
 
 
-  logueado:boolean=false;
+  logueado = false;
 
   
   constructor(public dialog: MatDialog,private sharedService:SharedService,

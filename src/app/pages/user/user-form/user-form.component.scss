@@ -1,0 +1,44 @@
+.mat-stepper-vertical {
+    margin-top: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-form-field {
+    margin-top: 16px;
+}
+
+mat-horizontal-stepper {
+    text-align: center;
+}
+
+mat-step {
+    padding: 10px;
+    margin: 10px;
+    background-color: aqua;
+}
+
+mat-horizontal-stepper-header-container {
+    text-align: center;
+}
+
+div.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: initial;
+    justify-content: center;
+    //flex-direction: row;
+    width: -webkit-fill-available;
+}
+
+.title-component {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 16px;
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
