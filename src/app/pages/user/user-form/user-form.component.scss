@@ -42,3 +42,9 @@ div.container {
     align-items: center;
     white-space: nowrap;
 }
+
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+    margin: 8px;
+}

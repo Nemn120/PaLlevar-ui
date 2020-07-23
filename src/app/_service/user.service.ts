@@ -16,6 +16,7 @@ export class UserService {
   menuCambio = new Subject<ProfileMenuOptionBean[]>();
   url: string = `${environment.HOST}`;    
   subUrl:string="user";
+  imagen: any;
   constructor(private http: HttpClient,private sharedService:SharedService) { }
 
   listar() {

@@ -18,18 +18,22 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { DialogFotoComponent } from './user-form/dialog-foto/dialog-foto.component';
+import { DialogConfirmacionComponent } from './dialog-confirmacion/dialog-confirmacion.component';
+import {MatTableModule} from '@angular/material/table';
+
 const routes: Routes = [
   {
     path: "",
     component: SidebarSidenavComponent,
     children: [
       {
-        path: "form",
+        path: "list",
         component: UserListComponent,
         canActivate: [GuardService]
       },
       {
-        path: "list",
+        path: "form",
         component: UserFormComponent,
         canActivate: [GuardService]
       },
@@ -38,7 +42,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserProfileComponent, UserListComponent, UserFormComponent],
+  declarations: [UserProfileComponent, UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -57,9 +61,10 @@ const routes: Routes = [
     MatButtonModule,
     MatToolbarModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule
   ],
   exports: [RouterModule],
-  entryComponents: [UserFormComponent]
+  entryComponents: [UserFormComponent, DialogConfirmacionComponent, DialogFotoComponent]
 })
 export class UserModule { }

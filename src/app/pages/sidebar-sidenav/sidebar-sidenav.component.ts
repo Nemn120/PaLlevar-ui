@@ -25,6 +25,7 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
   //menus: Array<MenuOptionBean> = new Array();
   menus:MenuOptionBean[];
   isLogueado: boolean = false;
+  userMenu: string;
 
   constructor(
    

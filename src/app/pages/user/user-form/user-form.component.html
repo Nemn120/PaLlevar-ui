@@ -60,13 +60,7 @@
                             </mat-form-field>
                         </div>
                         <div>
-                            <mat-form-field>
-                                <mat-label>Foto</mat-label>
-                                <input matInput placeholder="Foto" formControlName="_fotoCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <!--  -->
-                        <div>
+                            <button mat-raised-button color="primary" (click)="subirFoto()">Subir foto</button>
                             <button mat-raised-button matStepperNext color="primary">Next</button>
                         </div>
                     </form>
