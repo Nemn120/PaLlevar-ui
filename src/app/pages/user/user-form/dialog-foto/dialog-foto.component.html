@@ -1,0 +1,14 @@
+<div style="text-align: center;">
+    <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
+    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+    <br>
+    <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+    <p>{{labelFile}}</p>
+    <br>
+</div>
+<br>
+
+<div style="float:right;">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="onNoClick()">Cancelar</button>
+</div>

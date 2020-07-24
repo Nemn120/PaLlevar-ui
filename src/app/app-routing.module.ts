@@ -23,7 +23,9 @@ const routes: Routes = [
   {
     path: 'menu', loadChildren: () => import('./pages/menu/menu.module').then(m => m.MenuModule)
   },
-  { path: '**', pathMatch: 'full', redirectTo: '/index' }
+  { path: 'user', loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+  },
+  { path: '**', pathMatch: 'full', redirectTo: '/index' },
 ];
 
 @NgModule({

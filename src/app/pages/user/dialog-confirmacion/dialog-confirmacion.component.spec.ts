@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutInternalComponent } from './layout-internal.component';
+import { DialogConfirmacionComponent } from './dialog-confirmacion.component';
 
-describe('LayoutInternalComponent', () => {
-  let component: LayoutInternalComponent;
-  let fixture: ComponentFixture<LayoutInternalComponent>;
+describe('DialogConfirmacionComponent', () => {
+  let component: DialogConfirmacionComponent;
+  let fixture: ComponentFixture<DialogConfirmacionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayoutInternalComponent ]
+      declarations: [ DialogConfirmacionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutInternalComponent);
+    fixture = TestBed.createComponent(DialogConfirmacionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

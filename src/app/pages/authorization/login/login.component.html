@@ -12,10 +12,13 @@
                 <mat-card-content>
 
                     <mat-form-field class="full-width">
-                        <input id="emailInput" matInput placeholder="Username" formControlName="email" autocomplete="email" type="email">
+                        <input id="emailInput" matInput placeholder="Usuario" formControlName="email" autocomplete="email" type="email">
 
+                        <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
+                            Please enter a valid user
+                        </mat-error>
                         <mat-error id="requiredEmailError" *ngIf="loginForm.controls['email'].hasError('required')">
-                            Username es
+                            Usuario es
                             <strong>necesario</strong>
                         </mat-error>
 
@@ -30,7 +33,7 @@
                     </mat-form-field>
 
                     <div class="full-width">
-                        <mat-slide-toggle formControlName="rememberMe">Recordar mi correo</mat-slide-toggle>
+                        <mat-slide-toggle formControlName="rememberMe">Recordar mi usuario</mat-slide-toggle>
                     </div>
 
                 </mat-card-content>

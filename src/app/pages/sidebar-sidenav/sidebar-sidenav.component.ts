@@ -24,6 +24,9 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
   isAdmin: boolean;
   //menus: Array<MenuOptionBean> = new Array();
   menus:MenuOptionBean[];
+  isLogueado: boolean = false;
+  userMenu: string;
+
   constructor(
    
     private changeDetectorRef: ChangeDetectorRef,
@@ -42,6 +45,10 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
       this.mobileQuery.addListener(this._mobileQueryListener);
      }
      ngOnInit(){
+      if(this.sharedService.userSession != null && this.sharedService.getUserIdSession()>0){
+        this.isLogueado=true;
+        console.log(this.isLogueado);
+      }
       //this.menuService.menuCambio.subscribe(data => {
         //this.menus. =
 //        this.menuService.menuCambio.subscribe( x => {
@@ -64,5 +71,10 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
       // tslint:disable-next-line: deprecation
       this.mobileQuery.removeListener(this._mobileQueryListener);
       //this.autoLogoutSubscription.unsubscribe();
+  }
+
+  cerrarSesion() {
+    this.isLogueado = false;
+    console.log(this.isLogueado);
   }
 }
