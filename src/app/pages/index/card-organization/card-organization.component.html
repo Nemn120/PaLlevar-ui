@@ -1,20 +1,18 @@
-<div class="menu-org-detail" style="float: right;">
+<div class="menu-org-detail" (click)="goShop()" style="float: right;">
     <div class="menu-org-item">
         <div class="image-item">
             <img class="image-position" [src]="orgSelect._foto" *ngIf="orgSelect._isFoto" />
-            <!--    <ng-template #fotoDefault><img class="image-position" src="{{imgDefault}}" /></ng-template>-->
         </div>
         <div class="data-item">
 
             <h3 class="title-item">{{orgSelect.nombre}}</h3>
             <p class="description-item">
-                <u></u><br>
+                <u>Polleria</u><br>
             </p>
             <div class="price-item">
                 <span class="price-org">
-                    <b></b>
+                    <mat-icon style="color:sienna">access_time</mat-icon> 53 min <mat-icon style="color:#FFD559">star_rate</mat-icon> 4.4
                   </span>
-                <button (click)="goShop()" class="buton-product">Ver productos</button>
             </div>
         </div>
     </div>

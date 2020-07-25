@@ -39,13 +39,13 @@
                 </mat-card-content>
 
                 <mat-card-actions class="login-actions">
-                    <button mat-raised-button style="margin-left:80px;" id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Ingresa</button>
-                    <button mat-button id="resetPassword" (click)="resetPassword()" type="button">Recuperar contraseña</button>
+                    <button mat-raised-button style="margin-left:2px;" id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Ingresa</button>
+                    <button mat-raised-button color="accent" routerLink="/auth/registry">Regístrate</button>
                 </mat-card-actions>
 
             </mat-card>
 
-            <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+            <mat-progress-bar *ngIf="loading " mode="indeterminate "></mat-progress-bar>
         </form>
     </div>
 </div>

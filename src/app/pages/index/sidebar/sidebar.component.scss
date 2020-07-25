@@ -1,20 +1,19 @@
 .categories {
     position: -webkit-sticky;
     position: sticky;
-    width: 200px;
-    padding: 15px 5px 15px 0;
+    margin: auto;
+    width: 120px;
+    padding: 5px 0px 5px 0;
     border-radius: 8px;
     z-index: 8;
     vertical-align: top;
     display: inline-block;
     font-size: 14px;
-    background-color: #fff;
+    //  background-color: #fff;
     top: 80px;
     max-height: 600px;
     overflow-y: hidden;
     margin-bottom: 80px;
-    margin-right: 20px;
-    margin: auto;
 }
 
 .title-categories {
@@ -24,11 +23,11 @@
 
 .categories-item {
     display: block;
-    padding: 11px 20px;
+    margin: auto;
     font-size: 14px;
     transition: all .3s linear;
     text-align: left;
-    color: #7d7d7d;
+    //color: #7d7d7d;
 }
 
 .buton-product {
