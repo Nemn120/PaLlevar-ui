@@ -105,3 +105,32 @@
         }
     }
 }
+
+.menu-org-detail:hover {
+    // background: rgb(170, 169, 169);
+    box-shadow: 0px 2px 10px 5px #f77700;
+    //  color: #000;
+}
+
+.menu-org-detail:after {
+    background: #5a493a;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0.1;
+    //transition: all 0.8s
+}
+
+.menu-org-detail:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+.menu-org-detail:focus {
+    outline: 0;
+}

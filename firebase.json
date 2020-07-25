@@ -1,6 +1,6 @@
 {
     "hosting": {
-        "public": "dist/paLlevar-frontend",
+        "public": "dist",
         "ignore": [
             "firebase.json",
             "**/.*",
