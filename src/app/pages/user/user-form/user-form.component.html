@@ -1,147 +1,128 @@
-<div class="mat-parent">
-    <p>
-        <mat-toolbar class="title-component">
-            <span>Registrar Personal</span>
-        </mat-toolbar>
-    </p>
-    <div class="carousel-item" style="display: flex; width: 80%;">
-        <div class="container">
-
-            <mat-horizontal-stepper #stepper>
-                <mat-step [stepControl]="personalFormGroup">
-                    <form [formGroup]="personalFormGroup">
-                        <ng-template matStepLabel>Datos Personales</ng-template>
-                        <div>
-                            <mat-form-field>
-                                <mat-label>Nombres</mat-label>
-                                <input matInput placeholder="Nombres" formControlName="nombreCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field>
-                                <mat-label>Apellidos</mat-label>
-                                <input matInput placeholder="Apellidos" formControlName="lastNameCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field>
-                                <mat-label>Dirección</mat-label>
-                                <input matInput placeholder="Direccion" formControlName="addressCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field appearance="fill">
-                                <mat-label>Tipo de documento</mat-label>
-                                <mat-select [(value)]="documentTypeselected">
-                                    <mat-option value="1">DNI</mat-option>
-                                    <mat-option value="2">Carnet de extranjería</mat-option>
-                                    <mat-option value="3">Pasaporte</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field>
-                                <mat-label>Numero de documento</mat-label>
-                                <input matInput placeholder="Numero Documento" formControlName="documentNumberCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field>
-                                <mat-label>Celular/Teléfono</mat-label>
-                                <input matInput placeholder="Celular" formControlName="cellPhoneCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field appearance="fill">
-                                <mat-label>My Birthday</mat-label>
-                                <input matInput [matDatepicker]="picker1" [formControl]="date">
-                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                <mat-datepicker #picker1></mat-datepicker>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <button mat-raised-button color="primary" (click)="subirFoto()">Subir foto</button>
-                            <button mat-raised-button matStepperNext color="primary">Next</button>
-                        </div>
-                    </form>
-                </mat-step>
-                <mat-step [stepControl]="loginFormGroup">
-                    <form [formGroup]="loginFormGroup">
-                        <ng-template matStepLabel>Datos de Login</ng-template>
-                        <div>
-                            <mat-form-field>
-                                <mat-label>Nombre de usuario</mat-label>
-                                <input matInput placeholder="Usuario" formControlName="usernameCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <!-- <mat-form-field>
+<button mat-button mat-dialog-close>X</button>
+<div>
+    <div>
+        <mat-vertical-stepper #stepper>
+            <mat-step [stepControl]="personalFormGroup" errorMessage="Estos campos son requeridos">
+                <form [formGroup]="personalFormGroup">
+                    <ng-template matStepLabel>Datos Personales</ng-template>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Nombres</mat-label>
+                            <input matInput placeholder="Nombres" formControlName="nombreCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Apellidos</mat-label>
+                            <input matInput placeholder="Apellidos" formControlName="lastNameCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Dirección</mat-label>
+                            <input matInput placeholder="Direccion" formControlName="addressCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Tipo de documento</mat-label>
+                            <mat-select [(value)]="documentTypeselected">
+                                <mat-option value="1">DNI</mat-option>
+                                <mat-option value="2">Carnet de extranjería</mat-option>
+                                <mat-option value="3">Pasaporte</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Numero de documento</mat-label>
+                            <input matInput placeholder="Numero Documento" formControlName="documentNumberCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Celular/Teléfono</mat-label>
+                            <input matInput placeholder="Celular" formControlName="cellPhoneCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>My Birthday</mat-label>
+                            <input matInput [matDatepicker]="picker1" [formControl]="date">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" (click)="subirFoto()">Subir foto</button>
+                        <button mat-raised-button matStepperNext color="primary">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="loginFormGroup" errorMessage="Estos campos son requeridos">
+                <form [formGroup]="loginFormGroup">
+                    <ng-template matStepLabel>Datos de Login</ng-template>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Nombre de usuario</mat-label>
+                            <input matInput placeholder="Usuario" formControlName="usernameCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <!-- <mat-form-field>
                                     <mat-label>Contraseña</mat-label>
                                     <input matInput placeholder="Contrasena" formControlName="passwordCtrl" required>
                                 </mat-form-field> -->
-                            <mat-form-field appearance="fill">
-                                <mat-label>Contraseña</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordCtrl" required>
-                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordCtrl" required>
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
-                            </mat-form-field>
-                        </div>
-                        <!--  -->
-                        <div>
-                            <button mat-raised-button matStepperPrevious color="warn">Back</button>
-                            <button mat-raised-button matStepperNext color="primary">Next</button>
-                        </div>
-                    </form>
-                </mat-step>
-                <mat-step [stepControl]="companyFormGroup">
-                    <form [formGroup]="companyFormGroup">
-                        <ng-template matStepLabel>Datos para organización</ng-template>
-                        <!-- <div *ngFor="let item of formCompanyCtrl">
+                        </mat-form-field>
+                    </div>
+                    <!--  -->
+                    <div>
+                        <button mat-raised-button matStepperPrevious color="warn">Back</button>
+                        <button mat-raised-button matStepperNext color="primary">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="companyFormGroup" errorMessage="Estos campos son requeridos">
+                <form [formGroup]="companyFormGroup">
+                    <ng-template matStepLabel>Datos para organización</ng-template>
+                    <!-- <div *ngFor="let item of formCompanyCtrl">
                                 <mat-form-field>
                                     <mat-label>{{item}}</mat-label>
                                     <input matInput formControlName="{{item}}Ctrl" placeholder="{{item}}" required>
                                 </mat-form-field>
                             </div> -->
-                        <div>
-                            <!-- <mat-form-field>
+                    <div>
+                        <!-- <mat-form-field>
                                     <mat-label>Estado</mat-label>
                                     <input matInput placeholder="Status" formControlName="statusCtrl" required>
                                 </mat-form-field> -->
-                            <mat-form-field appearance="fill">
-                                <mat-label>Estado/ Dsiponibilidad</mat-label>
-                                <mat-select [(value)]="estadoSelected">
-                                    <mat-option value="1">Disponible</mat-option>
-                                    <mat-option value="2">Ocupado</mat-option>
-                                    <mat-option value="3">En Vacaciones</mat-option>
-                                </mat-select>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <mat-form-field>
-                                <mat-label>Codigo de empleado</mat-label>
-                                <input matInput placeholder="Codigo" formControlName="employeecodeCtrl" required>
-                            </mat-form-field>
-                        </div>
-                        <div>
-                            <button mat-raised-button matStepperPrevious color="warn">Back</button>
-                            <button mat-raised-button color="primary" (click)="registrar()">Registrar</button>
-                        </div>
-                    </form>
-                </mat-step>
-            </mat-horizontal-stepper>
-
-            <!-- <mat-form-field appearance="fill">
-                <mat-label>Tipo de documento</mat-label>
-                <mat-select [(value)]="selected">
-                    <mat-option value="DNI">DNI</mat-option>
-                    <mat-option value="Carnet de Extranjería">Carnet de extranjería</mat-option>
-                    <mat-option value="Pasaporte">Pasaporte</mat-option>
-                </mat-select>
-            </mat-form-field>
-            
-            <p>You selected: {{selected}}</p> -->
-        </div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Estado/ Dsiponibilidad</mat-label>
+                            <mat-select [(value)]="estadoSelected">
+                                <mat-option value="1">Disponible</mat-option>
+                                <mat-option value="2">Ocupado</mat-option>
+                                <mat-option value="3">En Vacaciones</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Codigo de empleado</mat-label>
+                            <input matInput placeholder="Codigo" formControlName="employeecodeCtrl" required>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <button mat-raised-button matStepperPrevious color="warn">Back</button>
+                        <button mat-raised-button color="primary" (click)="registrar()">Registrar</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
     </div>
-
 </div>

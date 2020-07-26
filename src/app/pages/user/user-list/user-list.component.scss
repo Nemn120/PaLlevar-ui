@@ -35,3 +35,15 @@ table {
     align-items: center;
     white-space: nowrap;
 }
+
+.mat-raised-button {
+    margin-inline-start: auto;
+}
+
+.mat-parent {
+    position: display;
+}
+
+.mat-dialog-container {
+    width: 0px !important;
+}

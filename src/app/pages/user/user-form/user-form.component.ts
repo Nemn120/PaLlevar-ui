@@ -10,11 +10,15 @@ import { DialogConfirmacionComponent } from '../dialog-confirmacion/dialog-confi
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { DialogFotoComponent } from './dialog-foto/dialog-foto.component';
 import { UserService } from 'src/app/_service/user.service';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  styleUrls: ['./user-form.component.scss'],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}
+  }]
 })
 export class UserFormComponent implements OnInit {
 
