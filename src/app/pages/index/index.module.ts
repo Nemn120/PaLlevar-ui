@@ -55,7 +55,6 @@ const routes: Routes = [
   PerfilComponent,
   DetallePedidoComponent,
 
-
   ],
   imports: [
     CommonModule,
