@@ -4,14 +4,17 @@
         <tr>
             <th>Producto</th>
             <th>Precio</th>
-            <th>Cantidad</th>
+            <th>Cantidad total</th>
+            <th>Cantidad disponible</th>
             <th>Estado</th>
+
 
         </tr>
         <tr *ngFor="let temp of data.menuDayProductList">
             <td>{{temp.product.name}}</td>
-            <td> {{temp.price | currency :'USD'}}</td>
+            <td> S/. {{temp.price}}</td>
             <td> {{temp.quantity }}</td>
+            <td> {{temp.available }}</td>
             <td> {{temp.status }}</td>
         </tr>
 
