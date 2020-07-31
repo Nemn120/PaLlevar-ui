@@ -5,10 +5,15 @@
 </mat-form-field>
 <br>
 <mat-form-field>
+    <!-- Los datos ingresados lo guarda en la variable -->
+    <input matInput placeholder="Desripcion" [(ngModel)]="companySelect.description">
+
+</mat-form-field>
+<br>
+<mat-form-field>
     <input matInput placeholder="Ruc" [(ngModel)]="companySelect.ruc" type="tel">
 </mat-form-field>
 <br>
-
 
 <br>
 <div>

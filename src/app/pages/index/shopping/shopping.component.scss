@@ -1,6 +1,6 @@
 .fondo {
     background-image: url('/assets/images/menu.jpg');
-    position: inherit;
+    background-repeat: repeat-x;
 }
 
 .app-container {
@@ -47,7 +47,7 @@
 }
 
 .restaurant-info {
-    margin: 0px 30px;
+    margin: 10px 30px;
     //width: 100%;
     transition: .3s;
     display: flex;

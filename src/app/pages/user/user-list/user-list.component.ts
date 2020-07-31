@@ -64,7 +64,7 @@ export class UserListComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(UserFormComponent, {
-      width: 'auto', height: 'auto', data: this.codeOrganization
+      width: 'auto', height: '850px', data: this.codeOrganization
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog close');

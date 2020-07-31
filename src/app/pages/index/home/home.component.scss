@@ -3,8 +3,8 @@
     width: 1440px;
     min-height: 900px;
     padding-left: 20px;
-    padding-right: 10px;
-    margin: 0px;
+    padding-right: 20px;
+    margin: auto;
     max-width: 1240px;
     // background-color: cornflowerblue;
 }
@@ -87,7 +87,7 @@ body {
     margin: auto;
     .card {
         flex: 0 0 200px;
-        margin: 10px;
+        margin: 0px;
         justify-items: stretch;
         width: 400px;
     }
@@ -112,6 +112,7 @@ body {
     width: 100%;
     margin: 0px;
     opacity: 1;
+    background-attachment: fixed;
 }
 
 img {

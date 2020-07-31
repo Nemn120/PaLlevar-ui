@@ -89,7 +89,7 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.documentTypeId = this.documentTypeselected;
     this.dataEmployee.documentNumber = this.personalFormGroup.value.documentNumberCtrl;
     this.dataEmployee.cellPhone = this.personalFormGroup.value.cellPhoneCtrl;
-    this.dataEmployee.dateBirth = this.date.value.toDateString();
+    this.dataEmployee.dateBirth = this.date.value;
     this.dataEmployee._foto = this.serviceUser.imagen;
     this.dataEmployee._isFoto = this.tieneFoto(this.serviceUser.imagen);
 
@@ -100,15 +100,20 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.status = this.estadoSelected;
     this.dataEmployee.employeeCode = this.companyFormGroup.value.employeecodeCtrl;
 
-    this.openConfirmation();
 
     console.log(this.dataEmployee);
-    console.log(this.date.value.toDateString());
+    console.log(this.date.value);
 
     // console.log(this.selected);
-    this.stepper.reset();
-    // console.log(this.loginFormGroup);
-    // console.log(this.companyFormGroup);
+    if (this.dataEmployee.nombre == '' || this.dataEmployee.lastName == '' ||
+      this.dataEmployee.address == '' || this.dataEmployee.password == '' ||
+      this.dataEmployee.documentNumber == '' || this.dataEmployee.username == '' ||
+      this.dataEmployee.employeeCode == '') {
+      alert('Debe completar todos los campos');
+    } else {
+      this.openConfirmation();
+      this.stepper.reset();
+    }
   }
   tieneFoto(foto: any): boolean {
     let isFoto = false;
