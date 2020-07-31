@@ -33,6 +33,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    
     MaterialModule,
     FlexLayoutModule,
     JwtModule.forRoot({

@@ -35,10 +35,11 @@ export class OrganizationFormComponent implements OnInit {
     if (this.data.id > 0) {
       this.companySelect.id = this.data.id;
       this.companySelect.nombre = this.data.nombre;
+      this.companySelect.description = this.data.description;
       this.companySelect.ruc = this.data.ruc;
 
       this.companySelect.userAdmin = this.data.userAdmin;
-      this.companySelect.createDate = this.data.createDate;
+      this.companySelect.createDate = new Date();
       this.companyService.getPhotoById(this.data.id).subscribe(data => {
         if (data.size > 0)
           this.imagenData = this.convertir(data);

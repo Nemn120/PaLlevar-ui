@@ -1,37 +1,73 @@
-import { Component, OnInit } from '@angular/core';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { Component, OnInit } from "@angular/core";
+import { ProfileBean } from "../../../_model/ProfileBean";
+import { UserBean } from "../../../_model/UserBean";
+import { ProfileMenuOptionBean } from '../../../_model/ProfileMenuOptionBean';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { UserFormComponent } from '../user-form/user-form.component';
+import { Router } from '@angular/router';
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+const p: ProfileMenuOptionBean[]=[];
+
+const profile: ProfileBean[] = [
+  {
+    idProfile: 1,
+    name: "empleado 1",
+    shortDescription: "el empleado",
+    longDescription: "EL EMPLEADO",
+    listProfileMenuOption: p,
+    createDate: new Date(),
+    userCreateId: 1,
+    organizationId: 1,
+    sucursalId: 1
+  },
+];
+const user: UserBean[] = [
+  {
+    id: 1,
+    nombre: "Jose",
+    password: "123",
+    status: "disponible",
+    address: "av. sol",
+    username: "jose",
+    employeeCode: "123",
+    documentTypeId: "123",
+    documentNumber: "123",
+    profile: profile[0],
+    cellPhone: "918103757",
+    dateBirth: new Date(),
+    lastName: "Condori",
+    _foto: "hay foto",
+    _isFoto: true,
+    createDate: new Date(),
+    userCreateId: 1,
+    organizationId: 1,
+    sucursalId: 1
+  },
 ];
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  selector: "app-user-list",
+  templateUrl: "./user-list.component.html",
+  styleUrls: ["./user-list.component.scss"],
 })
 export class UserListComponent implements OnInit {
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ["nombre", "status", "employeeCode", "dateBirth", "profile"];
+  dataSource = user;
+  codeOrganization: number;
   
-  constructor() { }
+
+  constructor(private dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
+    this.codeOrganization = user[0].organizationId;
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      width: 'auto', height: '850px', data: this.codeOrganization
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog close');
+    });
+  }
 }

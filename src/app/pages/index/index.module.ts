@@ -27,9 +27,9 @@ const routes: Routes = [
     component: IndexComponent,
     children: [
           { path: '', component: HomeComponent  },
-          { path: 'shop/:org', component: ShoppingComponent  },
-          //{ path: 'shop/menu', component: ShoppingComponent  },
-          //{ path: 'shop/promo', component: ShoppingComponent  },
+          { path: 'shop/:org', component: ShoppingComponent  }
+          // { path: 'shop/menu', component: ShoppingComponent  },
+          // { path: 'shop/promo', component: ShoppingComponent  },
         // { path: '',   redirectTo: '/home', pathMatch: 'full' },
     ]
   }
@@ -55,7 +55,6 @@ const routes: Routes = [
   PerfilComponent,
   DetallePedidoComponent,
 
-
   ],
   imports: [
     CommonModule,
@@ -67,7 +66,7 @@ const routes: Routes = [
   exports: [
     RouterModule,
 
-    NavHomeComponent,//exportando el componente  
+    NavHomeComponent,// exportando el componente  
    
   ],
   entryComponents: 

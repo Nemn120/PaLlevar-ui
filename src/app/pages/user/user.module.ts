@@ -9,7 +9,7 @@ import { GuardService } from 'src/app/_service/guard.service';
 import {MatCardModule} from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
@@ -21,6 +21,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { DialogFotoComponent } from './user-form/dialog-foto/dialog-foto.component';
 import { DialogConfirmacionComponent } from './dialog-confirmacion/dialog-confirmacion.component';
 import {MatTableModule} from '@angular/material/table';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MaterialModule } from 'src/app/_material/material.module';
 
 const routes: Routes = [
   {
@@ -28,14 +31,12 @@ const routes: Routes = [
     component: SidebarSidenavComponent,
     children: [
       {
-        path: "list",
+        path: 'list',
         component: UserListComponent,
-        canActivate: [GuardService]
       },
       {
-        path: "form",
+        path: 'form',
         component: UserFormComponent,
-        canActivate: [GuardService]
       },
     ],
   },
@@ -50,21 +51,13 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
 
-    // Material
-    MatCardModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatGridListModule,
-    MatButtonModule,
-    MatTableModule
+    MaterialModule,
+    MatNativeDateModule,
   ],
   exports: [RouterModule],
-  entryComponents: [UserFormComponent, DialogConfirmacionComponent, DialogFotoComponent]
+  entryComponents: [DialogConfirmacionComponent, DialogFotoComponent],
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+  ]
 })
 export class UserModule { }

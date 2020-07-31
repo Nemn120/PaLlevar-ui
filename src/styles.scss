@@ -159,3 +159,11 @@ p .mat-icon {
     position: fixed;
     /*background-image: url("/assets/img/bg1.jpg");*/
 }
+
+.mat-step-icon-state-error .mat-icon {
+    color: crimson !important;
+}
+
+.mat-step-label.mat-step-label-active.mat-step-label-error {
+    color: crimson !important;
+}

@@ -10,11 +10,15 @@ import { DialogConfirmacionComponent } from '../dialog-confirmacion/dialog-confi
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { DialogFotoComponent } from './dialog-foto/dialog-foto.component';
 import { UserService } from 'src/app/_service/user.service';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  styleUrls: ['./user-form.component.scss'],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {showError: true}
+  }]
 })
 export class UserFormComponent implements OnInit {
 
@@ -85,7 +89,7 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.documentTypeId = this.documentTypeselected;
     this.dataEmployee.documentNumber = this.personalFormGroup.value.documentNumberCtrl;
     this.dataEmployee.cellPhone = this.personalFormGroup.value.cellPhoneCtrl;
-    this.dataEmployee.dateBirth = this.date.value.toDateString();
+    this.dataEmployee.dateBirth = this.date.value;
     this.dataEmployee._foto = this.serviceUser.imagen;
     this.dataEmployee._isFoto = this.tieneFoto(this.serviceUser.imagen);
 
@@ -96,15 +100,20 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.status = this.estadoSelected;
     this.dataEmployee.employeeCode = this.companyFormGroup.value.employeecodeCtrl;
 
-    this.openConfirmation();
 
     console.log(this.dataEmployee);
-    console.log(this.date.value.toDateString());
+    console.log(this.date.value);
 
     // console.log(this.selected);
-    this.stepper.reset();
-    // console.log(this.loginFormGroup);
-    // console.log(this.companyFormGroup);
+    if (this.dataEmployee.nombre == '' || this.dataEmployee.lastName == '' ||
+      this.dataEmployee.address == '' || this.dataEmployee.password == '' ||
+      this.dataEmployee.documentNumber == '' || this.dataEmployee.username == '' ||
+      this.dataEmployee.employeeCode == '') {
+      alert('Debe completar todos los campos');
+    } else {
+      this.openConfirmation();
+      this.stepper.reset();
+    }
   }
   tieneFoto(foto: any): boolean {
     let isFoto = false;

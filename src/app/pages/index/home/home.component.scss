@@ -5,11 +5,8 @@
     padding-left: 20px;
     padding-right: 20px;
     margin: auto;
+    max-width: 1240px;
     // background-color: cornflowerblue;
-    @media only screen and (max-width: 1280px), screen and (orientation: portrait) {
-        max-width: 1240px;
-        width: 100%;
-    }
 }
 
 body {
@@ -90,7 +87,7 @@ body {
     margin: auto;
     .card {
         flex: 0 0 200px;
-        margin: 10px;
+        margin: 0px;
         justify-items: stretch;
         width: 400px;
     }
@@ -106,13 +103,44 @@ body {
 
 .background {
     background-image: url('../../../../assets/images/vista.jpg');
-    background-position: center center;
+    //background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    //background-attachment: fixed;
     position: relative;
     height: 100%;
     width: 100%;
     margin: 0px;
     opacity: 1;
+    background-attachment: fixed;
+}
+
+img {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+    .menu-bodycat {
+        float: none;
+    }
+    .menuProduct-container {
+        display: contents;
+    }
+    .app-container {
+        width: auto;
+        padding: 0px;
+    }
+    .background {
+        background-image: none;
+    }
+    .card {
+        width: 100px !important;
+        padding-left: 280px;
+    }
+    .mat-list-base .mat-list-item,
+    .mat-list-base .mat-list-option {
+        padding-left: 70px;
+    }
 }
