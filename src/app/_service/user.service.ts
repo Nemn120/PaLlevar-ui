@@ -11,7 +11,7 @@ import { ProfileMenuOptionBean } from '../_model/ProfileMenuOptionBean';
 })
 export class UserService {
 
-  userBeanCambio = new Subject<UserBean[]>();
+  userCambio = new Subject<UserBean[]>();
   mensajeCambio = new Subject<string>();
   menuCambio = new Subject<ProfileMenuOptionBean[]>();
   url: string = `${environment.HOST}`;    
@@ -41,7 +41,15 @@ export class UserService {
   } 
 
   listarAll(){
-    return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}`);
+    return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/glur`);
+  }
+  getListUserByOrganization(){
+    let a = this.sharedService.getOrganizationIdByUserSession();
+    return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/gubo/${a}`)
+  }
+  registrarTrabajador(user:UserBean){
+    user.organizationId=this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<UserBean>(`${this.url}/${this.subUrl}/su`,user);
   }
 
   getDeliveryUserList(){

@@ -11,6 +11,7 @@ import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/st
 import { DialogFotoComponent } from './dialog-foto/dialog-foto.component';
 import { UserService } from 'src/app/_service/user.service';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { ProfileService } from '../../../_service/profile.service';
 
 @Component({
   selector: 'app-user-form',
@@ -27,6 +28,8 @@ export class UserFormComponent implements OnInit {
   companyFormGroup: FormGroup;
   // date = new FormControl(new Date());
   date = new FormControl((new Date()).toISOString());
+  profileList:Array<ProfileBean>;
+
   @ViewChild('stepper') stepper: MatVerticalStepper;
 
   /* formPersonalCtrl: string[] = ['nombre', 'address', 'documentTypeId', 'documentNumber'];
@@ -37,46 +40,38 @@ export class UserFormComponent implements OnInit {
   dataProfile: ProfileBean = new ProfileBean();
   documentTypeselected: string;
   estadoSelected: string;
-
+  
   mensaje = 'Registro exitoso';
-
-/*   employee: UserBean;
-  employeeProfile: ProfileBean;
-  profileMenuOptionBean: ProfileMenuOptionBean; */
-
-
-
   hide = true;
-  // profile: Profile[] = [{idProfile: 1, name: 'empleado 1', description: 'el empleado'}];
- /*  user: User[] = [{
-                    id: 1, nombre: 'Jose', password: '123', status: 'disponible',
-                    address: 'av. sol', username: 'jose',
-                    employeeCode: '123', documentTypeId: '123',
-                    documentNumber: '123', profile: this.profile[0]
-                  }]; */
-
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog,
-              private serviceUser: UserService) {}
+              private serviceUser: UserService, private profileService:ProfileService) {}
 
   ngOnInit(): void {
-    this.personalFormGroup = this.formBuilder.group({
-      nombreCtrl: ['', Validators.required],
-      lastNameCtrl: ['', Validators.required],
-      addressCtrl: ['', Validators.required],
-      documentTypeIdCtrl: ['', Validators.required],
-      documentNumberCtrl: ['', Validators.required],
-      cellPhoneCtrl: ['', Validators.required],
-      dateBirthCtrl: ['', Validators.required]
+    this.profileService.getListProfile().subscribe(data =>{
+      this.profileList=data;
+    })
+     
+      this.personalFormGroup = this.formBuilder.group({
+        nombreCtrl: ['', Validators.required],
+        lastNameCtrl: ['', Validators.required],
+        addressCtrl: ['', Validators.required],
+        documentTypeIdCtrl: ['', Validators.required],
+        documentNumberCtrl: ['', Validators.required],
+        cellPhoneCtrl: ['', Validators.required],
+        dateBirthCtrl: ['', Validators.required]
+  
+      });
+      this.loginFormGroup = this.formBuilder.group({
+        passwordCtrl: ['', Validators.required],
+        usernameCtrl: ['', Validators.required],
+      });
+      this.companyFormGroup = this.formBuilder.group({
+        statusCtrl: ['', Validators.required],
+        employeecodeCtrl: ['', Validators.required],
+      });
 
-    });
-    this.loginFormGroup = this.formBuilder.group({
-      passwordCtrl: ['', Validators.required],
-      usernameCtrl: ['', Validators.required],
-    });
-    this.companyFormGroup = this.formBuilder.group({
-      statusCtrl: ['', Validators.required],
-      employeecodeCtrl: ['', Validators.required],
-    });
+  
+    
   }
 
   registrar(): void {
@@ -112,9 +107,13 @@ export class UserFormComponent implements OnInit {
       alert('Debe completar todos los campos');
     } else {
       this.openConfirmation();
-      this.stepper.reset();
+      this.serviceUser.registrarTrabajador(this.dataEmployee).subscribe(data =>{
+        this.serviceUser.mensajeCambio.next("Se registro");
+      })
+  
     }
   }
+
   tieneFoto(foto: any): boolean {
     let isFoto = false;
     if(foto != null){
@@ -125,16 +124,6 @@ export class UserFormComponent implements OnInit {
 
   openConfirmation() {
     const dialogRef = this.dialog.open(DialogConfirmacionComponent, {
-      width: '250px', data: this.mensaje
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
-  subirFoto() {
-    const dialogRef = this.dialog.open(DialogFotoComponent, {
       width: '250px', data: this.mensaje
     });
 

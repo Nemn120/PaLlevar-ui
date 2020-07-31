@@ -13,6 +13,7 @@ import { SharedService } from '../../../_service/shared.service';
 import { UserBean } from '../../../_model/UserBean';
 import { ProfileMenuOptionBean } from '../../../_model/ProfileMenuOptionBean';
 import { MenuOptionBean } from '../../../_model/MenuOptionBean';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -36,13 +37,21 @@ export class LoginComponent implements OnInit {
     private menuService: MenuOptionService,
     private notificationService: NotificationService,
     private sharedService: SharedService,
-    private authenticationService: AuthenticationService) {
+    private authenticationService: AuthenticationService,
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
     this.titleService.setTitle('Login paLlevar');
     console.log("LOGINFROM");
+    this.loginService.mensajeCambio.subscribe(data =>{
+      this.snackBar.open(data, 'INFO', {
+        duration: 2000
+      });
+    })
+
     this.createForm();
+
   }
 
   private createForm() {
@@ -92,6 +101,9 @@ export class LoginComponent implements OnInit {
           });
         });
       }
+    }, error =>{
+      console.error(error);
+        this.loginService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
     });
   }
 

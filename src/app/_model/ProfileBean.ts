@@ -3,8 +3,7 @@ import { MainBean } from './MainBean';
 
 export class ProfileBean extends MainBean{
     idProfile: number;
-    shortDescription: string;
-    longDescription:string;
+    description:string;
     listProfileMenuOption:ProfileMenuOptionBean[];
     name:string;
 }

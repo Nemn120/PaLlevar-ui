@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class LoginService {
 
   url: string = `${environment.HOST}/oauth/token`;    
   //url: string = `${environment.HOST}/${environment.MICRO_AUTH}/oauth/token`;   
-
+  mensajeCambio = new Subject<string>();
   constructor(private http: HttpClient, private router: Router) { }
 
   login(usuario: string, contrasena: string) {

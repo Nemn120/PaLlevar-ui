@@ -53,10 +53,6 @@
                             <mat-datepicker #picker1></mat-datepicker>
                         </mat-form-field>
                     </div>
-                    <div>
-                        <button mat-raised-button color="primary" (click)="subirFoto()">Subir foto</button>
-                        <button mat-raised-button matStepperNext color="primary">Next</button>
-                    </div>
                 </form>
             </mat-step>
             <mat-step [stepControl]="loginFormGroup" errorMessage="Estos campos son requeridos">
@@ -91,6 +87,16 @@
             <mat-step [stepControl]="companyFormGroup" errorMessage="Estos campos son requeridos">
                 <form [formGroup]="companyFormGroup">
                     <ng-template matStepLabel>Datos para organización</ng-template>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Perfil</mat-label>
+                        <mat-select [(ngModel)]="dataProfile">
+                            <mat-option *ngFor="let profile of profileList" [value]="profile">
+                                {{profile.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
                     <!-- <div *ngFor="let item of formCompanyCtrl">
                                 <mat-form-field>
                                     <mat-label>{{item}}</mat-label>
