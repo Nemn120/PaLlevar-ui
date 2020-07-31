@@ -14,6 +14,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Router } from '@angular/router';
 
 
 export interface User {
@@ -74,6 +75,7 @@ export class MenuFormComponent implements OnInit {
     
     private menuDayService:MenuDayService ,
     private productService:ProductService,
+    private router:Router,
    
   ) { }
 
@@ -115,9 +117,15 @@ export class MenuFormComponent implements OnInit {
 
       console.log('katriel creado: ',this.menuDaySelect);
         this.menuDayService.mensajeCambio.next("Se registro");
+
+
+        
+
     }
 
     );
+
+    this.router.navigate(['/menu/list']);
 
 
   }else{

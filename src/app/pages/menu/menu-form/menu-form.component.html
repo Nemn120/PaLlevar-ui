@@ -6,7 +6,7 @@
         </mat-toolbar>
     </p>
 
-    <div style="display: flex; width: 85%;">
+    <div class="carousel-item" style="display: flex; width: 85%;">
         <mat-card>
 
             <mat-form-field class="example-form-field">
@@ -26,37 +26,40 @@
                     </button>
             </mat-form-field>
 
-            <form style="display: inline;">
 
-                <mat-form-field appearance="fill" class="example-form-field">
-                    <mat-label>Dia</mat-label>
-                    <mat-select [(ngModel)]="menuDaySelect.day" name="dias">
-                        <mat-option *ngFor="let d of dias" [value]="d">
-                            {{d}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Tipo</mat-label>
-                    <mat-select [(ngModel)]="menuDaySelect.type" name="tipos">
-                        <mat-option *ngFor="let t of tipos" [value]="t">
-                            {{t}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <mat-form-field appearance="fill" style=" padding-right: 20px;width: 130px;">
+                <mat-label>Dia</mat-label>
+                <mat-select [(ngModel)]="menuDaySelect.day" name="dias">
+                    <mat-option *ngFor="let d of dias" [value]="d">
+                        {{d}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-            </form>
+            <mat-form-field appearance="fill" style=" padding-right: 20px;width: 130px;">
+                <mat-label>Tipo</mat-label>
+                <mat-select [(ngModel)]="menuDaySelect.type" name="tipos">
+                    <mat-option *ngFor="let t of tipos" [value]="t">
+                        {{t}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="menuDaySelect.status">
-                <mat-radio-button class="example-radio-button" *ngFor="let e of estados" [value]="e">
+
+
+
+
+            <mat-radio-group class="example-radio-group" [(ngModel)]="menuDaySelect.status">
+                <mat-radio-button class="radio" *ngFor="let e of estados" [value]="e">
                     {{e}}
                 </mat-radio-button>
             </mat-radio-group>
+            <br>
 
 
-            <form class="example-form">
-                <mat-form-field class="example-full-width">
+            <div style="text-align: center;">
+                <mat-form-field class="example-form-field">
                     <mat-label>Producto</mat-label>
                     <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
                     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="itemSelected($event)">
@@ -66,39 +69,33 @@
                     </mat-autocomplete>
                 </mat-form-field>
 
-            </form>
-
-            <mat-form-field class="example-form-field">
-                <mat-label>Precio</mat-label>
-                <input matInput type="text" [(ngModel)]="precio">
-                <button mat-button *ngIf="precio" matSuffix mat-icon-button aria-label="Clear" (click)="precio=0">
-                      <mat-icon>close</mat-icon>
-                    </button>
-            </mat-form-field>
-
-            <mat-form-field class="example-form-field">
-                <mat-label>Cantidad</mat-label>
-                <input matInput type="text" [(ngModel)]="cant">
-                <button mat-button *ngIf="cant" matSuffix mat-icon-button aria-label="Clear" (click)="cant=0">
-                      <mat-icon>close</mat-icon>
-                    </button>
-            </mat-form-field>
-
-
-            <button mat-raised-button color="primary" (click)="agregarProduct()">Agregar</button>
 
 
 
-            <!--
-            <span *ngFor="let p of menuDayProductList">
-                    {{p.product.name+' '+p.price+' '+p.quantity}}
-                </span>
--->
+                <mat-form-field class="example-form-field">
+                    <mat-label>Precio</mat-label>
+                    <input matInput type="text" [(ngModel)]="precio">
+                    <button mat-button *ngIf="precio" matSuffix mat-icon-button aria-label="Clear" (click)="precio=0">
+                  <mat-icon>close</mat-icon>
+                </button>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Cantidad</mat-label>
+                    <input matInput type="text" [(ngModel)]="cant">
+                    <button mat-button *ngIf="cant" matSuffix mat-icon-button aria-label="Clear" (click)="cant=0">
+                  <mat-icon>close</mat-icon>
+                </button>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" (click)="agregarProduct()">Agregar</button>
+                <button mat-raised-button color="primary" (click)="guardar()" style="margin-left:20px;">Guardar</button>
 
 
 
 
 
+            </div>
 
 
             <div *ngIf="menuDayProductList.length>0">
@@ -120,8 +117,7 @@
                 </table>
             </div>
 
-            <br>
-            <button mat-raised-button color="primary" (click)="guardar()">Guardar</button>
+
         </mat-card>
     </div>
 

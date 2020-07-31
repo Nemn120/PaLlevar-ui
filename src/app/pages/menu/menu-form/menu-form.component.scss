@@ -4,36 +4,24 @@
     padding: 0 16px;
     margin-top: 0px;
     padding-top: 0px;
-    width: 80%;
+    width: 85%;
     flex-direction: row;
     align-items: center;
     white-space: nowrap;
 }
 
 .example-form-field {
-    width: 200px;
+    width: 180px;
     padding-right: 20px;
 }
 
+//readio button
 .example-radio-group {
-    display: flex;
-    flex-direction: column;
-    margin: 15px 0;
+    align-items: center;
 }
 
-.example-radio-button {
-    margin: 5px;
-}
-
-.example-form {
-    min-width: 150px;
-    max-width: 200px;
-    width: 100%;
-}
-
-.example-full-width {
-    width: 100%;
-    // width: 200px;
+.radio {
+    padding-right: 5px;
 }
 
 //tabla
