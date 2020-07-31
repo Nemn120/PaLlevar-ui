@@ -85,8 +85,8 @@
                     <ng-template matStepLabel>Datos para organización</ng-template>
                     <mat-form-field appearance="fill">
                         <mat-label>Perfil</mat-label>
-                        <mat-select [(value)]="dataProfileSelected">
-                            <mat-option *ngFor="let profile of profileList" value={{profile.name}}>
+                        <mat-select [(value)]="idProfileSelected">
+                            <mat-option *ngFor="let profile of profileList" value={{profile.idProfile}}>
                                 {{profile.name}}
                             </mat-option>
                         </mat-select>

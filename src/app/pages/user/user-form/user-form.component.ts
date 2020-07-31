@@ -30,7 +30,7 @@ export class UserFormComponent implements OnInit {
   dataEmployee: UserBean = new UserBean();
   dataProfile: ProfileBean = new ProfileBean();
   documentTypeselected: string;
-  dataProfileSelected: string;
+  idProfileSelected: number;
   estadoSelected: string;
 
   mensaje = 'Registro exitoso';
@@ -84,7 +84,7 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.username = this.loginFormGroup.value.usernameCtrl;
     this.dataEmployee.password = this.loginFormGroup.value.passwordCtrl;
 
-    this.dataEmployee.profile.name = this.dataProfileSelected;
+    this.dataEmployee.profile.idProfile = this.idProfileSelected;
     this.dataEmployee.status = this.estadoSelected;
     this.dataEmployee.employeeCode = this.companyFormGroup.value.employeecodeCtrl;
 
