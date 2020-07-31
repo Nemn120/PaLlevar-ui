@@ -75,7 +75,7 @@ export class UserFormComponent implements OnInit {
   }
 
   registrar(): void {
-
+  //debugger
     this.dataEmployee = new UserBean();
     // this.selected = this.personalFormGroup.value.nombreCtrl;
     this.dataEmployee.nombre = this.personalFormGroup.value.nombreCtrl;
@@ -85,13 +85,14 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.documentNumber = this.personalFormGroup.value.documentNumberCtrl;
     this.dataEmployee.cellPhone = this.personalFormGroup.value.cellPhoneCtrl;
     this.dataEmployee.dateBirth = this.date.value;
-    this.dataEmployee._foto = this.serviceUser.imagen;
-    this.dataEmployee._isFoto = this.tieneFoto(this.serviceUser.imagen);
+    //this.dataEmployee._foto = this.serviceUser.imagen;
+    //this.dataEmployee._isFoto = this.tieneFoto(this.serviceUser.imagen);
 
     this.dataEmployee.username = this.loginFormGroup.value.usernameCtrl;
     this.dataEmployee.password = this.loginFormGroup.value.passwordCtrl;
 
-    this.dataEmployee.profile = this.dataProfile;
+    this.dataEmployee.profile = new ProfileBean();
+    this.dataEmployee.profile =this.dataProfile;
     this.dataEmployee.status = this.estadoSelected;
     this.dataEmployee.employeeCode = this.companyFormGroup.value.employeecodeCtrl;
 
@@ -109,6 +110,9 @@ export class UserFormComponent implements OnInit {
       this.openConfirmation();
       this.serviceUser.registrarTrabajador(this.dataEmployee).subscribe(data =>{
         this.serviceUser.mensajeCambio.next("Se registro");
+        this.serviceUser.getListUserByOrganization().subscribe(data =>{
+          this.serviceUser.userCambio.next(data);
+        })
       })
   
     }
