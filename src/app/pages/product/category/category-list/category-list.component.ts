@@ -19,7 +19,7 @@ export class CategoryListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'name', 'description','pathPhoto','actions'];
+  displayedColumns: string[] = ['id', 'name', 'description','actions'];
   dataSource: MatTableDataSource<CategoryProductBean>;/// tabla 
   titleCategoryProductList: string;
   constructor(

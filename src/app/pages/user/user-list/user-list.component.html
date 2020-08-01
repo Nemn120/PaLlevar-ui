@@ -19,37 +19,37 @@
                     <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="username">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+                </ng-container>
+
+
                 <!-- Name Column -->
                 <ng-container matColumnDef="status">
-                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
                     <mat-cell mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
                 </ng-container>
 
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="employeeCode">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Employee code </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo empleado </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.employeeCode}} </mat-cell>
                 </ng-container>
 
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="dateBirth">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de cumpleaños </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.dateBirth}} </mat-cell>
+                    <mat-cell *matCellDef="let element"> {{element.dateBirth | date:'dd/MM/yyyy'}} </mat-cell>
                 </ng-container>
 
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="profile">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Profile </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.profile.name}} </mat-cell>
-                </ng-container>
-
-
-                <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="openDialog(row)">
-                <mat-icon>ballot</mat-icon></button>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </mat-header-cell>
+                    <mat-cell *matCellDef="let element">
+                        <div *ngIf="element.profile"> {{element.profile.name}} </div>
                     </mat-cell>
+
                 </ng-container>
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

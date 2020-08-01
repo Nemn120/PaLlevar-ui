@@ -21,7 +21,7 @@ import { User } from '../../menu/menu-form/menu-form.component';
 export class UserListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ["nombre", "status", "employeeCode", "dateBirth", "profile"];
+  displayedColumns: string[] = ["nombre","username" ,"status", "employeeCode", "dateBirth", "profile"];
   dataSource : MatTableDataSource<UserBean>;
   codeOrganization: number;
   userList : Array<UserBean>;

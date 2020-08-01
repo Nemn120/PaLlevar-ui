@@ -114,12 +114,10 @@ export class MenuFormComponent implements OnInit {
    
 
     this.menuDayService.saveMenuDay(this.menuDaySelect).subscribe(data => {
-
-      console.log('katriel creado: ',this.menuDaySelect);
+      this.menuDayService.getListMenuDayByOrganization().subscribe(data =>{
+        this.menuDayService.menuDayCambio.next(data);
         this.menuDayService.mensajeCambio.next("Se registro");
-
-
-        
+      })
 
     }
 
