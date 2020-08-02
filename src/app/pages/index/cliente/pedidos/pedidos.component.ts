@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { Message } from '../../../../_DTO/messageDTO';
 
 @Component({
   selector: 'app-pedidos',
@@ -22,7 +24,7 @@ export class PedidosComponent implements OnInit {
 
 
   constructor(
-    private pedidos: OrderService,private dialog:MatDialog
+    private pedidos: OrderService,private dialog:MatDialog,public dialogo: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class PedidosComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    })
+    }) 
 
   }
 
@@ -44,5 +46,40 @@ export class PedidosComponent implements OnInit {
       data: ord
     });
   }
-
+  cancelarPedido() : void{
+    let ms = new Message();
+    ms.title='Cancelar Pedido'; 
+    ms.description = '¿Desea cancelar el pedido seleccionado?';
+    this.dialogo
+      .open(DialogoConfirmacionComponent, {
+        data: ms
+      })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado){
+          console.log("Se elimino el pedido");
+          //const numSelected = this.selection.selected;
+          //let attendODetail= new Array<OrderDetailBean>();
+          //this.selection.selected.forEach(item => {
+           //attendODetail.push(item);
+          }//);
+        
+          //this.data.orderDetail=attendODetail;
+          //debugger
+          /*this.orderService.saveAttendOrder(this.data).subscribe(data =>{
+            console.log(attendODetail);
+            this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
+              return numSelected.indexOf(x) == -1;
+            })
+            this.dataSource.data=this.orderDetailList;
+            this.orderService.getListOrderPendding().subscribe(data =>{ // ACTUALIZA
+              this.orderService.orderCambio.next(data); 
+            })
+          }, error =>{
+            console.error(error);
+          })
+        */
+        
+  });
+}
 }
