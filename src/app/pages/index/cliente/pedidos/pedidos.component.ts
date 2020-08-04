@@ -8,6 +8,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { Message } from '../../../../_DTO/messageDTO';
+import { EditarPedidoComponent } from '../editar-pedido/editar-pedido.component';
 
 @Component({
   selector: 'app-pedidos',
@@ -80,6 +81,15 @@ export class PedidosComponent implements OnInit {
           })
         */
         
+  });
+}
+
+public editarPedido(order: OrderBean) {
+  let ord = order != null ? order : new OrderBean();
+  this.dialog.open(EditarPedidoComponent, {
+    width: '750px',
+    //height: '600',
+    data: ord
   });
 }
 }

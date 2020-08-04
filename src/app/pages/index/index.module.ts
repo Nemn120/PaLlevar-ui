@@ -19,6 +19,7 @@ import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data-client-dialog.component';
 import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.component';
+import { EditarPedidoComponent } from './cliente/editar-pedido/editar-pedido.component';
 
 const routes: Routes = [
 
@@ -46,6 +47,7 @@ const routes: Routes = [
   PerfilComponent,
   SidebarComponent,
   CarDialogComponent,
+  EditarPedidoComponent,
   
 
  //katriel
@@ -74,7 +76,7 @@ const routes: Routes = [
 
   PerfilComponent,PedidosComponent,EditarPerfilComponent,
    SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent,DataClientDialogComponent,
-   DetallePedidoComponent
+   DetallePedidoComponent,EditarPedidoComponent,
   ],
 
  
