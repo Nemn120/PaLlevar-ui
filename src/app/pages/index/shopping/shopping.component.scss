@@ -1,15 +1,18 @@
 .fondo {
-    background-image: url('/assets/images/menu.jpg');
+    /*background-image: url('/assets/images/menu.jpg');
     background-repeat: repeat-x;
+    */
+    background-color: #F9F9F8; //#F0F0FA;
 }
 
 .app-container {
     transition: all .3s ease;
-    width: 100%;
+    width: 75%;
     min-height: 900px;
-    //padding-left: 20px;
-    //padding-right: 20px;
-    margin: 0px;
+ 
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
     @media only screen and (max-width: 1280px), screen and (orientation: portrait) {
         max-width: 1240px;
         width: 100%;
@@ -25,8 +28,8 @@
 }
 
 .menu-bodycat {
-    border-radius: 8px;
-    background-color: #fff !important;
+  
+    background-color: #ffff !important;
     max-width: 1560px;
     padding: 2px 2px;
     margin-top: 20px;
@@ -35,6 +38,8 @@
     width: 12%;
     margin-left: 10px;
     min-width: 200px;
+     border-radius: 5px;
+        box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
 
 .menu-container {
@@ -79,17 +84,20 @@
 }
 
 .menu-body {
-    border-radius: 8px;
+    //border-radius: 8px;
     max-width: 1560px;
     padding: 3px 20px;
     margin-top: 20px;
-    width: auto;
+    width: 80%;
     margin-left: 14px;
     display: auto;
     float: left;
     height: initial;
-    background-color: #fff !important;
+    background-color: #ffff !important;
+       border-radius: 5px;
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
     //height: 70%;
+    //box-shadow: 0 1px 6px 5px rgba(69, 65, 78, 0.1);
 }
 
 .restaurant-data {
@@ -112,6 +120,7 @@
         margin: 10px;
         justify-items: stretch;
         width: auto;
+       
     }
     @media screen and (min-width:300px) and (max-width:600px) {
         .menuProduct-container {
@@ -120,10 +129,7 @@
     }
 }
 
-.menu-category {
-    margin: 4px;
-}
-
 mat-divider {
     border: none;
 }
+

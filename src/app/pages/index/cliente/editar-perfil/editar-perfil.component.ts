@@ -7,6 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../../../../_service/user.service';
 import { UserBean } from 'src/app/_model/UserBean';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -29,14 +30,10 @@ export class EditarPerfilComponent implements OnInit {
   maxFecha: Date;
   constructor(
     private dialogRef: MatDialogRef<EditarPerfilComponent>,
-   
+    private snackBar: MatSnackBar,
     private sanitization: DomSanitizer,
-
     private sharedService: SharedService,
-
- 
     private userService:UserService
-    
 
   ) { }
 
@@ -64,9 +61,7 @@ export class EditarPerfilComponent implements OnInit {
       this.currentFileUpload = new File([""], "blanco");
     }
     this.userService.actualizarPerfil(this.userSelect,this.currentFileUpload).subscribe(data => {
-     
-        this.userService.mensajeCambio.next("Se actualizo");
-        
+      this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
     });
     this.closeDialog();
   }

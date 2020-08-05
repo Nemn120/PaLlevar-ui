@@ -78,7 +78,7 @@ export class UserService {
     formdata.append('file', file);
     const productBlob = new Blob([JSON.stringify(user)], { type: "application/json" });
     formdata.append('user', productBlob);
-    return this.http.post<UserBean>(`${this.url}/user/uu`,formdata);
+    return this.http.post<any>(`${this.url}/user/uu`,formdata);
   }
 ////////////////
 
