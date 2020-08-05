@@ -1,146 +1,154 @@
-.app-container {
-    transition: all .3s ease;
-    width: 1440px;
-    min-height: 900px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: auto;
-    max-width: 1240px;
-    // background-color: cornflowerblue;
-}
-
-body {
-    background-color: #FAFAF8;
-}
-
-.menu-bodycat {
-    border-radius: 8px;
-    background-color: #fff;
-    max-width: 1560px;
-    padding: 20px 20px;
-    margin-top: 20px;
-    display: auto;
-    float: left;
-    // width: 15%;
-}
-
-.restaurant-info {
-    margin: 0 auto;
-    width: 100%;
-    transition: .3s;
-    display: flex;
-    align-items: initial;
-    justify-content: initial;
-    flex-direction: row;
-    background-color: red;
-    border: 1px solid slategrey;
-    padding: 4px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-}
-
-.f-headline {
-    font-family: Poppins-SemiBold, Helvetica, Arial, sans-serif;
-    font-size: 20px;
-    letter-spacing: 0;
-}
-
-.restaurant-image {
-    width: 100%;
-    max-width: 400px;
-    height: 150px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    border-radius: 0 0 15px 15px;
-    background-size: cover;
-    background-color: rgb(160, 253, 131);
-}
-
-.menu-body {
-    border-radius: 8px;
-    // background-color: rgb(160, 253, 131);
-    max-width: 1560px;
-    //padding: 30px 20px;
-    margin-top: 0px;
-    width: 100%;
-    margin-left: 20px;
-    display: auto;
-    float: inherit;
-    height: initial;
-    //height: 70%;
-}
-
-.restaurant-data {
-    display: flex;
-    align-items: initial;
-    justify-content: initial;
-    flex-direction: column;
-}
-
-.menuProduct-container {
-    display: flex;
-    //justify-content: space-between;
-    //flex-direction: row;
-    flex-wrap: wrap;
-    //align-items: stretch;
-    justify-items: stretch;
-    margin: auto;
-    .card {
-        flex: 0 0 200px;
-        margin: 0px;
-        justify-items: stretch;
-        width: 400px;
-    }
-}
-
-.text {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.background {
-    background-image: url('../../../../assets/images/vista.jpg');
-    //background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    //background-attachment: fixed;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    margin: 0px;
-    opacity: 1;
-    background-attachment: fixed;
-}
-
-img {
-    width: 300px;
-    height: 300px;
-    border-radius: 5px;
-}
-
-@media (max-width: 800px) {
-    .menu-bodycat {
-        float: none;
-    }
-    .menuProduct-container {
-        display: contents;
-    }
-    .app-container {
-        width: auto;
-        padding: 0px;
-    }
-    .background {
-        background-image: none;
-    }
-    .card {
-        width: 100px !important;
-        padding-left: 280px;
-    }
-    .mat-list-base .mat-list-item,
-    .mat-list-base .mat-list-option {
-        padding-left: 70px;
-    }
-}
+        .app-container {
+            transition: all .3s ease;
+            width: 1440px;
+            min-height: 900px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: auto;
+            //max-width: 1240px;
+            // background-color: cornflowerblue;
+        }
+        
+        body {
+            background-color: #FAFAF8;
+        }
+        
+        .menu-bodycat {
+            border-radius: 8px;
+            background-color: #fff;
+            max-width: 1560px;
+            padding: 20px 20px;
+            margin-top: 20px;
+            display: auto;
+            float: left;
+            margin-left: 60px // width: 15%;
+        }
+        
+        .restaurant-info {
+            margin: 0 auto;
+            width: 100%;
+            transition: .3s;
+            display: flex;
+            align-items: initial;
+            justify-content: initial;
+            flex-direction: row;
+            background-color: red;
+            border: 1px solid slategrey;
+            padding: 4px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .f-headline {
+            font-family: Poppins-SemiBold, Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            letter-spacing: 0;
+        }
+        
+        .restaurant-image {
+            width: 100%;
+            max-width: 400px;
+            height: 150px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 0 0 15px 15px;
+            background-size: cover;
+            background-color: rgb(160, 253, 131);
+        }
+        
+        .menu-body {
+            border-radius: 8px;
+            // background-color: rgb(160, 253, 131);
+            max-width: 1560px;
+            //padding: 30px 20px;
+            margin-top: 0px;
+            width: 100%;
+            margin-left: 20px;
+            display: auto;
+            float: inherit;
+            height: initial;
+            //height: 70%;
+        }
+        
+        .restaurant-data {
+            display: flex;
+            align-items: initial;
+            justify-content: initial;
+            flex-direction: column;
+        }
+        
+        .menuProduct-container {
+            display: flex;
+            //justify-content: space-between;
+            //flex-direction: row;
+            flex-wrap: wrap;
+            //align-items: stretch;
+            justify-items: stretch;
+            margin: auto;
+            .card {
+                flex: 0 0 200px;
+                margin: 0px;
+                justify-items: stretch;
+                width: 400px;
+            }
+        }
+        
+        .text {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        
+        .background {
+            background-image: url('../../../../assets/images/vista.jpg');
+            //background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            //background-attachment: fixed;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            opacity: 1;
+            background-attachment: fixed;
+        }
+        
+        img {
+            width: 300px;
+            height: 300px;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 800px) {
+            .menu-bodycat {
+                width: fit-content;
+            }
+            .menuProduct-container {
+                display: contents;
+            }
+            .app-container {
+                width: auto;
+                padding: 0px;
+            }
+            .background {
+                // background-image: none;
+            }
+            .card {
+                width: 100px !important;
+                padding-left: 280px;
+            }
+            .mat-list-base .mat-list-item,
+            .mat-list-base .mat-list-option {
+                padding-left: 0px;
+            }
+            .toolbar2[_ngcontent-ysc-c2] {
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
+        }
+        
+        .categories {
+            width: 300px;
+        }
