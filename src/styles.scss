@@ -1,4 +1,10 @@
 //@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -177,7 +183,6 @@ p .mat-icon {
     position: relative;
     height: 100%;
     width: 100%;
-    margin: 0px;
     opacity: 1;
     z-index: 2;
 }
