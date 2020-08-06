@@ -155,3 +155,8 @@
         .categories {
             width: 300px;
         }
+        
+        .mat-toolbar-row,
+        .mat-toolbar-single-row {
+            box-sizing: content-box;
+        }
