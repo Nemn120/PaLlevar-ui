@@ -175,14 +175,15 @@ p .mat-icon {
 }
 
 .background {
-    background-image: url('./assets/images/vista.jpg');
+    background-color: #fafaf8;
+    //background-image: url('./assets/images/vista.jpg');
     //background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
     //background-attachment: fixed;
     position: relative;
     height: 100%;
-    width: 100%;
+    width: auto;
     opacity: 1;
     z-index: 2;
 }
