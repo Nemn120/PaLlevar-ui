@@ -10,6 +10,7 @@ import { SidebarSidenavComponent } from "../sidebar-sidenav/sidebar-sidenav.comp
 import { SidebarSidenavModule } from "../sidebar-sidenav/sidebar-sidenav.module";
 import { GuardService } from "../../_service/guard.service";
 import { FormsModule } from "@angular/forms";
+import { PedidoAsignadoComponent } from './pedido-asignado/pedido-asignado.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
     ProductListComponent,
     CategoryFormComponent,
     CategoryListComponent,
+    PedidoAsignadoComponent,
   ],
   imports: [
     CommonModule,
