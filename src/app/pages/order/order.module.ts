@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angu
 import { DeliveryOrderAsignComponent } from './delivery-order-asign/delivery-order-asign.component';
 import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { PedidoAsignadoComponent } from './pedido-asignado/pedido-asignado.component';
 
 
 
@@ -31,7 +32,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, PedidoAsignadoComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,
