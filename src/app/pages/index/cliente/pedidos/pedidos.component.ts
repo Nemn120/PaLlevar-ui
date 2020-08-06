@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { Message } from '../../../../_DTO/messageDTO';
 import { EditarPedidoComponent } from '../editar-pedido/editar-pedido.component';
+import { DataClientDialogComponent } from '../../../../_shared/data-client-dialog/data-client-dialog.component';
 
 @Component({
   selector: 'app-pedidos',
@@ -22,6 +23,7 @@ export class PedidosComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['companyName','date', 'total', 'quantity','status','detail'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
+ 
 
 
   constructor(
@@ -30,7 +32,7 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+  
     this.pedidos.getListOrderByUserId().subscribe(data=>{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
@@ -87,8 +89,8 @@ export class PedidosComponent implements OnInit {
 public editarPedido(order: OrderBean) {
   let ord = order != null ? order : new OrderBean();
   this.dialog.open(EditarPedidoComponent, {
-    width: '750px',
-    //height: '600',
+    width: '300px',
+    height: '600',
     data: ord
   });
 }
