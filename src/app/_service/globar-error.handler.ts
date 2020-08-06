@@ -18,10 +18,8 @@ export class GlobalErrorHandler implements ErrorHandler {
             stack: error.stack ? error.stack : ''
         };
 
+        console.log(err);
         // Log  the error
         logger.error(err);
-
-        // Re-throw the error
-        throw error;
     }
 }

@@ -1,23 +1,31 @@
-<mat-sidenav-container>
-    <div class="categories">
-        <mat-list>
-            <div class="title-categories">
-                <mat-list-item>
-                    <h3>Categorias</h3>
-                </mat-list-item>
-            </div>
+<div class="categories">
+    <mat-sidenav-container style="background-color:#ffff">
+
+        <mat-nav-list>
             <div class="categories-item">
+                <mat-list-item mat-list-item>
+                    <a (click)="redirectTo('Menu')">
+                        <p>
+                            <mat-icon mat-list-icon>restaurant</mat-icon>Menu</p>
+                    </a>
+                    <!--<button class="buton-product" >Menu </button>--></mat-list-item>
                 <mat-divider></mat-divider>
-                <mat-list-item><button class="buton-product" (click)="redirectTo('Menu')">Menu </button></mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item><button class="buton-product" (click)="redirectTo('Combo')">Combo </button>
+                <mat-list-item mat-list-item>
+                    <a (click)="redirectTo('Combo')">
+                        <p>
+                            <mat-icon mat-list-icon>fastfood</mat-icon>Combo</p>
+                    </a>
                     <mat-divider></mat-divider>
                 </mat-list-item>
-                <mat-list-item><button class="buton-product" (click)="redirectTo('Promocion')">Promo </button>
+                <mat-list-item>
+                    <a (click)="redirectTo('Promocion')">
+                        <p>
+                            <mat-icon mat-list-icon>pending_actions</mat-icon>Promo</p>
+                    </a>
                 </mat-list-item>
 
             </div>
-        </mat-list>
 
-    </div>
-</mat-sidenav-container>
+        </mat-nav-list>
+    </mat-sidenav-container>
+</div>

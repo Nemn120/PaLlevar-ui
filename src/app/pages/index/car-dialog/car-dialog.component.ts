@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { OrderBean } from '../../../_model/OrderBean';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-car-dialog',
@@ -32,7 +33,8 @@ export class CarDialogComponent implements OnInit {
     public orderService: OrderService,
     public loginService: LoginService,
     private router: Router,
-    public dialogo: MatDialog
+    public dialogo: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +53,10 @@ export class CarDialogComponent implements OnInit {
   masterToggle() {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(r => this.selection.select(r));
   }
+  closeDialog() {
+    this.dialogo.closeAll();
+  }
+
   /** The label for the checkbox on the passed row */
   checkboxLabel(row: OrderDetailBean): string {
     if (!row) {
@@ -96,6 +102,10 @@ export class CarDialogComponent implements OnInit {
                 this.carService.deleteProductList(numSelected);
                 this.odList = this.carService.getItems();
                 this.dataSource.data = this.odList;
+                this.closeDialog();
+                this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
+              }, error=>{
+                this.snackBar.open(error.error, 'ERROR', { duration: 5000 });
               })
             } else {
               this.router.navigate(['auth/login']);

@@ -10,17 +10,15 @@
                 <h3>{{this.companySelect.description}}</h3>
             </div>
         </div>
-        <mat-divider></mat-divider>
+
         <div class="menu-container">
             <div class="menu-bodycat">
-                <div class="menu-category">
-                    <app-sidebar></app-sidebar>
-                </div>
+                <app-sidebar></app-sidebar>
             </div>
             <div class="menu-body">
-                <h2 class="f-headline">Precios y platillos</h2>
-                <mat-divider></mat-divider>
-                <div class="menuProduct-container">
+                <p class="f-headline" style="  border-bottom: 0.8px solid #DCDCDC;padding-bottom:8px;"><strong>Precios y platillos</strong></p>
+
+                <div *ngIf="!sharedService.loading" class="menuProduct-container">
                     <div *ngFor="let menuDayProduct of menuProductList">
                         <div class="card">
                             <app-card-product [menuProduct]="menuDayProduct"></app-card-product>

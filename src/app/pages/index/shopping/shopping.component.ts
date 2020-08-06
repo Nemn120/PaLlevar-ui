@@ -33,7 +33,7 @@ export class ShoppingComponent implements OnInit {
               private sanitization: DomSanitizer,
               private activatedRoute: ActivatedRoute,
               private organizationService: OrganizationService,
-              private sharedService:SharedService,
+              public sharedService:SharedService,
               private router:Router,
               private carService:CarServiceService
     ) { 
@@ -42,13 +42,14 @@ export class ShoppingComponent implements OnInit {
     }
 
   ngOnInit(): void {
-      this.mProduct  = new MenuDayProductBean();
-      this.companySelect = new CompanyBean();
-      this.sharedService.subject.subscribe(data =>{
+    this.sharedService.loading=true;
+    this.mProduct  = new MenuDayProductBean();
+    this.companySelect = new CompanyBean();
+    this.sharedService.subject.subscribe(data =>{
         this.param=data;
         if(data != null){
           this.mProduct.organizationId=this.companySelect.id;
-          
+
           this.getListMenuProductByType(this.param);
         }
       });
@@ -82,7 +83,7 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data =>{
       this.menuProductList=data;
        this.activatedPhoto(data); 
-       console.log(this.menuProductList);  
+       // console.log(this.menuProductList);  
      },error =>{
        console.log(error);
      })
@@ -93,7 +94,7 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganizationAndType(this.mProduct).subscribe(data =>{
       this.menuProductList=data;
        this.activatedPhoto(data);  
-       console.log(this.menuProductList); 
+       // console.log(this.menuProductList); 
      },error =>{
        console.log(error);
      })
@@ -110,6 +111,7 @@ export class ShoppingComponent implements OnInit {
           m.product._foto = this.setterPhoto(base64);
           m.product._isFoto=true;
         }
+        this.sharedService.loading=false;
       })
     }
   }
