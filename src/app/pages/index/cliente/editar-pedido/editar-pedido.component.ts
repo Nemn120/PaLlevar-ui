@@ -14,10 +14,12 @@ import { throwMatDialogContentAlreadyAttachedError, MatDialog } from '@angular/m
 export class EditarPedidoComponent implements OnInit {
 
   form: FormGroup;
-  
+  order:OrderBean
   constructor(
-    private dialog:MatDialog,public dialogo: MatDialog,
+    public dialog:MatDialog,public dialogo: MatDialogRef<EditarPedidoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private fb: FormBuilder,
+    private carService:CarServiceService,
   ) {
  
    }
@@ -36,35 +38,27 @@ export class EditarPedidoComponent implements OnInit {
     let ms = new Message();
     ms.title='Confirmar Cambios'; 
     ms.description = '¿Desea guardar los cambios establecidos?';
-    this.dialogo
+    this.dialog
       .open(DialogoConfirmacionComponent, {
         data: ms
       })
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
+
+          
+          this.order = new OrderBean();
+          this.order.address=this.form.value['address'];
+          this.order.reference=this.form.value['reference'];
+          this.order.phone=this.form.value['phone'];
+          this.order.organizationId=this.carService.orderHeader.organizationId;
+          this.carService.orderHeader=this.order;
+
           console.log("Se guardaron los cambios");
-          //const numSelected = this.selection.selected;
-          //let attendODetail= new Array<OrderDetailBean>();
-          //this.selection.selected.forEach(item => {
-           //attendODetail.push(item);
-          }//);
-        
-          //this.data.orderDetail=attendODetail;
-          //debugger
-          /*this.orderService.saveAttendOrder(this.data).subscribe(data =>{
-            console.log(attendODetail);
-            this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
-              return numSelected.indexOf(x) == -1;
-            })
-            this.dataSource.data=this.orderDetailList;
-            this.orderService.getListOrderPendding().subscribe(data =>{ // ACTUALIZA
-              this.orderService.orderCambio.next(data); 
-            })
-          }, error =>{
-            console.error(error);
-          })
-        */
+          
+          }
+          this.dialogo.close();
+          
         
   });
 }
