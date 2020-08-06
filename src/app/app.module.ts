@@ -17,6 +17,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 //import { DetallesComponent } from './pages/index/detalles/detalles.component';
 import { NavHomeComponent } from './pages/index/nav-home/nav-home.component';
 
+//MAPBOX
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+
+
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
   let token = tk != null ? tk : '';
@@ -44,8 +48,11 @@ export function tokenGetter() {
       }
     }),
 
-
-
+    //MAPBOX
+    NgxMapboxGLModule.withConfig({
+      accessToken: 'pk.eyJ1Ijoia2F0cmllbCIsImEiOiJja2RjOXlrZTUxM3RsMnlxcmtwd3NrZWMwIn0.buu1mRI4DLdAUacSHR_2gw', // Optional, can also be set per map (accessToken input of mgl-map)
+      geocoderAccessToken: 'pk.eyJ1Ijoia2F0cmllbCIsImEiOiJja2RjOXlrZTUxM3RsMnlxcmtwd3NrZWMwIn0.buu1mRI4DLdAUacSHR_2gw',  // Optional, specify if different from the map access token, can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
+    })
 
   ],
   providers: [

@@ -17,6 +17,16 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
+                        "allowedCommonJsDependencies": [
+                            "@mapbox/mapbox-sdk/services/geocoding",
+                            "@mapbox/mapbox-gl-geocoder",
+                            "@mapbox/mapbox-sdk",
+                            "suggestions"
+
+
+
+                        ],
+
                         "outputPath": "dist",
                         "index": "src/index.html",
                         "main": "src/main.ts",
