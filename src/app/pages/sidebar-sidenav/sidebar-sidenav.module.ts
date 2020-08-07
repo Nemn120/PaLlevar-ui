@@ -8,6 +8,7 @@ import { SidebarSidenavComponent } from './sidebar-sidenav.component';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
 import { UserModule } from '../user/user.module';
 import { HeaderComponent } from './header/header.component';
+import { EditProfileComponent } from '../user/edit-profile/edit-profile.component';
 
 
 
@@ -27,9 +28,7 @@ import { HeaderComponent } from './header/header.component';
   exports: [
     SidebarSidenavComponent
   ],
-  entryComponents:[
-    UserProfileComponent
-  ]
+  entryComponents:[UserProfileComponent, EditProfileComponent],
   
 })
 export class SidebarSidenavModule { }

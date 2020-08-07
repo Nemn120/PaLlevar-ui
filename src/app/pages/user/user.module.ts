@@ -24,6 +24,8 @@ import {MatTableModule} from '@angular/material/table';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from 'src/app/_material/material.module';
+import { SidebarComponent } from '../index/sidebar/sidebar.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {
@@ -43,16 +45,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserProfileComponent, UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent],
+  declarations: [UserProfileComponent, UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent, EditProfileComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    
     FormsModule,
     ReactiveFormsModule,
-
     MaterialModule,
     MatNativeDateModule,
+    
   ],
   exports: [RouterModule],
   entryComponents: [DialogConfirmacionComponent, DialogFotoComponent],

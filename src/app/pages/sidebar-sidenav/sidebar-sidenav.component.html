@@ -41,10 +41,14 @@
                     <mat-icon>account_box</mat-icon>
                     <span>Mi Perfil</span>
                 </button>
+                <button mat-menu-item (click)="openEditarPerfil()">
+                    <span>Crear Perfil</span>
+                </button>
                 <button mat-menu-item (click)="cerrarSesion()">
                     <mat-icon>exit_to_app</mat-icon>
                     <span>Cerrar Sesión</span>
                 </button>
+                
             </mat-menu>
             <ng-template #salir>
                 <button routerLink="/auth/login" mat-button color="primary">         

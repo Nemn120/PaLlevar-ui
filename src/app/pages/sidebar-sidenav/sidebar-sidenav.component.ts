@@ -9,6 +9,8 @@ import { MenuOptionBean } from '../../_model/MenuOptionBean';
 import { UserBean } from '../../_model/UserBean';
 import { UserProfileComponent } from '../user/user-profile/user-profile.component';
 import { SharedService } from '../../_service/shared.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {EditProfileComponent} from '../user/edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-sidebar-sidenav',
@@ -63,6 +65,10 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
       
        this.dialog.open(UserProfileComponent);
      }
+
+    openEditarPerfil(){
+      this.dialog.open(EditProfileComponent);
+    }
      
     ngOnDestroy(): void {
       // tslint:disable-next-line: deprecation

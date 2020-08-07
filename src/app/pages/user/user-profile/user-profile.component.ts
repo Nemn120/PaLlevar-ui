@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserBean } from '../../../_model/UserBean';
 import { UserService } from 'src/app/_service/user.service';
 import { SharedService } from 'src/app/_service/shared.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-profile',
@@ -34,8 +36,8 @@ export class UserProfileComponent implements OnInit {
         this.mostrar = true;
       }
     });
+    
   }
 
   
-
 }
