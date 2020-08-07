@@ -20,6 +20,7 @@ import { HeaderComponent } from './header/header.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    UserModule
   ],
 
   
@@ -27,6 +28,7 @@ import { HeaderComponent } from './header/header.component';
     SidebarSidenavComponent
   ],
   entryComponents:[
+    UserProfileComponent
   ]
   
 })

@@ -36,7 +36,7 @@
                 </span>
             </button>
 
-            <mat-menu #userMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false" *ngIf="isLogueado; else salir">
+            <mat-menu #userMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false">
                 <button mat-menu-item (click)="openUserPerfil()">
                     <mat-icon>account_box</mat-icon>
                     <span>Mi Perfil</span>

@@ -60,11 +60,8 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
 
     }
     openUserPerfil() {
-      let gen :UserBean = new UserBean();
-       this.dialog.open(UserProfileComponent, {
-         width: '400px',
-         data: gen
-       });
+      
+       this.dialog.open(UserProfileComponent);
      }
      
     ngOnDestroy(): void {
