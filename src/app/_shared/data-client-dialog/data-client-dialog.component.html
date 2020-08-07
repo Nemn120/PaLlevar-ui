@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-    Generear pedido, ingreso de datos</h1>
+    Seleccionar ubicacion</h1>
 <div mat-dialog-content>
     <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">
 
@@ -18,4 +18,5 @@
         <br>
         <button style="float: right;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Registrar</button>
     </form>
+
 </div>

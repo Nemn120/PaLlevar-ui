@@ -19,6 +19,7 @@ import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data-client-dialog.component';
 import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.component';
+import { MapaClienteComponent } from '../../maps/mapa-cliente/mapa-cliente.component';
 
 const routes: Routes = [
 
@@ -66,7 +67,7 @@ const routes: Routes = [
   exports: [
     RouterModule,
 
-    NavHomeComponent,// exportando el componente  
+    NavHomeComponent,// exportando el componente  para usarlo en AuthorizationModule
    
   ],
   entryComponents: 
@@ -74,7 +75,7 @@ const routes: Routes = [
 
   PerfilComponent,PedidosComponent,EditarPerfilComponent,
    SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent,DataClientDialogComponent,
-   DetallePedidoComponent
+   DetallePedidoComponent,MapaClienteComponent
   ],
 
  
