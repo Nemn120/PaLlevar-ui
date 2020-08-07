@@ -3,9 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OrderBean } from '../../../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarServiceService } from '../../../../_service/car-service.service';
-import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
-import { Message } from '../../../../_DTO/messageDTO';
-import { throwMatDialogContentAlreadyAttachedError, MatDialog } from '@angular/material/dialog';
+import {  MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-editar-pedido',
   templateUrl: './editar-pedido.component.html',
@@ -33,34 +31,8 @@ export class EditarPedidoComponent implements OnInit {
     });
 
   }
- 
-  confirmarCambios() : void{
-    let ms = new Message();
-    ms.title='Confirmar Cambios'; 
-    ms.description = '¿Desea guardar los cambios establecidos?';
-    this.dialog
-      .open(DialogoConfirmacionComponent, {
-        data: ms
-      })
-      .afterClosed()
-      .subscribe((confirmado: Boolean) => {
-        if (confirmado){
-
-          
-          this.order = new OrderBean();
-          this.order.address=this.form.value['address'];
-          this.order.reference=this.form.value['reference'];
-          this.order.phone=this.form.value['phone'];
-          this.order.organizationId=this.carService.orderHeader.organizationId;
-          this.carService.orderHeader=this.order;
-
-          console.log("Se guardaron los cambios");
-          
-          }
-          this.dialogo.close();
-          
-        
-  });
+ //confirmarCambios() sera el metodo que mostrara la ventana de confirmacion de cambio de datos
+  
 }
 
-}
+

@@ -1,15 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from '../../../../_service/order.service';
 import { OrderBean } from 'src/app/_model/OrderBean';
-import { throwMatDialogContentAlreadyAttachedError, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
-import { Message } from '../../../../_DTO/messageDTO';
 import { EditarPedidoComponent } from '../editar-pedido/editar-pedido.component';
-import { DataClientDialogComponent } from '../../../../_shared/data-client-dialog/data-client-dialog.component';
+
 
 @Component({
   selector: 'app-pedidos',
@@ -27,7 +25,7 @@ export class PedidosComponent implements OnInit {
 
 
   constructor(
-    private pedidos: OrderService,private dialog:MatDialog,public dialogo: MatDialog
+    private pedidos: OrderService,private dialog:MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -49,43 +47,7 @@ export class PedidosComponent implements OnInit {
       data: ord
     });
   }
-  cancelarPedido() : void{
-    let ms = new Message();
-    ms.title='Cancelar Pedido'; 
-    ms.description = '¿Desea cancelar el pedido seleccionado?';
-    this.dialogo
-      .open(DialogoConfirmacionComponent, {
-        data: ms
-      })
-      .afterClosed()
-      .subscribe((confirmado: Boolean) => {
-        if (confirmado){
-          console.log("Se elimino el pedido");
-          //const numSelected = this.selection.selected;
-          //let attendODetail= new Array<OrderDetailBean>();
-          //this.selection.selected.forEach(item => {
-           //attendODetail.push(item);
-          }//);
-        
-          //this.data.orderDetail=attendODetail;
-          //debugger
-          /*this.orderService.saveAttendOrder(this.data).subscribe(data =>{
-            console.log(attendODetail);
-            this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
-              return numSelected.indexOf(x) == -1;
-            })
-            this.dataSource.data=this.orderDetailList;
-            this.orderService.getListOrderPendding().subscribe(data =>{ // ACTUALIZA
-              this.orderService.orderCambio.next(data); 
-            })
-          }, error =>{
-            console.error(error);
-          })
-        */
-        
-  });
-}
-
+  
 public editarPedido(order: OrderBean) {
   let ord = order != null ? order : new OrderBean();
   this.dialog.open(EditarPedidoComponent, {
