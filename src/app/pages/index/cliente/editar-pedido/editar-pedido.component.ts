@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OrderBean } from '../../../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarServiceService } from '../../../../_service/car-service.service';
+import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { Message } from '../../../../_DTO/messageDTO';
 import {  MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-editar-pedido',
@@ -32,7 +34,23 @@ export class EditarPedidoComponent implements OnInit {
 
   }
  //confirmarCambios() sera el metodo que mostrara la ventana de confirmacion de cambio de datos
-  
+ confirmarCambios() : void{
+  let ms = new Message();
+  ms.title='Confirmar Cambios'; 
+  ms.description = '¿Desea guardar los cambios establecidos?';
+  this.dialog
+    .open(DialogoConfirmacionComponent, {
+      data: ms
+    })
+    .afterClosed()
+    .subscribe((confirmado: Boolean) => {
+      if (confirmado){
+        console.log("Se guardaron los cambios");
+        
+        }
+        this.dialogo.close();
+      });
 }
 
+}
 
