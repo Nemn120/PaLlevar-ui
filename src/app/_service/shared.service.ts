@@ -16,6 +16,7 @@ export class SharedService{
     organizationSelect=new Subject<CompanyBean>();
     subject =new Subject<string>();
     loadingSpinner=new Subject<boolean>();
+    loading=false;
     constructor(private http: HttpClient, private router: Router,
       private sanitization: DomSanitizer
       ) { 

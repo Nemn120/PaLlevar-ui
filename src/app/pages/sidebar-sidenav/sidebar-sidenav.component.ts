@@ -7,10 +7,10 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { SpinnerService } from '../../_service/spinner.service';
 import { MenuOptionBean } from '../../_model/MenuOptionBean';
 import { UserBean } from '../../_model/UserBean';
-import { UserProfileComponent } from '../user/user-profile/user-profile.component';
 import { SharedService } from '../../_service/shared.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {EditProfileComponent} from '../user/edit-profile/edit-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @Component({
   selector: 'app-sidebar-sidenav',
@@ -62,8 +62,11 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
 
     }
     openUserPerfil() {
-      
-       this.dialog.open(UserProfileComponent);
+      let gen :UserBean = new UserBean();
+       this.dialog.open(ProfileComponent, {
+         width: '400px',
+         data: gen
+       });
      }
 
     openEditarPerfil(){

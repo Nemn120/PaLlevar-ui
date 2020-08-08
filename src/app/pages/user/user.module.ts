@@ -1,31 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SidebarSidenavComponent } from '../sidebar-sidenav/sidebar-sidenav.component';
-import { GuardService } from 'src/app/_service/guard.service';
-import {MatCardModule} from '@angular/material/card';
-import { MatStepperModule } from '@angular/material/stepper';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSelectModule} from '@angular/material/select';
-import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatGridListModule } from '@angular/material/grid-list';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { DialogFotoComponent } from './user-form/dialog-foto/dialog-foto.component';
 import { DialogConfirmacionComponent } from './dialog-confirmacion/dialog-confirmacion.component';
-import {MatTableModule} from '@angular/material/table';
-import { CdkStepperModule } from '@angular/cdk/stepper';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { SidebarComponent } from '../index/sidebar/sidebar.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 
 const routes: Routes = [
   {
@@ -45,7 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserProfileComponent, UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent, EditProfileComponent],
+  declarations: [UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
