@@ -62,7 +62,9 @@ export class EditarPerfilComponent implements OnInit {
     }
     this.userService.actualizarPerfil(this.userSelect,this.currentFileUpload).subscribe(data => {
       this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
-    });
+    }), error =>{
+      this.snackBar.open(error.message,'SUCESS', { duration: 5000 });
+    };
     this.closeDialog();
   }
   closeDialog() {
