@@ -99,6 +99,9 @@ export class LoginComponent implements OnInit {
           
           
           });
+        }, error =>{
+          console.error(error);
+            this.loginService.mensajeCambio.next("ERROR");
         });
       }
     }, error =>{
