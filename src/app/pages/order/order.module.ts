@@ -17,6 +17,7 @@ import { DeliveryOrderAsignComponent } from './delivery-order-asign/delivery-ord
 import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { PedidoAsignadoComponent } from './pedido-asignado/pedido-asignado.component';
+import { TradeOrderComponent } from './trade-order/trade-order.component';
 
 
 
@@ -26,13 +27,14 @@ const routes: Routes = [
   { path: 'attend', component: AttentOrderComponent, canActivate: [GuardService]  },
   { path: 'delivery', component: DeliveryOrderComponent, canActivate: [GuardService]  },
   { path: 'search', component: SearchOrderComponent, canActivate: [GuardService]  },
+  { path: 'trade', component: TradeOrderComponent, canActivate: [GuardService]  },
  
   ]}
 ];
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, PedidoAsignadoComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, PedidoAsignadoComponent,TradeOrderComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,

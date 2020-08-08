@@ -17,7 +17,7 @@ export class GlobalErrorHandler implements ErrorHandler {
             message: error.message ? error.message : error.toString(),
             stack: error.stack ? error.stack : ''
         };
-
+        console.log(err);
         // Log  the error
         logger.error(err);
 
