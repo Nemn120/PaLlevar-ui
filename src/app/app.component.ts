@@ -12,15 +12,19 @@ import { SharedService } from './_service/shared.service';
 })
 export class AppComponent {
 
-  loadingSpinner:boolean=false;
-
+  loadingSpinner: boolean = false;
   constructor(
-    public sharedService:SharedService
+    public sharedService: SharedService
     ){
-     }
-  
-    ngOnInit(){
-    }
 
-   
+
+     }
+
+    ngOnInit(){
+      this.sharedService.loadingSpinner.subscribe(x =>{
+        this.loadingSpinner=x;
+        console.log(x);
+      })
+
+    }
 }

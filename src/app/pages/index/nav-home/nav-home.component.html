@@ -1,10 +1,10 @@
 <mat-toolbar class="toolbar2">
     <h1 routerLink="/index" style="text-align: center;justify-content: center;">PALLEVAR.PE</h1>
 </mat-toolbar>
-<mat-toolbar color="darkorange" style="height: auto;">
+<mat-toolbar class="toolbar3">
 
     <button mat-icon-button color="primary" routerLink="/index">
-        <mat-icon style="width: 30px;">home</mat-icon>
+        <mat-icon style="width: 30px; margin-left: 30px;">home</mat-icon>
     </button>
 
     <div class="example-spacer"></div>
@@ -14,10 +14,9 @@
     <button mat-icon-button color="primary" (click)="openDialogCar()">  <mat-icon>shopping_cart</mat-icon></button>
 
     <!--No esta logueado-->
-    <div *ngIf="!logueado">
-
-        <button routerLink="/auth/login" mat-button color="primary">         
-            Iniciar Session
+    <div *ngIf="!logueado" style="margin-right: 20px;">
+        <button routerLink="/auth/login" mat-button color="primary">
+        Iniciar Sesion
         </button>
     </div>
 

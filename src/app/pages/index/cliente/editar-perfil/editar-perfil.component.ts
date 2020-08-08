@@ -26,14 +26,14 @@ export class EditarPerfilComponent implements OnInit {
   labelFile: string;
 
   
-  usuario:UserBean;
+  usuario: UserBean;
   maxFecha: Date;
   constructor(
     private dialogRef: MatDialogRef<EditarPerfilComponent>,
     private snackBar: MatSnackBar,
     private sanitization: DomSanitizer,
     private sharedService: SharedService,
-    private userService:UserService
+    private userService: UserService
 
   ) { }
 
@@ -62,6 +62,8 @@ export class EditarPerfilComponent implements OnInit {
     }
     this.userService.actualizarPerfil(this.userSelect,this.currentFileUpload).subscribe(data => {
       this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
+        // this.userService.mensajeCambio.next("Se actualizo");
+
     });
     this.closeDialog();
   }

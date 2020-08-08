@@ -1,50 +1,48 @@
-<mat-toolbar class="text" color="accent">Nuestros Afiliados</mat-toolbar>
-<div class="background">
+<mat-toolbar class="text">Nuestros Afiliados</mat-toolbar>
 
-    <div class="menu-bodycat" style="text-align:center;">
-        <div class="menu-category">
+<div class="menu-bodycat" style="text-align:center;">
+    <div class="menu-category">
 
-            <div class="categories">
-                <mat-list>
-                    <div class="title-categories">
-                        <mat-list-item>
-                            <h3>Llevamos tu pedido a casa</h3>
-                        </mat-list-item>
+        <div class="categories">
+            <mat-list>
+                <div class="title-categories">
+                    <mat-list-item>
+                        <h3>Llevamos tu pedido a casa</h3>
+                    </mat-list-item>
+                </div>
+                <div class="categories-item">
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <mat-icon>alarm_on</mat-icon> Ahorra tiempo </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <mat-icon>store_mall_directory</mat-icon> Selecciona entre muchas empresas</mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <br>
+                        <p>
+                            <mat-icon>search</mat-icon> Mantente informado de tus pedidos</p>
+                    </mat-list-item>
+                </div>
+                <div class="categories-item">
+                    <div>
+                        <img src="../../../../assets/images/logos/logoo.jpeg" style="width: 200px; height: 200px;">
                     </div>
-                    <div class="categories-item">
-                        <mat-divider></mat-divider>
-                        <mat-list-item>
-                            <mat-icon>alarm_on</mat-icon> Ahorra tiempo </mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>
-                            <mat-icon>store_mall_directory</mat-icon> Selecciona entre muchas empresas</mat-list-item>
-                        <mat-divider></mat-divider>
-                        <mat-list-item>
-                            <br>
-                            <p>
-                                <mat-icon>search</mat-icon> Mantente informado de tus pedidos</p>
-                        </mat-list-item>
-                    </div>
-                    <div class="categories-item">
-                        <div>
-                            <img src="../../../../assets/images/logos/logoo.jpeg" style="width: 200px; height: 200px;">
-                        </div>
-                    </div>
-                </mat-list>
-
-            </div>
+                </div>
+            </mat-list>
 
         </div>
-    </div>
 
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="app-container">
-        <div class="menu-body">
-            <div class="menuProduct-container">
-                <div *ngFor="let menuOrg of menuOrgList">
-                    <div class="card">
-                        <app-card-organization [menuOrg]="menuOrg"></app-card-organization>
-                    </div>
+    </div>
+</div>
+
+<mat-divider [vertical]="true"></mat-divider>
+<div class="app-container">
+    <div class="menu-body">
+        <div class="menuProduct-container">
+            <div *ngFor="let menuOrg of menuOrgList">
+                <div class="card">
+                    <app-card-organization [menuOrg]="menuOrg"></app-card-organization>
                 </div>
             </div>
         </div>

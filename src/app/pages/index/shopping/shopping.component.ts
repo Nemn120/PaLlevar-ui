@@ -43,15 +43,14 @@ export class ShoppingComponent implements OnInit {
 
   ngOnInit(): void {
     this.sharedService.loading=true;
-
-      this.mProduct  = new MenuDayProductBean();
-      this.companySelect = new CompanyBean();
-      this.sharedService.subject.subscribe(data =>{
+    this.mProduct  = new MenuDayProductBean();
+    this.companySelect = new CompanyBean();
+    this.sharedService.subject.subscribe(data =>{
         this.param=data;
        // this.sharedService.openSpinner();
         if(data != null){
           this.mProduct.organizationId=this.companySelect.id;
-          
+
           this.getListMenuProductByType(this.param);
         }
       });
@@ -86,7 +85,7 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data =>{
       this.menuProductList=data;
        this.activatedPhoto(data); 
-       
+       // console.log(this.menuProductList);  
      },error =>{
        console.log(error);
      })
@@ -97,6 +96,7 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganizationAndType(this.mProduct).subscribe(data =>{
       this.menuProductList=data;
        this.activatedPhoto(data);  
+       // console.log(this.menuProductList); 
      },error =>{
        console.log(error);
      })

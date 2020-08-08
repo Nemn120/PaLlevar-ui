@@ -1,4 +1,10 @@
 //@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -166,4 +172,18 @@ p .mat-icon {
 
 .mat-step-label.mat-step-label-active.mat-step-label-error {
     color: crimson !important;
+}
+
+.background {
+    background-color: #fafaf8;
+    //background-image: url('./assets/images/vista.jpg');
+    //background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    //background-attachment: fixed;
+    position: relative;
+    height: 100%;
+    width: auto;
+    opacity: 1;
+    z-index: 2;
 }
