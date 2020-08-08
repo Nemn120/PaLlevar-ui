@@ -27,7 +27,8 @@
 
 
     <br>
-    <button mat-button onclick="document.getElementById('flArchivo').click();" style="margin-left: 105px;">Ingresar foto de perfil</button>
+    <button mat-button onclick="document.getElementById('flArchivo').click();" style="margin-left: 105px;">Ingresar foto
+    de perfil</button>
     <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
     <br>
     <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style=" display: block; width:180px ;height:180px;margin: auto;" />
