@@ -1,7 +1,7 @@
 <div class="mat-parent">
     <p>
         <mat-toolbar class="title-component">
-            <span>Listado de productos</span>
+            <span>Reporte de platillos vendidos</span>
 
         </mat-toolbar>
     </p>
@@ -12,35 +12,82 @@
                 <form class="example-form">
                     <mat-form-field class="example-full-width">
                         <mat-label>Producto</mat-label>
-                        <input matInput placeholder="Ex. Pizza">
+                        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="itemSelected($event)">
+                            <mat-option *ngFor="let option of filteredProductOptions | async" [value]="option">
+                                {{option.name}}
+                            </mat-option>
+                        </mat-autocomplete>
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
-                        <mat-label>Estado</mat-label>
-                        <input matInput placeholder="Ex. Pizza">
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Tipo</mat-label>
-                        <input matInput placeholder="Ex. Pizza">
+                        <mat-label>Categoria</mat-label>
+                        <mat-select [(value)]="searchSalesDTO.categoryId">
+                            <mat-option *ngFor="let category of categoryProductList" value={{category.id}}>
+                                {{category.name}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
                         <mat-label>Fecha inicio</mat-label>
-                        <input matInput [matDatepicker]="picker1" [formControl]="">
+                        <input matInput [matDatepicker]="picker1" [value]="searchSalesDTO.initDate">
                         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                         <mat-datepicker #picker1></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field class="example-full-width">
                         <mat-label>Fecha final</mat-label>
-                        <input matInput [matDatepicker]="picker2" [formControl]="">
+                        <input matInput [matDatepicker]="picker2" [value]="searchSalesDTO.finalDate">
                         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
-                    <button mat-raised-button color="primary">Buscar</button>
+                    <button mat-raised-button color="primary" (click)="search()">Buscar</button>
                 </form>
-
-
-
-
             </div>
         </div>
     </div>
+    <br>
+    <div *ngIf="resultSalesList.length>0" style="display: flex; width: 100%;">
+
+        <div class="body-component">
+            <mat-table *ngIf="resultSalesList.length>0" [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> N° </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.index}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="productName">
+                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Product </mat-header-cell>
+                    <!-- NOMBRE DE LA COLUMNA-->
+                    <mat-cell *matCellDef="let row"> {{row.productName}}</mat-cell>
+                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+                </ng-container>
+
+                <ng-container matColumnDef="categoryName">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.categoryName}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Precio Unitario </mat-header-cell>
+                    <mat-cell *matCellDef="let row">S/. {{row.price}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="countSales">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad Vendida </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.countSales}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="sumSales">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Suma Total </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> S/. {{row.sumSales}}</mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+    </div>
+
+
 </div>

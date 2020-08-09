@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { OrderDetailBean } from '../_model/OrderDetailBean';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
+import { SearchSalesByFieldsDTO } from '../_DTO/SearchSalesByFieldsDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -41,4 +42,10 @@ export class OrderDetailService {
   deleteOrderDetail(id: number) {
     return this.http.delete(`${this.url}/dod/${id}`);
   }
+
+  getSalesByFieldsGroupByMenuProduct(searchSales:SearchSalesByFieldsDTO){
+    searchSales.organizationId=this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<any>(`${this.url}/gsbfmp`,searchSales)
+  }
+
 }

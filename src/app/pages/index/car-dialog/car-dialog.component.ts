@@ -49,14 +49,14 @@ export class CarDialogComponent implements OnInit {
     const numRows = !!this.dataSource && this.dataSource.data.length;
     return numSelected === numRows;
   }
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  
   masterToggle() {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(r => this.selection.select(r));
   }
   closeDialog() {
     this.dialogo.closeAll();
   }
-  /** The label for the checkbox on the passed row */
+  
   checkboxLabel(row: OrderDetailBean): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
