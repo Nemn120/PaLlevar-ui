@@ -1,1 +1,29 @@
-<p>pedido-asignado works!</p>
+<div class="mat-parent">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Mis entregas</span>
+
+        </mat-toolbar>
+    </p>
+
+    <div class="carousel-item" style="display: flex; width: 85%;">
+        <mat-card>
+
+            <div class="carousel-item" style="display: flex; width: 85%;">
+
+                <mat-form-field appearance="fill" style=" padding-right: 20px;width: 130px;">
+                    <mat-label>Repartidor</mat-label>
+                    <mat-select [(ngModel)]="userSelect">
+                        <mat-option *ngFor="let list of listofUsers" [value]="list">
+                            {{list.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>        
+
+        </mat-card>
+    </div>
+
+
+
+</div>
