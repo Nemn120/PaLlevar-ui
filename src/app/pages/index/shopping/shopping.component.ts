@@ -85,7 +85,7 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data =>{
       this.menuProductList=data;
        this.activatedPhoto(data); 
-       // console.log(this.menuProductList);  
+       console.log(this.menuProductList);  
      },error =>{
        console.log(error);
      })

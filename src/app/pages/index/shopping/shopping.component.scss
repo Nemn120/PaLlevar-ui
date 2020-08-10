@@ -5,14 +5,14 @@
 
 .app-container {
     transition: all .3s ease;
-    width: 75%;
-    min-height: 900px;
+    width: 100%;
+    //min-height: 900px;
     //padding-left: 20px;
     //padding-right: 20px;
     //margin: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: auto;
+    //padding-left: 20px;
+    //padding-right: 20px;
+    //margin: auto;
     @media only screen and (max-width: 1280px), screen and (orientation: portrait) {
         max-width: 1240px;
         width: 100%;
@@ -86,11 +86,11 @@
 
 .menu-body {
     //border-radius: 8px;
-    max-width: 1560px;
-    padding: 3px 20px;
+    //max-width: 1560px;
+    padding: 3px 0px;
     margin-top: 20px;
-    width: 80%;
-    margin-left: 14px;
+    width: 100%;
+    //margin-left: 14px;
     display: auto;
     float: left;
     height: initial;

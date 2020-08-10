@@ -1,27 +1,28 @@
+<app-header-organization [companySelect]="companySelect"></app-header-organization>
+
 <div class="fondo">
     <div class="app-container">
-        <div class="restaurant-info">
+        <!-- <div class="restaurant-info">
             <div class="restaurant-image">
                 <img class="restaurant-image" [src]="companySelect._foto" *ngIf="companySelect._isFoto" />
-                <!--   <ng-template #fotoDefault><img class="image-position" src="{{imgDefault}}" /></ng-template>-->
             </div>
             <div class="restaurant-data title-company">
                 <h2>{{this.companySelect.nombre}}</h2>
                 <h3>{{this.companySelect.description}}</h3>
             </div>
-        </div>
+        </div> -->
 
         <div class="menu-container">
-            <div class="menu-bodycat">
+            <!-- <div class="menu-bodycat">
                 <app-sidebar></app-sidebar>
-            </div>
+            </div> -->
             <div class="menu-body">
-                <p class="f-headline" style="  border-bottom: 0.8px solid #DCDCDC;padding-bottom:8px;"><strong>Precios y platillos</strong></p>
+                <p class="f-headline" style="  border-bottom: 0.8px solid #DCDCDC;padding-bottom:8px; margin-left: 14px;"><strong>Precios y platillos</strong></p>
 
                 <div *ngIf="!sharedService.loading" class="menuProduct-container">
                     <div *ngFor="let menuDayProduct of menuProductList">
                         <div class="card">
-                            <app-card-product [menuProduct]="menuDayProduct"></app-card-product>
+                            <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
                         </div>
                     </div>
                 </div>

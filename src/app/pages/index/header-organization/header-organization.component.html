@@ -1,0 +1,41 @@
+<div _ngcontent-gpp-c71="" class="ms-profile-overview">
+    <div _ngcontent-gpp-c71="" class="ms-profile-cover"><img _ngcontent-gpp-c71="" [src]="companySelect._foto" alt="people" class="ms-profile-img">
+        <div _ngcontent-gpp-c71="" class="ms-profile-user-info">
+            <h4 _ngcontent-gpp-c71="" class="ms-profile-username text-white">{{companySelect.nombre}}</h4>
+            <h2 _ngcontent-gpp-c71="" class="ms-profile-role">{{companySelect.description}}</h2>
+        </div>
+        <!-- <div _ngcontent-gpp-c71="" class="ms-profile-user-buttons"><a _ngcontent-gpp-c71="" href="#" class="btn btn-primary"><i _ngcontent-gpp-c71="" class="material-icons">person_add</i> Follow</a><a _ngcontent-gpp-c71="" href="#" class="btn btn-light"><i _ngcontent-gpp-c71="" class="material-icons">file_download</i> Download Resume</a></div> -->
+    </div>
+    <mat-tab-group class="ms-profile-navigation nav nav-tabs tabs-bordered">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon" (click)="redirectTo('Menu')">restaurant</mat-icon>
+                <p style="color: darkorange !important; font-weight: 800;">Menus</p>
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">fastfood</mat-icon>
+                <p style="color: darkorange !important;font-weight: 800;">Combos</p>
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">pending_actions</mat-icon>
+                <p style="color: darkorange !important;font-weight: 800;">Promos</p>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+    <!-- <ul _ngcontent-gpp-c71="" role="tablist" class="ms-profile-navigation nav nav-tabs tabs-bordered">
+        <li _ngcontent-gpp-c71="" role="presentation"><a _ngcontent-gpp-c71="" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab" class="active show"> Menus </a></li>
+        <li _ngcontent-gpp-c71="" role="presentation"><a _ngcontent-gpp-c71="" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"> Combos </a></li>
+        <li _ngcontent-gpp-c71="" role="presentation"><a _ngcontent-gpp-c71="" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"> Ofertas </a></li>
+    </ul> -->
+    <div _ngcontent-gpp-c71="" class="tab-content">
+        <div _ngcontent-gpp-c71="" id="tab1" class="tab-pane"></div>
+        <div _ngcontent-gpp-c71="" id="tab2" class="tab-pane"></div>
+        <div _ngcontent-gpp-c71="" id="tab3" class="tab-pane"></div>
+    </div>
+</div>

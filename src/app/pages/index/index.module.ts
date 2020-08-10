@@ -19,6 +19,8 @@ import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data-client-dialog.component';
 import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.component';
+import { CardProductNewComponent } from './card-product-new/card-product-new.component';
+import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
 
 const routes: Routes = [
 
@@ -54,6 +56,8 @@ const routes: Routes = [
   EditarPerfilComponent,
   PerfilComponent,
   DetallePedidoComponent,
+  CardProductNewComponent,
+  HeaderOrganizationComponent,
 
   ],
   imports: [

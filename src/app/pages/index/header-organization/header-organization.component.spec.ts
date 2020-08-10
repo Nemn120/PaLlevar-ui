@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SucursalShowComponent } from './sucursal-show.component';
+import { HeaderOrganizationComponent } from './header-organization.component';
 
-describe('SucursalShowComponent', () => {
-  let component: SucursalShowComponent;
-  let fixture: ComponentFixture<SucursalShowComponent>;
+describe('HeaderOrganizationComponent', () => {
+  let component: HeaderOrganizationComponent;
+  let fixture: ComponentFixture<HeaderOrganizationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SucursalShowComponent ]
+      declarations: [ HeaderOrganizationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SucursalShowComponent);
+    fixture = TestBed.createComponent(HeaderOrganizationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
