@@ -11,6 +11,7 @@ import { DialogConfirmacionComponent } from './dialog-confirmacion/dialog-confir
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
+import { UserDeliverysComponent } from './user-deliverys/user-deliverys.component';
 
 const routes: Routes = [
   {
@@ -25,12 +26,16 @@ const routes: Routes = [
         path: 'form',
         component: UserFormComponent,
       },
+      {
+        path: 'delivery',
+        component: UserDeliverysComponent,
+      },
     ],
   },
 ];
 
 @NgModule({
-  declarations: [UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent],
+  declarations: [UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent, UserDeliverysComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

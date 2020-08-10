@@ -1,7 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductBean } from '../../../_model/ProductBean';
-import { CategoryProductBean } from '../../../_model/CategoryProductBean';
-import { MenuDayBean } from '../../../_model/MenyDayBean';
 import { MatDialog } from '@angular/material/dialog';
 import { MenuDayProductBean } from '../../../_model/MenuDayProductBean';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';

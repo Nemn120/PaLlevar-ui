@@ -1,5 +1,5 @@
 import { SharedService } from './../../../../_service/shared.service';
-import { Component, OnInit ,Inject} from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CategoryProductBean } from './../../../../_model/CategoryProductBean';
 import { CategoryProductService } from './../../../../_service/category-product.service';
 
@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class EditarPerfilComponent implements OnInit {
 
-  
+
   userSelect: UserBean;
 
   imagenData: any;
@@ -25,27 +25,27 @@ export class EditarPerfilComponent implements OnInit {
   currentFileUpload: File;
   labelFile: string;
 
-  
-  usuario:UserBean;
+
+  usuario: UserBean;
   maxFecha: Date;
   constructor(
     private dialogRef: MatDialogRef<EditarPerfilComponent>,
     private snackBar: MatSnackBar,
     private sanitization: DomSanitizer,
     private sharedService: SharedService,
-    private userService:UserService
+    private userService: UserService
 
   ) { }
 
-  
+
   ngOnInit(): void {
-    this.maxFecha=new Date();
+    this.maxFecha = new Date();
 
     this.userSelect = new UserBean();
     if (this.sharedService.userSession.id > 0) {
 
-     this.userSelect=this.sharedService.userSession;
-  
+      this.userSelect = this.sharedService.userSession;
+
       this.userService.getPhotoById(this.sharedService.userSession.id).subscribe(data => {
         if (data.size > 0)
           this.imagenData = this.convertir(data);
@@ -54,21 +54,23 @@ export class EditarPerfilComponent implements OnInit {
     }
   }
 
-  save(){
+  save() {
     if (this.selectedFiles != null) {
       this.currentFileUpload = this.selectedFiles.item(0);
     } else {
       this.currentFileUpload = new File([""], "blanco");
     }
-    this.userService.actualizarPerfil(this.userSelect,this.currentFileUpload).subscribe(data => {
-      this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
-    });
+    this.userService.actualizarPerfil(this.userSelect, this.currentFileUpload).subscribe(data => {
+      this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
+    }), error => {
+      this.snackBar.open(error.message, 'SUCESS', { duration: 5000 });
+    };
     this.closeDialog();
   }
   closeDialog() {
     this.dialogRef.close();
   }
-  
+
   selectFile(e: any) {
     console.log(e);
     this.labelFile = e.target.files[0].name;
@@ -80,13 +82,13 @@ export class EditarPerfilComponent implements OnInit {
     let reader = new FileReader();
     reader.readAsDataURL(data);
     reader.onloadend = () => {
-      let base64 = reader.result;      
+      let base64 = reader.result;
       this.sanar(base64);
     }
   }
-  public sanar(base64 : any){
-    this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
-    this.imagenEstado=true;
+  public sanar(base64: any) {
+    this.imagenData = this.sanitization.bypassSecurityTrustResourceUrl(base64);
+    this.imagenEstado = true;
   }
 
 
