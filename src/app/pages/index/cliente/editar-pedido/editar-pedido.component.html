@@ -1,20 +1,20 @@
-<h1 mat-dialog-title> Modificar Datos Del Pedidogit</h1>
-<div mat-dialog-content>
-  <form [formGroup]="form" (ngSubmit)="confirmarCambios()" #frmUsuario="ngForm">
+<h3> Modificar Datos Del Pedido</h3>
 
-      <mat-form-field style="margin:auto">
-          <input matInput placeholder="Direccion" formControlName="address" [formGroup]="form" required>
+      <mat-form-field >
+          <input matInput placeholder="Direccion" [(ngModel)]="orderSelect.address">
       </mat-form-field>
       <br>
       <mat-form-field>
-          <input matInput placeholder="Referencia" formControlName="reference" [formGroup]="form" required>
+          <input matInput placeholder="Referencia" [(ngModel)]="orderSelect.reference">
 
       </mat-form-field>
       <br>
       <mat-form-field>
-          <input matInput placeholder="Telefono" formControlName="phone" [formGroup]="form" required>
+          <input matInput placeholder="Telefono" [(ngModel)]="orderSelect.phone">
       </mat-form-field>
       <br>
-      <button  mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Guardar Cambios</button>
-  </form>
-</div>   
+
+      <button  style="margin-left: 10px;" mat-raised-button color="primary" (click)="confirmarCambios()">Guardar Cambios</button>
+   
+   
+ 

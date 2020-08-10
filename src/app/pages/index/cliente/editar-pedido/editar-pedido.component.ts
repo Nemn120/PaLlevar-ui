@@ -3,9 +3,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OrderBean } from '../../../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarServiceService } from '../../../../_service/car-service.service';
+import { OrderService } from '../../../../_service/order.service';
 import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { Message } from '../../../../_DTO/messageDTO';
 import {  MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-editar-pedido',
   templateUrl: './editar-pedido.component.html',
@@ -13,24 +15,34 @@ import {  MatDialog } from '@angular/material/dialog';
 })
 export class EditarPedidoComponent implements OnInit {
 
-  form: FormGroup;
-  order:OrderBean
+  
+  orderSelect:OrderBean;
+  loadingSpinner:boolean=false;
+  
   constructor(
     public dialog:MatDialog,public dialogo: MatDialogRef<EditarPedidoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
-    private fb: FormBuilder,
-    private carService:CarServiceService,
+    
+    private orderService: OrderService,
+    private carService: CarServiceService,
+    
   ) {
  
    }
 
 
    ngOnInit(): void {
-    this.form =this.fb.group({
-      'address' :  new FormControl(''),
-      'reference': new FormControl(''),
-      'phone': new FormControl('')        
-    });
+    
+    this.loadingSpinner=true;
+    
+      this.orderSelect = new OrderBean();
+      this.orderSelect.address = this.data.address;
+      this.orderSelect.reference = this.data.reference;
+      this.orderSelect.phone = this.data.phone;    
+      console.log(this.data);
+  
+
+   
 
   }
  //confirmarCambios() sera el metodo que mostrara la ventana de confirmacion de cambio de datos
@@ -45,7 +57,11 @@ export class EditarPedidoComponent implements OnInit {
     .afterClosed()
     .subscribe((confirmado: Boolean) => {
       if (confirmado){
-        console.log("Se guardaron los cambios");
+        this.data.address=this.carService.sendOrder(this.orderSelect).address;
+        this.data.reference=this.carService.sendOrder(this.orderSelect).reference;
+        this.data.phone=this.carService.sendOrder(this.orderSelect).phone;
+        
+
         
         }
         this.dialogo.close();

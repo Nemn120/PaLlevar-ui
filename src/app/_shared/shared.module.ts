@@ -15,5 +15,7 @@ import { DataClientDialogComponent } from './data-client-dialog/data-client-dial
     FormsModule,
     ReactiveFormsModule,
   ],
+  entryComponents: 
+  [DialogoConfirmacionComponent],
 })
 export class SharedModule { }

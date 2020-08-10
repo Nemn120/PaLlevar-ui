@@ -46,13 +46,13 @@
           <mat-icon>fastfood</mat-icon>
         </button>
                
-                <button class="color" mat-icon-button  (click)="editarPedido(row)">
+                <button *ngIf="row.status!='Atendido'" class="color" mat-icon-button  (click)="editarPedido(row)">
             <mat-icon>description</mat-icon>
         </button>
  
-            </mat-cell>
+            </mat-cell> 
 
-        </ng-container>
+        </ng-container> 
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

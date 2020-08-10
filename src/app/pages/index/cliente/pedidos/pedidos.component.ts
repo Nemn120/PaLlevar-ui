@@ -6,7 +6,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditarPedidoComponent } from '../editar-pedido/editar-pedido.component';
+import { DataClientDialogComponent } from '../../../../_shared/data-client-dialog/data-client-dialog.component';
 
 
 @Component({
@@ -24,18 +26,28 @@ export class PedidosComponent implements OnInit {
  
 
 
+
   constructor(
-    private pedidos: OrderService,private dialog:MatDialog
+    private pedidos: OrderService,private dialog:MatDialog,private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
-
-  
-    this.pedidos.getListOrderByUserId().subscribe(data=>{
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }) 
+    
+    this.pedidos.mensajeCambio.subscribe(data => { 
+      this.snackBar.open(data, 'INFO', {
+        duration: 2000
+      });
+    });
+   
+    this.pedidos.getListOrderByUserId().subscribe(data => {  
+        console.log(data);
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        
+      },error =>{
+        this.pedidos.mensajeCambio.next("Error al mostrar");
+      });
 
   }
 
@@ -49,11 +61,11 @@ export class PedidosComponent implements OnInit {
   }
   
 public editarPedido(order: OrderBean) {
-  let ord = order != null ? order : new OrderBean();
-  this.dialog.open(EditarPedidoComponent, {
-    width: '300px',
+  let orderSelect = order != null ? order : new OrderBean();
+  this.dialog.open(DataClientDialogComponent, {
+    width: '600',
     height: '600',
-    data: ord
+    data: orderSelect
   });
 }
 }
