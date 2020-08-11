@@ -1,45 +1,41 @@
-<!--
-<div class="menu-product-detail">
-    <div class="menu-product-item">
-        <div class="image-item">
-            <img class="image-position" [src]="menuSelect.product._foto" />
+<div class="card-product">
+    <div class="card-image">
+        <img style="border-top-right-radius: 5px;
+border-top-left-radius: 5px;" [src]="menuSelect.product._foto" height="156px" width="346px">
+    </div>
+    <div class="card-body">
+        <div class="card-title">
+            <span><strong>{{menuSelect.product.name}}</strong></span>
+
+            <span style="color:green;"> <strong> S/. {{menuSelect.price}}</strong></span>
+
+
         </div>
-        <div class="data-item">
-
-            <h3 class="title-item">{{menuSelect.product.name}}</h3>
-
-            <p class="description-item">
-                <u>{{menuSelect.product.categoryProduct.name}}</u><br> {{menuSelect.product.description}}
-            </p>
-            <div class="price-item">
-                <span class="price-product">
-                  <b>  S/. {{menuSelect.price}}</b>
-                </span>
-                <button (click)="agregarCarrito()" class="buton-product">Agregar</button>
-            </div>
+        <div class="card-title">
+            <p> {{menuSelect.product.categoryProduct.name}}<br>{{menuSelect.product.description}}</p>
+            <p><button (click)="agregarCarrito()" class="buton-product">Agregar</button></p>
         </div>
     </div>
 </div>
 -->
 
 
-    <div class="card-product">
-        <div class="card-image">
-            <img  style="border-top-right-radius: 5px;
-    border-top-left-radius: 5px;" [src]="menuSelect.product._foto" height="156px" 
-    width="346px">
-        </div>
-        <div class="card-body">
+<div class="card-product">
+    <div class="card-image">
+        <img style="border-top-right-radius: 5px;
+    border-top-left-radius: 5px;" [src]="menuSelect.product._foto" height="156px" width="346px">
+    </div>
+    <div class="card-body">
         <div class="card-title">
             <span><strong>{{menuSelect.product.name}}</strong></span>
 
             <span style="color:green;"> <strong> S/. {{menuSelect.price}}</strong></span>
-              
-           
-            </div>
-         <div class="card-title">
-               <p> {{menuSelect.product.categoryProduct.name}}<br>{{menuSelect.product.description}}</p>
-                <p><button (click)="agregarCarrito()" class="buton-product">Agregar</button></p>
-          </div>
+
+
+        </div>
+        <div class="card-title">
+            <p> {{menuSelect.product.categoryProduct.name}}<br>{{menuSelect.product.description}}</p>
+            <p><button (click)="agregarCarrito()" class="buton-product">Agregar</button></p>
         </div>
     </div>
+</div>

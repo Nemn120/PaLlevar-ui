@@ -25,7 +25,6 @@ export class EditarPerfilComponent implements OnInit {
   currentFileUpload: File;
   labelFile: string;
 
-
   usuario: UserBean;
   maxFecha: Date;
   constructor(

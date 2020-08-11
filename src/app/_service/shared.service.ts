@@ -13,14 +13,14 @@ import { CompanyBean } from '../_model/CompanyBean';
 export class SharedService{
 
     userSession: UserBean;
-    organizationSelect=new Subject<CompanyBean>();
-    subject =new Subject<string>();
-    loadingSpinner=new Subject<boolean>();
-    loading=false;
+    organizationSelect = new Subject<CompanyBean>();
+    subject = new Subject<string>();
+    loadingSpinner = new Subject<boolean>();
+    loading = false;
     constructor(private http: HttpClient, private router: Router,
-      private sanitization: DomSanitizer
-      ) { 
-      
+                private sanitization: DomSanitizer
+      ) {
+
     }
 
     public getOrganizationIdByUserSession(){

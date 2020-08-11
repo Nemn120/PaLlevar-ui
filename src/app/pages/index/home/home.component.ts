@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     private snackBar: MatSnackBar,
     private sanitization: DomSanitizer,
     private cardService: CarServiceService,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {

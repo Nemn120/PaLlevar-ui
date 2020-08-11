@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="responsive hover01 column">
+        <div class="gallery">
+            <figure><img class="zoom" [src]="menuSelect.product._foto" alt="Forest" width="600" height="400" /></figure>
+            <button mat-mini-fab aria-label="Example icon button with a menu icon" (click)="agregarCarrito()">
+                <mat-icon matBadge="{{contadorCarrito}}" matBadgeColor="primary">shopping_cart</mat-icon>
+            </button>
+            <div class="desc title">{{menuSelect.product.name}}</div>
+            <div class="desc subtittle">{{menuSelect.product.description}}</div>
+            <div class="desc price">{{menuSelect.price | currency: 'S/. '}}</div>
+        </div>
+    </div>
+</div>

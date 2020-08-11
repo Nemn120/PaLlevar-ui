@@ -1,0 +1,347 @@
+.ms-profile-overview {
+    position: relative;
+    height: 300px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 6px 1px rgba(69, 65, 78, .1);
+    margin: 10px;
+}
+
+div {
+    display: block;
+}
+
+.ms-profile-cover {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background-image: url(../../../../assets/images/banner.jpg);
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    height: 83%;
+    width: 100%;
+    padding: 1.5rem 1.5rem 0;
+    z-index: 1;
+}
+
+.ms-profile-cover img {
+    width: 200px;
+    margin-bottom: -35px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+}
+
+img {
+    max-width: 100%;
+    height: 200px;
+    vertical-align: middle;
+    border-style: none;
+}
+
+.ms-profile-user-buttons,
+.ms-profile-user-info {
+    padding: 0 0 1.5rem 1.5rem;
+}
+
+.text-white {
+    color: #fff!important;
+}
+
+h4 {
+    font-size: 24px;
+    color: #000;
+    font-family: Roboto, sans-serif;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
+
+.ms-profile-user-info h2 {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+user-info h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.ms-profile-user-buttons {
+    flex: 1 1 auto;
+    text-align: right;
+    padding: 0 0 1.5rem 1.5rem;
+}
+
+.ms-profile-cover:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, .4), hsla(0, 0%, 100%, 0));
+    z-index: -1;
+}
+
+.ms-profile-user-info h2 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.ms-profile-user-info h2 {
+    color: #fff !important;
+    font-family: Roboto, sans-serif;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #ff6877;
+    border-color: #ff6877;
+}
+
+.btn {
+    font-size: 14px;
+    outline: none;
+    padding: .625rem 1rem !important;
+    min-width: 120px;
+    margin-top: 1rem;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.material-icons {
+    vertical-align: sub;
+    font-weight: 500;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+*,
+ :after,
+ :before {
+    box-sizing: border-box;
+}
+
+.btn-light {
+    color: #fff;
+    background-color: #878793;
+    border-color: #878793;
+    font-size: 14px;
+}
+
+.ms-profile-user-buttons a+a {
+    margin-left: 10px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.btn:hover,
+.ms-dark-theme .btn:hover {
+    color: #fff;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: darkred;
+    border-color: darkred;
+}
+
+.btn-light:hover {
+    color: #fff;
+    background-color: darkgray;
+    border-color: darkgray;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.ms-profile-navigation li {
+    flex: 0 0 auto;
+}
+
+.nav-tabs li {
+    flex: 1 1 auto;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+.ms-profile-navigation {
+    position: absolute;
+    bottom: 0;
+    left: 250px;
+}
+
+.nav-tabs {
+    border: 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-tabs.tabs-bordered li a.active {
+    background: #fff;
+    color: #ff6877;
+    border-bottom: 2px solid #ff6877;
+}
+
+.ms-profile-navigation.tabs-bordered li a {
+    border-bottom: 0;
+    color: #878793;
+}
+
+.nav-tabs.tabs-bordered li a {
+    transition: 0s;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.nav-tabs li a.active {
+    color: #fff;
+    background-color: #ff6877;
+}
+
+.ms-profile-navigation li a {
+    padding: 1rem;
+}
+
+.tabs-bordered li a {
+    background: #fff;
+    padding: 0 0 1rem;
+}
+
+.nav-tabs li a,
+.nav-tabs li a.white {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #34334a;
+}
+
+.nav-tabs li a {
+    background: #e4e3e8;
+}
+
+a {
+    transition: .3s;
+    color: #ff6877;
+    font-size: 14px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.ms-profile-navigation li {
+    flex: 0 0 auto;
+}
+
+.nav-tabs li {
+    flex: 1 1 auto;
+}
+
+.ms-profile-navigation.tabs-bordered li a {
+    border-bottom: 0;
+    color: #878793;
+}
+
+.nav-tabs.tabs-bordered li a {
+    transition: 0s;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.ms-profile-navigation li a {
+    padding: 1rem;
+}
+
+.tabs-bordered li a {
+    background: #fff;
+    padding: 0 0 1rem;
+}
+
+.nav-tabs li a,
+.nav-tabs li a.white {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #34334a;
+}
+
+@media (max-width: 768px) {
+    .ms-profile-cover {
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 251px;
+        padding-bottom: 1.5rem;
+        flex-direction: column;
+    }
+    .ms-profile-cover img {
+        margin-bottom: 1rem;
+    }
+    .ms-profile-navigation {
+        position: relative;
+        left: auto;
+        bottom: auto;
+    }
+}
+
+.example-tab-icon {
+    margin-right: 8px;
+}
