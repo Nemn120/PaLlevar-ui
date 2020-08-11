@@ -14,8 +14,8 @@
     flex: 0 0 200px;
     margin: 10px;
     border: 1px solid rgb(141, 77, 57);
-    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-    background-color: currentColor;
+    box-shadow: 2px 2px 6px 0px rgba(245, 236, 236, 0.3);
+    background-color: #F5F5F5;
     .menu-org-item {
         display: flex;
         align-items: initial;
@@ -73,7 +73,7 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                color: rgb(168, 162, 150) !important;
+                color: rgb(71, 70, 67) !important;
             }
             .price-item {
                 display: flex;
@@ -89,7 +89,7 @@
                     font-size: 100%;
                     vertical-align: baseline;
                     font-family: Poppins-SemiBold, Helvetica, Arial, sans-serif !important;
-                    color: rgb(175, 165, 162) !important;
+                    color: rgb(71, 70, 67) !important;
                 }
             }
         }

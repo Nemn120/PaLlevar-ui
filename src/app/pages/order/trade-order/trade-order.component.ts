@@ -76,7 +76,8 @@ export class TradeOrderComponent implements OnInit {
 
 
   public search(){
-
+    this.dataSource=null;
+    this.resultSalesList=null;
     this.orderDetailService.getSalesByFieldsGroupByMenuProduct(this.searchSalesDTO).subscribe( data =>{
       this.resultSalesList=data.data;
       this.dataSource = new MatTableDataSource(data.data);
