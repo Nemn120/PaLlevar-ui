@@ -4,8 +4,8 @@ div.gallery {
 }
 
 div.gallery img {
-    width: 100%;
-    height: auto;
+    width: 300px;
+    height: 150px;
 }
 
 div.desc {
@@ -27,8 +27,8 @@ div.desc {
     /* width: 24.99999%; */
     box-shadow: 0 4px 8px 0 rgba(87, 81, 81, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 25px;
-    width: 34.99999%;
-    height: auto;
+    width: 300px;
+    height: 300px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -40,7 +40,10 @@ div.desc {
 
 @media only screen and (max-width: 500px) {
     .responsive {
-        width: 100%;
+        width: 300px;
+    }
+    .container {
+        padding: 0px !important;
     }
 }
 

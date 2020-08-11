@@ -117,6 +117,7 @@
     //align-items: stretch;
     justify-items: stretch;
     margin: auto;
+    justify-content: center;
     .card {
         flex: 0 0 200px;
         margin: 10px;
@@ -137,4 +138,14 @@
 
 mat-divider {
     border: none;
+}
+
+.p-card-product {
+    border-bottom: 0.8px solid #DCDCDC;
+    padding-bottom: 8px;
+    margin-left: 14px;
+    font-size: 1.5rem;
+    color: #FA7268 !important;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
 }

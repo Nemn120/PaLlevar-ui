@@ -17,7 +17,7 @@
                 <app-sidebar></app-sidebar>
             </div> -->
             <div class="menu-body">
-                <p class="f-headline" style="  border-bottom: 0.8px solid #DCDCDC;padding-bottom:8px; margin-left: 14px;"><strong>Precios y platillos</strong></p>
+                <p class="f-headline" class="p-card-product"><strong>Precios y platillos</strong></p>
 
                 <div *ngIf="!sharedService.loading" class="menuProduct-container">
                     <div *ngFor="let menuDayProduct of menuProductList">
