@@ -72,7 +72,6 @@ export class EditarPerfilComponent implements OnInit {
   }
 
   selectFile(e: any) {
-    console.log(e);
     this.labelFile = e.target.files[0].name;
     this.selectedFiles = e.target.files;
 

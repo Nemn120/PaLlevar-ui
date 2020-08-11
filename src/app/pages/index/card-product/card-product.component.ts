@@ -38,9 +38,6 @@ export class CardProductComponent implements OnInit {
     if (!this.carService.orderHeader.address) {
       this.openDialog(orderDetail);
     }
-
-    console.log(this.menuProduct);
-    console.log(this.carService.getItems());
   }
   public openDialog(orderDetail: OrderDetailBean) {
     let order = orderDetail != null ? orderDetail : new OrderDetailBean();

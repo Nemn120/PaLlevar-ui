@@ -36,9 +36,7 @@ export class AttendOrderDetailComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private orderService: OrderService,
     private sharedService: SharedService
-    ){
-    console.log(this.data);
-  }
+    ){ }
 
 
   ngOnInit(): void {
@@ -71,9 +69,7 @@ export class AttendOrderDetailComponent implements OnInit {
           });
         
           this.data.orderDetail=attendODetail;
-          //debugger
           this.orderService.saveAttendOrder(this.data).subscribe(data =>{
-            console.log(attendODetail);
             this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
               return numSelected.indexOf(x) == -1;
             })

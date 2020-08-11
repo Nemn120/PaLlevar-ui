@@ -95,8 +95,6 @@ export class CarDialogComponent implements OnInit {
               })
 
               this.sendOrderCar.userOrder = this.sharedService.userSession;
-
-              console.log(numSelected);
               this.orderService.saveNewOrder(this.sendOrderCar).subscribe(data => {
                 this.carService.deleteProductList(numSelected);
                 this.odList = this.carService.getItems();

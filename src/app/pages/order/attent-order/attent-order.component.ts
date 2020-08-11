@@ -39,12 +39,11 @@ export class AttentOrderComponent implements OnInit {
     });
 
     this.orderService.getListOrderPendding().subscribe(data => {  
-      console.log(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      
     },error =>{
+      console.error(error);
       this.orderService.mensajeCambio.next("Error al mostrar ordenes");
     });
 

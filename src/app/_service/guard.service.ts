@@ -21,8 +21,6 @@ export class GuardService implements CanActivate {
     //SI ESTAS LOGEADO
     
     let rpta = this.loginService.estaLogueado();
-    console.log(rpta);
-
     if (!rpta) {
       sessionStorage.clear();
       this.router.navigate(['auth/login']);
@@ -32,19 +30,13 @@ export class GuardService implements CanActivate {
       let token = sessionStorage.getItem(environment.TOKEN_NAME);
 
       const helper = new JwtHelperService();
-    console.log(!helper.isTokenExpired(token));
       if (!helper.isTokenExpired(token)) {
         //SI TIENES EL ROL NECESARIO  
         const decodedToken = helper.decodeToken(token);
-      
-        let url = state.url; // /pelicula
-        console.log(url);
-        console.log(this.sharedService.userSession.id);
+        let url = state.url; // /pelicul
         return this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).pipe(map((data: MenuOptionBean[]) => {
           this.menuService.menuCambio=data; 
           //this.menuService.menuCambio.next(data);
-        
-          console.log(data);
           let cont = 0;
           for (let menuBD of data) {
             if (url.startsWith(menuBD.urlMenu)) {

@@ -88,7 +88,6 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.status = this.estadoSelected;
     this.dataEmployee.employeeCode = this.companyFormGroup.value.employeecodeCtrl;
 
-    // console.log(this.selected);
     if (this.dataEmployee.nombre == '' || this.dataEmployee.lastName == '' ||
       this.dataEmployee.address == '' || this.dataEmployee.password == '' ||
       this.dataEmployee.documentNumber == '' || this.dataEmployee.username == '' ||
@@ -112,9 +111,7 @@ export class UserFormComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(this.dataEmployee);
-      console.log(this.dataEmployee.profile.name);
+
     });
   }
 

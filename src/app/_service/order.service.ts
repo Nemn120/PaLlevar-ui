@@ -49,7 +49,6 @@ export class OrderService {
   }
 
   saveNewOrder(order : OrderBean) {
-     console.log(order);
     return this.http.post<any>(`${this.url}/sobos`,order);
   }
   saveAttendOrder(order : OrderBean) { // IVAN

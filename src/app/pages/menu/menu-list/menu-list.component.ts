@@ -44,11 +44,9 @@ export class MenuListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
     this.menuDayService.getListMenuDayByOrganization().subscribe(data => {  
-        console.log(data);
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        
       },error =>{
         this.menuDayService.mensajeCambio.next("Error al mostrar productos");
       });

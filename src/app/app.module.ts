@@ -20,7 +20,6 @@ import { NavHomeComponent } from './pages/index/nav-home/nav-home.component';
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
   let token = tk != null ? tk : '';
-  console.log(token);
   return token;
 }
 

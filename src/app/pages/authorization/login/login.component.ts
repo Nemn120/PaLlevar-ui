@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('Login paLlevar');
-    console.log("LOGINFROM");
     this.loginService.mensajeCambio.subscribe(data =>{
       this.snackBar.open(data, 'INFO', {
         duration: 2000
@@ -65,33 +64,22 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((data: any) => {
-      console.log(data);
       if (data) {
-        
-        console.log(data);
         const helper = new JwtHelperService();
 
         sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
 
         const decodedToken = helper.decodeToken(data.access_token);
-        console.log(decodedToken);
-        console.log(decodedToken.user_name);
         this.userService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
           this.sharedService.userSession = new UserBean; 
           this.sharedService.userSession =data; // guardo el usuario que inicia
-          console.log(data);
           this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).subscribe(data =>{
            this.menuService.menuCambio= data; //
          //this.menuService.menuCambio.next(data); //
-            console.log(data);
-          
             if(this.sharedService.userSession.profile.idProfile===6){
               this.router.navigate(['index/shop']);
-              
             }else{
-            
            //   setTimeout(x=>{
                 this.router.navigate(['suc/show']); // RUTA REDIRIGIDA AL INICIAR SESION
             //  },1000)

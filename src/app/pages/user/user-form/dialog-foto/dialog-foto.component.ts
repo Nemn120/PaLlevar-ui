@@ -28,8 +28,7 @@ export class DialogFotoComponent implements OnInit {
   ngOnInit(): void {
     if(this.currentFileUpload != null) {
       this.imagenData = this.convertir(this.currentFileUpload);
-      console.log(this.imagenData);
-    }
+      }
   }
 
   onNoClick(): void {
@@ -37,7 +36,6 @@ export class DialogFotoComponent implements OnInit {
   }
 
   selectFile(e: any) {
-    console.log(e);
     this.labelFile = e.target.files[0].name;
     this.selectedFiles = e.target.files;
 
@@ -51,7 +49,6 @@ export class DialogFotoComponent implements OnInit {
     }
     this.serviceUser.imagen = this.currentFileUpload;
     this.onNoClick();
-    console.log(this.currentFileUpload);
   }
 
   public convertir(data: any) {

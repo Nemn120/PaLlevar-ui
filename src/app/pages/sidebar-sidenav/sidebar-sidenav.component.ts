@@ -47,17 +47,8 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
      ngOnInit(){
       if(this.sharedService.userSession != null && this.sharedService.getUserIdSession()>0){
         this.isLogueado=true;
-        console.log(this.isLogueado);
+        this.menus= this.menuService.menuCambio;
       }
-      //this.menuService.menuCambio.subscribe(data => {
-        //this.menus. =
-//        this.menuService.menuCambio.subscribe( x => {
-          this.menus= this.menuService.menuCambio;
-  //      });
-        console.log(this.menus);
-    //  });
-     
-
     }
     openUserPerfil() {
       let gen :UserBean = new UserBean();
@@ -68,13 +59,10 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
      }
      
     ngOnDestroy(): void {
-      // tslint:disable-next-line: deprecation
       this.mobileQuery.removeListener(this._mobileQueryListener);
-      //this.autoLogoutSubscription.unsubscribe();
   }
 
   cerrarSesion() {
     this.isLogueado = false;
-    console.log(this.isLogueado);
   }
 }

@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
       this.menuOrgList = data;
       this.activatedPhoto();
     }, error => {
-      console.log(error);
+      console.error(error);
     });
   }
 

@@ -88,7 +88,7 @@ export class ShoppingComponent implements OnInit {
        this.activatedPhoto(data); 
        
      },error =>{
-       console.log(error);
+       console.error(error);
      })
   }
   getListMenuProductByType(type : string){
@@ -98,7 +98,7 @@ export class ShoppingComponent implements OnInit {
       this.menuProductList=data;
        this.activatedPhoto(data);  
      },error =>{
-       console.log(error);
+       console.error(error);
      })
   }
 

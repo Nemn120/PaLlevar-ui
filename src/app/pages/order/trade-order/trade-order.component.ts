@@ -68,7 +68,6 @@ export class TradeOrderComponent implements OnInit {
     return this.productList.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
   itemSelected(event: MatAutocompleteSelectedEvent) {
-    console.log("Selected item", event.option.value);
     this.searchSalesDTO.productId=event.option.value.id;
   }
   displayFn(product: ProductBean): string {
@@ -79,16 +78,14 @@ export class TradeOrderComponent implements OnInit {
   public search(){
 
     this.orderDetailService.getSalesByFieldsGroupByMenuProduct(this.searchSalesDTO).subscribe( data =>{
+      this.searchSalesDTO;
       this.resultSalesList=data.data;
       this.dataSource = new MatTableDataSource(data.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(data);
     },error =>{
       this.snackBar.open(error.message,'ERROR', { duration: 5000 });
     })
-    console.log(this.searchSalesDTO);
-    console.log("SEARH");
   }
 
 

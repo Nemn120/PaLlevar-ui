@@ -25,7 +25,7 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
                     }*/
                 }
             })).pipe(catchError((err) => {
-                console.log(err);
+                console.error(err);
                 //https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
                 if (err.status === 400) {
                     this.snackBar.open(err.message, 'ERROR 400', { duration: 5000 });

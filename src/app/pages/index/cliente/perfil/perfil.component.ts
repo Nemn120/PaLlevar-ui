@@ -30,17 +30,12 @@ export class PerfilComponent implements OnInit {
 
   obtenerPerfil() {
     this.user = this.sharedService.userSession;
-
-
     this.userService.getPhotoById(this.user.id).subscribe(data => {
       if (data.size > 0) {
         this.imagenData = this.convertir(data);
         this.mostrar = true;
       }
     });
-
-
-    console.log('katriel18 : ', this.user);
   }
 
 

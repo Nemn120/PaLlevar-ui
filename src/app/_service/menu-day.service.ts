@@ -36,7 +36,6 @@ export class MenuDayService {
   }
   saveMenuDay(menuDay : MenuDayBean) { // S
     menuDay.organizationId = this.sharedService.getOrganizationIdByUserSession();
-     console.log(menuDay);
     return this.http.post<MenuDayBean>(`${this.url}/smd`,menuDay);
   }
 
