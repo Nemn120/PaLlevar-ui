@@ -1,6 +1,6 @@
 .example-form {
     min-width: 100px;
-    max-width: 180px;
+    max-width: 250px;
     width: 100%;
 }
 
@@ -21,14 +21,19 @@
     white-space: nowrap;
 }
 
+.data-item {
+    margin: auto;
+    background-color: grey;
+}
+
 .body-component {
-    display: flex;
+    display: block;
     box-sizing: border-box;
     padding: 0 16px;
     margin-top: 0px;
     padding-top: 0px;
     width: 80%;
-    height: 80%;
+    height: 100%;
     flex-direction: row;
     align-items: center;
     white-space: nowrap;
