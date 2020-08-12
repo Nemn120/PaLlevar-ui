@@ -23,38 +23,36 @@ import { MapaClienteComponent } from '../../maps/mapa-cliente/mapa-cliente.compo
 
 const routes: Routes = [
 
-  {///////////mequede aui
+  {
     path: "",
     component: IndexComponent,
     children: [
-          { path: '', component: HomeComponent  },
-          { path: 'shop/:org', component: ShoppingComponent  }
-          // { path: 'shop/menu', component: ShoppingComponent  },
-          // { path: 'shop/promo', component: ShoppingComponent  },
-        // { path: '',   redirectTo: '/home', pathMatch: 'full' },
+      { path: '', component: HomeComponent },
+      { path: 'shop/:org', component: ShoppingComponent }
+
     ]
   }
 ];
 
 @NgModule({
   declarations: [
-  IndexComponent,
-  HomeComponent,
-  ShoppingComponent,
-  NavHomeComponent, 
-  CardProductComponent,
-  CardOrganizationComponent,
-  PerfilComponent,
-  SidebarComponent,
-  CarDialogComponent,
-  
+    IndexComponent,
+    HomeComponent,
+    ShoppingComponent,
+    NavHomeComponent,
+    CardProductComponent,
+    CardOrganizationComponent,
+    PerfilComponent,
+    SidebarComponent,
+    CarDialogComponent,
 
- //katriel
-  PedidosComponent,
 
-  EditarPerfilComponent,
-  PerfilComponent,
-  DetallePedidoComponent,
+
+    PedidosComponent,
+
+    EditarPerfilComponent,
+    PerfilComponent,
+    DetallePedidoComponent,
 
   ],
   imports: [
@@ -67,18 +65,18 @@ const routes: Routes = [
   exports: [
     RouterModule,
 
-    NavHomeComponent,// exportando el componente  para usarlo en AuthorizationModule
-   
-  ],
-  entryComponents: 
-  [
+    NavHomeComponent,// export component a AuthorizationModule
 
-  PerfilComponent,PedidosComponent,EditarPerfilComponent,
-   SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent,DataClientDialogComponent,
-   DetallePedidoComponent,MapaClienteComponent
   ],
+  entryComponents:
+    [
 
- 
+      PerfilComponent, PedidosComponent, EditarPerfilComponent,
+      SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
+      DetallePedidoComponent
+    ],
+
+
 })
 export class IndexModule { }
 

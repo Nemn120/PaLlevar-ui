@@ -8,7 +8,7 @@ import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
 import { DataClientDialogComponent } from '../../../_shared/data-client-dialog/data-client-dialog.component';
 import { SharedService } from '../../../_service/shared.service';
-import { MapaClienteComponent } from '../../../maps/mapa-cliente/mapa-cliente.component';
+
 @Component({
   selector: "app-card-product",
   templateUrl: "./card-product.component.html",
@@ -17,7 +17,7 @@ import { MapaClienteComponent } from '../../../maps/mapa-cliente/mapa-cliente.co
 export class CardProductComponent implements OnInit {
 
   @Input() menuProduct:MenuDayProductBean;
-  //@Input() data:string;
+ @Input() data:string;
   menuSelect:MenuDayProductBean;
   constructor(
     private dialog:MatDialog,
@@ -48,12 +48,10 @@ export class CardProductComponent implements OnInit {
   }
   public openDialog(orderDetail: OrderDetailBean) {
     let order = orderDetail != null ? orderDetail : new OrderDetailBean();
-    this.dialog.open(/*DataClientDialogComponent*/MapaClienteComponent, {
-    //  width: '600',
-    //  height: '600',
-     // data: order
-     width:'50%',
-     height:'50%',
+    this.dialog.open(DataClientDialogComponent, {
+     width: '600',
+     height: '600',
+    data: order
     });
   }
 
