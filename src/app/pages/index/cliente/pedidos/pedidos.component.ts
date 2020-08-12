@@ -7,7 +7,6 @@ import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.compone
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EditarPedidoComponent } from '../editar-pedido/editar-pedido.component';
 import { DataClientDialogComponent } from '../../../../_shared/data-client-dialog/data-client-dialog.component';
 
 

@@ -6,6 +6,8 @@ import { CarServiceService } from '../../_service/car-service.service';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { Message } from '../../_DTO/messageDTO';
 import {  MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { OrderService } from 'src/app/_service/order.service';
 
 @Component({
   selector: 'app-data-client-dialog',
@@ -26,12 +28,15 @@ export class DataClientDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private fb: FormBuilder,
     private carService:CarServiceService,
+    private orderService: OrderService,
+    private snackBar: MatSnackBar,
+   
   ) {
  
    }
 
    enviarOrden(){
-    debugger
+    
    this.order = new OrderBean();
    this.order.address=this.form.value['address'];
    this.order.reference=this.form.value['reference'];
@@ -54,9 +59,13 @@ export class DataClientDialogComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
-        console.log("Se actualizaron los datos")
+          this.order.id=this.data.id;
+          this.orderService.updateOrder(this.order).subscribe(data => {
+            this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
+          });
+      
         }
-          this.dialogo.close();
+        this.dialog.closeAll();
         });
 
    }
