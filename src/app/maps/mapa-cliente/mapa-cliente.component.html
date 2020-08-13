@@ -31,6 +31,6 @@
 
 </mgl-map>
 
-<button class="buton-product" (click)="crearEliminarMarker()">
-  Establecer ubicacion
-</button>
+<button mat-raised-button style="margin-left: 4px ;width: 32%" color="primary" (click)="crearEliminarMarker()">Establecer ubicacion</button>
+<button mat-raised-button style="margin-left: 4px; width:32%" color="primary" [disabled]="!estadoMarker">Guardar</button>
+<button mat-raised-button style="margin-left: 4px; width:32%" color="primary" (click)="cerrarMapa()">Cancelar</button>

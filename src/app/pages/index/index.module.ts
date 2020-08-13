@@ -9,7 +9,6 @@ import { MaterialModule } from '../../_material/material.module';
 import { CardOrganizationComponent } from './card-organization/card-organization.component';
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
-import { LoginComponent } from '../authorization/login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CarDialogComponent } from './car-dialog/car-dialog.component';
 import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
@@ -19,7 +18,6 @@ import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data-client-dialog.component';
 import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.component';
-import { MapaClienteComponent } from '../../maps/mapa-cliente/mapa-cliente.component';
 
 const routes: Routes = [
 
@@ -46,8 +44,6 @@ const routes: Routes = [
     SidebarComponent,
     CarDialogComponent,
 
-
-
     PedidosComponent,
 
     EditarPerfilComponent,
@@ -64,13 +60,11 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule,
-
     NavHomeComponent,// export component a AuthorizationModule
 
   ],
   entryComponents:
     [
-
       PerfilComponent, PedidosComponent, EditarPerfilComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
       DetallePedidoComponent

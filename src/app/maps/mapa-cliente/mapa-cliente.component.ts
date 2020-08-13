@@ -1,3 +1,4 @@
+import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit,NgZone } from '@angular/core';
 
 import { Marker } from 'mapbox-gl';
@@ -10,7 +11,9 @@ import { Result, Results } from 'ngx-mapbox-gl/lib/control/geocoder-control.dire
 })
 export class MapaClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialogMap: MatDialogRef<MapaClienteComponent>,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -37,10 +40,6 @@ export class MapaClienteComponent implements OnInit {
 
  onGeocoder(resultado:any) {
    
-  // console.log('resultado: ',resultado);
-   console.log('resultado.result: ',resultado.result);
-  // console.log('resultado.result.text: ',resultado.result.text);
-  // console.log('resultado.result.text: ',resultado.result.properties.address);
    console.log('resultado.result.text: ',resultado.result.geometry.coordinates);
      //REASIGNA LAS POSICION DEL MARCADOR
      this.long=resultado.result.geometry.coordinates[0];
@@ -62,6 +61,11 @@ export class MapaClienteComponent implements OnInit {
    NgZone.assertInAngularZone();
    this.coordinates = marker.getLngLat().toArray();
    console.log('coordenadas marker:',  this.coordinates);
+ }
+
+
+ cerrarMapa(){
+   this.dialogMap.close()
  }
 
 }

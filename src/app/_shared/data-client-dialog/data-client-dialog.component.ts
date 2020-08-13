@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA,MatDialog } from '@angular/material/dialog';
 import { OrderBean } from '../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarServiceService } from '../../_service/car-service.service';
+import { MapaClienteComponent } from '../../maps/mapa-cliente/mapa-cliente.component';
 
 @Component({
   selector: 'app-data-client-dialog',
@@ -17,6 +18,7 @@ export class DataClientDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private fb: FormBuilder,
     private carService:CarServiceService,
+    private dialogMap:MatDialog
   ) {
  
    }
@@ -46,6 +48,16 @@ export class DataClientDialogComponent implements OnInit {
   public hasError = (controlName: string, errorName: string) =>{
     return this.form.controls[controlName].hasError(errorName);
   }
- 
+
+  AbrirMapa(){
+    this.dialogMap.open(MapaClienteComponent, {
+      width: '50%',
+      height: '50%',
+     }
+    
+     );
+
+  }
+
 
 }
