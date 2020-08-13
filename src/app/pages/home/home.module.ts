@@ -8,7 +8,7 @@ import { GuardService } from '../../_service/guard.service';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { SidebarSidenavComponent } from '../sidebar-sidenav/sidebar-sidenav.component';
 import { UserModule } from '../user/user.module';
-import { UserProfileComponent } from '../user/user-profile/user-profile.component';
+
 
 const routes: Routes = [
   { path: '', component: SidebarSidenavComponent ,
@@ -27,7 +27,7 @@ const routes: Routes = [
     UserModule
   ],
 
-  entryComponents: [SidebarSidenavComponent, UserProfileComponent],
+  entryComponents: [SidebarSidenavComponent],
   
 })
 export class HomeModule { }

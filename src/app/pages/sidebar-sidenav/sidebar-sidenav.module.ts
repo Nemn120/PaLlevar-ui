@@ -5,15 +5,19 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { SidebarSidenavComponent } from './sidebar-sidenav.component';
-import { UserModule } from '../user/user.module';
+
 import { HeaderComponent } from './header/header.component';
-import { EditProfileComponent } from '../user/edit-profile/edit-profile.component';
+
 import { ProfileComponent } from './profile/profile.component';
+
+import { EditAddProfileComponent } from './edit-add-profile/edit-add-profile.component';
+import { MatInputModule } from '@angular/material/input';
+
 
 
 
 @NgModule({
-  declarations: [SidebarSidenavComponent, HeaderComponent, ProfileComponent],
+  declarations: [SidebarSidenavComponent, HeaderComponent, ProfileComponent, EditAddProfileComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -21,14 +25,16 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    UserModule
+    MatInputModule
   ],
 
   
   exports: [
     SidebarSidenavComponent
   ],
-  entryComponents:[EditProfileComponent],
+
+  entryComponents : [ProfileComponent,EditAddProfileComponent],
+  
   
 })
 export class SidebarSidenavModule { }

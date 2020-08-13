@@ -1,4 +1,3 @@
-
 <h1 mat-dialog-title style="text-align: center;">Editar Perfil</h1>
 <div mat-dialog-content style="width: 420px;">
 
@@ -6,38 +5,38 @@
 
     <mat-form-field style="text-align: center;width: 200px;">
 
-        <input matInput placeholder="Nombres" [(ngModel)]="userSelect.nombre">
+        <input matInput placeholder="Nombres" [(ngModel)]="addUserSelect.nombre">
 
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
-        <input matInput placeholder="Apellidos" [(ngModel)]="userSelect.lastName">
+        <input matInput placeholder="Apellidos" [(ngModel)]="addUserSelect.lastName">
     </mat-form-field>
     <br>
 
 
     <mat-form-field style="text-align: center;width: 200px;">
-        <input matInput [matDatepicker]="picker" placeholder="Fecha Nacimiento" [max]="maxFecha" [(ngModel)]="userSelect.dateBirth">
+        <input matInput [matDatepicker]="picker" placeholder="Fecha Nacimiento" [max]="maxFecha" [(ngModel)]="addUserSelect.dateBirth">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
-        <input matInput placeholder="Celular" [(ngModel)]="userSelect.cellPhone">
+        <input matInput placeholder="Celular" [(ngModel)]="addUserSelect.cellPhone">
     </mat-form-field>
 
 
     <br>
     <button mat-button onclick="document.getElementById('flArchivo').click();" style="margin-left: 105px;">Ingresar foto de perfil</button>
-    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+    <input id="flArchivo" type="file" (change)="SelectFile($event)" style="display: none">
     <br>
-    <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style=" display: block; width:180px ;height:180px;margin: auto;" />
+    <img mat-card-image [src]="imageData" *ngIf="imageState" style=" display: block; width:180px ;height:180px;margin: auto;" />
     <p>{{labelFile}}</p>
 
     <br>
     <div style="float:center;">
-        <button style="margin-left:105px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
-        <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+        <button style="margin-left:105px;" mat-raised-button color="primary" (click)="Save()">Aceptar</button>
+        <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="CloseDialog()">Cancelar</button>
     </div>
 
 

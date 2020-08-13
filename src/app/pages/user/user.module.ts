@@ -11,7 +11,7 @@ import { DialogConfirmacionComponent } from './dialog-confirmacion/dialog-confir
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { SidebarComponent } from '../index/sidebar/sidebar.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
+
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 
 const routes: Routes = [
@@ -40,7 +40,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     MaterialModule,
     MatNativeDateModule,
-    
+    SidebarSidenavModule
   ],
   exports: [RouterModule],
   entryComponents: [DialogConfirmacionComponent, DialogFotoComponent],
