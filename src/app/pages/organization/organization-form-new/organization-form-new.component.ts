@@ -21,14 +21,17 @@ export class OrganizationFormNewComponent implements OnInit {
 
   labelFile: string;
   selectedFiles: FileList;
+  codeSelected: string;
   imagenData: any;
   currentFileUpload: File;
   companias: CompanyBean[];
   companySelect: CompanyBean;
   imagenEstado = false;
+  lineCodes: number[] = [1, 2, 3, 4];
 
   email = new FormControl('', [Validators.required, Validators.email]);
   statusSelected: string;
+  pagoSelected: string;
   newCompany: CompanyBean;
 
   constructor(private formBuilder: FormBuilder,
@@ -63,6 +66,7 @@ export class OrganizationFormNewComponent implements OnInit {
       businessLineCodeCtrl: ['', Validators.required],
       businessMethodCodeCtrl: ['', Validators.required],
       attencionSchedulleCtrl: ['', Validators.required],
+      codeCtrl: ['', Validators.required],
     });
     this.collaboratorsFormGroup = this.formBuilder.group({
       responsiblePaymentNameCtrl: ['', Validators.required],
@@ -102,10 +106,10 @@ export class OrganizationFormNewComponent implements OnInit {
 
   getErrorMessage(): any{
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'mail obligatorio';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'mail no válido' : '';
   }
 
   registerCompany(): void {
@@ -130,8 +134,8 @@ export class OrganizationFormNewComponent implements OnInit {
     this.newCompany.estimatedTime = this.personalFormGroup.value.estimatedTimeCtrl;
     this.newCompany.qualification = this.personalFormGroup.value.qualificationCtrl;
 
-    this.newCompany.businessLineCode = this.businessFormGroup.value.businessLineCodeCtrl;
-    this.newCompany.paymentMethodCode = this.businessFormGroup.value.businessMethodCodeCtrl;
+    this.newCompany.businessLineCode = this.codeSelected;
+    this.newCompany.paymentMethodCode = this.pagoSelected;
     this.newCompany.attentionSchedule = this.businessFormGroup.value.attencionSchedulleCtrl;
 
     this.newCompany.responsiblePaymentName = this.collaboratorsFormGroup.value.responsiblePaymentNameCtrl;

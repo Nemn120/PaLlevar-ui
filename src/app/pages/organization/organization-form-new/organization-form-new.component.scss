@@ -100,3 +100,18 @@ mat-card {
         display: flow-root !important;
     }
 }
+
+.schedulle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.schedulle-container {
+    flex-wrap: row;
+}
+
+.mat-step-label {
+    display: none !important;
+}
