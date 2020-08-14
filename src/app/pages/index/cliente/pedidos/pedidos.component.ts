@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { Message } from '../../../../_DTO/messageDTO';
 
 @Component({
   selector: 'app-pedidos',
@@ -43,5 +45,24 @@ export class PedidosComponent implements OnInit {
       data: ord
     });
   }
+
+  cancelarPedido() : void{
+    let ms = new Message();
+    ms.title='Cancelar Pedido'; 
+    ms.description = '¿Desea cancelar el pedido seleccionado?';
+    this.dialog
+      .open(DialogoConfirmacionComponent, {
+        data: ms
+      })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado){
+          console.log("Se elimino el pedido");
+          
+          }
+        this.dialog.closeAll();
+  });
+}
+
 
 }
