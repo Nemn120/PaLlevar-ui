@@ -13,7 +13,9 @@ export class MapaClienteComponent implements OnInit {
 
   constructor(
     private dialogMap: MatDialogRef<MapaClienteComponent>,
-  ) { }
+  ) { 
+    dialogMap.disableClose = true;
+  }
 
   ngOnInit(): void {
   }
@@ -65,7 +67,7 @@ export class MapaClienteComponent implements OnInit {
 
 
  cerrarMapa(){
-   this.dialogMap.close()
+   this.dialogMap.close();
  }
 
 }

@@ -12,8 +12,12 @@ import { MapaClienteComponent } from '../maps/mapa-cliente/mapa-cliente.componen
 
 
 @NgModule({
-  declarations: [DialogoConfirmacionComponent, DataClientDialogComponent,
-    MapaClienteComponent],
+  declarations: 
+  [
+    DialogoConfirmacionComponent, 
+    DataClientDialogComponent,
+    MapaClienteComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,

@@ -4,13 +4,7 @@
     <mgl-control mglGeocoder [searchInput]="'Universidad Nacional Mayor de San Marcos'" [countries]="'pe'" [limit]="5" (result)="onGeocoder($event)"></mgl-control>
 
 
-    <!---
-    <mgl-control>
-        <button (click)="crearEliminarMarker()">
-        Establecer ubicacion
-      </button>
-    </mgl-control>
-  -->
+
     <!--MARKER-->
     <mgl-marker *ngIf="estadoMarker" [lngLat]="markerInicial" [draggable]="true" (dragEnd)="onDragEnd($event)"></mgl-marker>
     <!--END MARKER-->

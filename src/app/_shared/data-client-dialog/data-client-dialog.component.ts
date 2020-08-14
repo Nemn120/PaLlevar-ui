@@ -20,11 +20,13 @@ export class DataClientDialogComponent implements OnInit {
     private carService:CarServiceService,
     private dialogMap:MatDialog
   ) {
+
+  
  
    }
 
    enviarOrden(){
-     debugger
+   //  debugger
     this.order = new OrderBean();
     this.order.address=this.form.value['address'];
     this.order.reference=this.form.value['reference'];
@@ -49,10 +51,11 @@ export class DataClientDialogComponent implements OnInit {
     return this.form.controls[controlName].hasError(errorName);
   }
 
-  AbrirMapa(){
+  abrirMapa(){
     this.dialogMap.open(MapaClienteComponent, {
       width: '50%',
       height: '50%',
+      disableClose: true
      }
     
      );
