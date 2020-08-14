@@ -8,8 +8,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { SidebarSidenavComponent } from '../sidebar-sidenav/sidebar-sidenav.component';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { GuardService } from '../../_service/guard.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../_material/material.module';
+import { OrganizationFormNewComponent } from './organization-form-new/organization-form-new.component';
 
 
 const routes: Routes = [
@@ -24,16 +25,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SucursalListComponent, SucursalFormComponent, OrganizationListComponent, OrganizationFormComponent],
+  declarations: [SucursalListComponent, SucursalFormComponent, OrganizationListComponent, 
+    OrganizationFormComponent, OrganizationFormNewComponent],
   imports: [
     CommonModule,
     SidebarSidenavModule,
     RouterModule.forChild(routes),
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   entryComponents:[
-    OrganizationFormComponent
+    OrganizationFormComponent, OrganizationFormNewComponent
   ]
 })
 export class OrganizationModule { }

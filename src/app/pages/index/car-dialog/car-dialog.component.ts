@@ -64,7 +64,7 @@ export class CarDialogComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
   sendOrder() {
-    //debugger;
+    // debugger;
     let params = {
       title: 'Generar pedido',
       description: '¿Desea realizar el pedido?',
@@ -72,7 +72,7 @@ export class CarDialogComponent implements OnInit {
     }
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
-      //debugger
+      // debugger
       this.dialogo
         .open(DialogoConfirmacionComponent, {
           data: params
@@ -108,6 +108,7 @@ export class CarDialogComponent implements OnInit {
               this.router.navigate(['auth/login']);
             }
           }
+          this.carService.numberProductSelected--;
         });
 
     } else {
@@ -117,13 +118,14 @@ export class CarDialogComponent implements OnInit {
   deleteProductsSelect() {
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
-      if (confirm("¿Desea borrar los productos seleccionados del carrito? ")) {
+      if (confirm('¿Desea borrar los productos seleccionados del carrito? ')) {
         this.carService.deleteProductList(numSelected);
         this.odList = this.carService.getItems();
         this.dataSource.data = this.odList;
+        this.carService.numberProductSelected--;
       }
     } else {
-      alert("Seleccione el producto a eliminar");
+      alert('Seleccione el producto a eliminar');
     }
   }
 

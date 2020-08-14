@@ -5,8 +5,10 @@ import { CompanyBean } from '../../../_model/CompanyBean';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { OrganizationService } from '../../../_service/organization.service';
-import { OrganizationFormComponent } from '../organization-form/organization-form.component';
+/* import { OrganizationFormComponent } from '../organization-form/organization-form.component'; */
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OrganizationFormNewComponent } from '../organization-form-new/organization-form-new.component';
+import { OrganizationFormComponent } from '../organization-form/organization-form.component';
 
 @Component({
   selector: 'app-organization-list',
@@ -50,14 +52,23 @@ export class OrganizationListComponent implements OnInit {
     });
 
   }
-  public openDialog(company: CompanyBean) {
+  public editDialog(company: CompanyBean) {
     let productSelect = company != null ? company : new CompanyBean();
     this.dialog.open(OrganizationFormComponent, {
-      width: '600',
-      height: '600',
+      height: '600px',
       data: productSelect
     });
   }
+
+  public createDialog(company: CompanyBean) {
+    let productSelect = company != null ? company : new CompanyBean();
+    this.dialog.open(OrganizationFormNewComponent, {
+      width: 'auto',
+      height: '700px',
+      data: productSelect
+    });
+  }
+
   public delete(company:CompanyBean){
       this.companyService.deleteCompany(company.id).subscribe(data => {
         this.companyService.getListCompany().subscribe(data => {

@@ -54,8 +54,8 @@ export class ShoppingComponent implements OnInit {
           this.getListMenuProductByType(this.param);
         }
       });
-       this.orgId = this.activatedRoute.snapshot.paramMap.get('org'); 
-      if(this.orgId){
+    this.orgId = this.activatedRoute.snapshot.paramMap.get('org'); 
+    if(this.orgId){
         this.organizationService.getCompanyById(this.orgId).subscribe(data =>{
         this.companySelect=data;
         let order = new OrderBean();
@@ -68,7 +68,7 @@ export class ShoppingComponent implements OnInit {
           reader.onload = () => {
             let base64 = reader.result;
             this.companySelect._foto = this.setterPhoto(base64);
-            this.companySelect._isFoto = true;
+            // this.companySelect._isFoto = true;
           }
             this.getListMenuProduct();
            

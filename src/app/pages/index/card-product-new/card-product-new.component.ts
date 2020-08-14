@@ -31,7 +31,10 @@ export class CardProductNewComponent implements OnInit {
   }
 
 
-  agregarCarrito(){
+  agregarCarrito() {
+    // Incrementa el carrito
+    this.carService.numberProductSelected ++;
+
     const orderDetail = new OrderDetailBean();
     orderDetail.product = this.menuSelect.product;
     orderDetail.organizationId = this.menuSelect.organizationId;

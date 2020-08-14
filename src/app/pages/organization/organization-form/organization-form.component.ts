@@ -66,10 +66,11 @@ export class OrganizationFormComponent implements OnInit {
       this.companyService.getListCompany().subscribe(data2 => {
         this.companyService.companyCambio.next(data2);
       
-        if (this.companySelect.id)
+        if (this.companySelect.id) {
           this.companyService.mensajeCambio.next("Se actualizo");
-        else
+        } else {
           this.companyService.mensajeCambio.next("Se registro");
+        }
       });
     },error =>{
       this.companyService.mensajeCambio.next("Eror al actualizar/modificar compañoa");

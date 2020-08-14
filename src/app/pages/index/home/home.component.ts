@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
         reader.onload = () => {
           let base64 = reader.result;
           m._foto = this.setterPhoto(base64);
-          m._isFoto = true;
+          // m._isFoto = true;
         }
       })
     }

@@ -1,5 +1,5 @@
 import { SharedService } from './../../../_service/shared.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { PerfilComponent } from '../cliente/perfil/perfil.component';
 import { CarDialogComponent } from '../car-dialog/car-dialog.component';
@@ -13,29 +13,32 @@ import { OrderBean } from '../../../_model/OrderBean';
   templateUrl: './nav-home.component.html',
   styleUrls: ['./nav-home.component.scss']
 })
-export class NavHomeComponent {
+export class NavHomeComponent implements OnInit {
 
-  logo1 = "https://www.pngitem.com/pimgs/m/208-2089100_logos-de-comida-para-llevar-hd-png-download.png";
-  logo2 = "../../../../assets/images/motoDelivery.gif";
-
-
+  logo2 = '../../../../assets/images/motoDelivery.gif';
   logueado = false;
 
-  
-  constructor(public dialog: MatDialog,private sharedService:SharedService,
-    public carService:CarServiceService) {}
+  cantidad: number;
+  @Output() totalCarrito = new EventEmitter();
+
+  constructor(public dialog: MatDialog,private sharedService: SharedService,
+              public carService: CarServiceService) {
+              }
 
   ngOnInit(): void {
 
-    if(this.sharedService.userSession != null && this.sharedService.getUserIdSession()>0){
-      this.logueado=true;
+    if (this.sharedService.userSession != null && this.sharedService.getUserIdSession() > 0) {
+      this.logueado = true;
     }
-    
+    setInterval ( () => {
+      this.cantidad = this.getCantidad();
+      this.totalCarrito.emit(this.cantidad);
+    }, 1000);
   }
 
-  cerrar(){
-    this.logueado=false;
-    this.carService.orderDetailList=[];
+  cerrar() {
+    this.logueado = false;
+    this.carService.orderDetailList = [];
     this.carService.orderHeader = new OrderBean();
   }
 
@@ -43,15 +46,15 @@ export class NavHomeComponent {
      this.dialog.open(PerfilComponent);
   }
   openDialogCar(){
-    let count=this.carService.getItems().length || null;
-    let height:any;
+    const count = this.carService.getItems().length || null;
+    let height: any;
     if(count){
-      height=50*count + 205;
-      height=height.toString();
-      height=height+'px';
+      height = 50 * count + 205;
+      height = height.toString();
+      height = height + 'px';
     }
-   
-      this.dialog.open(CarDialogComponent, {
+
+    this.dialog.open(CarDialogComponent, {
         width: '400px',
         height: height || '100px'
       });
@@ -67,4 +70,7 @@ export class NavHomeComponent {
   this.dialog.open(EditarPerfilComponent);
  }
 
+ getCantidad(): number {
+  return this.carService.numberProductSelected;
+ }
 }

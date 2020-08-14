@@ -10,19 +10,22 @@ import { Subject } from 'rxjs';
 })
 export class CarServiceService {
 
-  orderDetailList:Array<OrderDetailBean> = new Array<OrderDetailBean>();
+  orderDetailList: Array <OrderDetailBean> = new Array<OrderDetailBean>();
   orderHeader: OrderBean = new OrderBean();
-  orderService:OrderService;
-  newOrder=new Subject<OrderBean>();
+  orderService: OrderService;
+  newOrder = new Subject<OrderBean>();
+
+  // Cantidad de productos en el carrito
+  numberProductSelected = 0;
 
   constructor() {
-    
+
    }
 
   addProduct(orderDetail: OrderDetailBean){
     this.orderDetailList.push(orderDetail);
   }
-  deleteProduct(id:number){
+  deleteProduct(id: number){
     this.orderDetailList = this.orderDetailList.filter(x => x.id != id);
   }
 
