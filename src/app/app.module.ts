@@ -17,6 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 //import { DetallesComponent } from './pages/index/detalles/detalles.component';
 import { NavHomeComponent } from './pages/index/nav-home/nav-home.component';
 
+import { httpInterceptorProviders } from './http-interceptors';
+
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
   let token = tk != null ? tk : '';
@@ -32,7 +34,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+
     MaterialModule,
     FlexLayoutModule,
     JwtModule.forRoot({
@@ -53,13 +55,14 @@ export function tokenGetter() {
       useClass: ServerErrorsInterceptor,
       multi: true
     },
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
+    httpInterceptorProviders
   ],
   bootstrap: [AppComponent],
   exports:[
     FlexLayoutModule,
-   
-    
+
+
   ],
 })
 export class AppModule { }
