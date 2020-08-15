@@ -46,7 +46,7 @@
                 <button mat-icon-button color="primary" (click)="openDialog(row)">
           <mat-icon>fastfood</mat-icon>
         </button>
-                <button *ngIf="row.status!='Atendido'"mat-icon-button  (click)="cancelarPedido(row)">
+                <button *ngIf="row.status=='Pendiente'"mat-icon-button  (click)="cancelOrder(row)">
           <mat-icon>cancel</mat-icon> 
         </button>
 

@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { Message } from '../../../../_DTO/messageDTO';
 
@@ -16,7 +17,8 @@ import { Message } from '../../../../_DTO/messageDTO';
 })
 export class PedidosComponent implements OnInit {
 
-  ordenes: OrderBean[];
+  ord: OrderBean[];
+  
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail'];
@@ -24,17 +26,24 @@ export class PedidosComponent implements OnInit {
 
 
   constructor(
-    private pedidos: OrderService, private dialog: MatDialog
+    private orderService: OrderService, private dialog: MatDialog,private snackBar: MatSnackBar,
+    
+    
   ) { }
 
   ngOnInit(): void {
+    
+    
+  
 
-
-    this.pedidos.getListOrderByUserId().subscribe(data => {
+    this.orderService.getListOrderByUserId().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.dataSource.data=this.ord;
+      
     })
+    this.dataSource = new MatTableDataSource<OrderBean>(this.ord);
 
   }
 
@@ -46,10 +55,12 @@ export class PedidosComponent implements OnInit {
     });
   }
 
-  cancelarPedido() : void{
+  cancelOrder(order: OrderBean) : void{
+  
     let ms = new Message();
     ms.title='Cancelar Pedido'; 
     ms.description = '¿Desea cancelar el pedido seleccionado?';
+    
     this.dialog
       .open(DialogoConfirmacionComponent, {
         data: ms
@@ -57,7 +68,15 @@ export class PedidosComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
-          console.log("Se elimino el pedido");
+          
+          this.orderService.cancelOrder(order).subscribe(data => {
+            //this.orderService.getListOrderPendding().subscribe(data => {
+              //this.orderService.orderCambio.next(data);
+             
+            //});
+            this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
+          });
+      
           
           }
         this.dialog.closeAll();
