@@ -69,12 +69,10 @@ export class PedidosComponent implements OnInit {
             //});
             this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
           });
-      
-          
           }
           setTimeout (x=>{
             this.dialog.closeAll();
-          },3000);
+          },2000);
   });
 }
 
