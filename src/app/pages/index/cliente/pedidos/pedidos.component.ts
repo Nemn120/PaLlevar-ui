@@ -32,19 +32,12 @@ export class PedidosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
-    
-  
-
     this.orderService.getListOrderByUserId().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.dataSource.data=this.ord;
-      
     })
-    this.dataSource = new MatTableDataSource<OrderBean>(this.ord);
-
   }
 
   public openDialog(order: OrderBean) {
@@ -79,7 +72,9 @@ export class PedidosComponent implements OnInit {
       
           
           }
-        this.dialog.closeAll();
+          setTimeout (x=>{
+            this.dialog.closeAll();
+          },3000);
   });
 }
 
