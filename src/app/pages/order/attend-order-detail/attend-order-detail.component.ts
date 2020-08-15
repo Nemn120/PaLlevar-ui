@@ -41,7 +41,7 @@ export class AttendOrderDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderDetailList=this.data.orderDetail;
-    this.orderDetailList=this.orderDetailList.filter(x => x.status=="Pendiente");
+   this.orderDetailList=this.orderDetailList.filter(x => x.status=="Pendiente");
     this.dataSource = new MatTableDataSource<OrderDetailBean>(this.orderDetailList);
     this.selection = new SelectionModel<OrderDetailBean>(true, []);
 
