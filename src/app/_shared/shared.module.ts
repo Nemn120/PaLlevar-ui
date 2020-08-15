@@ -32,7 +32,7 @@ import { MapaClienteComponent } from '../maps/mapa-cliente/mapa-cliente.componen
   ],
   entryComponents:
   [
-  MapaClienteComponent
+  
   ],
 })
 export class SharedModule { }

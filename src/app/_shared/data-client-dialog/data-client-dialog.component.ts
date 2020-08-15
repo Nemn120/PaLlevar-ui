@@ -18,16 +18,24 @@ export class DataClientDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private fb: FormBuilder,
     private carService:CarServiceService,
-    private dialogMap:MatDialog
-  ) {
+   
+  ) {}
 
+  ngOnInit(): void {
+    this.form =this.fb.group({
+      'address' :  new FormControl(''),
+      'reference': new FormControl(''),
+      'phone': new FormControl('')        
+    });
+    this.order = new OrderBean();
+    this.order.address='Katriel-San Marcos';
+    this.carService.orderHeader=this.order;
+  }
   
- 
-   }
-
    enviarOrden(){
    //  debugger
     this.order = new OrderBean();
+
     this.order.address=this.form.value['address'];
     this.order.reference=this.form.value['reference'];
     this.order.phone=this.form.value['phone'];
@@ -39,28 +47,9 @@ export class DataClientDialogComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    this.form =this.fb.group({
-      'address' :  new FormControl(''),
-      'reference': new FormControl(''),
-      'phone': new FormControl('')        
-    });
-
-  }
+  
   public hasError = (controlName: string, errorName: string) =>{
     return this.form.controls[controlName].hasError(errorName);
   }
-
-  abrirMapa(){
-    this.dialogMap.open(MapaClienteComponent, {
-      width: '50%',
-      height: '50%',
-      disableClose: true
-     }
-    
-     );
-
-  }
-
 
 }
