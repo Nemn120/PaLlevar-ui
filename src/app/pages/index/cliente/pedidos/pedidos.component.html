@@ -46,13 +46,12 @@
                 <button mat-icon-button color="primary" (click)="openDialog(row)">
           <mat-icon>fastfood</mat-icon>
         </button>
-                <button *ngIf="row.status=='Pendiente'" mat-icon-button (click)="cancelOrder(row)">
-          <mat-icon>cancel</mat-icon> 
-                </button>
                 <button class="color" mat-icon-button (click)="editarPedido(row)">
             <mat-icon>description</mat-icon>
         </button>
-
+                <button *ngIf="row.status=='Pendiente'" mat-icon-button (click)="cancelOrder(row)">
+            <mat-icon>cancel</mat-icon> 
+                  </button>
             </mat-cell>
 
         </ng-container>

@@ -86,8 +86,6 @@ export class PedidosComponent implements OnInit {
 public editarPedido(order: OrderBean) {
   let orderSelect = order != null ? order : new OrderBean();
   this.dialog.open(DataClientDialogComponent, {
-    width: '600',
-    height: '600',
     data: orderSelect
   });
 }
