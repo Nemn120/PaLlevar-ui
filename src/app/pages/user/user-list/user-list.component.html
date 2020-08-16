@@ -14,6 +14,10 @@
           The actual rendered columns are set as a property on the row definition" -->
 
                 <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
                 <ng-container matColumnDef="nombre">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>

@@ -49,7 +49,7 @@
                     <mat-icon>exit_to_app</mat-icon>
                     <span>Cerrar Sesión</span>
                 </button>
-                
+
             </mat-menu>
             <ng-template #salir>
                 <button routerLink="/auth/login" mat-button color="primary">         
@@ -64,8 +64,7 @@
             <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
                 <img src="../assets/images/icondelivery.jpg" width="128" style="margin-left: 20px">
                 <mat-nav-list>
-                    <h2>Bienvenido</h2>
-                    <h3 style="text-align: center;">Mis opciones</h3>
+                    <span>Mis opciones</span>
                     <mat-list-item *ngFor="let m of menus">
                         <a mat-list-item routerLink="{{m.urlMenu}}">
                             <mat-icon mat-list-icon>

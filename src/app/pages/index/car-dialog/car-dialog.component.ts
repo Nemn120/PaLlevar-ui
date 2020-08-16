@@ -100,6 +100,7 @@ export class CarDialogComponent implements OnInit {
                 this.odList = this.carService.getItems();
                 this.dataSource.data = this.odList;
                 this.closeDialog();
+                // LLAMAS AL DIALOGO QUE TIENE EL RESUMEN DEL PEDIDO
                 this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
               }, error=>{
                 this.snackBar.open(error.error, 'ERROR', { duration: 5000 });

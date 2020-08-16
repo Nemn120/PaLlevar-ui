@@ -17,6 +17,7 @@ import { DeliveryOrderAsignComponent } from './delivery-order-asign/delivery-ord
 import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { TradeOrderComponent } from './trade-order/trade-order.component';
+import { PedidoAsignadoComponent } from './pedido-asignado/pedido-asignado.component';
 
 
 
@@ -33,7 +34,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,

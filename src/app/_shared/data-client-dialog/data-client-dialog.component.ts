@@ -36,7 +36,7 @@ export class DataClientDialogComponent implements OnInit {
    }
 
    enviarOrden(){
-    
+     debugger
    this.order = new OrderBean();
    this.order.address=this.form.value['address'];
    this.order.reference=this.form.value['reference'];
@@ -69,6 +69,8 @@ export class DataClientDialogComponent implements OnInit {
         });
 
    }
+
+
   }
 
 

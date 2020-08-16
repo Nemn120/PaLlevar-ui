@@ -27,7 +27,7 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleProductList="Listar Productos";
-    this.productService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.productService.mensajeCambio.subscribe(data => { // cuando actualizas o creas se muestra una notificacion
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
