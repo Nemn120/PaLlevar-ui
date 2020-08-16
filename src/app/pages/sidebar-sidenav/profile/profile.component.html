@@ -1,50 +1,43 @@
-
-
-
-<h1 mat-dialog-title style="text-align:center;">DATOS PERSONALES</h1>
-
+<h1 mat-dialog-title style="text-align:center;">Mi perfil</h1>
 <div mat-dialog-content style="width: 420px;">
-    
+
     <img *ngIf="toShow" mat-card-image [src]="imageData" alt="Photo of profile" class="example-header-image">
 
     <img *ngIf="!toShow" mat-card-image src="assets/images/perfil/perfil.jpg" alt="Photo of profile" class="example-header-image">
-    
 
-
-    <mat-form-field style="display: block;margin: auto;text-align: center;width: 100px;">
+    <mat-form-field style="display: block;margin: auto;text-align: center;width: 200px;">
         <mat-label>Nombre y apellidos</mat-label>
-        <input matInput>{{addUser.nombre}} {{addUser.lastName}}
+        <input matInput readonly=true>{{addUser.nombre}} {{addUser.lastName}}
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Rol</mat-label>
-        <input matInput>{{addUser.profile.name}}
+        <input matInput readonly=true>{{addUser.profile.name}}
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Código</mat-label>
-        <input matInput>{{addUser.employeeCode}}
+        <input matInput readonly=true>{{addUser.employeeCode}}
     </mat-form-field>
-    
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>DNI</mat-label>
-        <input matInput>{{addUser.documentNumber}}
+        <input matInput readonly=true>{{addUser.documentNumber}}
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Dirección de vivienda</mat-label>
-        <input matInput>{{addUser.address}}
+        <input matInput readonly=true>{{addUser.address}}
     </mat-form-field>
     <br>
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>F.Nacimiento</mat-label>
-        <input matInput>{{addUser.dateBirth | date:'dd/MM/yyyy'}}
+        <input matInput readonly=true>{{addUser.dateBirth | date:'dd/MM/yyyy'}}
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Celular</mat-label>
-        <input matInput> {{addUser.cellPhone}}
+        <input matInput readonly=true> {{addUser.cellPhone}}
     </mat-form-field>
 
 </div>
