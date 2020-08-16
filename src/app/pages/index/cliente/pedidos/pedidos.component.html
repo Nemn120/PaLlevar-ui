@@ -41,18 +41,17 @@
 
         <ng-container matColumnDef="detail">
             <mat-header-cell *matHeaderCellDef> Ver Detalle </mat-header-cell>
-            <mat-cell *matCellDef="let row"> 
+            <mat-cell *matCellDef="let row">
                 <button mat-icon-button color="primary" (click)="openDialog(row)">
           <mat-icon>fastfood</mat-icon>
         </button>
-               
-                <button *ngIf="row.status!='Atendido'" class="color" mat-icon-button  (click)="editarPedido(row)">
+                <button class="color" mat-icon-button (click)="editarPedido(row)">
             <mat-icon>description</mat-icon>
         </button>
- 
-            </mat-cell> 
 
-        </ng-container> 
+            </mat-cell>
+
+        </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

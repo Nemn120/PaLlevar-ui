@@ -90,7 +90,7 @@ if(this.data){
       
     
     })
-    this.title="Actualizar datos del pedido"
+    this.title="Datos de entrega del pedido"
     this.buttonTitle="Actualizar"
     this.isUpdateOrder=true;
   }
