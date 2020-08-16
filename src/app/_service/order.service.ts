@@ -54,6 +54,10 @@ export class OrderService {
   cancelOrder(order:OrderBean){
     return this.http.post<any>(`${this.url}/cor`,order);
   }
+  updateOrder(order:OrderBean){
+    return this.http.post<any>(`${this.url}/upor`,order);
+  }
+  
   saveAttendOrder(order : OrderBean) { // IVAN
     order.userAttendId=this.sharedService.getUserIdSession();
     return this.http.post<OrderBean>(`${this.url}/saoo`,order);

@@ -14,13 +14,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CarDialogComponent } from './car-dialog/car-dialog.component';
 import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
 import { PedidosComponent } from './cliente/pedidos/pedidos.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data-client-dialog.component';
 import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.component';
 import { CardProductNewComponent } from './card-product-new/card-product-new.component';
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
+
 
 const routes: Routes = [
 
@@ -44,10 +45,11 @@ const routes: Routes = [
   ShoppingComponent,
   NavHomeComponent, 
   CardProductComponent,
-  CardOrganizationComponent,
+  CardOrganizationComponent, 
   PerfilComponent,
   SidebarComponent,
   CarDialogComponent,
+  
   
 
  //katriel
@@ -65,7 +67,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ],
   exports: [
     RouterModule,
@@ -78,7 +81,7 @@ const routes: Routes = [
 
   PerfilComponent,PedidosComponent,EditarPerfilComponent,
    SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent,DataClientDialogComponent,
-   DetallePedidoComponent
+   DetallePedidoComponent,
   ],
 
  

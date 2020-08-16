@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-    Generear pedido, ingreso de datos</h1>
+    {{title}}</h1>
 <div mat-dialog-content>
     <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">
 
@@ -16,6 +16,6 @@
             <input matInput placeholder="Telefono" formControlName="phone" [formGroup]="form" required>
         </mat-form-field>
         <br>
-        <button style="float: right;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Registrar</button>
+        <button style="float: right;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">{{buttonTitle}}</button>
     </form>
 </div>
