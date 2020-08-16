@@ -10,6 +10,8 @@ import { DialogFotoComponent } from './user-form/dialog-foto/dialog-foto.compone
 import { DialogConfirmacionComponent } from './dialog-confirmacion/dialog-confirmacion.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from 'src/app/_material/material.module';
+import { SidebarComponent } from '../index/sidebar/sidebar.component';
+
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { UserDeliverysComponent } from './user-deliverys/user-deliverys.component';
 
@@ -39,12 +41,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SidebarSidenavModule,
     FormsModule,
     ReactiveFormsModule,
-
     MaterialModule,
     MatNativeDateModule,
+    SidebarSidenavModule
   ],
   exports: [RouterModule],
   entryComponents: [DialogConfirmacionComponent, DialogFotoComponent],

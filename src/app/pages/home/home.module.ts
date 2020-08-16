@@ -7,7 +7,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { GuardService } from "../../_service/guard.service";
 import { SidebarSidenavModule } from "../sidebar-sidenav/sidebar-sidenav.module";
 import { SidebarSidenavComponent } from "../sidebar-sidenav/sidebar-sidenav.component";
-import { UserModule } from "../user/user.module";
 
 const routes: Routes = [
   {
@@ -23,7 +22,10 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
-    SidebarSidenavModule,
+    SidebarSidenavModule
   ],
+
+  entryComponents: [SidebarSidenavComponent],
+  
 })
 export class HomeModule {}

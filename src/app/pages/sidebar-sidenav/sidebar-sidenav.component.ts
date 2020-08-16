@@ -8,7 +8,12 @@ import { SpinnerService } from '../../_service/spinner.service';
 import { MenuOptionBean } from '../../_model/MenuOptionBean';
 import { UserBean } from '../../_model/UserBean';
 import { SharedService } from '../../_service/shared.service';
-import { ProfileComponent } from './profile/profile.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {OrderBean} from '../../_model/OrderBean';
+import {CarServiceService} from '../../_service/car-service.service';
+import {ProfileComponent} from '../sidebar-sidenav/profile/profile.component';
+import { Router } from '@angular/router';
+import {EditAddProfileComponent} from '../sidebar-sidenav/edit-add-profile/edit-add-profile.component';
 
 @Component({
   selector: 'app-sidebar-sidenav',
@@ -28,9 +33,10 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
   userMenu: string;
 
   constructor(
-   
+    private router: Router,
     private changeDetectorRef: ChangeDetectorRef,
     public loginService: LoginService,
+    public carService:CarServiceService,
     private menuService : MenuOptionService,
     private usuarioService:UserService,
     private dialog: MatDialog,
@@ -50,19 +56,25 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
         this.menus= this.menuService.menuCambio;
       }
     }
+
     openUserPerfil() {
-      let gen :UserBean = new UserBean();
-       this.dialog.open(ProfileComponent, {
-         width: '400px',
-         data: gen
-       });
+       this.dialog.open(ProfileComponent);
      }
-     
+
+    editPerfil(){
+      this.dialog.open(EditAddProfileComponent);
+    }
+
     ngOnDestroy(): void {
       this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
+      //this.autoLogoutSubscription.unsubscribe();
+    }
 
   cerrarSesion() {
     this.isLogueado = false;
+    this.carService.orderDetailList=[];
+    this.carService.orderHeader = new OrderBean();
+    this.router.navigate(['auth/login']);
+    console.log(this.isLogueado);
   }
 }
