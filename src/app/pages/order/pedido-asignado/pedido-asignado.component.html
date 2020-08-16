@@ -6,24 +6,90 @@
         </mat-toolbar>
     </p>
 
-    <div class="carousel-item" style="display: flex; width: 85%;">
-        <mat-card>
+    <div class="body-component">
+        <div class="carousel-item " style="display: flex;">
 
-            <div class="carousel-item" style="display: flex; width: 85%;">
+            <mat-card>
+                    <mat-form-field appearance="fill" class="example-form-field">
+                        <mat-label>Estado</mat-label>
+                        <mat-select name="estado" [(ngModel)]="searchOrderByDeliveryManDTO.status">
+                            <mat-option *ngFor="let e of estados" [value]="e">
+                                {{e}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+    
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Fecha inicio</mat-label>
+                        <input matInput [matDatepicker]="picker1" [(ngModel)]="searchOrderByDeliveryManDTO.initDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+    
+                    <mat-form-field class="example-form-field">
+                        <mat-label>Fecha final</mat-label>
+                        <input matInput [matDatepicker]="picker2" [(ngModel)]="searchOrderByDeliveryManDTO.finalDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
 
-                <mat-form-field appearance="fill" style=" padding-right: 20px;width: 130px;">
-                    <mat-label>Repartidor</mat-label>
-                    <mat-select [(ngModel)]="userSelect">
-                        <mat-option *ngFor="let list of listofUsers" [value]="list">
-                            {{list.nombre}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>        
-
-        </mat-card>
+                    <button mat-raised-button color="primary" (click)="getAsignOrderByDeliveryMan()">Buscar</button>
+    
+            </mat-card>
+            
+        </div>
     </div>
+    
 
+    <div class="carousel-item " style="display: flex; width: 80%;">
+
+        <div class="container">
+            <mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row" > {{row.id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+                    <!-- NOMBRE DE LA COLUMNA-->
+                    <mat-cell *matCellDef="let row"> {{row.status}}</mat-cell>
+                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+                </ng-container>
+
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+                    <mat-cell *matCellDef="let row">S/. {{row.total}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.quantity}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="phone">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
+                    <mat-cell *matCellDef="let row" > {{row.phone}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
+                    <mat-cell *matCellDef="let row" > {{row.address}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="createDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"  (click)="openDialogDetail(row)"></mat-row>
+            </mat-table>
+
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+        </div>
+    </div>
 
 
 </div>
