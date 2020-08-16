@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
+import { SearchOrderByDeliveryManDTO } from '../_DTO/SearchOrderByDeliveryManDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -69,5 +70,9 @@ export class OrderService {
 
   deleteOrder(id: number) {
     return this.http.delete(`${this.url}/do/${id}`);
+  }
+
+  getAsignOrderByDeliveryMan(searchOrderByDeliveryMan : SearchOrderByDeliveryManDTO){
+    return this.http.post<any>(`${this.url}/golbdi`,searchOrderByDeliveryMan);
   }
 }
