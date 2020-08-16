@@ -19,20 +19,13 @@ import { SharedService } from 'src/app/_service/shared.service';
 })
 export class PedidoAsignadoComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','createDate'];
-  userSelect:UserBean;
-  listofUsers:UserBean[];
+  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','reference','createDate'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   titleProductList: string;
-  fechaInicio:Date;
-  fechaFinal:Date;
-  stateSelected:number;
   estados: string[] = ['Entregado','En camino'];
-  estadoSelect: string;
-  orderSelect:OrderBean[];
-  dataCambio: MatTableDataSource<OrderBean>;
+  orderSelect:OrderBean;
   searchOrderByDeliveryManDTO: SearchOrderByDeliveryManDTO;
 
   constructor(
