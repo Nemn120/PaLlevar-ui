@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MenuOptionService } from '../../../_service/menu-option.service';
 import { ProductService } from '../../../_service/product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,20 +13,25 @@ import { ProductFormComponent } from '../product-form/product-form.component';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
+
 export class ProductListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'name', 'description','category','actions'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'category', 'actions'];
   dataSource: MatTableDataSource<ProductBean>;/// tabla 
   titleProductList: string;
-  constructor(
-    private productService:ProductService, private dialog:MatDialog, private snackBar: MatSnackBar
-  ) { }
+
+  constructor
+    (
+      private productService: ProductService,
+      private dialog: MatDialog,
+      private snackBar: MatSnackBar
+    ) { }
 
   ngOnInit(): void {
-    this.titleProductList="Listar Productos";
-    this.productService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.titleProductList = "Listar Productos";
+    this.productService.mensajeCambio.subscribe(data => {
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -39,15 +43,13 @@ export class ProductListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
 
-    //this.productService.getListProduct().subscribe(data => {
-    this.productService.getListProductByOrganization().subscribe(data => {  
-    //this.productService.getListProductByOrganizationAndSucursal().subscribe(data => {  
+    this.productService.getListProductByOrganization().subscribe(data => {
       console.log(data);
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      
-    },error =>{
+
+    }, error => {
       this.productService.mensajeCambio.next("Error al mostrar productos");
     });
 
@@ -60,21 +62,21 @@ export class ProductListComponent implements OnInit {
       data: productSelect
     });
   }
-  public delete(product:ProductBean){
-      this.productService.deleteProduct(product.id).subscribe(data => {
-        this.productService.getListProductByOrganization().subscribe(data => {
-          this.productService.productCambio.next(data);
-          this.productService.mensajeCambio.next("Se elimino con éxito");
-        }, error =>{
-          console.error(error);
-          this.productService.mensajeCambio.next("Error al mostrar listado de productos");
-        });
-      },error =>{
+  public delete(product: ProductBean) {
+    this.productService.deleteProduct(product.id).subscribe(data => {
+      this.productService.getListProductByOrganization().subscribe(data => {
+        this.productService.productCambio.next(data);
+        this.productService.mensajeCambio.next("Se elimino con éxito");
+      }, error => {
         console.error(error);
-        this.productService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
+        this.productService.mensajeCambio.next("Error al mostrar listado de productos");
       });
-    }
-  
+    }, error => {
+      console.error(error);
+      this.productService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
+    });
   }
+
+}
 
 
