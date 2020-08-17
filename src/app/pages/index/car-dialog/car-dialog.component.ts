@@ -12,6 +12,7 @@ import { OrderBean } from '../../../_model/OrderBean';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OrderConfirmComponent } from '../order-confirm/order-confirm.component';
 
 @Component({
   selector: 'app-car-dialog',
@@ -101,6 +102,10 @@ export class CarDialogComponent implements OnInit {
                 this.dataSource.data = this.odList;
                 this.closeDialog();
                 // LLAMAS AL DIALOGO QUE TIENE EL RESUMEN DEL PEDIDO
+                this.dialogo.open(OrderConfirmComponent, {
+                  width: '600px',
+                  data: this.sendOrderCar
+                });
                 this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
               }, error=>{
                 this.snackBar.open(error.error, 'ERROR', { duration: 5000 });

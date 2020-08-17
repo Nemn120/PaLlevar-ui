@@ -21,6 +21,7 @@ import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data
 import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.component';
 import { CardProductNewComponent } from './card-product-new/card-product-new.component';
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
+import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 
 
 const routes: Routes = [
@@ -60,6 +61,7 @@ const routes: Routes = [
   DetallePedidoComponent,
   CardProductNewComponent,
   HeaderOrganizationComponent,
+  OrderConfirmComponent,
 
   ],
   imports: [
@@ -81,7 +83,7 @@ const routes: Routes = [
 
   PerfilComponent,PedidosComponent,EditarPerfilComponent,
    SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent,DataClientDialogComponent,
-   DetallePedidoComponent,
+   DetallePedidoComponent,OrderConfirmComponent
   ],
 
  
