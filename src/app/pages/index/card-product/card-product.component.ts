@@ -49,7 +49,7 @@ export class CardProductComponent implements OnInit {
   public openDialog(orderDetail: OrderDetailBean) {
     let order = orderDetail != null ? orderDetail : new OrderDetailBean();
     this.dialog.open(DataClientDialogComponent, {
-     width: '50%',
+     width: '20%',
      height: '50%',
     data: order
     });
