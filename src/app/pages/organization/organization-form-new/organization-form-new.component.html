@@ -9,31 +9,31 @@
         <mat-horizontal-stepper #stepper>
             <mat-step [stepControl]="publicFormGroup" errorMessage="Fields is required.">
                 <form [formGroup]="publicFormGroup">
-                    <!-- <ng-template matStepLabel>Datos Públicos</ng-template> -->
+
                     <mat-form-field>
                         <mat-label>Nombre</mat-label>
                         <mat-icon matSuffix>create</mat-icon>
-                        <input matInput #message maxlength="20" formControlName="nameCtrl" placeholder="El Padrino" required>
+                        <input matInput #message maxlength="20" formControlName="nameCtrl" placeholder="El Padrino" required [(ngModel)]="companySelect.nombre">
                         <mat-hint align="end">{{message.value.length}} / 20</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Descripción</mat-label>
                         <mat-icon matSuffix>storage</mat-icon>
-                        <input matInput #message maxlength="20" formControlName="descriptionCtrl" placeholder="Description" required>
-                        <!--  <mat-hint align="start">Descripción</mat-hint> -->
+                        <input matInput #message maxlength="20" formControlName="descriptionCtrl" placeholder="Description" required [(ngModel)]="companySelect.description">
+
                         <mat-hint align="end">{{message.value.length}} / 20</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Dirección</mat-label>
                         <mat-icon matSuffix>location_on</mat-icon>
-                        <input matInput formControlName="addressCtrl" placeholder="Calle 2, Av. ciruelos" required>
+                        <input matInput formControlName="addressCtrl" placeholder="Calle 2, Av. ciruelos" required [(ngModel)]="companySelect.address">
                     </mat-form-field>
 
                     <mat-label>Imagen &nbsp;</mat-label>
-                    <!-- <mat-icon matSuffix>archive</mat-icon> -->
+
                     <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
                     <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-                    <!-- <mat-hint align="start">JPEG, JPG, PNG</mat-hint> -->
+
                     <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
                     <p>{{labelFile}}</p>
                     <div>
@@ -43,56 +43,42 @@
             </mat-step>
             <mat-step [stepControl]="personalFormGroup" errorMessage="Fields is required.">
                 <form [formGroup]="personalFormGroup">
-                    <!-- <ng-template matStepLabel>Datos Personales</ng-template> -->
+
                     <mat-form-field>
                         <mat-label>Ruc</mat-label>
                         <span matPrefix>10 &nbsp;</span>
                         <mat-icon matSuffix>create</mat-icon>
-                        <input matInput #message3 maxlength="8" formControlName="rucCtrl" placeholder="1021453687" required>
+                        <input matInput #message3 maxlength="8" formControlName="rucCtrl" placeholder="1021453687" required [(ngModel)]="companySelect.ruc">
                         <mat-hint align="end">{{message3.value.length}} / 8</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Razón Social</mat-label>
                         <mat-icon matSuffix>person_pin</mat-icon>
-                        <input matInput #message4 maxlength="20" formControlName="businessManCtrl" placeholder="El Padrino S.A" required>
+                        <input matInput #message4 maxlength="20" formControlName="businessManCtrl" placeholder="El Padrino S.A" required [(ngModel)]="companySelect.businessName">
                         <mat-hint align="end">{{message4.value.length}} / 20</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Celular</mat-label>
                         <mat-icon matSuffix>local_phone</mat-icon>
-                        <input matInput #message5 maxlength="9" formControlName="phoneCtrl" placeholder="924587456" required>
+                        <input matInput #message5 maxlength="9" formControlName="phoneCtrl" placeholder="924587456" required [(ngModel)]="companySelect.phone">
                         <mat-hint align="end">{{message5.value.length}} / 9</mat-hint>
                     </mat-form-field>
-                    <!-- <mat-form-field>
-                        <mat-label>User Admin</mat-label>
-                        <mat-icon matSuffix>perm_identity</mat-icon>
-                        <input matInput #message6 maxlength="20" formControlName="userAdminCtrl" placeholder="User Admin" required>
-                        <mat-hint align="end">{{message6.value.length}} / 20</mat-hint>
-                    </mat-form-field> -->
 
                     <mat-form-field>
                         <mat-label>Aniversario</mat-label>
-                        <input matInput [matDatepicker]="picker" formControlName="anniversaryDateCtrl" placeholder="31/12/2020" required>
+                        <input matInput [matDatepicker]="picker" formControlName="anniversaryDateCtrl" placeholder="31/12/2020" required [(ngModel)]="companySelect.anniversaryDate">
                         <mat-datepicker-toggle matSuffix [for]="picker">
                             <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
                         </mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
 
-                    <!-- <mat-form-field>
-                        <mat-label>Creación</mat-label>
-                        <input matInput [matDatepicker]="picker2" formControlName="createDateCtrl" placeholder="Creación" required>
-                        <mat-datepicker-toggle matSuffix [for]="picker2">
-                            <mat-icon matDatepickerToggleIcon>date_range</mat-icon>
-                        </mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
-                    </mat-form-field> -->
+
 
                     <mat-form-field>
-                        <mat-label>Estado</mat-label>
-                        <!-- <mat-icon matSuffix>build</mat-icon> -->
-                        <!-- <input matInput formControlName="personalCtrl" placeholder="Status" required> -->
-                        <mat-select formControlName="statusCtrl" [(value)]="statusSelected">
+                        <mat-label>Estado: {{companySelect.status}}</mat-label>
+
+                        <mat-select formControlName="statusCtrl" [(value)]="companySelect.status">
                             <mat-option value="ACTIVO">ACTIVO</mat-option>
                             <mat-option value="DESACTIVO">DESACTIVO</mat-option>
                             <mat-option value="ELIMINADO">ELIMINADO</mat-option>
@@ -102,15 +88,10 @@
                     <mat-form-field>
                         <mat-label>Tiempo Estimado</mat-label>
                         <mat-icon matSuffix>hourglass_bottom</mat-icon>
-                        <input matInput #message8 maxlength="3" formControlName="estimatedTimeCtrl" placeholder="Tiempo de entrega" required>
+                        <input matInput #message8 maxlength="3" formControlName="estimatedTimeCtrl" placeholder="Tiempo de entrega" required [(ngModel)]="companySelect.estimatedTime">
                         <mat-hint align="end">{{message8.value}} minutos</mat-hint>
                     </mat-form-field>
-                    <!-- <mat-form-field>
-                        <mat-label>Qualification</mat-label>
-                        <mat-icon matSuffix>star_rate</mat-icon>
-                        <input matInput #message9 maxlength="1" formControlName="qualificationCtrl" placeholder="Qualification" required>
-                        <mat-hint align="end">{{message9.value}} / 5</mat-hint>
-                    </mat-form-field> -->
+
                     <div>
                         <button mat-button matStepperPrevious>Anterior</button>
                         <button mat-button matStepperNext class="btn-next">Siguiente</button>
@@ -119,41 +100,35 @@
             </mat-step>
             <mat-step [stepControl]="businessFormGroup" errorMessage="Fields is required.">
                 <form [formGroup]="businessFormGroup">
-                    <!-- <ng-template matStepLabel>Datos de Negocio</ng-template> -->
+
                     <mat-form-field>
-                        <mat-label>Linea de código</mat-label>
-                        <mat-select formControlName="codeCtrl" [(value)]="codeSelected">
+                        <mat-label>Linea de código : {{companySelect.businessLineCode}}</mat-label>
+                        <mat-select formControlName="codeCtrl" [(value)]="companySelect.businessLineCode">
                             <mat-option *ngFor="let code of lineCodes" value="{{code}}">{{code}}</mat-option>
-                            <!-- <mat-option value="ACTIVO">ACTIVO</mat-option>
-                        <mat-option value="DESACTIVO">DESACTIVO</mat-option>
-                        <mat-option value="ELIMINADO">ELIMINADO</mat-option> -->
+
                         </mat-select>
-                        <!--  <mat-label>Business Line Code</mat-label>
-                        <mat-icon matSuffix>table_view</mat-icon>
-                        <input matInput #message10 maxlength="4" formControlName="businessLineCodeCtrl" placeholder="Business Line Code" required>
-                        <mat-hint align="end">{{message10.value.length}} / 4</mat-hint> -->
+
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Metodo de Pago</mat-label>
+                        <mat-label>Metodo de Pago: {{companySelect.paymentMethodCode}}</mat-label>
                         <mat-icon matSuffix>keyboard</mat-icon>
-                        <mat-select formControlName="businessMethodCodeCtrl" [(value)]="pagoSelected" placeholder="Payment Method Code">
+                        <mat-select formControlName="businessMethodCodeCtrl" [(value)]="companySelect.paymentMethodCode" placeholder="Payment Method Code">
                             <mat-option value="MENSUALIDAD">MENSUALIDAD</mat-option>
                             <mat-option value="PORCENTAJES">PORCENTAJES</mat-option>
                         </mat-select>
-                        <!-- <input matInput formControlName="businessMethodCodeCtrl" placeholder="Payment Method Code" required> -->
                     </mat-form-field>
                     <div class="schedulle-container">
-                        <mat-form-field class="schedulle-item">
-                            <mat-label>Desde</mat-label>
-                            <mat-icon matSuffix>access_time</mat-icon>
-                            <input matInput formControlName="attencionSchedulleCtrl" placeholder="Attencion Schedulle" required>
-                        </mat-form-field>
-                        <mat-form-field class="schedulle-item">
-                            <mat-label>Hasta</mat-label>
-                            <mat-icon matSuffix>access_time</mat-icon>
-                            <input matInput formControlName="attencionSchedulleCtrl" placeholder="Attencion Schedulle" required>
-
-                        </mat-form-field>
+                        <div class="schedulle-content">
+                            <mat-label>Atención: {{companySelect.attentionSchedule}}</mat-label>
+                        </div>
+                        <div class="schedulle-item">
+                            <mat-label>Desde: &nbsp;</mat-label>
+                            <input type="time" placeholder="8:00 am" formControlName="schedulleInitCtrl" [(value)]="initSchedulle">
+                        </div>
+                        <div class="schedulle-item">
+                            <mat-label>Hasta: &nbsp;</mat-label>
+                            <input type="time" placeholder="10:00 pm" formControlName="schedulleEndCtrl" [(value)]="endSchedulle">
+                        </div>
                     </div>
                     <div>
                         <button mat-button matStepperPrevious>Back</button>
@@ -163,23 +138,22 @@
             </mat-step>
             <mat-step [stepControl]="collaboratorsFormGroup" errorMessage="Fields is required.">
                 <form [formGroup]="collaboratorsFormGroup">
-                    <!-- <ng-template matStepLabel>Colaboradores</ng-template> -->
                     <mat-form-field>
                         <mat-label>Responsable de pago</mat-label>
                         <mat-icon matSuffix>account_circle</mat-icon>
-                        <input matInput #message11 maxlength="20" formControlName="responsiblePaymentNameCtrl" placeholder="Lucas Contreras Ramos" required>
+                        <input matInput #message11 maxlength="20" formControlName="responsiblePaymentNameCtrl" placeholder="Lucas Contreras Ramos" required [(ngModel)]="companySelect.responsiblePaymentName">
                         <mat-hint align="end">{{message11.value.length}} / 20</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Celular de responsable de pago</mat-label>
                         <mat-icon matSuffix>contact_phone</mat-icon>
-                        <input matInput #message12 maxlength="9" minLength="9" formControlName="responsiblePaymentPhoneCtrl" placeholder="956874124" required>
+                        <input matInput #message12 maxlength="9" minLength="9" formControlName="responsiblePaymentPhoneCtrl" placeholder="956874124" required [(ngModel)]="companySelect.responsiblePaymentPhone">
                         <mat-hint align="end">{{message12.value.length}} / 9</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Email de responsable de pago</mat-label>
                         <mat-icon matSuffix>contact_mail</mat-icon>
-                        <input matInput [formControl]="email" placeholder="alguien@gmail.com" required>
+                        <input matInput [formControl]="email" placeholder="alguien@gmail.com" required [(ngModel)]="companySelect.responsiblePaymentEmail">
                         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
                     <div>
