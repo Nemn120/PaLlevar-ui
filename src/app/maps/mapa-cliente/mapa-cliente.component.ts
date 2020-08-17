@@ -1,73 +1,71 @@
 import { MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit,NgZone } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 
 import { Marker } from 'mapbox-gl';
-import { Result, Results } from 'ngx-mapbox-gl/lib/control/geocoder-control.directive';
+import { MapService } from '../../_service/map.service';
+import { NotificationService } from '../../_service/notification.service';
 
 @Component({
   selector: 'app-mapa-cliente',
   templateUrl: './mapa-cliente.component.html',
   styleUrls: ['./mapa-cliente.component.scss']
 })
-export class MapaClienteComponent implements OnInit {
+export class MapaClienteComponent {
 
-  constructor(
-    private dialogMap: MatDialogRef<MapaClienteComponent>,
-  ) { 
-    dialogMap.disableClose = true;
+  constructor
+    (
+      private dialogMap: MatDialogRef<MapaClienteComponent>,
+      private mapService:MapService,
+      private notification:NotificationService,
+  ) {
+    dialogMap.disableClose = true
   }
 
-  ngOnInit(): void {
+  coordinates: number[];
+
+  estadoMarker: boolean = false;
+  positionMarker: number[];
+  long: number = -77.0824914;
+  lat: number = -12.0587117;
+
+  //REASIGNA LA POSICION DEL MARKER
+  updateMarker() {
+    if (!this.estadoMarker) {
+      this.estadoMarker = true;
+      this.positionMarker = [this.long, this.lat];
+    } else {
+      this.estadoMarker = false;
+    }
   }
 
- //marker
- coordinates: number[];
- color = '#3887be';
- estadoMarker:boolean=false;
- markerInicial:number[];
- long:number=-77.0824914;
- lat:number=-12.0587117;
+  //BUSCADOR
+  onGeocoder(resultado: any) {
+    this.long = resultado.result.geometry.coordinates[0];
+    this.lat = resultado.result.geometry.coordinates[1];
+  }
 
- crearEliminarMarker() {
-  if(!this.estadoMarker){
-   this.estadoMarker=true;
-   //ASIGNA LA POSICION DEL MARKER
-   this.markerInicial=[this.long,this.lat];
-   
- }else{
-   this.estadoMarker=false;
-
- }
- }
-
- onGeocoder(resultado:any) {
-   
-   console.log('resultado.result.text: ',resultado.result.geometry.coordinates);
-     //REASIGNA LAS POSICION DEL MARCADOR
-     this.long=resultado.result.geometry.coordinates[0];
-     this.lat=resultado.result.geometry.coordinates[1];
- 
- }
-
- onGeolocate(position: Position) {
-   console.log('coordenandas mias: ', position.coords);
-   //REASIGNA LAS POSICION DEL MARCADOR
-   this.long=position.coords.longitude;
-   this.lat=position.coords.latitude;
-   
- }
-
- 
-//marker
- onDragEnd(marker: Marker) {
-   NgZone.assertInAngularZone();
-   this.coordinates = marker.getLngLat().toArray();
-   console.log('coordenadas marker:',  this.coordinates);
- }
+  //GEOLOCALIZADOR
+  onGeolocate(position: Position) {
+    this.long = position.coords.longitude;
+    this.lat = position.coords.latitude;
+  }
 
 
- cerrarMapa(){
-   this.dialogMap.close();
- }
+  //MOVER MARKER
+  onDragEnd(marker: Marker) {
+    NgZone.assertInAngularZone();
+    this.long = marker.getLngLat().lng;
+    this.lat = marker.getLngLat().lat;
+  }
+
+  closeMap() {
+    this.dialogMap.close();
+  }
+  save(){
+    this.mapService.newPlace.longitud= this.long;
+    this.mapService.newPlace.latitud= this.lat;
+    this.notification.openSnackBar('Ubicacion establecida con exito');
+    this.dialogMap.close();
+  }
 
 }
