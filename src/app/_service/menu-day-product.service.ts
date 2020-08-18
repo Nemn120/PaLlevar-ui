@@ -23,7 +23,7 @@ export class MenuDayProductService {
 
   saveMenuDayProduct(menuDayProduct : MenuDayProductBean) {
     menuDayProduct.organizationId = this.sharedService.getOrganizationIdByUserSession();
-    return this.http.post<MenuDayProductBean>(`${this.url}/smdp`,menuDayProduct);
+    return this.http.post<any>(`${this.url}/smdp`,menuDayProduct);
   }
 
   deleteMenuDayProduct(id: number) {
@@ -35,6 +35,12 @@ export class MenuDayProductService {
   }
   getListByOrganizationAndType(menuDayProduct : MenuDayProductBean){
     return this.http.post<MenuDayProductBean[]>(`${this.url}/glmbot`,menuDayProduct);
+
+  }
+
+  deleteMenuProduct(menuDayProduct:MenuDayProductBean){
+    menuDayProduct.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<any>(`${this.url}/dmdp`,menuDayProduct);
 
   }
 
