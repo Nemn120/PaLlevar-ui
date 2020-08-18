@@ -23,6 +23,9 @@ export class OrderConfirmComponent implements OnInit {
   titleOrderDetailList: string;
   costoTotal: number;
   totalO: number;
+  cantidad:number;
+  fechaCreacion: Date;
+  fecha:string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: OrderBean, private snackBar: MatSnackBar,
@@ -31,13 +34,15 @@ export class OrderConfirmComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.data);
-    console.log(this.data.userOrder.nombre);
-    console.log(this.data.total);
     this.orderDetailList=this.data.orderDetail;
     this.dataSource = new MatTableDataSource(this.data.orderDetail);
     this.titleOrderDetailList="Detalle de pedido"; 
-    
-  }s
+    this.fechaCreacion = new Date(this.data.createDate);
+    this.fecha = this.fechaCreacion.toLocaleString();
+    console.log(this.data.createDate);
+    console.log(this.fechaCreacion.toLocaleString());
+    console.log(this.fecha);
+  }
 
   closeDialog() {
     this.dialogRef.close();
