@@ -22,6 +22,7 @@ export class OrderConfirmComponent implements OnInit {
   phone: number;
   titleOrderDetailList: string;
   costoTotal: number;
+  totalO: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: OrderBean, private snackBar: MatSnackBar,
@@ -31,12 +32,12 @@ export class OrderConfirmComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data);
     console.log(this.data.userOrder.nombre);
+    console.log(this.data.total);
     this.orderDetailList=this.data.orderDetail;
-    this.dataSource = new MatTableDataSource(this.data.orderDetail);;
+    this.dataSource = new MatTableDataSource(this.data.orderDetail);
     this.titleOrderDetailList="Detalle de pedido"; 
     
-    
-  }
+  }s
 
   closeDialog() {
     this.dialogRef.close();

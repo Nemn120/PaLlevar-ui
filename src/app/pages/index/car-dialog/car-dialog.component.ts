@@ -104,7 +104,7 @@ export class CarDialogComponent implements OnInit {
                 // LLAMAS AL DIALOGO QUE TIENE EL RESUMEN DEL PEDIDO
                 this.dialogo.open(OrderConfirmComponent, {
                   width: '600px',
-                  data: this.sendOrderCar
+                  data: data.data
                 });
                 this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
               }, error=>{
