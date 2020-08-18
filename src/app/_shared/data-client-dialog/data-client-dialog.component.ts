@@ -43,6 +43,12 @@ export class DataClientDialogComponent implements OnInit {
     placeTemp.longitud = this.mapService.newPlace.longitud;
     placeTemp.latitud = this.mapService.newPlace.latitud;
     placeTemp.nombre = this.mapService.newPlace.nombre;
+    if(placeTemp.nombre== undefined){
+    placeTemp.longitud = 0;
+    placeTemp.latitud =0;
+    placeTemp.nombre = 'marcador no establecido';
+    
+    }
 
 
     this.order = new OrderBean();
