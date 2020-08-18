@@ -36,18 +36,17 @@ export class DataClientDialogComponent implements OnInit {
   }
   
    enviarOrden(){
-   //  debugger
+   debugger
 
    //UBICACION DE ENTREGA
     var  placeTemp: PlaceBean = new PlaceBean();
     placeTemp.longitud = this.mapService.newPlace.longitud;
     placeTemp.latitud = this.mapService.newPlace.latitud;
+    placeTemp.nombre = this.mapService.newPlace.nombre;
 
 
     this.order = new OrderBean();
-
     this.order.place=placeTemp;
-
     this.order.address=this.form.value['address'];
     this.order.reference=this.form.value['reference'];
     this.order.phone=this.form.value['phone'];
@@ -59,7 +58,7 @@ export class DataClientDialogComponent implements OnInit {
     this.dialogo.close();
   }
 
-
+ // Veterinaria Mascopatitas, Av. Bertello 428, Lima, Lima Province, Peru
   
   public hasError = (controlName: string, errorName: string) =>{
     return this.form.controls[controlName].hasError(errorName);

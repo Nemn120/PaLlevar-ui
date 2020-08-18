@@ -12,17 +12,17 @@
             <input matInput placeholder="Direccion" formControlName="address" [formGroup]="form" required>
         </mat-form-field>
 
-        <br>
+
         <mat-form-field style="width: 100%;">
             <input matInput placeholder="Referencia" formControlName="reference" [formGroup]="form" required>
 
         </mat-form-field>
-        <br>
-        <!--
-        <mat-form-field>
+
+
+        <mat-form-field style="width: 100%;">
             <input matInput placeholder="Telefono" formControlName="phone" [formGroup]="form" required>
         </mat-form-field>
-        -->
+
         <button style="width: 100%;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Registrar</button>
     </form>
 

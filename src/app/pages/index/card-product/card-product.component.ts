@@ -50,7 +50,7 @@ export class CardProductComponent implements OnInit {
     let order = orderDetail != null ? orderDetail : new OrderDetailBean();
     this.dialog.open(DataClientDialogComponent, {
      width: '20%',
-     height: '50%',
+     height: '52%',
     data: order
     });
   }

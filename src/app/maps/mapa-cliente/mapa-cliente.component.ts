@@ -12,21 +12,20 @@ import { NotificationService } from '../../_service/notification.service';
 })
 export class MapaClienteComponent {
 
-  constructor
-    (
-      private dialogMap: MatDialogRef<MapaClienteComponent>,
-      private mapService:MapService,
-      private notification:NotificationService,
-  ) {
-    dialogMap.disableClose = true
-  }
-
   coordinates: number[];
-
   estadoMarker: boolean = false;
   positionMarker: number[];
   long: number = -77.0824914;
   lat: number = -12.0587117;
+
+  constructor
+    (
+      private dialogMap: MatDialogRef<MapaClienteComponent>,
+      private mapService: MapService,
+      private notification: NotificationService,
+  ) {
+    dialogMap.disableClose = true
+  }
 
   //REASIGNA LA POSICION DEL MARKER
   updateMarker() {
@@ -61,11 +60,24 @@ export class MapaClienteComponent {
   closeMap() {
     this.dialogMap.close();
   }
-  save(){
-    this.mapService.newPlace.longitud= this.long;
-    this.mapService.newPlace.latitud= this.lat;
+
+  //GUARDAR UBICACION EXACTA
+  save() {
+    this.mapService.newPlace.longitud = this.long;
+    this.mapService.newPlace.latitud = this.lat;
+    this.findPlace(this.long, this.lat);
     this.notification.openSnackBar('Ubicacion establecida con exito');
     this.dialogMap.close();
+  }
+
+  //BUSQUEDA DEL LUGAR EXACTO
+  findPlace(long: number, lat: number) {
+    this.mapService.getPlace(long, lat).subscribe(
+      data => {
+        //console.log('lugar obtenido de la url: ', data);
+       this.mapService.newPlace.nombre=data.features[0].place_name;
+
+      })
   }
 
 }
