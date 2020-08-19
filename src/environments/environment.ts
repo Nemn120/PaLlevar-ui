@@ -12,7 +12,10 @@ export const environment = {
   REINTENTOS: 3,
   MICRO_CRUD: 'micro-crud',
   MICRO_CR : 'micro-cr',
-  MICRO_AUTH : 'uaa'
+  MICRO_AUTH : 'uaa',
+
+  HOST_MAPBOX:'https://api.mapbox.com',
+  TOKEN_MAPBOX:'pk.eyJ1Ijoia2F0cmllbCIsImEiOiJja2RjOXlrZTUxM3RsMnlxcmtwd3NrZWMwIn0.buu1mRI4DLdAUacSHR_2gw'
 };
 
 /*

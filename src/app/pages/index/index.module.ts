@@ -9,7 +9,6 @@ import { MaterialModule } from '../../_material/material.module';
 import { CardOrganizationComponent } from './card-organization/card-organization.component';
 import { PerfilComponent } from './cliente/perfil/perfil.component';
 import { IndexComponent } from './index.component';
-import { LoginComponent } from '../authorization/login/login.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CarDialogComponent } from './car-dialog/car-dialog.component';
 import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
@@ -25,35 +24,30 @@ import { HeaderOrganizationComponent } from './header-organization/header-organi
 
 const routes: Routes = [
 
-  {///////////mequede aui
+  {
     path: "",
     component: IndexComponent,
     children: [
-          { path: '', component: HomeComponent  },
-          { path: 'shop/:org', component: ShoppingComponent  }
-          // { path: 'shop/menu', component: ShoppingComponent  },
-          // { path: 'shop/promo', component: ShoppingComponent  },
-        // { path: '',   redirectTo: '/home', pathMatch: 'full' },
+      { path: '', component: HomeComponent },
+      { path: 'shop/:org', component: ShoppingComponent }
+
     ]
   }
 ];
 
 @NgModule({
   declarations: [
-  IndexComponent,
-  HomeComponent,
-  ShoppingComponent,
-  NavHomeComponent, 
-  CardProductComponent,
-  CardOrganizationComponent, 
-  PerfilComponent,
-  SidebarComponent,
-  CarDialogComponent,
-  
-  
+    IndexComponent,
+    HomeComponent,
+    ShoppingComponent,
+    NavHomeComponent,
+    CardProductComponent,
+    CardOrganizationComponent,
+    PerfilComponent,
+    SidebarComponent,
+    CarDialogComponent,
 
- //katriel
-  PedidosComponent,
+    PedidosComponent,
 
   EditarPerfilComponent,
   PerfilComponent,
@@ -72,19 +66,15 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule,
+    NavHomeComponent,// export component a AuthorizationModule
 
-    NavHomeComponent,// exportando el componente  
-   
   ],
-  entryComponents: 
-  [
-
-  PerfilComponent,PedidosComponent,EditarPerfilComponent,
-   SidebarComponent, CarDialogComponent,DialogoConfirmacionComponent,DataClientDialogComponent,
-   DetallePedidoComponent,
-  ],
-
- 
+  entryComponents:
+    [
+      PerfilComponent, PedidosComponent, EditarPerfilComponent,
+      SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
+      DetallePedidoComponent
+    ],
 })
 export class IndexModule { }
 

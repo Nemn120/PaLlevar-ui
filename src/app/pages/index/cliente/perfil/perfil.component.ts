@@ -16,6 +16,7 @@ export class PerfilComponent implements OnInit {
   mostrar: boolean = false;
 
   imagenData: any;
+
   constructor(
 
     private sharedService: SharedService,
@@ -36,6 +37,9 @@ export class PerfilComponent implements OnInit {
         this.mostrar = true;
       }
     });
+
+
+    console.log(this.user);
   }
 
 

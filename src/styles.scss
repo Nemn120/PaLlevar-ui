@@ -1,4 +1,7 @@
 //@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//ESTILOS DE MAPBOX
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;

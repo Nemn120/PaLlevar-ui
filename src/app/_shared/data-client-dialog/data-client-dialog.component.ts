@@ -1,13 +1,16 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA,MatDialog } from '@angular/material/dialog';
 import { OrderBean } from '../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { CarServiceService } from '../../_service/car-service.service';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { Message } from '../../_DTO/messageDTO';
-import {  MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderService } from 'src/app/_service/order.service';
+import { MapaClienteComponent } from '../../maps/mapa-cliente/mapa-cliente.component';
+import { PlaceBean } from '../../_model/PlaceBean';
+import { MapService } from '../../_service/map.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-data-client-dialog',
@@ -30,11 +33,11 @@ export class DataClientDialogComponent implements OnInit {
     private carService:CarServiceService,
     private orderService: OrderService,
     private snackBar: MatSnackBar,
+    private dialogMap:MatDialog,
+    private mapService:MapService,
    
-  ) {
- 
-   }
-
+  ) {}
+  
    enviarOrden(){
      debugger
    this.order = new OrderBean();
@@ -60,6 +63,31 @@ export class DataClientDialogComponent implements OnInit {
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
           this.order.id=this.data.id;
+
+          var  placeTemp: PlaceBean = new PlaceBean();
+          placeTemp.longitud = this.mapService.newPlace.longitud;
+          placeTemp.latitud = this.mapService.newPlace.latitud;
+          placeTemp.nombre = this.mapService.newPlace.nombre;
+          if(placeTemp.nombre== undefined){
+          placeTemp.longitud = 0;
+          placeTemp.latitud =0;
+          placeTemp.nombre = 'marcador no establecido';
+          
+          }
+      
+      
+          this.order = new OrderBean();
+          this.order.place=placeTemp;
+          this.order.address=this.form.value['address'];
+          this.order.reference=this.form.value['reference'];
+          this.order.phone=this.form.value['phone'];
+          this.order.organizationId=this.carService.orderHeader.organizationId;
+          this.carService.orderHeader=this.order;
+          
+          console.log('orden con place: ',this.order);
+          //this.carService.newOrder.next(this.order);
+          this.dialogo.close();
+
           this.orderService.updateOrder(this.order).subscribe(data => {
             this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
           });
@@ -100,6 +128,14 @@ if(this.data){
   public hasError = (controlName: string, errorName: string) =>{
     return this.form.controls[controlName].hasError(errorName);
   }
- 
+
+  abrirMapa(){
+    this.dialogMap.open(MapaClienteComponent, {
+      width: '50%',
+      height: '50%',
+    
+     });
+
+  }
 
 }
