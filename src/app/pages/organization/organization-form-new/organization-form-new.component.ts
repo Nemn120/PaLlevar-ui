@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl} from '@angular/forms';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { CompanyBean} from 'src/app/_model/CompanyBean';
 import { OrganizationService } from '../../../_service/organization.service';
 import { SharedService } from 'src/app/_service/shared.service';
@@ -27,26 +26,29 @@ export class OrganizationFormNewComponent implements OnInit {
   companias: CompanyBean[];
   companySelect: CompanyBean;
   imagenEstado = false;
+
+
+  initSchedulle: null;
+  endSchedulle: null;
+
   lineCodes: number[] = [1, 2, 3, 4];
 
   email = new FormControl('', [Validators.required, Validators.email]);
   statusSelected: string;
   pagoSelected: string;
-  newCompany: CompanyBean;
 
   constructor(private formBuilder: FormBuilder,
               private companyService: OrganizationService,
               private dialogRef: MatDialogRef<OrganizationFormNewComponent>,
               @Inject(MAT_DIALOG_DATA) public data: CompanyBean,
               private sharedService: SharedService,
-              private sanitization: DomSanitizer,) {}
+              private sanitization: DomSanitizer) {}
 
   ngOnInit(): void {
     this.publicFormGroup = this.formBuilder.group({
       nameCtrl: ['', Validators.required],
       descriptionCtrl: ['', Validators.required],
       addressCtrl: ['', Validators.required],
-      /* photoCtrl: ['', Validators.required], */
 
     });
     this.personalFormGroup = this.formBuilder.group({
@@ -65,7 +67,8 @@ export class OrganizationFormNewComponent implements OnInit {
     this.businessFormGroup = this.formBuilder.group({
       businessLineCodeCtrl: ['', Validators.required],
       businessMethodCodeCtrl: ['', Validators.required],
-      attencionSchedulleCtrl: ['', Validators.required],
+      schedulleInitCtrl: ['', Validators.required],
+      schedulleEndCtrl: ['', Validators.required],
       codeCtrl: ['', Validators.required],
     });
     this.collaboratorsFormGroup = this.formBuilder.group({
@@ -74,19 +77,32 @@ export class OrganizationFormNewComponent implements OnInit {
     });
 
     this.companySelect = new CompanyBean();
+    this.companySelect.userAdmin = this.sharedService.userSession;
     if (this.data.id > 0) {
       this.companySelect.id = this.data.id;
       this.companySelect.nombre = this.data.nombre;
-      this.companySelect.description = this.data.description;
       this.companySelect.ruc = this.data.ruc;
-      this.companySelect.userAdmin = this.data.userAdmin;
+      this.companySelect.businessName = this.data.businessName;
+      this.companySelect.description = this.data.description;
+      this.companySelect.address = this.data.address;
+      this.companySelect.phone = this.data.phone;
+      this.companySelect.responsiblePaymentName = this.data.responsiblePaymentName;
+      this.companySelect.responsiblePaymentPhone = this.data.responsiblePaymentPhone;
+      this.companySelect.responsiblePaymentEmail = this.data.responsiblePaymentEmail;
+      this.companySelect.anniversaryDate = this.data.anniversaryDate;
       this.companySelect.createDate = this.data.createDate;
+      this.companySelect.userAdmin = this.data.userAdmin;
       this.companyService.getPhotoById(this.data.id).subscribe(data => {
         if (data.size > 0) {
           this.imagenData = this.convertir(data);
         }
       });
-      console.log(this.companySelect);
+      this.companySelect.businessLineCode = this.data.businessLineCode;
+      this.companySelect.paymentMethodCode = this.data.paymentMethodCode;
+      this.companySelect.status = this.data.status;
+      this.companySelect.estimatedTime = this.data.estimatedTime;
+      this.companySelect.qualification = this.data.qualification;
+      this.companySelect.attentionSchedule = this.data.attentionSchedule;
     }
   }
 
@@ -96,12 +112,12 @@ export class OrganizationFormNewComponent implements OnInit {
     reader.onloadend = () => {
       const base64 = reader.result;
       this.sanar(base64);
-    }
+    };
   }
 
-  public sanar(base64 : any){
-    this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
-    this.imagenEstado=true;
+  public sanar(base64: any){
+    this.imagenData = this.sanitization.bypassSecurityTrustResourceUrl(base64);
+    this.imagenEstado = true;
   }
 
   getErrorMessage(): any{
@@ -113,45 +129,44 @@ export class OrganizationFormNewComponent implements OnInit {
   }
 
   registerCompany(): void {
-    this.newCompany = new CompanyBean();
-    this.newCompany.nombre = this.publicFormGroup.value.nameCtrl;
-    this.newCompany.description = this.publicFormGroup.value.descriptionCtrl;
-    this.newCompany.address = this.publicFormGroup.value.addressCtrl;
-    if(this.selectedFiles != null) {
+     this.companySelect.attentionSchedule = this.businessFormGroup.value.schedulleInitCtrl.toString() + ' a ' +
+      this.businessFormGroup.value.schedulleEndCtrl.toString();
+     if ( this.selectedFiles != null ) {
       this.currentFileUpload = this.selectedFiles.item(0);
     } else {
       this.currentFileUpload = new File([''], 'blanco');
     }
 
-    this.newCompany._foto = this.currentFileUpload;
-    this.newCompany.ruc = this.personalFormGroup.value.rucCtrl;
-    this.newCompany.businessName = this.personalFormGroup.value.businessManCtrl;
-    this.newCompany.phone = this.personalFormGroup.value.phoneCtrl;
-    this.newCompany.userAdmin = this.personalFormGroup.value.userAdminCtrl;
-    this.newCompany.anniversaryDate = this.personalFormGroup.value.anniversaryDateCtrl;
-    this.newCompany.createDate = this.personalFormGroup.value.createDateCtrl;
-    this.newCompany.status = this.statusSelected;
-    this.newCompany.estimatedTime = this.personalFormGroup.value.estimatedTimeCtrl;
-    this.newCompany.qualification = this.personalFormGroup.value.qualificationCtrl;
+     this.companyService.saveCompany(this.companySelect, this.currentFileUpload).subscribe(data => {
+      this.companyService.getListCompany().subscribe(data2 => {
+        this.companyService.companyCambio.next(data2);
 
-    this.newCompany.businessLineCode = this.codeSelected;
-    this.newCompany.paymentMethodCode = this.pagoSelected;
-    this.newCompany.attentionSchedule = this.businessFormGroup.value.attencionSchedulleCtrl;
+        if (this.companySelect.id) {
+          this.companyService.mensajeCambio.next('Se actualizo');
+        } else {
+          this.companyService.mensajeCambio.next('Se registro');
+        }
+      });
+    }, error => {
+      this.companyService.mensajeCambio.next('Eror al actualizar/modificar compañoa');
+    });
 
-    this.newCompany.responsiblePaymentName = this.collaboratorsFormGroup.value.responsiblePaymentNameCtrl;
-    this.newCompany.responsiblePaymentPhone = this.collaboratorsFormGroup.value.responsiblePaymentPhoneCtrl;
-    this.newCompany.responsiblePaymentEmail = this.email.value;
-
-    /* this.companyService.saveCompany(this.newCompany, this.currentFileUpload); */
-
-    this.dialogRef.close();
-    console.log(this.newCompany);
+     console.log(this.companySelect);
+     this.dialogRef.close();
   }
 
   selectFile(e: any) {
     this.labelFile = e.target.files[0].name;
     this.selectedFiles = e.target.files;
 
+  }
+
+  listarOrganizaciones() {
+    this.companyService.getListCompany().subscribe(
+      data => {
+        this.companias = data;
+      }
+    );
   }
 
 }

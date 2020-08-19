@@ -20,7 +20,7 @@ export class OrganizationListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['id', 'ruc', 'nombre','actions'];
-  dataSource: MatTableDataSource<CompanyBean>;/// tabla 
+  dataSource: MatTableDataSource<CompanyBean>;/// tabla
   titleProductList: string;
   constructor(
     private companyService:OrganizationService, private dialog:MatDialog, private snackBar: MatSnackBar
@@ -40,28 +40,28 @@ export class OrganizationListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     });
 
-    //this.companyService.getListProduct().subscribe(data => {
-    this.companyService.getListCompany().subscribe(data => {  
-    //this.companyService.getListProductByOrganizationAndSucursal().subscribe(data => {  
+    // this.companyService.getListProduct().subscribe(data => {
+    this.companyService.getListCompany().subscribe(data => {
+    // this.companyService.getListProductByOrganizationAndSucursal().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      
+
     },error =>{
-      this.companyService.mensajeCambio.next("Error al mostrar compañia");
+      this.companyService.mensajeCambio.next('Error al mostrar compañia');
     });
 
   }
-  public editDialog(company: CompanyBean) {
+  /* public editDialog(company: CompanyBean) {
     let productSelect = company != null ? company : new CompanyBean();
     this.dialog.open(OrganizationFormComponent, {
       height: '600px',
       data: productSelect
     });
-  }
+  } */
 
-  public createDialog(company: CompanyBean) {
-    let productSelect = company != null ? company : new CompanyBean();
+  public createDialog(company?: CompanyBean) {
+    const productSelect = company != null ? company : new CompanyBean();
     this.dialog.open(OrganizationFormNewComponent, {
       width: 'auto',
       height: '700px',
@@ -69,18 +69,18 @@ export class OrganizationListComponent implements OnInit {
     });
   }
 
-  public delete(company:CompanyBean){
+  public delete(company: CompanyBean){
       this.companyService.deleteCompany(company.id).subscribe(data => {
         this.companyService.getListCompany().subscribe(data => {
           this.companyService.companyCambio.next(data);
-          this.companyService.mensajeCambio.next("Se elimino con éxito");
-        }, error =>{
+          this.companyService.mensajeCambio.next('Se elimino con éxito');
+        }, error => {
           console.error(error);
-          this.companyService.mensajeCambio.next("Error al mostrar listado de compañias");
+          this.companyService.mensajeCambio.next('Error al mostrar listado de compañias');
         });
-      },error =>{
+      }, error =>{
         console.error(error);
-        this.companyService.mensajeCambio.next("La organizacion que desea eliminar esta siendo usada");
+        this.companyService.mensajeCambio.next('La organizacion que desea eliminar esta siendo usada');
       });
     }
 

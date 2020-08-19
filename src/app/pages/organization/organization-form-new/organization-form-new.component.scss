@@ -102,7 +102,7 @@ mat-card {
 }
 
 .schedulle-container {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -110,8 +110,18 @@ mat-card {
 
 .schedulle-container {
     flex-wrap: row;
+    padding: 25px;
 }
 
 .mat-step-label {
     display: none !important;
+}
+
+.schedulle-item {
+    padding: 5px;
+    flex-wrap: wrap;
+}
+
+.schedulle-content {
+    padding-bottom: 30px;
 }
