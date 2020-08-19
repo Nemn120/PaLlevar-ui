@@ -20,7 +20,7 @@ export class UserDeliverysComponent implements OnInit {z
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ["nombre","username" , "employeeCode","organizationId","idProfile","status","name"];
+  displayedColumns: string[] = ["nombre","username" , "employeeCode","status"];
   dataSource: MatTableDataSource<UserBean>;
   userList: Array<UserBean>;
   deliveryMan: UserBean;
@@ -42,8 +42,8 @@ export class UserDeliverysComponent implements OnInit {z
       this.dataSource.sort = this.sort;
     });
     
-    this.userService.getListUserDeliveryMan(this.deliveryMan).subscribe(data =>{
-      this.dataSource = new MatTableDataSource(data);
+    this.userService.getListUserDeliveryMan().subscribe(data =>{
+      this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })

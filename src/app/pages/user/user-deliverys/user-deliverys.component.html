@@ -13,59 +13,30 @@
                 <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-                <!-- Position Column -->
+                <!-- NOMBRE DE REPARTIDOR -->
                 <ng-container matColumnDef="nombre">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-                    <mat-cell *matCellDef="let delivery_man" > {{delivery_man.nombre}} </mat-cell>
+                    <mat-cell *matCellDef="let delivery_man" > {{delivery_man.nombre}} {{delivery_man.lastName}} </mat-cell>
                 </ng-container>
 
+                <!-- USUARIO DE REPARTIDOR-->
                 <ng-container matColumnDef="username">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre de usuario </mat-header-cell>
                     <mat-cell *matCellDef="let delivery_man" > {{delivery_man.username}} </mat-cell>
                 </ng-container>
 
-                <!-- Symbol Column -->
+                <!-- CÓDIGO DE REPARTIDOR -->
                 <ng-container matColumnDef="employeeCode">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo empleado </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo de empleado </mat-header-cell>
                     <mat-cell *matCellDef="let delivery_man" > {{delivery_man.employeeCode}} </mat-cell>
-                </ng-container>
+                </ng-container>                
 
-                
-                <ng-container matColumnDef="organizationId">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> organización </mat-header-cell>
-                    <mat-cell *matCellDef="let delivery_man"> {{delivery_man.organizationId}}
-                    </mat-cell>
-
-                </ng-container>
-
-                
-                
-                
-                <ng-container matColumnDef="idProfile">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> idPofile </mat-header-cell>
-                    <mat-cell *matCellDef="let delivery_man"> 
-                        
-                            <div *ngIf="delivery_man.profile"> {{delivery_man.profile.idProfile}} </div>
-                        
-                    </mat-cell>
-
-                </ng-container>
-
-                
-
-                <!-- Name Column -->
+                <!-- ESTATUS DE REPARTIDOR -->
                 <ng-container matColumnDef="status">
                     <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
                     <mat-cell mat-cell *matCellDef="let delivery_man" > {{delivery_man.status}} </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </mat-header-cell>
-                    <mat-cell *matCellDef="let element">
-                        <div *ngIf="element.profile"> {{element.profile.name}} </div>
-                    </mat-cell>
-
-                </ng-container>
 
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
