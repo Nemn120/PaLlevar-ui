@@ -23,16 +23,20 @@ export class UserDeliverysComponent implements OnInit {z
   displayedColumns: string[] = ["nombre","username" , "employeeCode","organizationId","idProfile","status","name"];
   dataSource: MatTableDataSource<UserBean>;
   userList: Array<UserBean>;
-  deliveryMan: UserBean;
+  deliveryMan = new UserBean();
   deliveryMen: any;
   profile: ProfileBean;
 
+  dato: any;
+
   constructor(private dialog: MatDialog, private router: Router,
-    private userService:UserService, private snackBar: MatSnackBar) { }
+              private userService: UserService, private snackBar: MatSnackBar) {
+              }
 
   ngOnInit(): void {
-    this.userService.mensajeCambio.subscribe(data =>{
-      this.snackBar.open(data, 'INFO', {
+
+    /* this.userService.mensajeCambio.subscribe(data =>{
+    this.snackBar.open(data, 'INFO', {
         duration: 3500
       });
     });
@@ -41,13 +45,17 @@ export class UserDeliverysComponent implements OnInit {z
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-    
+
     this.userService.getListUserDeliveryMan(this.deliveryMan).subscribe(data =>{
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    })
-    
+    }); */
+
+    this.userService.getListUserDeliveryMan(this.deliveryMan).subscribe(data => {
+      this.dato = data.dataList;
+    });
+
   }
 
 
@@ -64,4 +72,4 @@ export class UserDeliverysComponent implements OnInit {z
 
 }
 
-  
+

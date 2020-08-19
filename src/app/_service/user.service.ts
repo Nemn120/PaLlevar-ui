@@ -17,7 +17,7 @@ export class UserService {
   userCambio = new Subject<UserBean[]>();
   mensajeCambio = new Subject<string>();
   menuCambio = new Subject<ProfileMenuOptionBean[]>();
-  url: string = `${environment.HOST}`;    
+  url: string = `${environment.HOST}`;
   subUrl:string="user";
   imagen: any;
   constructor(private http: HttpClient,private sharedService:SharedService) { }
@@ -31,7 +31,7 @@ export class UserService {
 
   listarPorUsuario(nombre: string) {
     let access_token = sessionStorage.getItem(environment.TOKEN_NAME)
-    
+
     return this.http.post<UserBean>(`${this.url}/${this.subUrl}/gubu`, nombre, {
       headers: new HttpHeaders().set('Authorization', `bearer ${access_token}`).set('Content-Type', 'application/json')
     });
@@ -41,7 +41,7 @@ export class UserService {
     return this.http.get<ProfileMenuOptionBean[]>(`${this.url}/profile/gobp/${userId}`, {
       headers: new HttpHeaders().set('Authorization', `bearer ${access_token}`).set('Content-Type', 'application/json')
     });
-  } 
+  }
 
   listarAll(){
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/glur`);
@@ -53,13 +53,10 @@ export class UserService {
 
   /* ddddddddddddddddddddddd */
 
-  getListUserDeliveryMan(deliveryMan: UserBean){
-    
-    deliveryMan.profile = new ProfileBean;
-    deliveryMan.organizationId = 4;
-     
-    deliveryMan.profile.idProfile = 3;
-    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`,deliveryMan);
+  getListUserDeliveryMan(user: UserBean){
+
+    user.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`, user);
   }
 
   /* ddddddddddddddddddddddd */
@@ -89,7 +86,7 @@ export class UserService {
       responseType: 'blob'
     });
   }
-  
+
   actualizarPerfil(user : UserBean, file?:File){
     user.id = this.sharedService.userSession.id;
     let formdata: FormData = new FormData();
