@@ -48,6 +48,17 @@ export class DataClientDialogComponent implements OnInit {
  // CUANDO ENVIA LA ORDEN
    if(!this.isUpdateOrder){
    this.order.organizationId=this.carService.orderHeader.organizationId;
+   var  placeTemp: PlaceBean = new PlaceBean();
+   placeTemp.longitud = this.mapService.newPlace.longitud;
+   placeTemp.latitud = this.mapService.newPlace.latitud;
+   placeTemp.nombre = this.mapService.newPlace.nombre;
+   if(placeTemp.nombre== undefined){
+   placeTemp.longitud = 0;
+   placeTemp.latitud =0;
+   placeTemp.nombre = 'marcador no establecido';
+   
+   }
+   this.order.place=placeTemp;
    this.carService.orderHeader=this.order;
    
    }else{
@@ -63,21 +74,8 @@ export class DataClientDialogComponent implements OnInit {
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
           this.order.id=this.data.id;
-
-          var  placeTemp: PlaceBean = new PlaceBean();
-          placeTemp.longitud = this.mapService.newPlace.longitud;
-          placeTemp.latitud = this.mapService.newPlace.latitud;
-          placeTemp.nombre = this.mapService.newPlace.nombre;
-          if(placeTemp.nombre== undefined){
-          placeTemp.longitud = 0;
-          placeTemp.latitud =0;
-          placeTemp.nombre = 'marcador no establecido';
-          
-          }
-      
-      
           this.order = new OrderBean();
-          this.order.place=placeTemp;
+       
           this.order.address=this.form.value['address'];
           this.order.reference=this.form.value['reference'];
           this.order.phone=this.form.value['phone'];
@@ -97,7 +95,7 @@ export class DataClientDialogComponent implements OnInit {
         });
 
    }
-
+   this.dialog.closeAll();
 
   }
 

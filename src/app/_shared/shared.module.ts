@@ -10,27 +10,21 @@ import { MapaClienteComponent } from '../maps/mapa-cliente/mapa-cliente.componen
 
 
 @NgModule({
-  declarations: 
-  [
-    DialogoConfirmacionComponent, 
-    DataClientDialogComponent,
-   
-  ],
+  declarations:
+    [
+      DialogoConfirmacionComponent,
+      DataClientDialogComponent,
+
+    ],
   imports: [
     CommonModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-   
     MapsModule
+  ],
 
-  ],
-  
   entryComponents:
-  [
-  MapaClienteComponent
-  ],
-  entryComponents: 
-  [DialogoConfirmacionComponent],
+    [MapaClienteComponent, DialogoConfirmacionComponent ],
 })
 export class SharedModule { }
