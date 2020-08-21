@@ -59,9 +59,14 @@ export class MenuProductEditComponent implements OnInit {
   }
 
   checkChangeStatus():boolean{
-    if(this.status == "No disponible" && this.menuProductSelect.status == "Disponible" && ( this.menuProductSelect.available == 0 ||
-      this.menuProductSelect.quantityAdd== 0 )){
-      return false;
+    if(this.status == "No disponible" && this.menuProductSelect.status == "Disponible"){
+      if(this.menuProductSelect.available == 0  && this.menuProductSelect.quantityAdd== 0 ){
+        return false;
+      }
+      if(this.menuProductSelect.available != 0  && this.menuProductSelect.quantityAdd== 0 ){
+        return true;
+      }
+
     }
       return true;
   }
