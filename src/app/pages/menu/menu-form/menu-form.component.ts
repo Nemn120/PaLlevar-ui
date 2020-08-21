@@ -14,7 +14,13 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MenuProductEditComponent } from '../menu-product-edit/menu-product-edit.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MenuDayProductService } from '../../../_service/menu-day-product.service';
+import { Message } from '../../../_DTO/messageDTO';
+import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 
 export interface User {
@@ -67,32 +73,53 @@ export class MenuFormComponent implements OnInit {
   //
 
   producto: ProductBean;
-  precio: number;
-  cant: number;
-
+  precio: number=0;
+  cant: number=0;
+  menuId: any;
   menuDayProductList: MenuDayProductBean[] = [];
   constructor(
 
     private menuDayService: MenuDayService,
+    private menuDayProductService: MenuDayProductService,
     private productService: ProductService,
-    private router: Router,
+    public router: Router,
+    private activateRoute: ActivatedRoute,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
 
   ) { }
 
   ngOnInit(): void {
     this.listarProductos();
-
-    if (this.menuDayService.menuDayEditar === null) {
-
-      this.menuDaySelect = new MenuDayBean();
-
+    this.menuId = parseInt(this.activateRoute.snapshot.paramMap.get("id"));
+    if (this.menuId) {
+      this.menuDayService.getMenuDayById(this.menuId).subscribe(data => {
+        this.menuDaySelect = data;
+        this.menuDayProductList = this.menuDaySelect.menuDayProductList;
+      })
     } else {
-      this.menuDaySelect = this.menuDayService.menuDayEditar;
-      this.menuDayService.menuDayEditar = null;
+      this.menuDaySelect = new MenuDayBean();
     }
 
+    this.menuDayService.mensajeCambio.subscribe(data => { // cuando actualizas o creas se muestra una notificacion
+      this.snackBar.open(data, 'INFO', {
+        duration: 2000
+      });
+    });
 
+    this.menuDayService.menuDayOneCambio.subscribe(data => {
+      this.menuDaySelect;
+      this.menuDayProductList = data.menuDayProductList
+      console.log(data);
+    });
 
+    /* if (this.menuDayService.menuDayEditar === null) {
+     } else {
+       this.menuDaySelect = this.menuDayService.menuDayEditar;
+       this.menuDayService.menuDayEditar = null;
+     }
+ 
+     */
     //
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -114,10 +141,7 @@ export class MenuFormComponent implements OnInit {
 
 
       this.menuDayService.saveMenuDay(this.menuDaySelect).subscribe(data => {
-        this.menuDayService.getListMenuDayByOrganization().subscribe(data => {
-          this.menuDayService.menuDayCambio.next(data);
-          this.menuDayService.mensajeCambio.next("Se registro");
-        })
+
 
       }
 
@@ -141,26 +165,82 @@ export class MenuFormComponent implements OnInit {
     this.producto = event.option.value;
   }
   agregarProduct() {
-
     let nuevoMenuDayProduct: MenuDayProductBean = new MenuDayProductBean();
-    nuevoMenuDayProduct.product = this.producto;
-    nuevoMenuDayProduct.price = this.precio;
-    nuevoMenuDayProduct.quantity = this.cant;
-    this.menuDayProductList.push(nuevoMenuDayProduct);
+    if (!this.menuId) {
+      nuevoMenuDayProduct.product = this.producto;
+      nuevoMenuDayProduct.price = this.precio;
+      nuevoMenuDayProduct.quantity = this.cant;
+      this.menuDayProductList.push(nuevoMenuDayProduct);
+      this.menuDayService.mensajeCambio.next("Se agrego el producto");
+    } else {
+      let ms = new Message();
+      ms.title = 'Guardar cambios';
+      ms.description = '¿Desea agregar un platillo al menu?';
+      this.dialog
+        .open(DialogoConfirmacionComponent, {
+          data: ms
+        })
+        .afterClosed()
+        .subscribe((confirmado: Boolean) => {
+          if (confirmado) {
+            nuevoMenuDayProduct.product = this.producto;
+            nuevoMenuDayProduct.price = this.precio;
+            nuevoMenuDayProduct.quantity = this.cant;
+            nuevoMenuDayProduct.menuDayId = this.menuId;
+            this.menuDayProductService.saveMenuDayProduct(nuevoMenuDayProduct).subscribe(data => {
+              this.menuDayService.getMenuDayById(this.menuId).subscribe(data2=>{
+                this.menuDayService.menuDayOneCambio.next(data2);
+                this.menuDayService.mensajeCambio.next(data.message);
+              })
+              
+            })
+          }
+          this.dialog.closeAll();
+        });
 
-    this.menuDayService.mensajeCambio.next("Se agrego el producto");
+    }
+
 
   }
 
-
-  remove(theCartItem: MenuDayProductBean) {
-    const itemIndex = this.menuDayProductList.findIndex(temp => temp.id === theCartItem.id);
-
-    if (itemIndex > -1) {
-
-      this.menuDayProductList.splice(itemIndex, 1);
-      this.menuDayService.mensajeCambio.next("Se elimino el producto!");
+  remove(menuProduct: MenuDayProductBean) {
+    //debugger
+    if (!this.menuId) {
+      const itemIndex = this.menuDayProductList.findIndex(temp => temp.id === menuProduct.id);
+      if (itemIndex > -1) {
+        this.menuDayProductList.splice(itemIndex, 1);
+      }
+    } else {
+      let ms = new Message();
+      ms.title = 'Eliminar platillo';
+      ms.description = '¿Desea eliminar el platillo seleccionado?';
+      this.dialog
+        .open(DialogoConfirmacionComponent, {
+          data: ms
+        })
+        .afterClosed()
+        .subscribe((confirmado: Boolean) => {
+          if (confirmado) {
+            menuProduct.menuDayId = this.menuId;
+            this.menuDayProductService.deleteMenuProduct(menuProduct).subscribe(data => {
+              this.menuDayService.getMenuDayById(this.menuId).subscribe(data2 => {
+                this.menuDayProductList = data2.menuDayProductList;
+                this.menuDayService.mensajeCambio.next(data.message);
+              })
+            }, error => {
+              this.menuDayService.mensajeCambio.next(error.message);
+            })
+          }
+          this.dialog.closeAll();
+        });
     }
+  }
+  editMenuProduct(menuProductBean: MenuDayProductBean) {
+    let menuProductSelect = menuProductBean != null ? menuProductBean : new MenuDayProductBean();
+    menuProductSelect.menuDayId = this.menuId;
+    this.dialog.open(MenuProductEditComponent, {
+      data: menuProductSelect
+    });
   }
 
   displayFn(user: ProductBean): string {

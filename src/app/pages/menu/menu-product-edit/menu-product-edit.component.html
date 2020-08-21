@@ -1,0 +1,28 @@
+<mat-form-field appearance="fill">
+    <mat-label>Estado</mat-label>
+    <mat-select [(value)]="menuProductSelect.status">
+        <mat-option *ngFor="let estado of estados" [value]="estado">
+            {{estado}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<br>
+
+<mat-form-field>
+    <!-- Los datos ingresados lo guarda en la variable -->
+    <input readonly=true matInput placeholder="Cantidad total" [(ngModel)]="menuProductSelect.quantity">
+
+</mat-form-field>
+<br>
+<mat-form-field>
+    <input readonly=true matInput placeholder="Cantidad disponible" [(ngModel)]="menuProductSelect.available">
+</mat-form-field>
+<br>
+<mat-form-field>
+    <input matInput placeholder="Cantidad a añadir" [(ngModel)]="menuProductSelect.quantityAdd">
+</mat-form-field>
+<br>
+<div style="float:right;">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="close()">Cancelar</button>
+</div>

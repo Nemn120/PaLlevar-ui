@@ -15,6 +15,7 @@ export class MenuDayService {
   menuDayEditar:MenuDayBean=null;//katriel//para poder editarlo en otro componente
 
   menuDayCambio = new Subject<MenuDayBean[]>();
+  menuDayOneCambio= new Subject<MenuDayBean>();
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/menuDay`; 
 
@@ -22,6 +23,9 @@ export class MenuDayService {
     private sharedService:SharedService) {
     }
 
+  getMenuDayById(id:number){
+    return this.http.get<MenuDayBean>(`${this.url}/gmbi/${id}`);
+  }
   getListMenuDay() {
     return this.http.get<MenuDayBean[]>(`${this.url}/glmd`);
   }
