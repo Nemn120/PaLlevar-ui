@@ -1,0 +1,16 @@
+<p>CAMBIAR ESTADO DE DISPONIBILIDAD</p>
+
+<mat-form-field appearance="fill">
+    <mat-label>Estado/ Disponibilidad</mat-label>
+    <mat-select [(value)]="dataEmployee.status">
+        <mat-option value="DISPONIBLE">Disponible</mat-option>
+        <mat-option value="OCUPADO">Ocupado</mat-option>
+        <mat-option value="EN VACACIONES">En Vacaciones</mat-option>
+    </mat-select>
+
+
+</mat-form-field>
+
+<div>
+    <button mat-raised-button color="primary" (click)="change()">Finalizar</button>
+</div>
