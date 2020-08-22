@@ -54,9 +54,8 @@ export class MenuListComponent implements OnInit {
   }
 
   editar(menuDay: MenuDayBean){
-    
     this.menuDayService.menuDayEditar=menuDay;
-    this.router.navigate(['menu/form']);
+    this.router.navigate(['menu/edit',menuDay.id]);
       
   }
 

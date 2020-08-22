@@ -7,6 +7,7 @@ export class MenuDayProductBean extends MainBean{
     menuDay:MenuDayBean; // NO TIENE
     price:number;
     quantity:number;
+    quantityAdd:number;
     available:number;
     status:string; // DISPONIBLE , NO DISPONIBLE
     type:string; // COMBO, MENU , PAQUETE
