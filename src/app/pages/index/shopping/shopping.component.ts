@@ -23,7 +23,7 @@ export class ShoppingComponent implements OnInit {
   orgId: any;
   menuProductList: MenuDayProductBean[];
   param: string;
-  companySelect:CompanyBean;
+  companySelect: CompanyBean;
   imgDefault = '../../../../assets/icon-cubiertos.jpg';
   mProduct: MenuDayProductBean;
 
@@ -33,92 +33,97 @@ export class ShoppingComponent implements OnInit {
               private sanitization: DomSanitizer,
               private activatedRoute: ActivatedRoute,
               private organizationService: OrganizationService,
-              public sharedService:SharedService,
-              private router:Router,
-              private carService:CarServiceService
-    ) { 
-      
-    
+              public sharedService: SharedService,
+              private router: Router,
+              private carService: CarServiceService
+    ) {
+
+
     }
 
   ngOnInit(): void {
-    this.sharedService.loading=true;
+    this.sharedService.loading = true;
     this.mProduct  = new MenuDayProductBean();
     this.companySelect = new CompanyBean();
-    this.sharedService.subject.subscribe(data =>{
-        this.param=data;
-       // this.sharedService.openSpinner();
-        if(data != null){
-          this.mProduct.organizationId=this.companySelect.id;
 
-          this.getListMenuProductByType(this.param);
+    this.sharedService.getCategoryCambio().subscribe(data => {
+        this.param = data;
+        console.log('tYPE' + this.param);
+       // this.sharedService.openSpinner();
+        if (data != null) {
+          this.mProduct.organizationId = 4;
+
+          this.getListMenuProductByType(data);
+          console.log(this.getListMenuProductByType(data));
         }
       });
-    this.orgId = this.activatedRoute.snapshot.paramMap.get('org'); 
-    if(this.orgId){
-        this.organizationService.getCompanyById(this.orgId).subscribe(data =>{
-        this.companySelect=data;
-        let order = new OrderBean();
-        order.organizationId=this.orgId;
-        this.carService.orderHeader=order;
-        this.mProduct.organizationId=this.companySelect.id;
-        this.organizationService.getPhotoById(this.mProduct.organizationId).subscribe(photo =>{
-          let reader = new FileReader();
+    this.orgId = this.activatedRoute.snapshot.paramMap.get('org');
+    if (this.orgId) {
+        this.organizationService.getCompanyById(this.orgId).subscribe(data => {
+        this.companySelect = data;
+        const order = new OrderBean();
+        order.organizationId = this.orgId;
+        this.carService.orderHeader = order;
+        this.mProduct.organizationId = this.companySelect.id;
+        this.organizationService.getPhotoById(this.mProduct.organizationId).subscribe(photo => {
+          const reader = new FileReader();
           reader.readAsDataURL(photo);
           reader.onload = () => {
-            let base64 = reader.result;
+            const base64 = reader.result;
             this.companySelect._foto = this.setterPhoto(base64);
             // this.companySelect._isFoto = true;
-          }
-            this.getListMenuProduct();
-           
+          };
+          console.log('ALL');
+          // this.getListMenuProduct();
+          this.getListMenuProductByType('Combo');
+
 
         });
-      })
-      }else{
+      });
+      } else {
         this.router.navigate(['']); // RUTA REDIRIGIDA AL INICIAR SESION
       }
-   
+
   }
-  getListMenuProduct(){
-    this.menuProductList=[];
-    this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data =>{
-      this.menuProductList=data;
-       this.activatedPhoto(data); 
-       console.log(this.menuProductList);  
-     },error =>{
+  getListMenuProduct() {
+    this.menuProductList = [];
+    this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data => {
+      this.menuProductList = data;
+      this.activatedPhoto(data);
+      console.log(this.menuProductList);
+     }, error => {
        console.error(error);
-     })
+     });
   }
-  getListMenuProductByType(type : string){
-    this.mProduct.type=type;
-    this.menuProductList=[];
-    this.menuDayProductService.getListByOrganizationAndType(this.mProduct).subscribe(data =>{
-      this.menuProductList=data;
-       this.activatedPhoto(data);  
-       // console.log(this.menuProductList); 
-     },error =>{
-       console.error(error);
-     })
+  getListMenuProductByType(type: string) {
+    this.mProduct.type = type;
+    this.menuProductList = [];
+    this.menuDayProductService.getListByOrganizationAndType(this.mProduct).subscribe(data => {
+      this.menuProductList = data;
+      this.activatedPhoto(data);
+      console.log(this.menuProductList);
+    }, error => {
+       console.log(error);
+     });
   }
 
 
-  activatedPhoto(data:any){
-    for( let m of data){
-      this.productService.getPhotoById(m.product.id).subscribe(photo =>{
-        let reader = new FileReader();
+  activatedPhoto(data: any) {
+    for ( const m of data) {
+      this.productService.getPhotoById(m.product.id).subscribe(photo => {
+        const reader = new FileReader();
         reader.readAsDataURL(photo);
-        reader.onloadend = () =>{
-          let base64 = reader.result;
+        reader.onloadend = () => {
+          const base64 = reader.result;
           m.product._foto = this.setterPhoto(base64);
-          m.product._isFoto=true;
-        }
-        this.sharedService.loading=false;
-      })
+          m.product._isFoto = true;
+        };
+        this.sharedService.loading = false;
+      });
     }
   }
 
-  setterPhoto(data : any){
+  setterPhoto(data: any) {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
 

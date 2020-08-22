@@ -41,7 +41,7 @@ export class CardProductNewComponent implements OnInit {
     orderDetail.price = this.menuSelect.price;
     orderDetail.menuProductId = this.menuSelect.id;
     this.carService.addProduct(orderDetail);
-    this.contadorCarrito++;
+    // this.contadorCarrito++;
     if (!this.carService.orderHeader.address) {
       this.openDialog(orderDetail);
     }

@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { MatVerticalStepper } from '@angular/material/stepper';
+import { UserBean } from 'src/app/_model/UserBean';
+import { ProfileBean } from 'src/app/_model/ProfileBean';
 import { MatDialog,  MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogConfirmacionComponent } from '../dialog-confirmacion/dialog-confirmacion.component';
+import { UserService } from 'src/app/_service/user.service';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ProfileService } from '../../../_service/profile.service';
-import { UserBean } from '../../../_model/UserBean';
-import { UserService } from '../../../_service/user.service';
 
 @Component({
   selector: 'app-user-delivery-form',
@@ -14,7 +15,7 @@ import { UserService } from '../../../_service/user.service';
   styleUrls: ['./user-delivery-form.component.scss']
 })
 export class UserDeliveryFormComponent implements OnInit {
-  dataEmployee:UserBean;
+  dataEmployee = new UserBean();
   @ViewChild('stepper') stepper: MatVerticalStepper;
   estadoSelected: string;
   companyFormGroup: FormGroup;
@@ -27,17 +28,19 @@ export class UserDeliveryFormComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data: UserBean) { }
 
   ngOnInit(): void {
-    this.dataEmployee= new UserBean();
-    this.dataEmployee.id = this.data.id;
-    this.dataEmployee.status=this.data.status;
-    this.dataEmployee.profile.idProfile=this.data.profile.idProfile;
+    this.dataEmployee = this.data;
     this.companyFormGroup = this.formBuilder.group({
       statusCtrl: ['', Validators.required],
     });
   }
 
-  change(): void {   
+  change(): void {
+      // this.dataEmployee.status = 'Vacaciones';
       this.openConfirmation();
+
+      // this.serviceUser.updateStatusDelivery(this.dataEmployee).subscribe(data => {
+      //   this.serviceUser.mensajeCambio.next('Se modificó');
+      // });
       console.log('status' + this.data.status);
   }
 
@@ -48,15 +51,8 @@ export class UserDeliveryFormComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.serviceUser.updateStatusDelivery(this.dataEmployee).subscribe(data => {
-        this.serviceUser.getListUserDeliveryMan().subscribe(data2 =>{
-          this.serviceUser.userCambio.next(data2.dataList);
-          this.serviceUser.mensajeCambio.next(data.message);
-        }, error => {
-          this.serviceUser.mensajeCambio.next(error.message);
-        });
-
+        this.serviceUser.mensajeCambio.next('Se modificó');
       });
-      this.dialog.closeAll();
     });
   }
 
