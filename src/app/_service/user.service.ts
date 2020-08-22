@@ -51,15 +51,17 @@ export class UserService {
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/gubo/${a}`)
   }
 
-  /* ddddddddddddddddddddddd */
+  /** getListUserDeliveryMan()
+    TRAE A TODOS LOS DELIVERY MAN DE LA ORGANIZACIÓN
+    FELIPE  **/
+  getListUserDeliveryMan(){
+    let deliveryMan = new UserBean();
+    deliveryMan.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    deliveryMan.profile = this.sharedService.getProfileByUserSession();
+    deliveryMan.profile.idProfile = 3;
 
-  getListUserDeliveryMan(user: UserBean){
-
-    user.organizationId = this.sharedService.getOrganizationIdByUserSession();
-    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`, user);
+    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`,deliveryMan);
   }
-
-  /* ddddddddddddddddddddddd */
 
   registrarTrabajador(user:UserBean){
     user.organizationId=this.sharedService.getOrganizationIdByUserSession();
@@ -100,11 +102,15 @@ export class UserService {
 
 
 
-  modificar(UserBean: UserBean) {
-    return this.http.put(`${this.url}/${this.subUrl}`, UserBean);
+  modificar(userBean: UserBean) {
+    return this.http.put(`${this.url}/${this.subUrl}`, userBean);
   }
 
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${this.subUrl}/${id}`);
+  }
+
+  updateStatusDelivery(userbean:UserBean){
+    return this.http.post<any>(`${this.url}/${this.subUrl}/usu`, userbean);
   }
 }
