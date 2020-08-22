@@ -134,24 +134,18 @@ export class MenuFormComponent implements OnInit {
 
   // menuDayProduct:MenuDayProductBean[] // PRODUCTOS , PRECIO, CANTIDAD , ESTADO 
   guardar() {
-
-
     if (!this.menuDaySelect.id) {
       this.menuDaySelect.menuDayProductList = this.menuDayProductList;
-
-
       this.menuDayService.saveMenuDay(this.menuDaySelect).subscribe(data => {
-
-
+        this.menuDayService.getListMenuDayByOrganization().subscribe(data2=>{
+          this.menuDayService.menuDayCambio.next(data2);
+        })
       }
-
       );
-
       this.router.navigate(['/menu/list']);
     } else {
       this.menuDayService.mensajeCambio.next("No se edito nada");
     }
-
   }
 
 
