@@ -33,15 +33,11 @@ export class OrderConfirmComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
     this.orderDetailList=this.data.orderDetail;
     this.dataSource = new MatTableDataSource(this.data.orderDetail);
     this.titleOrderDetailList="Detalle de pedido"; 
     this.fechaCreacion = new Date(this.data.createDate);
     this.fecha = this.fechaCreacion.toLocaleString();
-    console.log(this.data.createDate);
-    console.log(this.fechaCreacion.toLocaleString());
-    console.log(this.fecha);
   }
 
   closeDialog() {
