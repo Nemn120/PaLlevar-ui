@@ -49,14 +49,14 @@ export class CarDialogComponent implements OnInit {
     const numRows = !!this.dataSource && this.dataSource.data.length;
     return numSelected === numRows;
   }
-  
+
   masterToggle() {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(r => this.selection.select(r));
   }
   closeDialog() {
     this.dialogo.closeAll();
   }
-  
+
   checkboxLabel(row: OrderDetailBean): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
@@ -65,11 +65,11 @@ export class CarDialogComponent implements OnInit {
   }
   sendOrder() {
     // debugger;
-    let params = {
+    const params = {
       title: 'Generar pedido',
       description: '¿Desea realizar el pedido?',
-      inputData:true
-    }
+      inputData: true
+    };
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
       // debugger
@@ -78,12 +78,12 @@ export class CarDialogComponent implements OnInit {
           data: params
         })
         .afterClosed()
-        .subscribe((confirmado: Boolean) => {
+        .subscribe((confirmado) => {
           // if (confirm("¿Desea realizar el pedido? ")) {
           if (confirmado) {
             if (this.sharedService.userSession) {
-              this.sendOrderCar = new OrderBean;
-              this.sendOrderCar=this.carService.orderHeader;
+              this.sendOrderCar = new OrderBean();
+              this.sendOrderCar = this.carService.orderHeader;
               /*this.carService.newOrder.subscribe(x =>{
                 this.sendOrderCar=x;
               })
@@ -92,7 +92,8 @@ export class CarDialogComponent implements OnInit {
               this.sendOrderCar.orderDetail = [];
               numSelected.forEach(x => {
                 this.sendOrderCar.orderDetail.push(x);
-              })
+                this.carService.numberProductSelected--;
+              });
 
               this.sendOrderCar.userOrder = this.sharedService.userSession;
               this.orderService.saveNewOrder(this.sendOrderCar).subscribe(data => {
@@ -102,18 +103,18 @@ export class CarDialogComponent implements OnInit {
                 this.closeDialog();
                 // LLAMAS AL DIALOGO QUE TIENE EL RESUMEN DEL PEDIDO
                 this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
-              }, error=>{
+              }, error => {
                 this.snackBar.open(error.error, 'ERROR', { duration: 5000 });
-              })
+              });
             } else {
               this.router.navigate(['auth/login']);
             }
           }
-          this.carService.numberProductSelected--;
+
         });
 
     } else {
-      alert("Seleccione algun producto");
+      alert('Seleccione algun producto');
     }
   }
   deleteProductsSelect() {
@@ -123,7 +124,7 @@ export class CarDialogComponent implements OnInit {
         this.carService.deleteProductList(numSelected);
         this.odList = this.carService.getItems();
         this.dataSource.data = this.odList;
-        this.carService.numberProductSelected--;
+        numSelected.forEach(x => {this.carService.numberProductSelected--; });
       }
     } else {
       alert('Seleccione el producto a eliminar');

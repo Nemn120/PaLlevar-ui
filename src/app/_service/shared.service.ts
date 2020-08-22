@@ -4,8 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { CompanyBean } from '../_model/CompanyBean';
+
 @Injectable({
     providedIn: 'root'
   })
@@ -15,12 +16,12 @@ export class SharedService{
     userSession: UserBean;
     organizationSelect = new Subject<CompanyBean>();
     subject = new Subject<string>();
+    private categorySubject = new Subject<any>();
     loadingSpinner = new Subject<boolean>();
     loading = false;
-    constructor(private http: HttpClient, private router: Router,
-                private sanitization: DomSanitizer
-      ) {
-
+    constructor(private http: HttpClient,
+                private router: Router,
+                private sanitization: DomSanitizer) {
     }
 
     public getOrganizationIdByUserSession(){
@@ -42,7 +43,13 @@ export class SharedService{
     public openSpinner(){
       this.loadingSpinner.next(true);
     }
-  
 
+    public setCategoryCambio(category: string) {
+      this.categorySubject.next({ text: category});
+    }
+
+    public getCategoryCambio(): Observable<string> {
+      return this.categorySubject.asObservable();
+    }
 
 }

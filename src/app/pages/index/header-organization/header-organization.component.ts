@@ -10,17 +10,15 @@ import { SharedService } from 'src/app/_service/shared.service';
 export class HeaderOrganizationComponent implements OnInit {
 
   @Input() companySelect: CompanyBean;
-  private sharedService:SharedService
+  private sharedService: SharedService;
   route: any;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  redirectTo(path: string) {
-    this.route.navigate(['/index/shop/cat',path])
-    // this.sharedService.subject.next(path);
-    console.log('Redirect Menu');
+  redirectTo() {
+    this.sharedService.setCategoryCambio('Menu');
   }
 
 

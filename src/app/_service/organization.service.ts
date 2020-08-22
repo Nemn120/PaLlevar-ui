@@ -10,14 +10,14 @@ import { environment } from 'src/environments/environment';
 })
 export class OrganizationService {
 
-  
+
   companyCambio = new Subject<CompanyBean[]>();
   mensajeCambio = new Subject<string>();
 
   id = new Subject<number>();
 
 
-  url: string = `${environment.HOST}/company`; 
+  url: string = `${environment.HOST}/company`;
 
   company :CompanyBean = new CompanyBean();
   constructor(private http: HttpClient,
@@ -27,7 +27,7 @@ export class OrganizationService {
     return this.http.get<CompanyBean[]>(`${this.url}/glco`);
   }
   getCompanyById(id:number) {
-    
+
     return this.http.get<CompanyBean>(`${this.url}/gcobi/${id}`);
   }
 
