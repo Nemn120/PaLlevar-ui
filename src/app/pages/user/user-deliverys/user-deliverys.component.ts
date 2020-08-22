@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {UserDeliveryFormComponent} from '../user-delivery-form/user-delivery-form.component';
 
 @Component({
   selector: 'app-user-deliverys',
@@ -20,7 +21,7 @@ export class UserDeliverysComponent implements OnInit {z
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ["nombre","username" , "employeeCode","status"];
+  displayedColumns: string[] = ["nombre","username" , "employeeCode","status","actions"];
   dataSource: MatTableDataSource<UserBean>;
   userList: Array<UserBean>;
   deliveryMan: UserBean;
@@ -52,15 +53,12 @@ export class UserDeliverysComponent implements OnInit {z
 
 
   // buscar repartidor (en proceso)
-  openDialog(userBean?: UserBean){
-    let userSelect = userBean != null ? userBean : new UserBean();
-    const dialogRef = this.dialog.open(UserFormComponent, {
-      width: 'auto', height: '850px', data: userSelect
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog close');
-    });
+  openDialog(){
+    this.dialog.open(UserDeliveryFormComponent);
   }
+
+
+  
 
 }
 

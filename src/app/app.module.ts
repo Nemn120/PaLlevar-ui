@@ -17,6 +17,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 //import { DetallesComponent } from './pages/index/detalles/detalles.component';
 import { NavHomeComponent } from './pages/index/nav-home/nav-home.component';
 
+
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
   let token = tk != null ? tk : '';
@@ -25,7 +26,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

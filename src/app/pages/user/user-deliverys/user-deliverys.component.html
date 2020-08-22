@@ -37,6 +37,16 @@
                     <mat-cell mat-cell *matCellDef="let delivery_man" > {{delivery_man.status}} </mat-cell>
                 </ng-container>
 
+                <!-- ACCIONES -->
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <button mat-icon-button color="primary" (click)="openDialog()">
+                <mat-icon>ballot</mat-icon>
+              </button>
+                        
+                    </mat-cell>
+                </ng-container>
 
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -44,6 +54,8 @@
             </mat-table>
             <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
+
+            
             
         </div>
     </div>
