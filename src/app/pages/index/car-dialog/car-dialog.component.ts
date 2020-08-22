@@ -50,14 +50,14 @@ export class CarDialogComponent implements OnInit {
     const numRows = !!this.dataSource && this.dataSource.data.length;
     return numSelected === numRows;
   }
-  
+
   masterToggle() {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(r => this.selection.select(r));
   }
   closeDialog() {
     this.dialogo.closeAll();
   }
-  
+
   checkboxLabel(row: OrderDetailBean): string {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
@@ -83,7 +83,7 @@ export class CarDialogComponent implements OnInit {
           // if (confirm("¿Desea realizar el pedido? ")) {
           if (confirmado) {
             if (this.sharedService.userSession) {
-              this.sendOrderCar = new OrderBean;
+              this.sendOrderCar = new OrderBean();
               this.sendOrderCar=this.carService.orderHeader;
               /*this.carService.newOrder.subscribe(x =>{
                 this.sendOrderCar=x;

@@ -14,6 +14,8 @@ import { SidebarComponent } from '../index/sidebar/sidebar.component';
 
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { UserDeliverysComponent } from './user-deliverys/user-deliverys.component';
+import { UserDeliveryFormComponent } from './user-delivery-form/user-delivery-form.component';
+
 
 const routes: Routes = [
   {
@@ -37,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent, UserDeliverysComponent],
+  declarations: [UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent, UserDeliverysComponent, UserDeliveryFormComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -48,7 +50,7 @@ const routes: Routes = [
     SidebarSidenavModule
   ],
   exports: [RouterModule],
-  entryComponents: [DialogConfirmacionComponent, DialogFotoComponent],
+  entryComponents: [DialogConfirmacionComponent, DialogFotoComponent, UserDeliveryFormComponent],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ]

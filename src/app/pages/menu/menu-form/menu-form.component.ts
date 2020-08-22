@@ -60,17 +60,12 @@ export class MenuFormComponent implements OnInit {
 
 
   productos: ProductBean[];
-  //
+  
   myControl = new FormControl();
-  /*options: User[] = [
-    {name: 'Mary',apellido:'uno'},
-    {name: 'Shelley',apellido:'dos'},
-    {name: 'Igor',apellido:'tres'}
-  ];*/
 
   options: ProductBean[] = [];
   filteredOptions: Observable<ProductBean[]>;
-  //
+
 
   producto: ProductBean;
   precio: number=0;
@@ -113,14 +108,6 @@ export class MenuFormComponent implements OnInit {
       console.log(data);
     });
 
-    /* if (this.menuDayService.menuDayEditar === null) {
-     } else {
-       this.menuDaySelect = this.menuDayService.menuDayEditar;
-       this.menuDayService.menuDayEditar = null;
-     }
- 
-     */
-    //
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
@@ -131,8 +118,6 @@ export class MenuFormComponent implements OnInit {
 
   }
 
-
-  // menuDayProduct:MenuDayProductBean[] // PRODUCTOS , PRECIO, CANTIDAD , ESTADO 
   guardar() {
     if (!this.menuDaySelect.id) {
       this.menuDaySelect.menuDayProductList = this.menuDayProductList;
