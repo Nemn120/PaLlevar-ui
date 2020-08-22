@@ -102,8 +102,8 @@ export class UserService {
 
 
 
-  modificar(UserBean: UserBean) {
-    return this.http.put(`${this.url}/${this.subUrl}`, UserBean);
+  modificar(userBean: UserBean) {
+    return this.http.put(`${this.url}/${this.subUrl}`, userBean);
   }
 
   eliminar(id: number) {

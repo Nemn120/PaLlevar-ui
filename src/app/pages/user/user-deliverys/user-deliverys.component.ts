@@ -53,7 +53,7 @@ export class UserDeliverysComponent implements OnInit {z
 
 
   // buscar repartidor (en proceso)
-  openDialog(){
+  changeState(){
     this.dialog.open(UserDeliveryFormComponent);
   }
 

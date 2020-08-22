@@ -1,1 +1,17 @@
-<p>user-delivery-form works!</p>
+
+<p>CAMBIAR ESTADO DE DISPONIBILIDAD</p>
+
+<mat-form-field appearance="fill">
+    <mat-label>Estado/ Dsiponibilidad</mat-label>
+    <mat-select [(value)]="estadoSelected">
+        <mat-option value="DISPONIBLE">Disponible</mat-option>
+        <mat-option value="OCUPADO">Ocupado</mat-option>
+        <mat-option value="NO DISPONIBLE">En Vacaciones</mat-option>
+    </mat-select>
+
+    
+</mat-form-field>
+
+<div>
+    <button mat-raised-button color="primary" (click)="change()">Finalizar</button>
+</div>

@@ -49,7 +49,7 @@ const routes: Routes = [
     MatNativeDateModule,
   ],
   exports: [RouterModule],
-  entryComponents: [DialogConfirmacionComponent, DialogFotoComponent],
+  entryComponents: [DialogConfirmacionComponent, DialogFotoComponent, UserDeliveryFormComponent],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ]

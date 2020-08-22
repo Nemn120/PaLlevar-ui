@@ -41,7 +41,7 @@
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
                     <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="openDialog()">
+                        <button mat-icon-button color="primary" (click)="changeState(row)">
                 <mat-icon>ballot</mat-icon>
               </button>
                         
