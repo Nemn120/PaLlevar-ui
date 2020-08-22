@@ -75,7 +75,7 @@ const routes: Routes = [
     [
       PerfilComponent, PedidosComponent, EditarPerfilComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
-      DetallePedidoComponent
+      DetallePedidoComponent,OrderConfirmComponent
     ],
 })
 export class IndexModule { }
