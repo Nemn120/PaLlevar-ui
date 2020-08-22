@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from '../../../../_service/order.service';
-import { OrderBean } from 'src/app/_model/OrderBean';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.component';
@@ -10,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { Message } from '../../../../_DTO/messageDTO';
 import { DataClientDialogComponent } from '../../../../_shared/data-client-dialog/data-client-dialog.component';
+import { OrderBean } from '../../../../_model/OrderBean';
 
 
 @Component({

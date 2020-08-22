@@ -60,7 +60,8 @@ export class DataClientDialogComponent implements OnInit {
    }
    this.order.place=placeTemp;
    this.carService.orderHeader=this.order;
-   
+   this.dialog.closeAll();
+
    }else{
      
     let ms = new Message();

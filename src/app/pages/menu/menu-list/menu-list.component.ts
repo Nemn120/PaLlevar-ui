@@ -50,7 +50,6 @@ export class MenuListComponent implements OnInit {
       },error =>{
         this.menuDayService.mensajeCambio.next("Error al mostrar productos");
       });
-  
   }
 
   editar(menuDay: MenuDayBean){
@@ -58,8 +57,6 @@ export class MenuListComponent implements OnInit {
     this.router.navigate(['menu/edit',menuDay.id]);
       
   }
-
-
   
   delete(menuDay:MenuDayBean){
     this.menuDayService.deleteMenuDay(menuDay.id).subscribe(data => {
@@ -86,14 +83,5 @@ export class MenuListComponent implements OnInit {
     });
 
   }
-  /*
-  public openDialog(product: ProductBean) {
-    let productSelect = product != null ? product : new ProductBean();
-    this.dialog.open(ProductFormComponent, {
-      width: '600',
-      height: '600',
-      data: productSelect
-    });
-  }
-  */
+
 }

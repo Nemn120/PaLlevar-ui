@@ -15,11 +15,8 @@
                 </ng-container>
 
                 <ng-container matColumnDef="name">
-                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-                    <!-- NOMBRE DE LA COLUMNA-->
                     <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
-                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
                 </ng-container>
 
                 <ng-container matColumnDef="description">
@@ -67,8 +64,6 @@
 
             <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 
-
-            <!--<button mat-fab color="accent" style="float: right" (click)="openDialog()">-->
             <button mat-fab color="accent" style="float: right" routerLink="/menu/form" class="buton-product">
             <mat-icon>create</mat-icon>
             </button>
