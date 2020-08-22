@@ -5,6 +5,9 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { UserBean } from '../_model/UserBean';
 import { ProfileMenuOptionBean } from '../_model/ProfileMenuOptionBean';
+import { ProfileBean } from '../_model/ProfileBean';
+import { MainBean } from '../_model/MainBean';
+import { isError } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -47,9 +50,10 @@ export class UserService {
     const a = this.sharedService.getOrganizationIdByUserSession();
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/gubo/${a}`);
   }
-  registrarTrabajador(user: UserBean) {
-    user.organizationId = this.sharedService.getOrganizationIdByUserSession();
-    return this.http.post<UserBean>(`${this.url}/${this.subUrl}/su`, user);
+
+  registrarTrabajador(user:UserBean){
+    user.organizationId=this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<UserBean>(`${this.url}/${this.subUrl}/su`,user);
   }
 
   getDeliveryUserList() {
@@ -57,6 +61,7 @@ export class UserService {
     user.organizationId = this.sharedService.getOrganizationIdByUserSession();
     return this.http.post<UserBean[]>(`${this.url}/${this.subUrl}/guldm`, user);
   }
+
   listarPorId(id: number) {
     return this.http.get<UserBean>(`${this.url}/${this.subUrl}/${id}`);
   }

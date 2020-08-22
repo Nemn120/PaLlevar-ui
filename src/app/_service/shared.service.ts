@@ -37,6 +37,10 @@ export class SharedService{
       return this.userSession.profile;
     }
 
+    public getStatusByUserSession(){
+      return this.userSession.status;
+    }
+
     public closeSpinner(){
       this.loadingSpinner.next(false);
     }

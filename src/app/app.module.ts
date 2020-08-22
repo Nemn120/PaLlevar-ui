@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
+
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
   let token = tk != null ? tk : '';

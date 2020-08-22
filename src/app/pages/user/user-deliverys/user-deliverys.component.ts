@@ -17,7 +17,7 @@ import { ProfileBean } from '../../../_model/ProfileBean';
   templateUrl: './user-deliverys.component.html',
   styleUrls: ['./user-deliverys.component.scss']
 })
-export class UserDeliverysComponent implements OnInit {
+export class UserDeliverysComponent implements OnInit {z
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;

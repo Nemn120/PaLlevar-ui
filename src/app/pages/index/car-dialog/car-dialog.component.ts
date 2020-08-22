@@ -84,7 +84,7 @@ export class CarDialogComponent implements OnInit {
           if (confirmado) {
             if (this.sharedService.userSession) {
               this.sendOrderCar = new OrderBean();
-              this.sendOrderCar = this.carService.orderHeader;
+              this.sendOrderCar=this.carService.orderHeader;
               /*this.carService.newOrder.subscribe(x =>{
                 this.sendOrderCar=x;
               })
