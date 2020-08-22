@@ -87,4 +87,8 @@ export class UserService {
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${this.subUrl}/${id}`);
   }
+
+  updateStatusDelivery(userbean:UserBean){
+    return this.http.post<any>(`${this.url}/${this.subUrl}/usu`, userbean);
+  }
 }

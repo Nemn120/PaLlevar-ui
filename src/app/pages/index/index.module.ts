@@ -73,7 +73,7 @@ const routes: Routes = [
   ],
   entryComponents:
     [
-      PerfilComponent, PedidosComponent, EditarPerfilComponent,
+      PerfilComponent, PedidosComponent, EditarPerfilComponent,OrderConfirmComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
       DetallePedidoComponent
     ],
