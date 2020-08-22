@@ -10,7 +10,6 @@ import { DialogFotoComponent } from './user-form/dialog-foto/dialog-foto.compone
 import { DialogConfirmacionComponent } from './dialog-confirmacion/dialog-confirmacion.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MaterialModule } from 'src/app/_material/material.module';
-import { SidebarComponent } from '../index/sidebar/sidebar.component';
 
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { UserDeliverysComponent } from './user-deliverys/user-deliverys.component';
@@ -18,7 +17,7 @@ import { UserDeliveryFormComponent } from './user-delivery-form/user-delivery-fo
 
 const routes: Routes = [
   {
-    path: "",
+    path:  '',
     component: SidebarSidenavComponent,
     children: [
       {
@@ -38,7 +37,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [UserListComponent, UserFormComponent, DialogFotoComponent, DialogConfirmacionComponent, UserDeliverysComponent, UserDeliveryFormComponent],
+  declarations: [UserListComponent, UserFormComponent, DialogFotoComponent,
+                 DialogConfirmacionComponent, UserDeliverysComponent, UserDeliveryFormComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -49,7 +49,7 @@ const routes: Routes = [
     SidebarSidenavModule
   ],
   exports: [RouterModule],
-  entryComponents: [DialogConfirmacionComponent, DialogFotoComponent],
+  entryComponents: [DialogConfirmacionComponent, DialogFotoComponent, UserDeliveryFormComponent],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ]
