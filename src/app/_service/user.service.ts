@@ -15,7 +15,7 @@ export class UserService {
   mensajeCambio = new Subject<string>();
   menuCambio = new Subject<ProfileMenuOptionBean[]>();
   url: string = `${environment.HOST}`;
-  subUrl: string = "user";
+  subUrl = 'user';
   imagen: any;
   constructor(private http: HttpClient, private sharedService: SharedService) { }
 
@@ -27,14 +27,14 @@ export class UserService {
   }
 
   listarPorUsuario(nombre: string) {
-    let access_token = sessionStorage.getItem(environment.TOKEN_NAME)
+    let access_token = sessionStorage.getItem(environment.TOKEN_NAME);
 
     return this.http.post<UserBean>(`${this.url}/${this.subUrl}/gubu`, nombre, {
       headers: new HttpHeaders().set('Authorization', `bearer ${access_token}`).set('Content-Type', 'application/json')
     });
   }
   listMenuByUser(userId: number) {
-    let access_token = sessionStorage.getItem(environment.TOKEN_NAME)
+    let access_token = sessionStorage.getItem(environment.TOKEN_NAME);
     return this.http.get<ProfileMenuOptionBean[]>(`${this.url}/profile/gobp/${userId}`, {
       headers: new HttpHeaders().set('Authorization', `bearer ${access_token}`).set('Content-Type', 'application/json')
     });
@@ -44,8 +44,8 @@ export class UserService {
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/glur`);
   }
   getListUserByOrganization() {
-    let a = this.sharedService.getOrganizationIdByUserSession();
-    return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/gubo/${a}`)
+    const a = this.sharedService.getOrganizationIdByUserSession();
+    return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/gubo/${a}`);
   }
   registrarTrabajador(user: UserBean) {
     user.organizationId = this.sharedService.getOrganizationIdByUserSession();
@@ -53,7 +53,7 @@ export class UserService {
   }
 
   getDeliveryUserList() {
-    let user = new UserBean;
+    const user = new UserBean();
     user.organizationId = this.sharedService.getOrganizationIdByUserSession();
     return this.http.post<UserBean[]>(`${this.url}/${this.subUrl}/guldm`, user);
   }
@@ -61,8 +61,8 @@ export class UserService {
     return this.http.get<UserBean>(`${this.url}/${this.subUrl}/${id}`);
   }
 
-  registrar(UserBean: UserBean) {
-    return this.http.post(`${this.url}/${this.subUrl}/rcli`, UserBean);
+  registrar(userBean: UserBean) {
+    return this.http.post(`${this.url}/${this.subUrl}/rcli`, userBean);
   }
 
   getPhotoById(id: number) {
@@ -73,22 +73,30 @@ export class UserService {
 
   actualizarPerfil(user: UserBean, file?: File) {
     user.id = this.sharedService.userSession.id;
-    let formdata: FormData = new FormData();
+    const formdata: FormData = new FormData();
     formdata.append('file', file);
-    const productBlob = new Blob([JSON.stringify(user)], { type: "application/json" });
+    const productBlob = new Blob([JSON.stringify(user)], { type: 'application/json' });
     formdata.append('user', productBlob);
-    return this.http.post<any>(`${this.url}/user/uu`,formdata);
+    return this.http.post<any>(`${this.url}/user/uu`, formdata);
   }
 
-  modificar(UserBean: UserBean) {
-    return this.http.put(`${this.url}/${this.subUrl}`, UserBean);
+  modificar(userBean: UserBean) {
+    return this.http.put(`${this.url}/${this.subUrl}`, userBean);
   }
 
   eliminar(id: number) {
     return this.http.delete(`${this.url}/${this.subUrl}/${id}`);
   }
 
-  updateStatusDelivery(userbean:UserBean){
+  updateStatusDelivery(userbean: UserBean) {
     return this.http.post<any>(`${this.url}/${this.subUrl}/usu`, userbean);
+  }
+  getListUserDeliveryMan() {
+    const deliveryMan = new UserBean();
+    deliveryMan.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    deliveryMan.profile = this.sharedService.getProfileByUserSession();
+    deliveryMan.profile.idProfile = 3;
+
+    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`, deliveryMan);
   }
 }
