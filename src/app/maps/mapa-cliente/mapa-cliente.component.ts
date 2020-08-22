@@ -1,5 +1,5 @@
 import { MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 import { Marker } from 'mapbox-gl';
 import { MapService } from '../../_service/map.service';
@@ -74,7 +74,7 @@ export class MapaClienteComponent {
   findPlace(long: number, lat: number) {
     this.mapService.getPlace(long, lat).subscribe(
       data => {
-        //console.log('lugar obtenido de la url: ', data);
+      console.log('lugar obtenido de la url: ', data.features[0].place_name);
        this.mapService.newPlace.nombre=data.features[0].place_name;
 
       })
