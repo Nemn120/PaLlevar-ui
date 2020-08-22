@@ -73,7 +73,7 @@ export class DataClientDialogComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
-          this.order.id=this.data.id;
+         
           this.order = new OrderBean();
        
           this.order.address=this.form.value['address'];
@@ -85,9 +85,9 @@ export class DataClientDialogComponent implements OnInit {
           console.log('orden con place: ',this.order);
           //this.carService.newOrder.next(this.order);
           this.dialogo.close();
-
+          this.order.id=this.data.id;          
           this.orderService.updateOrder(this.order).subscribe(data => {
-            this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
+             this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
           });
       
         }
@@ -95,8 +95,6 @@ export class DataClientDialogComponent implements OnInit {
         });
 
    }
-   this.dialog.closeAll();
-
   }
 
 
