@@ -51,6 +51,18 @@ export class UserService {
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/gubo/${a}`);
   }
 
+<<<<<<< HEAD
+=======
+  getListUserDeliveryMan(){
+    let deliveryMan = new UserBean();
+    deliveryMan.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    deliveryMan.profile = this.sharedService.getProfileByUserSession();
+    deliveryMan.profile.idProfile = 3;
+
+    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`,deliveryMan);
+  }
+
+>>>>>>> bd0927c93e3d9b26d981dcaef22b228bbd3f27ad
   registrarTrabajador(user:UserBean){
     user.organizationId=this.sharedService.getOrganizationIdByUserSession();
     return this.http.post<UserBean>(`${this.url}/${this.subUrl}/su`,user);
