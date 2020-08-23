@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { MatVerticalStepper } from '@angular/material/stepper';
 import { UserBean } from 'src/app/_model/UserBean';
 import { ProfileBean } from 'src/app/_model/ProfileBean';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogConfirmacionComponent } from '../dialog-confirmacion/dialog-confirmacion.component';
 import { UserService } from 'src/app/_service/user.service';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
@@ -23,7 +23,7 @@ export class UserFormComponent implements OnInit {
   loginFormGroup: FormGroup;
   companyFormGroup: FormGroup;
   date = new FormControl((new Date()).toISOString());
-  profileList:Array<ProfileBean>;
+  profileList: Array<ProfileBean>;
 
   @ViewChild('stepper') stepper: MatVerticalStepper;
 
@@ -36,13 +36,14 @@ export class UserFormComponent implements OnInit {
   mensaje = 'Registro exitoso';
   hide = true;
   constructor(private formBuilder: FormBuilder, private dialog: MatDialog,
-              private serviceUser: UserService, private profileService: ProfileService) {}
+              private serviceUser: UserService, private profileService: ProfileService,
+              @Inject(MAT_DIALOG_DATA) public data: UserBean) {}
 
   ngOnInit(): void {
     this.dataEmployee.profile = this.dataProfile;
 
-    this.profileService.getListProfile().subscribe(data =>{
-      this.profileList=data;
+    this.profileService.getListProfile().subscribe(data => {
+      this.profileList = data;
     });
 
     this.personalFormGroup = this.formBuilder.group({
@@ -71,6 +72,10 @@ export class UserFormComponent implements OnInit {
   registrar(): void {
     // debugger
     // this.selected = this.personalFormGroup.value.nombreCtrl;
+    if(this.data != null) {
+      this.dataEmployee.id = this.data.id;
+      // this.mensaje = 'Se actualizó';
+    }
     this.dataEmployee.nombre = this.personalFormGroup.value.nombreCtrl;
     this.dataEmployee.lastName = this.personalFormGroup.value.lastNameCtrl;
     this.dataEmployee.address = this.personalFormGroup.value.addressCtrl;
@@ -88,16 +93,16 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.status = this.estadoSelected;
     this.dataEmployee.employeeCode = this.companyFormGroup.value.employeecodeCtrl;
 
-    if (this.dataEmployee.nombre == '' || this.dataEmployee.lastName == '' ||
-      this.dataEmployee.address == '' || this.dataEmployee.password == '' ||
-      this.dataEmployee.documentNumber == '' || this.dataEmployee.username == '' ||
-      this.dataEmployee.employeeCode == '') {
+    if (this.dataEmployee.nombre === '' || this.dataEmployee.lastName === '' ||
+      this.dataEmployee.address === '' || this.dataEmployee.password === '' ||
+      this.dataEmployee.documentNumber === '' || this.dataEmployee.username === '' ||
+      this.dataEmployee.employeeCode === '') {
       alert('Debe completar todos los campos');
     } else {
       this.openConfirmation();
-      this.serviceUser.registrarTrabajador(this.dataEmployee).subscribe(data =>{
+      this.serviceUser.registrarTrabajador(this.dataEmployee).subscribe(data => {
         this.serviceUser.mensajeCambio.next('Se registro');
-        this.serviceUser.getListUserByOrganization().subscribe( data => {
+        this.serviceUser.getListUserByOrganization().subscribe(data => {
           this.serviceUser.userCambio.next(data);
         });
       });
@@ -116,4 +121,3 @@ export class UserFormComponent implements OnInit {
   }
 
 }
-
