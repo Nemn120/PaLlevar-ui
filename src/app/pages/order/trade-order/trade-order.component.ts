@@ -50,7 +50,10 @@ export class TradeOrderComponent implements OnInit {
     this.productService.getListProductByOrganization().subscribe(data =>{
       this.productList=data;
       this.categoryProductService.getListCategoryProductByOrganization().subscribe(data =>{
+
         this.categoryProductList=data;
+        this.search();
+
       }, error =>{
       })  
     }, error =>{
