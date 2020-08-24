@@ -70,10 +70,6 @@ export class PedidosComponent implements OnInit {
         if (confirmado){
           
           this.orderService.cancelOrder(order).subscribe(data => {
-            //this.orderService.getListOrderPendding().subscribe(data => {
-              //this.orderService.orderCambio.next(data);
-             
-            //});
             this.snackBar.open(data.message,'SUCESS', { duration: 5000 });
           });
           }

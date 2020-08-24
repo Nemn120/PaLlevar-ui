@@ -55,11 +55,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="productName">
-                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Product </mat-header-cell>
-                    <!-- NOMBRE DE LA COLUMNA-->
                     <mat-cell *matCellDef="let row"> {{row.productName}}</mat-cell>
-                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
                 </ng-container>
 
                 <ng-container matColumnDef="categoryName">
