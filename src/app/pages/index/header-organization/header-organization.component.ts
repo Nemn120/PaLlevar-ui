@@ -19,6 +19,4 @@ export class HeaderOrganizationComponent implements OnInit {
   redirectTo(path: string) {
     this.sharedService.subject.next(path);
   }
-
-
 }

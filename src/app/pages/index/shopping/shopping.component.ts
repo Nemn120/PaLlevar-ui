@@ -1,11 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MenuDayService } from '../../../_service/menu-day.service';
+import { Component, OnInit} from '@angular/core';
 import { MenuDayProductService } from '../../../_service/menu-day-product.service';
 import { MenuDayProductBean } from '../../../_model/MenuDayProductBean';
 import { ProductService } from '../../../_service/product.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
-import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrganizationService } from '../../../_service/organization.service';
@@ -42,29 +39,17 @@ export class ShoppingComponent implements OnInit {
     }
 
   ngOnInit(): void {
-  //   this.sharedService.loading = true;
-       this.mProduct  = new MenuDayProductBean();
-  //   this.param = 'Menu';
-  //   this.orgId = this.activatedRoute.snapshot.paramMap.get('org');
-  //   this.mProduct.organizationId = 4;
-  //   console.log(this.orgId);
-  //   console.log(this.param);
-  //   if (this.param) {
-  //     this.organizationService.getCompanyById(this.mProduct.organizationId).subscribe(data => {
-  //       this.companySelect = data;
-  //       this.getListMenuProductByType(this.param);
-  //     });
-  // } else {
 
+    this.mProduct  = new MenuDayProductBean();
 
     this.companySelect = new CompanyBean();
     this.sharedService.subject.subscribe(data => {
       this.param = data;
-        if (data != null) {
-          this.mProduct.organizationId = this.companySelect.id;
-          this.getListMenuProductByType(this.param);
-        }
-      });
+      if (data != null) {
+        this.mProduct.organizationId = this.companySelect.id;
+        this.getListMenuProductByType(this.param);
+      }
+    });
     this.orgId = this.activatedRoute.snapshot.paramMap.get('org');
     if (this.orgId) {
         this.organizationService.getCompanyById(this.orgId).subscribe(data => {
@@ -79,10 +64,10 @@ export class ShoppingComponent implements OnInit {
           reader.onload = () => {
             const base64 = reader.result;
             this.companySelect._foto = this.setterPhoto(base64);
-          }
+          };
           this.getListMenuProduct();
         });
-      })
+      });
       } else {
         this.router.navigate(['']); // RUTA REDIRIGIDA AL INICIAR SESION
       }
