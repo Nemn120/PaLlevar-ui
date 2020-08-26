@@ -48,12 +48,12 @@ export class SharedService{
       this.loadingSpinner.next(true);
     }
 
-    public setCategoryCambio(category: string) {
-      this.categorySubject.next({ text: category});
-    }
-
-    public getCategoryCambio(): Observable<string> {
-      return this.categorySubject.asObservable();
-    }
+    // public setCategoryCambio(category: string) {
+    //   this.categorySubject.next({ text: category});
+    // }
+    //
+    // public getCategoryCambio(): Observable<string> {
+    //   return this.categorySubject.asObservable();
+    // }
 
 }

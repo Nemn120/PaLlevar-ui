@@ -11,7 +11,7 @@ import { SharedService } from '../../../_service/shared.service';
 })
 export class SidebarComponent implements OnInit {
 
-  
+
   company:CompanyBean;
   constructor(
     private route:Router,

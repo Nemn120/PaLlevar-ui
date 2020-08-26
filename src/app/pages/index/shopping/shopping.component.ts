@@ -42,19 +42,27 @@ export class ShoppingComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.sharedService.loading = true;
-    this.mProduct  = new MenuDayProductBean();
+  //   this.sharedService.loading = true;
+       this.mProduct  = new MenuDayProductBean();
+  //   this.param = 'Menu';
+  //   this.orgId = this.activatedRoute.snapshot.paramMap.get('org');
+  //   this.mProduct.organizationId = 4;
+  //   console.log(this.orgId);
+  //   console.log(this.param);
+  //   if (this.param) {
+  //     this.organizationService.getCompanyById(this.mProduct.organizationId).subscribe(data => {
+  //       this.companySelect = data;
+  //       this.getListMenuProductByType(this.param);
+  //     });
+  // } else {
+
+
     this.companySelect = new CompanyBean();
-
-    this.sharedService.getCategoryCambio().subscribe(data => {
-        this.param = data;
-        console.log('tYPE' + this.param);
-       // this.sharedService.openSpinner();
+    this.sharedService.subject.subscribe(data => {
+      this.param = data;
         if (data != null) {
-          this.mProduct.organizationId = 4;
-
-          this.getListMenuProductByType(data);
-          console.log(this.getListMenuProductByType(data));
+          this.mProduct.organizationId = this.companySelect.id;
+          this.getListMenuProductByType(this.param);
         }
       });
     this.orgId = this.activatedRoute.snapshot.paramMap.get('org');
@@ -71,20 +79,14 @@ export class ShoppingComponent implements OnInit {
           reader.onload = () => {
             const base64 = reader.result;
             this.companySelect._foto = this.setterPhoto(base64);
-            // this.companySelect._isFoto = true;
-          };
-          console.log('ALL');
-          // this.getListMenuProduct();
-          this.getListMenuProductByType('Combo');
-
-
+          }
+          this.getListMenuProduct();
         });
-      });
+      })
       } else {
         this.router.navigate(['']); // RUTA REDIRIGIDA AL INICIAR SESION
       }
-
-  }
+}
   getListMenuProduct() {
     this.menuProductList = [];
     this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data => {
@@ -101,7 +103,7 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganizationAndType(this.mProduct).subscribe(data => {
       this.menuProductList = data;
       this.activatedPhoto(data);
-      console.log(this.menuProductList);
+      console.log( 'TIPO' + this.mProduct.type + this.menuProductList);
     }, error => {
        console.log(error);
      });

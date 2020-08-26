@@ -9,7 +9,7 @@
     <mat-tab-group class="ms-profile-navigation nav nav-tabs tabs-bordered">
         <mat-tab>
             <ng-template mat-tab-label>
-                <button (click)="redirectTo()">
+                <button (click)="redirectTo('Menu')">
                   <mat-icon class="example-tab-icon">restaurant</mat-icon>
                   <p style="color: darkorange !important; font-weight: 800;">Menus</p>
                 </button>
@@ -18,7 +18,7 @@
 
         <mat-tab>
             <ng-template mat-tab-label>
-                <button (click)="redirectTo()">
+                <button (click)="redirectTo('Combo')">
                   <mat-icon class="example-tab-icon">fastfood</mat-icon>
                   <p style="color: darkorange !important;font-weight: 800;">Combos</p>
                 </button>
@@ -27,7 +27,7 @@
 
         <mat-tab>
             <ng-template mat-tab-label>
-              <button (click)="redirectTo()">
+              <button (click)="redirectTo('Promo')">
                 <mat-icon class="example-tab-icon">pending_actions</mat-icon>
                 <p style="color: darkorange !important;font-weight: 800;">Promos</p>
               </button>
