@@ -1,6 +1,6 @@
 .fondo {
     //background-repeat: repeat-x;
-    background-color: #F9F9F8; //#F0F0FA;
+    //  background-color: #F9F9F8; //#F0F0FA;
 }
 
 .app-container {
@@ -89,11 +89,13 @@
     //max-width: 1560px;
     padding: 3px 0px;
     margin-top: 20px;
-    width: 100%;
+    width: 70%;
     //margin-left: 14px;
     display: auto;
-    float: left;
-    height: initial;
+    //float: left;
+    margin-left: auto;
+    margin-right: auto;
+    //height: initial;
     //background-color: #fff !important;
     background-color: #ffff !important;
     border-radius: 5px;
