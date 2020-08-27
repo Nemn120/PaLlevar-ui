@@ -20,6 +20,17 @@ body {
     //flex-direction: row;
 }
 
+html,
+body {
+    overflow-x: hidden;
+    color: black;
+    font-family: 'Opens Sans', helvetica;
+    height: 100%;
+    width: 101%;
+    margin: 0px;
+    padding: 0px;
+}
+
 .spinner {
     left: 49%;
     position: fixed !important;
