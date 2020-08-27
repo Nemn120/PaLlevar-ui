@@ -9,7 +9,7 @@ div.gallery img {
 }
 
 div.desc {
-    padding: 7px;
+    padding: 3px;
     text-align: center;
     height: auto;
     width: initial;
@@ -22,13 +22,13 @@ div.desc {
 }
 
 .responsive {
-    padding: 0 6px;
+    padding: 0 0px;
     float: left;
     /* width: 24.99999%; */
     box-shadow: 0 4px 8px 0 rgba(87, 81, 81, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     width: 250px;
-    height: 300px;
+    height: 250px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -83,7 +83,7 @@ figure {
 }
 
 .container {
-    padding: 30px;
+    padding: 0px;
 }
 
 button {
@@ -96,7 +96,7 @@ button {
 }
 
 .title {
-    font-size: 1.50rem;
+    font-size: 1.3rem;
     color: #FA7268 !important;
     font-weight: 600;
     font-family: "Roboto", sans-serif;
