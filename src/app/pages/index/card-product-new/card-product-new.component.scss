@@ -4,8 +4,8 @@ div.gallery {
 }
 
 div.gallery img {
-    width: 300px;
-    height: 150px;
+    width: 220px;
+    height: 120px;
 }
 
 div.desc {
@@ -27,8 +27,8 @@ div.desc {
     /* width: 24.99999%; */
     box-shadow: 0 4px 8px 0 rgba(87, 81, 81, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px;
-    width: 250px;
-    height: 250px;
+    width: 220px;
+    height: 202px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -96,19 +96,19 @@ button {
 }
 
 .title {
-    font-size: 1.3rem;
+    font-size: 15px;
     color: #FA7268 !important;
     font-weight: 600;
     font-family: "Roboto", sans-serif;
 }
 
 .subtittle {
-    font-size: 1rem;
+    font-size: 13px;
     font-weight: 350;
-    color: #FA7268 !important;
+    color: #8b949e !important;
 }
 
 .price {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
 }
