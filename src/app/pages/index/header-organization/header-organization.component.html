@@ -11,8 +11,12 @@
             <ng-template mat-tab-label>
                 <div (click)="redirectTo('Menu')">
                     <!-- <mat-icon class="example-tab-icon">restaurant</mat-icon> -->
-                    <p style="color: darkorange !important; font-weight: 800; font-size:15px">
-                        <mat-icon class="example-tab-icon">restaurant</mat-icon>Menus</p>
+                    <p style="color: darkorange !important; font-weight: 800;">
+                        <mat-icon class="example-tab-icon">restaurant</mat-icon>
+                        <span class="texto-menu">
+                      Menus
+                    </span>
+                    </p>
                 </div>
             </ng-template>
         </mat-tab>
@@ -21,18 +25,18 @@
             <ng-template mat-tab-label style="padding:0px;">
                 <div (click)="redirectTo('Combo')">
                     <!-- <mat-icon class="example-tab-icon">fastfood</mat-icon> -->
-                    <p style="padding:0px;color: darkorange !important;font-weight: 800;font-size:15px">
-                        <mat-icon class="example-tab-icon">fastfood</mat-icon>Combos</p>
+                    <p style="color: darkorange !important;font-weight: 800;">
+                        <mat-icon class="example-tab-icon">fastfood</mat-icon><span class="texto-menu">Combos</span></p>
                 </div>
             </ng-template>
         </mat-tab>
 
         <mat-tab>
-            <ng-template mat-tab-label style="padding:0px;">
+            <ng-template mat-tab-label>
                 <div (click)="redirectTo('Promo')">
                     <!-- <mat-icon class="example-tab-icon">pending_actions</mat-icon> -->
-                    <p style="padding:0px;color: darkorange !important;font-weight: 800;font-size:15px">
-                        <mat-icon class="example-tab-icon">pending_actions</mat-icon>Promos</p>
+                    <p style="color: darkorange !important;font-weight: 800;">
+                        <mat-icon class="example-tab-icon">pending_actions</mat-icon><span class="texto-menu">Promos</span></p>
                 </div>
             </ng-template>
         </mat-tab>
