@@ -1,6 +1,6 @@
 .fondo {
     //background-repeat: repeat-x;
-    //  background-color: #F9F9F8; //#F0F0FA;
+    // background-color: #F9F9F8; //#F0F0FA;
 }
 
 .app-container {
@@ -46,7 +46,7 @@
 .menu-container {
     //width: 1200px;
     width: auto;
-    height: 100%;
+    height: 70%;
     //background-color: #F9F9F8 !important;
     border-radius: 8px;
     margin: 20px;
@@ -89,13 +89,13 @@
     //max-width: 1560px;
     padding: 3px 0px;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
     width: 70%;
     //margin-left: 14px;
     display: auto;
     //float: left;
-    margin-left: auto;
-    margin-right: auto;
-    //height: initial;
+    height: initial;
     //background-color: #fff !important;
     background-color: #ffff !important;
     border-radius: 5px;
