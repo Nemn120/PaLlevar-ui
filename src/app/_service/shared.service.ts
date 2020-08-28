@@ -15,7 +15,10 @@ export class SharedService{
 
     userSession: UserBean;
     organizationSelect = new Subject<CompanyBean>();
+    companySession:CompanyBean
     subject = new Subject<string>();
+    imagenData:any;
+    imagenStatus:boolean;
     private categorySubject = new Subject<any>();
     loadingSpinner = new Subject<boolean>();
     loading = false;
@@ -46,6 +49,10 @@ export class SharedService{
     }
     public openSpinner(){
       this.loadingSpinner.next(true);
+    }
+
+    public getCompanySession(){
+      return this.companySession;
     }
 
     // public setCategoryCambio(category: string) {

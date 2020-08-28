@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Title, DomSanitizer } from '@angular/platform-browser';
 import { NotificationService } from '../../../_service/notification.service';
 import { AuthenticationService } from '../../../_service/auth.service';
 import { MenuOptionService } from '../../../_service/menu-option.service';
@@ -14,6 +14,7 @@ import { UserBean } from '../../../_model/UserBean';
 import { ProfileMenuOptionBean } from '../../../_model/ProfileMenuOptionBean';
 import { MenuOptionBean } from '../../../_model/MenuOptionBean';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OrganizationService } from '../../../_service/organization.service';
 
 @Component({
   selector: 'app-login',
@@ -35,9 +36,9 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private userService: UserService,
     private menuService: MenuOptionService,
-    private notificationService: NotificationService,
     private sharedService: SharedService,
-    private authenticationService: AuthenticationService,
+    private companyService:OrganizationService,
+    private sanitization: DomSanitizer,
     private snackBar: MatSnackBar) {
   }
 
@@ -80,12 +81,16 @@ export class LoginComponent implements OnInit {
             if(this.sharedService.userSession.profile.idProfile===6){
               this.router.navigate(['index/shop']);
             }else{
-           //   setTimeout(x=>{
-                this.router.navigate(['suc/show']); // RUTA REDIRIGIDA AL INICIAR SESION
-            //  },1000)
-          }
-          
-          
+                this.companyService.getCompanyById(this.sharedService.getOrganizationIdByUserSession()).subscribe(data=>{
+                  this.sharedService.companySession=data;
+                  this.companyService.getPhotoById(data.id).subscribe(photo=>{
+                    if (photo.size > 0)
+                    this.sharedService.imagenData = this.convertir(photo);
+                  
+                  this.router.navigate(['suc/show']); 
+                })
+              })
+            }
           });
         }, error =>{
           console.error(error);
@@ -105,5 +110,20 @@ export class LoginComponent implements OnInit {
   ngAfterViewInit() {
     (window as any).initialize();
   }
+  
+  public convertir(data: any) {
+    let reader = new FileReader();
+    reader.readAsDataURL(data);
+    reader.onloadend = () => {
+      let base64 = reader.result;      
+      this.sanar(base64);
+    }
+  }
+
+  public sanar(base64 : any){
+    this.sharedService.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
+    this.sharedService.imagenStatus=true;
+  }
+
 
 }

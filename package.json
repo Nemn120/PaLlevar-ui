@@ -27,6 +27,7 @@
         "@auth0/angular-jwt": "^4.0.0",
         "chart.js": "^2.9.3",
         "classlist.js": "^1.1.20150312",
+        "exceljs": "^4.1.1",
         "jwt-decode": "^2.2.0",
         "mapbox-gl": "^1.11.1",
         "material-design-icons": "^3.0.1",
