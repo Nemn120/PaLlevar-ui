@@ -21,6 +21,7 @@ import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.
 import { CardProductNewComponent } from './card-product-new/card-product-new.component';
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
+import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 
 
 const routes: Routes = [
@@ -65,6 +66,7 @@ const routes: Routes = [
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
+    MatFabMenuModule
   ],
   exports: [
     RouterModule,
