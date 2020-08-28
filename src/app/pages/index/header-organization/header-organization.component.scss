@@ -1,10 +1,12 @@
 .ms-profile-overview {
     position: relative;
-    height: 300px;
+    height: 250px;
     background-color: #fff;
-    margin-bottom: 30px;
     box-shadow: 0 1px 6px 1px rgba(69, 65, 78, .1);
-    margin: 10px;
+    width: 69%;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div {
@@ -26,7 +28,8 @@ div {
 }
 
 .ms-profile-cover img {
-    width: 200px;
+    width: 180px;
+    height: 180px;
     margin-bottom: -35px;
     border: 3px solid #fff;
     border-radius: 5px;
@@ -345,5 +348,5 @@ a {
 }
 
 .texto-menu {
-  font-size: 20px;
+    font-size: 15px;
 }
