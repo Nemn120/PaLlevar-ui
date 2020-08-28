@@ -12,6 +12,17 @@ body {
     width: 100%;
 }
 
+html,
+body {
+    overflow-x: hidden;
+    color: black;
+    font-family: 'Opens Sans', helvetica;
+    height: 99%;
+    width: 100.5%;
+    margin: 0px;
+    padding: 0px;
+}
+
 .container {
     margin-top: 10px;
     margin-bottom: 10px;
