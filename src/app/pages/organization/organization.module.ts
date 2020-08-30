@@ -11,6 +11,7 @@ import { GuardService } from '../../_service/guard.service';
 import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../_material/material.module';
 import { OrganizationFormNewComponent } from './organization-form-new/organization-form-new.component';
+import { OrganizationViewComponent } from './organization-view/organization-view.component';
 
 
 const routes: Routes = [
@@ -20,13 +21,14 @@ const routes: Routes = [
     component: SidebarSidenavComponent,
     children: [
           { path: "list", component: OrganizationListComponent  , canActivate: [GuardService] },
+          { path: "view", component: OrganizationViewComponent },
     ]
   }
 ];
 
 @NgModule({
   declarations: [SucursalListComponent, SucursalFormComponent, OrganizationListComponent, 
-    OrganizationFormComponent, OrganizationFormNewComponent],
+    OrganizationFormComponent, OrganizationFormNewComponent, OrganizationViewComponent],
   imports: [
     CommonModule,
     SidebarSidenavModule,

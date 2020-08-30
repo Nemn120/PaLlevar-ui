@@ -62,7 +62,7 @@
 
         <mat-sidenav-container class="navbar-sidenav-container">
             <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
-                <img [src]="this.sharedService.imagenData" width="128" style="margin-left: 30px">
+                <img routerLink="/org/view" [src]="this.sharedService.imagenData" width="128" style="margin-left: 20px">
                 <mat-nav-list>
                     <span>Mis opciones</span>
                     <mat-list-item *ngFor="let m of menus">
@@ -84,15 +84,11 @@
             </mat-sidenav>
 
             <mat-sidenav-content class="sidenav-content">
+
                 <div class="background-home">
-
-                    <div class="progress-bar-container">
-                        <mat-progress-bar color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async">
-                        </mat-progress-bar>
-                        <!-- <mat-spinner class="spinner" [diameter]="50" *ngIf="showSpinner"></mat-spinner> -->
+                    <div class="main-router">
+                        <router-outlet style="width: 100%;"></router-outlet>
                     </div>
-
-                    <router-outlet></router-outlet>
 
                 </div>
             </mat-sidenav-content>

@@ -42,7 +42,8 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private media: MediaMatcher,
     public spinnerService: SpinnerService,
-    public sharedService:SharedService
+    public sharedService:SharedService,
+
     ){
 
       this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');

@@ -1,12 +1,11 @@
 .ms-profile-overview {
     position: relative;
-    height: 250px;
+    height: 300px;
     background-color: #fff;
     box-shadow: 0 1px 6px 1px rgba(69, 65, 78, .1);
-    width: 69%;
-    margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 div {
@@ -27,7 +26,7 @@ mat-tab {
     background-repeat: no-repeat;
     height: 83%;
     width: 100%;
-    padding: 1.5rem 1.5rem 0;
+    padding-bottom: 1.5rem;
     z-index: 1;
 }
 
@@ -46,9 +45,22 @@ img {
     border-style: none;
 }
 
+.card-container {
+    padding-top: 70px;
+    padding-bottom: 20px;
+    display: flex;
+    width: 100%;
+}
+
+.card-detail {
+    width: 50%;
+    height: 200px;
+}
+
 .ms-profile-user-buttons,
 .ms-profile-user-info {
-    padding: 0 0 1.5rem 1.5rem;
+    padding: 0px;
+    padding-right: 20px;
 }
 
 .text-white {
@@ -80,7 +92,6 @@ user-info h2 {
 .ms-profile-user-buttons {
     flex: 1 1 auto;
     text-align: right;
-    padding: 0 0 1.5rem 1.5rem;
 }
 
 .ms-profile-cover:after {
@@ -92,6 +103,12 @@ user-info h2 {
     left: 0;
     background-image: linear-gradient(0deg, rgba(0, 0, 0, .4), hsla(0, 0%, 100%, 0));
     z-index: -1;
+}
+
+.ms-panel-body,
+.ms-panel-footer {
+    position: relative;
+    padding: 1.5rem;
 }
 
 .ms-profile-user-info h2 {
