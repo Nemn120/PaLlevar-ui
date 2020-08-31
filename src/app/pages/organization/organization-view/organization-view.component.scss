@@ -16,6 +16,11 @@ mat-tab {
     padding: 0px !important;
 }
 
+span {
+    font-size: 11pt;
+    color: rgb(93, 91, 95);
+}
+
 .ms-profile-cover {
     position: relative;
     display: flex;
@@ -28,6 +33,12 @@ mat-tab {
     width: 100%;
     padding-bottom: 1.5rem;
     z-index: 1;
+}
+
+.position-data {
+    position: absolute;
+    float: right;
+    right: 1%;
 }
 
 .ms-profile-cover img {
@@ -52,15 +63,21 @@ img {
     width: 100%;
 }
 
-.card-detail {
-    width: 50%;
-    height: 200px;
+.card-detailIz {
+    width: 60%;
+    height: 350px;
+}
+
+.card-detailDer {
+    width: 40%;
+    height: 400px;
 }
 
 .ms-profile-user-buttons,
 .ms-profile-user-info {
     padding: 0px;
     padding-right: 20px;
+    padding-left: 15px;
 }
 
 .text-white {
@@ -92,6 +109,10 @@ user-info h2 {
 .ms-profile-user-buttons {
     flex: 1 1 auto;
     text-align: right;
+}
+
+.mat-form-field+.mat-form-field {
+    margin-left: 8px;
 }
 
 .ms-profile-cover:after {

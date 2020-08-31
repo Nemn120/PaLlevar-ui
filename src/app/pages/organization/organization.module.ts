@@ -12,6 +12,8 @@ import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../_material/material.module';
 import { OrganizationFormNewComponent } from './organization-form-new/organization-form-new.component';
 import { OrganizationViewComponent } from './organization-view/organization-view.component';
+import { EditProtocolsComponent } from './edit-protocols/edit-protocols.component';
+import { OrganizationEditComponent } from './organization-edit/organization-edit.component';
 
 
 const routes: Routes = [
@@ -28,7 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [SucursalListComponent, SucursalFormComponent, OrganizationListComponent, 
-    OrganizationFormComponent, OrganizationFormNewComponent, OrganizationViewComponent],
+    OrganizationFormComponent, OrganizationFormNewComponent, OrganizationViewComponent, EditProtocolsComponent, OrganizationEditComponent],
   imports: [
     CommonModule,
     SidebarSidenavModule,
@@ -38,7 +40,7 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   entryComponents:[
-    OrganizationFormComponent, OrganizationFormNewComponent
+    OrganizationFormComponent, OrganizationFormNewComponent,OrganizationEditComponent,EditProtocolsComponent
   ]
 })
 export class OrganizationModule { }

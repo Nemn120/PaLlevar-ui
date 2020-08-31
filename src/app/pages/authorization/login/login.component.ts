@@ -84,9 +84,11 @@ export class LoginComponent implements OnInit {
                 this.companyService.getCompanyById(this.sharedService.getOrganizationIdByUserSession()).subscribe(data=>{
                   this.sharedService.companySession=data;
                   this.companyService.getPhotoById(data.id).subscribe(photo=>{
-                    if (photo.size > 0)
-                    this.sharedService.imagenData = this.convertir(photo);
-                  
+                    if (photo.size > 0){
+                      this.sharedService.imagenData = this.convertir(photo);
+                    }
+                    //
+                    
                   this.router.navigate(['suc/show']); 
                 })
               })
