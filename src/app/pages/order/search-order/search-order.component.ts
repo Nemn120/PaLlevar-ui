@@ -55,7 +55,6 @@ export class SearchOrderComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(data.dataList);
       this.searchOrderByFieldsDTO.userDeliveryId = this.DeliveryManSelect.id;
       
     },error =>{
