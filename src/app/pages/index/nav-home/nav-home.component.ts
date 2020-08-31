@@ -62,7 +62,7 @@ export class NavHomeComponent implements OnInit {
 
   openPedidos() {
     this.dialog.open(PedidosComponent,{
-      width: '600px',
+      width: '1000px',
     });
  }
 

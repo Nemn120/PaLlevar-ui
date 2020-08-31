@@ -38,7 +38,7 @@
         </ng-container>
 
         <ng-container matColumnDef="detail">
-            <mat-header-cell *matHeaderCellDef> Ver Detalle </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Detalles ,Modificar </mat-header-cell>
             <mat-cell *matCellDef="let row">
                 <button mat-icon-button color="primary" (click)="openDialog(row)">
           <mat-icon>fastfood</mat-icon>
@@ -50,6 +50,15 @@
             <mat-icon>cancel</mat-icon> 
                   </button>
             </mat-cell>
+
+        </ng-container>
+        <ng-container matColumnDef="message">
+            <mat-header-cell *matHeaderCellDef> Enviar Reclamo o Comentario </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button class="button" mat-icon-button color="primary" (click)="sendMessage(row)">
+          <mat-icon>message</mat-icon>
+        </button>
+        </mat-cell>
 
         </ng-container>
 

@@ -3,6 +3,7 @@ import { OrderService } from '../../../../_service/order.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { DetallePedidoComponent } from '../detalle-pedido/detalle-pedido.component';
+import { EnviarMensajeComponent } from '../enviar-mensaje/enviar-mensaje.component';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,7 +23,7 @@ export class PedidosComponent implements OnInit {
   ord: OrderBean[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail'];
+  displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail','message'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
  
   constructor(
@@ -85,4 +86,12 @@ public editarPedido(order: OrderBean) {
     data: orderSelect
   });
 }
+public sendMessage(order: OrderBean) {
+  let ord = order != null ? order : new OrderBean();
+  this.dialog.open(EnviarMensajeComponent, {
+    width: '750px',
+    height:'400px',
+    data: ord
+  });
 }
+} 

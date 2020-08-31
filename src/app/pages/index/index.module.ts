@@ -21,6 +21,7 @@ import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.
 import { CardProductNewComponent } from './card-product-new/card-product-new.component';
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
+import { EnviarMensajeComponent } from './cliente/enviar-mensaje/enviar-mensaje.component';
 
 
 const routes: Routes = [
@@ -56,6 +57,7 @@ const routes: Routes = [
   CardProductNewComponent,
   HeaderOrganizationComponent,
   OrderConfirmComponent,
+  EnviarMensajeComponent,
 
   ],
   imports: [
@@ -75,7 +77,7 @@ const routes: Routes = [
     [
       PerfilComponent, PedidosComponent, EditarPerfilComponent,OrderConfirmComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
-      DetallePedidoComponent
+      DetallePedidoComponent,EnviarMensajeComponent
     ],
 })
 export class IndexModule { }
