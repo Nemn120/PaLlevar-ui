@@ -11,6 +11,9 @@ import { SearchOrderByFieldsDTO } from 'src/app/_DTO/SearchOrderByFieldsDTO';
 import { SharedService } from 'src/app/_service/shared.service';
 import { UserService } from 'src/app/_service/user.service';
 import { UserBean } from 'src/app/_model/UserBean';
+import { DeliverymanDetailComponent } from '../deliveryman-detail/deliveryman-detail.component';
+import { ChefDetailComponent } from '../chef-detail/chef-detail.component';
+import { UserDetailComponent } from '../user-detail/user-detail.component';
 
 @Component({
   selector: 'app-search-order',
@@ -20,7 +23,7 @@ import { UserBean } from 'src/app/_model/UserBean';
 export class SearchOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['status','documentNumber','name','total','quantity','phone','address','createDate','attendDate','deliveryDate'];
+  displayedColumns: string[] = ['status','documentNumber','name','total','quantity','cliente','chef','repartidor'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   estados: string[] = ['En camino','Atendido','Pendiente','En proceso'];
   searchOrderByFieldsDTO: SearchOrderByFieldsDTO;
@@ -61,10 +64,33 @@ export class SearchOrderComponent implements OnInit {
     
   }
 
-
   public openDialogDetail(order: OrderBean) {
     let orderSelect = order != null ? order : new OrderBean();
     this.dialog.open(DeliveryOrderDetailComponent, {
+      width: '600px',
+      data: orderSelect
+    });
+  }
+
+  public openClientDetail(order: OrderBean) {
+    let orderSelect = order != null ? order : new OrderBean();
+    this.dialog.open(UserDetailComponent, {
+      width: '600px',
+      data: orderSelect
+    });
+  }
+
+  public openAttendDetail(order: OrderBean) {
+    let orderSelect = order != null ? order : new OrderBean();
+    this.dialog.open(ChefDetailComponent, {
+      width: '600px',
+      data: orderSelect
+    });
+  }
+
+  public openDeliveryDetail(order: OrderBean) {
+    let orderSelect = order != null ? order : new OrderBean();
+    this.dialog.open(DeliverymanDetailComponent, {
       width: '600px',
       data: orderSelect
     });
