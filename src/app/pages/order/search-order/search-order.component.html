@@ -1,1 +1,138 @@
-<p>search-order works!</p>
+<div class="mat-parent">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Buscar Pedido</span>
+
+        </mat-toolbar>
+    </p>
+
+    <div class="body-component">
+        <div class="carousel-item " style="display: flex;">
+
+            <mat-card>
+                <mat-form-field appearance="fill" class="example-form-field">
+                    <mat-label>Estado</mat-label>
+                    <mat-select name="estado" [(ngModel)]="searchOrderByFieldsDTO.status">
+                        <mat-option *ngFor="let e of estados" [value]="e">
+                            {{e}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nro. Documento</mat-label>
+                    <input matInput [(ngModel)]="searchOrderByFieldsDTO.userOrderDocumentNumber">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Id DeliveryMan</mat-label>
+                    <input matInput [(ngModel)]="searchOrderByFieldsDTO.userDeliveryId">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                <mat-label>Id Usuario Atendido</mat-label>
+                <input matInput [(ngModel)]="searchOrderByFieldsDTO.userAttendId">
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Fecha Delivery Inicio</mat-label>
+                    <input matInput [matDatepicker]="picker1" [(ngModel)]="searchOrderByFieldsDTO.deliveryDateIni">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+               
+                <mat-form-field class="example-form-field">
+                    <mat-label>Fecha Delivery Final</mat-label>
+                    <input matInput [matDatepicker]="picker2" [(ngModel)]="searchOrderByFieldsDTO.deliveryDateFin">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Fecha Atencion Inicio</mat-label>
+                    <input matInput [matDatepicker]="picker3" [(ngModel)]="searchOrderByFieldsDTO.attendDateIni">
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="example-form-field">
+                    <mat-label>Fecha Atencion Final</mat-label>
+                    <input matInput [matDatepicker]="picker4" [(ngModel)]="searchOrderByFieldsDTO.attendDateFin">
+                    <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                    <mat-datepicker #picker4></mat-datepicker>
+                </mat-form-field>
+
+                
+
+                <button mat-raised-button color="primary" (click)="getAsignOrderByFields()">Buscar</button>
+
+            </mat-card>
+
+        </div>
+    </div>
+
+
+    <div class="carousel-item " style="display: flex; width: 80%;">
+
+        <div class="container">
+            <mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="id">
+                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <!-- NOMBRE DE LA COLUMNA-->
+                    <mat-cell *matCellDef="let row"> {{row.id}}</mat-cell>
+                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+                </ng-container>
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.status}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.userOrder.nombre}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+                    <mat-cell *matCellDef="let row">{{row.total}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.quantity }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="phone">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.phone }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.address }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="createDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Atencion</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss' }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="deliveryDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Delivery </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.deliveryDate | date:'dd/MM/yyyy HH:mm:ss'}}</mat-cell>
+                </ng-container>
+               
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialogDetail(row)"></mat-row>
+            </mat-table>
+
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+        </div>
+    </div>
+
+
+</div>

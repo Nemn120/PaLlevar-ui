@@ -42,8 +42,7 @@ export class PedidoAsignadoComponent implements OnInit {
       });
     });
     this.getAsignOrderByDeliveryMan();
-    console.log(this.searchOrderByDeliveryManDTO);
-  }
+    }
 
   public getAsignOrderByDeliveryMan(){
     this.orderService.getAsignOrderByDeliveryMan(this.searchOrderByDeliveryManDTO).subscribe(data => {  
