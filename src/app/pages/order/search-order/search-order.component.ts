@@ -9,6 +9,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeliveryOrderDetailComponent } from '../delivery-order-detail/delivery-order-detail.component';
 import { SearchOrderByFieldsDTO } from 'src/app/_DTO/SearchOrderByFieldsDTO';
 import { SharedService } from 'src/app/_service/shared.service';
+import { UserService } from 'src/app/_service/user.service';
+import { UserBean } from 'src/app/_model/UserBean';
 
 @Component({
   selector: 'app-search-order',
@@ -18,13 +20,16 @@ import { SharedService } from 'src/app/_service/shared.service';
 export class SearchOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id','status','name','total','quantity','phone','address','createDate','attendDate','deliveryDate'];
+  displayedColumns: string[] = ['status','documentNumber','name','total','quantity','phone','address','createDate','attendDate','deliveryDate'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   estados: string[] = ['En camino','Atendido','Pendiente','En proceso'];
   searchOrderByFieldsDTO: SearchOrderByFieldsDTO;
+  DeliveryManList: UserBean[] = [];
+  DeliveryManSelect: UserBean;
   
   constructor(
-    private orderService:OrderService, private dialog:MatDialog, private snackBar: MatSnackBar, private sharedService: SharedService
+    private orderService:OrderService, private dialog:MatDialog, private snackBar: MatSnackBar, private sharedService: SharedService,
+    private userService:UserService
   ) { }
 
   ngOnInit(): void {
@@ -35,22 +40,25 @@ export class SearchOrderComponent implements OnInit {
         duration: 2000
       });
     });
-      this.getAsignOrderByFields();
+    this.getAsignOrderByFields();
+    this.userService.getListUserDeliveryMan().subscribe(data => {
+      this.DeliveryManList = data.dataList;
+    })
 
   }
   public getAsignOrderByFields(){
 
     this.orderService.getAsignOrderByFields(this.searchOrderByFieldsDTO).subscribe(data => {  
-      console.log(data.dataList);
       this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      console.log(data.dataList);
+      this.searchOrderByFieldsDTO.userDeliveryId = this.DeliveryManSelect.id;
       
     },error =>{
       this.orderService.mensajeCambio.next("Error al mostrar productos");
     });
     
-   console.log(this.searchOrderByFieldsDTO);
   }
 
 
@@ -61,4 +69,5 @@ export class SearchOrderComponent implements OnInit {
       data: orderSelect
     });
   }
+
 }
