@@ -18,7 +18,7 @@ import { SharedService } from 'src/app/_service/shared.service';
 export class SearchOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id','status','name','total','quantity','phone','address','createDate','deliveryDate'];
+  displayedColumns: string[] = ['id','status','name','total','quantity','phone','address','createDate','attendDate','deliveryDate'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   estados: string[] = ['En camino','Atendido','Pendiente','En proceso'];
   searchOrderByFieldsDTO: SearchOrderByFieldsDTO;

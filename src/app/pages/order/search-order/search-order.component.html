@@ -115,8 +115,13 @@
                 </ng-container>
 
                 <ng-container matColumnDef="createDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Atencion</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Creacion</mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss' }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="attendDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Solicitud</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.attendDate | date:'dd/MM/yyyy HH:mm:ss' }}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="deliveryDate">
