@@ -20,9 +20,18 @@
                 </mat-form-field>
 
                 <mat-form-field appearance="fill" class="example-form-field">
-                    <mat-label>Delivery ID</mat-label>
+                    <mat-label>Delivery</mat-label>
                     <mat-select name="userDeliveryId" [(ngModel)]="DeliveryManSelect">
                         <mat-option *ngFor="let d of this.DeliveryManList" [value]="d">
+                            {{d.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="example-form-field">
+                    <mat-label>Chef</mat-label>
+                    <mat-select name="chefId" [(ngModel)]="ChefSelect">
+                        <mat-option *ngFor="let d of this.ChefList" [value]="d">
                             {{d.nombre}}
                         </mat-option>
                     </mat-select>
@@ -32,11 +41,6 @@
                     <mat-label>Nro. Documento</mat-label>
                     <input matInput [(ngModel)]="searchOrderByFieldsDTO.userOrderDocumentNumber">
                   </mat-form-field>
-
-                <mat-form-field class="example-full-width">
-                <mat-label>Id Usuario Atendido</mat-label>
-                <input matInput [(ngModel)]="searchOrderByFieldsDTO.userAttendId">
-                </mat-form-field>
 
                 <mat-form-field class="example-form-field">
                     <mat-label>Fecha Delivery Inicio</mat-label>
@@ -66,12 +70,8 @@
                     <mat-datepicker #picker4></mat-datepicker>
                 </mat-form-field>
 
-                
-
                 <button mat-raised-button color="primary" (click)="getAsignOrderByFields()">Buscar</button>
-
             </mat-card>
-
         </div>
     </div>
 
@@ -99,6 +99,11 @@
                     <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)">{{row.userOrder.nombre}}</mat-cell>
                 </ng-container>
 
+                <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)">{{row.userOrder.address}}</mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="total">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
                     <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)">{{row.total}}</mat-cell>
@@ -109,29 +114,19 @@
                     <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.quantity }}</mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="cliente">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cliente</mat-header-cell>
+                <ng-container matColumnDef="createDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Creacion </mat-header-cell>
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss' }}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="opciones">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Detalles</mat-header-cell>
                     <mat-cell *matCellDef="let row">
                         <button mat-icon-button color="primary" (click)="openClientDetail(row)">
-                            CLIENTE
+                            <span class="material-icons">account_circle</span>
                         </button>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="chef">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Chef</mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="openAttendDetail(row)">
-                            CHEF
-                        </button>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="repartidor">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Repartidor</mat-header-cell>
-                    <mat-cell *matCellDef="let row" >
                         <button mat-icon-button color="primary" (click)="openDeliveryDetail(row)">
-                            REPARTIDOR
+                            <span class="material-icons">moped</span>
                         </button>
                     </mat-cell>
                 </ng-container>

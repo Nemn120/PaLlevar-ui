@@ -12,8 +12,8 @@ import { SharedService } from 'src/app/_service/shared.service';
 import { UserService } from 'src/app/_service/user.service';
 import { UserBean } from 'src/app/_model/UserBean';
 import { DeliverymanDetailComponent } from '../deliveryman-detail/deliveryman-detail.component';
-import { ChefDetailComponent } from '../chef-detail/chef-detail.component';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
+import { ProfileBean } from 'src/app/_model/ProfileBean';
 
 @Component({
   selector: 'app-search-order',
@@ -23,12 +23,14 @@ import { UserDetailComponent } from '../user-detail/user-detail.component';
 export class SearchOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['status','documentNumber','name','total','quantity','cliente','chef','repartidor'];
+  displayedColumns: string[] = ['status','documentNumber','name','address','total','quantity','createDate','opciones'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   estados: string[] = ['En camino','Atendido','Pendiente','En proceso'];
   searchOrderByFieldsDTO: SearchOrderByFieldsDTO;
   DeliveryManList: UserBean[] = [];
   DeliveryManSelect: UserBean;
+  ChefList: UserBean[] = [];
+  ChefSelect: UserBean;
   
   constructor(
     private orderService:OrderService, private dialog:MatDialog, private snackBar: MatSnackBar, private sharedService: SharedService,
@@ -44,8 +46,15 @@ export class SearchOrderComponent implements OnInit {
       });
     });
     this.getAsignOrderByFields();
-    this.userService.getListUserDeliveryMan().subscribe(data => {
-      this.DeliveryManList = data.dataList;
+    let user = new UserBean();
+    user.profile = new ProfileBean();
+    user.profile.idProfile = 4;
+    this.userService.getUserByFields(user).subscribe(data => {
+      this.ChefList = data.dataList;
+      user.profile.idProfile = 3;
+      this.userService.getUserByFields(user).subscribe(data => {
+        this.DeliveryManList = data.dataList;
+      })
     })
 
   }
@@ -56,6 +65,7 @@ export class SearchOrderComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.searchOrderByFieldsDTO.userDeliveryId = this.DeliveryManSelect.id;
+      this.searchOrderByFieldsDTO.userAttendId = this.ChefSelect.id;
       
     },error =>{
       this.orderService.mensajeCambio.next("Error al mostrar productos");
@@ -79,14 +89,6 @@ export class SearchOrderComponent implements OnInit {
     });
   }
 
-  public openAttendDetail(order: OrderBean) {
-    let orderSelect = order != null ? order : new OrderBean();
-    this.dialog.open(ChefDetailComponent, {
-      width: '600px',
-      data: orderSelect
-    });
-  }
-
   public openDeliveryDetail(order: OrderBean) {
     let orderSelect = order != null ? order : new OrderBean();
     this.dialog.open(DeliverymanDetailComponent, {
@@ -96,3 +98,4 @@ export class SearchOrderComponent implements OnInit {
   }
 
 }
+

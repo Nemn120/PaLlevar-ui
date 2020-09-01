@@ -26,6 +26,11 @@
             <mat-header-cell *matHeaderCellDef> Fecha Atencion </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.attendDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="userAttend">
+            <mat-header-cell *matHeaderCellDef> Chef </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.userAttend.nombre}} {{element.userAttend.lastName}} </mat-cell>
+        </ng-container>
+        
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;">
