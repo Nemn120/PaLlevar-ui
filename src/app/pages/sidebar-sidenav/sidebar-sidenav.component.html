@@ -9,7 +9,7 @@
 
             <a class="navbar-brand" [routerLink]="['/']" matTooltip="Home">
                 <h1>
-                    {{this.sharedService.companySession.nombre}}
+                    {{this.sharedService.companySession != undefined ? this.sharedService.companySession.nombre : 'Pa Llevar'}}
                 </h1>
             </a>
 
@@ -62,7 +62,8 @@
 
         <mat-sidenav-container class="navbar-sidenav-container">
             <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
-                <img routerLink="/org/view" [src]="this.logoCompany" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
+                <img *ngIf="this.logoCompany" routerLink="/org/view" [src]="this.logoCompany" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
+                <img *ngIf="!this.logoCompany" routerLink="/org/view" src="../../../assets/images/icondelivery.jpg" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
                 <mat-nav-list>
                     <span style="margin-left: 10px;">Mis opciones</span>
                     <mat-list-item *ngFor="let m of menus">
