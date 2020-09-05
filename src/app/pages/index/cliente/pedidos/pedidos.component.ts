@@ -90,7 +90,7 @@ public sendMessage(order: OrderBean) {
   let ord = order != null ? order : new OrderBean();
   this.dialog.open(EnviarMensajeComponent, {
     width: '750px',
-    height:'400px',
+    height:'500px',
     data: ord
   });
 }

@@ -8,6 +8,7 @@ import { Message } from '../../../../_DTO/messageDTO';
 import {  MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderService } from 'src/app/_service/order.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-enviar-mensaje',
@@ -21,6 +22,12 @@ export class EnviarMensajeComponent implements OnInit {
   reference: FormControl;
   message: FormControl;
   phone: FormControl;
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  labelFile: string;
+  loadingSpinner:boolean=false;
+  imagenData: any;
+  imagenEstado: boolean = false;
   
   constructor(
     public dialog:MatDialog,public dialogo: MatDialogRef<EnviarMensajeComponent>,
@@ -29,6 +36,7 @@ export class EnviarMensajeComponent implements OnInit {
     private carService:CarServiceService,
     private orderService: OrderService,
     private snackBar: MatSnackBar,
+    private sanitization: DomSanitizer,
    
   ) {
 
@@ -36,8 +44,8 @@ export class EnviarMensajeComponent implements OnInit {
  
  
    ngOnInit(): void {
-   
-   this.address=new FormControl(''),
+    this.loadingSpinner=true;
+   this.address=new FormControl(''), 
    this.reference=new FormControl(''),
    this.phone=new FormControl(''),
    this.message=new FormControl(''),
@@ -76,4 +84,22 @@ export class EnviarMensajeComponent implements OnInit {
    public hasError = (controlName: string, errorName: string) =>{
      return this.form.controls[controlName].hasError(errorName);
    }
+   selectFile(e: any) {
+    this.labelFile = e.target.files[0].name;
+    this.selectedFiles = e.target.files;
+
+  }
+  public convertir(data: any) {
+    let reader = new FileReader();
+    reader.readAsDataURL(data);
+    reader.onloadend = () => {
+      let base64 = reader.result;      
+      this.sanar(base64);
+    }
+  }
+
+  public sanar(base64 : any){
+    this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
+    this.imagenEstado=true;
+  }
 }
