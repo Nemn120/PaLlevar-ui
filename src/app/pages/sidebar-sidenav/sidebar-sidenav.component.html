@@ -64,7 +64,7 @@
             <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
                 <img routerLink="/org/view" [src]="this.logoCompany" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
                 <mat-nav-list>
-                    <span>Mis opciones</span>
+                    <span style="margin-left: 10px;">Mis opciones</span>
                     <mat-list-item *ngFor="let m of menus">
                         <a mat-list-item routerLink="{{m.urlMenu}}">
                             <mat-icon mat-list-icon>

@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  HOST: "https://hidden-wildwood-21108.herokuapp.com", // "https://hidden-wildwood-21108.herokuapp.com",//,
-  //HOST:  "http://localhost:8080",
+  HOST: "https://hidden-wildwood-21108.herokuapp.com", // PRUEBAS - ANTIGUAS
+  //HOST:  "http://localhost:8080",https://fathomless-spire-26742.herokuapp.com/ //LOCAL
+  //HOST: "https://fathomless-spire-26742.herokuapp.com/", // PRODUCCION
   PRECIO_ENTRADA: 'ENT',
   TOKEN_NAME : 'access_token',
   TOKEN_AUTH_USERNAME: 'pallevarR',
