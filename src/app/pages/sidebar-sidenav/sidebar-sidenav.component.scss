@@ -22,6 +22,14 @@
     right: 0;
 }
 
+.mat-sidenav-content {
+    //padding: 30px;
+    --padding: 30px;
+    padding: var(--padding);
+    //box-shadow: inset 0 0 0 var(--padding) #F0F0FA;
+    background-color: #F0F0FA;
+}
+
 .navbar-is-mobile .navbar {
     position: fixed;
     /* Make sure the toolbar will stay on top of the content as it scrolls past. */
@@ -66,7 +74,13 @@ a.mat-list-item.active {
     bottom: 0;
 }
 
-.background-home {
+.main-router>ng-component {
+    width: 100%;
+    //height: 100%;
+    padding: 30px;
+}
+
+.background-home>ng-component {
     background-image: url('/assets/images/dasboard.jpg');
     background-position: center center;
     background-size: cover;

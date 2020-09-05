@@ -10,6 +10,7 @@ import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confir
 import { Message } from '../../../../_DTO/messageDTO';
 import { DataClientDialogComponent } from '../../../../_shared/data-client-dialog/data-client-dialog.component';
 import { OrderBean } from '../../../../_model/OrderBean';
+import { MatFabMenu } from '@angular-material-extensions/fab-menu';
 
 
 @Component({
@@ -30,6 +31,25 @@ export class PedidosComponent implements OnInit {
     private pedidos: OrderService
     
   ) { }
+
+  fabButtonsRandom: MatFabMenu[] = [
+    {
+      id: 1,
+      icon: 'create'
+    },
+    {
+      id: 2,
+      icon: 'mail'
+    },
+    {
+      id: 3,
+      icon: 'file_copy'
+    },
+    {
+      id: 4,
+      icon: 'phone'
+    },
+  ];
 
   ngOnInit(): void {
     this.pedidos.mensajeCambio.subscribe(data => { 
