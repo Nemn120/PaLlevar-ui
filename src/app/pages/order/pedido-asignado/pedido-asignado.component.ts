@@ -47,7 +47,7 @@ export class PedidoAsignadoComponent implements OnInit {
   public getAsignOrderByDeliveryMan(){
     this.orderService.getAsignOrderByDeliveryMan(this.searchOrderByDeliveryManDTO).subscribe(data => {  
       console.log(data);
-      this.dataSource = new MatTableDataSource(data.data);
+      this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       
