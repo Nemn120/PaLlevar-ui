@@ -38,6 +38,7 @@ export class OrderConfirmComponent implements OnInit {
     this.titleOrderDetailList="Detalle de pedido"; 
     this.fechaCreacion = new Date(this.data.createDate);
     this.fecha = this.fechaCreacion.toLocaleString();
+    console.log(this.data);
   }
 
   closeDialog() {
