@@ -89,8 +89,8 @@ public editarPedido(order: OrderBean) {
 public sendMessage(order: OrderBean) {
   let ord = order != null ? order : new OrderBean();
   this.dialog.open(EnviarMensajeComponent, {
-    width: '750px',
-    height:'500px',
+    width: '600',
+    height: '700',
     data: ord
   });
 }

@@ -3,6 +3,7 @@ import { ComplaintBean } from '../_model/ComplaintBean';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SharedService } from './shared.service';
+import { OrderService } from './order.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -18,11 +19,12 @@ export class ComplaintService {
   url: string = `${environment.HOST}/complaint`;
 
   constructor(private http: HttpClient,
-    private sharedService: SharedService) {
+    private sharedService: SharedService,
+    private orderService: OrderService) {
   }
 
   getListComplaint() {
-    return this.http.get<ComplaintBean[]>(`${this.url}/glcpt`);
+    return this.http.get<any>(`${this.url}/glcpt`);
   }
 
   getPhotoById(id: number) {
@@ -37,23 +39,23 @@ export class ComplaintService {
   }
 
   getComplaintById(id: number) {
-    return this.http.get<ComplaintBean[]>(`${this.url}/gcpt/${id}`);
+    return this.http.get<any>(`${this.url}/gcpt/${id}`);
   }
 
   saveComplaint(complaint : ComplaintBean,file?: File) {
-    complaint.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    complaint.organizationId = this.orderService.order.organizationId;
     let formdata: FormData = new FormData();
     formdata.append('file', file);
     const complaintBlob = new Blob([JSON.stringify(complaint)], { type: "application/json" });
     formdata.append('complaint', complaintBlob);
-    return this.http.post<ComplaintBean>(`${this.url}/scpt`,complaint);
+    return this.http.post<any>(`${this.url}/scpt`,formdata);
   }
 
   //visualizar reclamos o comentarios
 
   getListComplaintByOrg(complaint: ComplaintBean) {
     this.complaint.organizationId = this.sharedService.getUserIdSession();
-    return this.http.post<ComplaintBean>(`${this.url}/glcptbo/${this.complaint.organizationId}`,complaint);
+    return this.http.post<any>(`${this.url}/glcptbo/${this.complaint.organizationId}`,complaint);
   }
 
 

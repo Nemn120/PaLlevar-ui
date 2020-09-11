@@ -89,6 +89,7 @@ export class DataClientDialogComponent implements OnInit {
 
             this.dialogo.close();
             this.order.id = this.data.id;
+            this.order.status= this.data.status;
             this.orderService.updateOrder(this.order).subscribe(data => {
               this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
             });

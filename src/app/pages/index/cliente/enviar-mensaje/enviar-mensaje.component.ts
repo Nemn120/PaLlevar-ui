@@ -9,6 +9,8 @@ import {  MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderService } from 'src/app/_service/order.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ComplaintBean } from '../../../../_model/ComplaintBean';
+import { ComplaintService } from 'src/app/_service/complaint.service';
 
 @Component({
   selector: 'app-enviar-mensaje',
@@ -16,27 +18,24 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./enviar-mensaje.component.scss']
 })
 export class EnviarMensajeComponent implements OnInit {
-  order:OrderBean
-  form: FormGroup;
-  address: FormControl;
-  reference: FormControl;
-  message: FormControl;
-  phone: FormControl;
+  order:OrderBean;
+  complaint: ComplaintBean;
+  imagenData: any;
+  imagenEstado: boolean = false;
   selectedFiles: FileList;
   currentFileUpload: File;
   labelFile: string;
   loadingSpinner:boolean=false;
-  imagenData: any;
-  imagenEstado: boolean = false;
-  
+ 
   constructor(
     public dialog:MatDialog,public dialogo: MatDialogRef<EnviarMensajeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
-    private fb: FormBuilder,
     private carService:CarServiceService,
     private orderService: OrderService,
+    private complaintService: ComplaintService,
     private snackBar: MatSnackBar,
     private sanitization: DomSanitizer,
+    //private fb: FormBuilder,
    
   ) {
 
@@ -44,26 +43,22 @@ export class EnviarMensajeComponent implements OnInit {
  
  
    ngOnInit(): void {
+     
     this.loadingSpinner=true;
-   this.address=new FormControl(''), 
-   this.reference=new FormControl(''),
-   this.phone=new FormControl(''),
-   this.message=new FormControl(''),
-   
-     this.form =this.fb.group({
-      'address':this.data.address,
-       'reference':this.data.reference,
-       'phone':this.data.phone,
-       'message':this.message,
-            
-     });
- 
+    this.complaint = new ComplaintBean();
+    this.complaint.orderId.id=this.data.id; 
+    this.complaint.organizationId=this.data.organizationId;
+    this.complaint.titulo;
+    this.complaint.description;
+         
+    
+        
    }
 
    enviarMensaje(){
     let ms = new Message();
     ms.title='Enviar reclamo o comentario'; 
-    ms.description = '¿Está seguro de enviar el mensaje';
+    ms.description = '¿Está seguro de enviar el mensaje?';
     
     this.dialog
       .open(DialogoConfirmacionComponent, {
@@ -72,7 +67,30 @@ export class EnviarMensajeComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
-          
+
+          if (this.selectedFiles != null) {
+            this.currentFileUpload = this.selectedFiles.item(0);
+          } else {
+            this.currentFileUpload = new File([""], "blanco");
+          }
+        
+          this.complaintService.saveComplaint(this.complaint, this.currentFileUpload).subscribe(data => {
+            this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
+          }), error => {
+            this.snackBar.open(error.message, 'SUCESS', { duration: 5000 });
+          };/*.subscribe(data => {
+            this.complaintService.getListComplaint().subscribe(data2 => {
+              this.complaintService.complaintCambio.next(data2);
+            
+              if (this.complaint.orderId.id)
+                this.complaintService.mensajeCambio.next("Se actualizo");
+              else
+                this.complaintService.mensajeCambio.next("Se registro");
+            });
+          },error =>{
+            this.complaintService.mensajeCambio.next("Eror al actualizar/modificar producto");
+          });*/
+          this.closeDialog();
           
           }
           setTimeout (x=>{
@@ -81,9 +99,7 @@ export class EnviarMensajeComponent implements OnInit {
   });
 
    }
-   public hasError = (controlName: string, errorName: string) =>{
-     return this.form.controls[controlName].hasError(errorName);
-   }
+  
    selectFile(e: any) {
     this.labelFile = e.target.files[0].name;
     this.selectedFiles = e.target.files;
@@ -101,5 +117,9 @@ export class EnviarMensajeComponent implements OnInit {
   public sanar(base64 : any){
     this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
     this.imagenEstado=true;
+  }
+
+  closeDialog() {
+    this.dialogo.close();
   }
 }
