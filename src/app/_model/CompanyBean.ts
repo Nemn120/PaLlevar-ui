@@ -26,10 +26,22 @@ export class CompanyBean{
     createDate: Date ;
     userAdmin: UserBean ;
     _foto: any ;
+    
     businessLineCode: string;
     paymentMethodCode: string ;
     status: string;
     estimatedTime: number ;
     qualification: number ;
     attentionSchedule: string;
+
+    sendProtocol:string;
+    hourAttentionProtocol:string;
+    timeEstimatedProtocol:string;
+    additionalInformationProtocol:string;
+
+    _flagLogoImage:boolean;
+    _panelImage: any;
+    _flagPanelImage:boolean;
+
+
 }

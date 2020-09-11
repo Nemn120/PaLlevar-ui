@@ -1,0 +1,135 @@
+<div _ngcontent-gpp-c71="" class="ms-profile-overview">
+    <div _ngcontent-gpp-c71="" class="ms-profile-cover"><img style="margin-left: 20px;" _ngcontent-gpp-c71="" [src]="this.companySelect._foto" alt="people" class="ms-profile-img">
+        <div _ngcontent-gpp-c71="" class="ms-profile-user-info">
+            <h4 _ngcontent-gpp-c71="" class="ms-profile-username text-white">{{companySelect.nombre}}</h4>
+            <h2 _ngcontent-gpp-c71="" class="ms-profile-role">{{companySelect.description}}</h2>
+        </div>
+        <div _ngcontent-gpp-c71="" class="ms-profile-user-buttons">
+            <p style="color:aliceblue">
+                <mat-icon style="color:rgb(243, 243, 243)">access_time</mat-icon> {{companySelect.estimatedTime}} min</p>
+            <button _ngcontent-gpp-c71="" onclick="document.getElementById('flLogo').click();" class="btn btn-primary"><i
+          _ngcontent-gpp-c71="" class="material-icons">beenhere</i> Editar logo</button>
+            <input id="flLogo" type="file" (change)="editLogoImageOrganization($event)" style="display: none">
+            <!--<button _ngcontent-gpp-c71="" onclick="document.getElementById('flPanel').click();" class="btn btn-light"><i _ngcontent-gpp-c71="" class="material-icons">add_photo_alternate</i>Editar panel</button>
+            <input id="flPanel" type="file" (change)="editPanelImageOrganization($event)" style="display: none">
+            -->
+        </div>
+    </div>
+    <mat-tab-group class="ms-profile-navigation nav nav-tabs tabs-bordered">
+    </mat-tab-group>
+
+    <!-- <ul _ngcontent-gpp-c71="" role="tablist" class="ms-profile-navigation nav nav-tabs tabs-bordered">
+        <li _ngcontent-gpp-c71="" role="presentation"><a _ngcontent-gpp-c71="" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab" class="active show"> Menus </a></li>
+        <li _ngcontent-gpp-c71="" role="presentation"><a _ngcontent-gpp-c71="" href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"> Combos </a></li>
+        <li _ngcontent-gpp-c71="" role="presentation"><a _ngcontent-gpp-c71="" href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"> Ofertas </a></li>
+    </ul> -->
+    <div _ngcontent-gpp-c71="" class="tab-content">
+        <div _ngcontent-gpp-c71="" id="tab1" class="tab-pane"></div>
+        <div _ngcontent-gpp-c71="" id="tab2" class="tab-pane"></div>
+        <div _ngcontent-gpp-c71="" id="tab3" class="tab-pane"></div>
+    </div>
+    <div class="card-container">
+        <div class="card-detailIz" style="margin-right:20px;">
+            <mat-card style="margin-bottom: 10px;">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title style="margin:0;">Preguntas frecuentes
+                        <mat-icon>help</mat-icon>
+                    </mat-card-title>
+                    <button style="position: absolute;float: right; right: 3%;" mat-raised-button color="primary" (click)="openDialogEditProtocolsOrganization()">Actualizar</button>
+                </mat-card-header>
+            </mat-card>
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            ¿Cúal es el tiempo de espera para tu Pedido a Domicilio en {{companySelect.nombre}}?
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>{{this.companySelect.timeEstimatedProtocol}}</p>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState=true " (closed)="panelOpenState=false ">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            ¿Cúales son los protocolos de entrega en {{companySelect.nombre}}?
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <textarea readonly="true" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="12">{{this.companySelect.sendProtocol}}</textarea>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState=true " (closed)="panelOpenState=false ">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            ¿Cúal es el horario de atención en {{companySelect.nombre}}?
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p>{{this.companySelect.hourAttentionProtocol}}</p>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState=true " (closed)="panelOpenState=false ">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Informacion adicional en {{companySelect.nombre}}?
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <textarea readonly="true" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="12">{{this.companySelect.additionalInformationProtocol}}</textarea>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+        <mat-card class="card-detailDer ">
+            <mat-card-header>
+                <mat-card-title>Información</mat-card-title>
+                <mat-card-subtitle>{{this.companySelect.nombre}}</mat-card-subtitle>
+                <button style="position: absolute;float: right; right: 3%;" mat-raised-button color="primary" (click)="openDialogEditOrganization()">Actualizar</button>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list>
+                    <mat-divider style="position: inherit;"></mat-divider>
+                    <mat-list-item>
+                        <span>Nombre comercial</span>
+                        <div class="position-data">
+                            <span>{{this.companySelect.nombre}}</span>
+                        </div>
+                    </mat-list-item>
+                    <mat-divider style="position: inherit;"></mat-divider>
+                    <mat-list-item>
+                        <span>Razon social</span>
+                        <div class="position-data">
+                            <span>{{this.companySelect.businessName}}</span>
+                        </div>
+                    </mat-list-item>
+                    <mat-divider style="position: inherit;"></mat-divider>
+                    <mat-list-item>
+                        <span>RUC</span>
+                        <div class="position-data">
+                            <span>{{this.companySelect.ruc}}</span>
+                        </div>
+                    </mat-list-item>
+                    <mat-divider style="position: inherit;"></mat-divider>
+                    <mat-list-item>
+                        <span>Dirección</span>
+                        <div class="position-data">
+                            <span>{{this.companySelect.address}}</span>
+                        </div>
+                    </mat-list-item>
+                    <mat-divider style="position: inherit;"></mat-divider>
+                    <mat-list-item>
+                        <span>Tiempo estimado de entrega</span>
+                        <div class="position-data">
+                            <span>{{this.companySelect.estimatedTime}} min</span>
+                        </div>
+                    </mat-list-item>
+                    <mat-divider style="position: inherit;"></mat-divider>
+                    <mat-list-item>
+                        <span>Telefono</span>
+
+                        <div class="position-data">
+                            <span>{{this.companySelect.phone}}</span>
+                        </div>
+                    </mat-list-item>
+
+
+
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

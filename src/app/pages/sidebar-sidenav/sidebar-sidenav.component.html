@@ -9,7 +9,7 @@
 
             <a class="navbar-brand" [routerLink]="['/']" matTooltip="Home">
                 <h1>
-                    paLlevar App Delivery
+                    {{this.sharedService.companySession != undefined ? this.sharedService.companySession.nombre : 'Pa Llevar'}}
                 </h1>
             </a>
 
@@ -70,9 +70,10 @@
 
         <mat-sidenav-container class="navbar-sidenav-container">
             <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
-                <img src="../assets/images/icondelivery.jpg" width="128" style="margin-left: 20px">
+                <img *ngIf="this.logoCompany" routerLink="/org/view" [src]="this.logoCompany" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
+                <img *ngIf="!this.logoCompany" routerLink="/org/view" src="../../../assets/images/icondelivery.jpg" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
                 <mat-nav-list>
-                    <span>Mis opciones</span>
+                    <span style="margin-left: 10px;">Mis opciones</span>
                     <mat-list-item *ngFor="let m of menus">
                         <a mat-list-item routerLink="{{m.urlMenu}}">
                             <mat-icon mat-list-icon>
@@ -92,15 +93,11 @@
             </mat-sidenav>
 
             <mat-sidenav-content class="sidenav-content">
+
                 <div class="background-home">
-
-                    <div class="progress-bar-container">
-                        <mat-progress-bar color="accent" mode="indeterminate" *ngIf="spinnerService.visibility | async">
-                        </mat-progress-bar>
-                        <!-- <mat-spinner class="spinner" [diameter]="50" *ngIf="showSpinner"></mat-spinner> -->
+                    <div class="main-router">
+                        <router-outlet style="width: 100%;"></router-outlet>
                     </div>
-
-                    <router-outlet></router-outlet>
 
                 </div>
             </mat-sidenav-content>
@@ -111,4 +108,3 @@
     </div>
 
 </ng-template>
-<p>Sidebar-sidenav.component</p>

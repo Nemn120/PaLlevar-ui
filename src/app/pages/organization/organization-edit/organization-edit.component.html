@@ -1,0 +1,47 @@
+<p>
+    <mat-toolbar class="title-component">
+        <span>Informacion: {{this.companySelect.nombre}}</span>
+
+    </mat-toolbar>
+</p>
+
+<mat-form-field style="width: 100%;">
+    <!-- Los datos ingresados lo guarda en la variable -->
+    <input matInput placeholder="Nombre comercial" [(ngModel)]="companySelect.nombre">
+
+</mat-form-field>
+<br>
+
+<br>
+<mat-form-field style="width: 100%;">
+    <input matInput placeholder="Razon social" [(ngModel)]="companySelect.businessName" type="tel">
+</mat-form-field>
+<br>
+<mat-form-field style="width: 100%;">
+    <input matInput placeholder="RUC" [(ngModel)]="companySelect.ruc" type="tel">
+</mat-form-field>
+<br>
+<mat-form-field style="width: 100%;">
+    <input matInput placeholder="Direccion" [(ngModel)]="companySelect.address" type="tel">
+</mat-form-field>
+<br>
+<mat-form-field style="width: 100%;">
+    <input matInput placeholder="Telefono" [(ngModel)]="companySelect.phone" type="tel">
+</mat-form-field>
+<br>
+
+<mat-form-field style="width: 100%;">
+    <input matInput placeholder="Tiempo estimado de entrega (min) " [(ngModel)]="companySelect.estimatedTime" type="tel">
+</mat-form-field>
+<br>
+<mat-form-field style="width: 100%;  height: 40px;">
+    <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="6" placeholder="Breve descripción" matInput [(ngModel)]="companySelect.description"></textarea>
+</mat-form-field>
+<br>
+
+
+
+<div style="float:right;margin-top:15px">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+</div>

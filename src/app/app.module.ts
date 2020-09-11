@@ -14,6 +14,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
+import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 
 
 
@@ -33,7 +35,7 @@ export function tokenGetter() {
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    
+    EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
     JwtModule.forRoot({
@@ -43,6 +45,7 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
+    MatFabMenuModule,
 
    
   ],

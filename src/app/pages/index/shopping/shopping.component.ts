@@ -23,7 +23,7 @@ export class ShoppingComponent implements OnInit {
   companySelect: CompanyBean;
   imgDefault = '../../../../assets/icon-cubiertos.jpg';
   mProduct: MenuDayProductBean;
-
+  panelOpenState:boolean=false;
   constructor(
               private menuDayProductService: MenuDayProductService,
               private productService: ProductService,

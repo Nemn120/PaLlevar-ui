@@ -14,6 +14,7 @@ import {CarServiceService} from '../../_service/car-service.service';
 import {ProfileComponent} from '../sidebar-sidenav/profile/profile.component';
 import { Router } from '@angular/router';
 import {EditAddProfileComponent} from '../sidebar-sidenav/edit-add-profile/edit-add-profile.component';
+import { OrganizationService } from 'src/app/_service/organization.service';
 
 @Component({
   selector: 'app-sidebar-sidenav',
@@ -31,29 +32,37 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
   menus:MenuOptionBean[];
   isLogueado: boolean = false;
   userMenu: string;
-
+  logoCompany:any;
   constructor(
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef,
     public loginService: LoginService,
     public carService:CarServiceService,
     private menuService : MenuOptionService,
-    private usuarioService:UserService,
     private dialog: MatDialog,
     private media: MediaMatcher,
     public spinnerService: SpinnerService,
-    public sharedService:SharedService
+    public sharedService:SharedService,
+    public companyService:OrganizationService
+
     ){
 
       this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       // tslint:disable-next-line: deprecation
       this.mobileQuery.addListener(this._mobileQueryListener);
+      this.companyService.companyOneCambio.subscribe(data =>{
+        if(data._foto != null){
+          this.logoCompany=data._foto;
+        }
+        
+      })
      }
      ngOnInit(){
       if(this.sharedService.userSession != null && this.sharedService.getUserIdSession()>0){
         this.isLogueado=true;
         this.menus= this.menuService.menuCambio;
+       this.logoCompany=this.sharedService.imagenData;
       }
     }
 
