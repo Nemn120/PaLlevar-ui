@@ -8,27 +8,27 @@
 
     <mat-form-field style="display: block;margin: auto;text-align: center;width: 100px;">
         <mat-label>DNI</mat-label>
-        <input matInput>{{user.documentNumber}}
+        <input matInput readonly>{{user.documentNumber}}
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Nombres</mat-label>
-        <input matInput>{{user.nombre}}
+        <input matInput readonly>{{user.nombre}}
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Apellidos</mat-label>
-        <input matInput>{{user.lastName}}
+        <input matInput readonly>{{user.lastName}}
     </mat-form-field>
     <br>
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>F.Nacimiento</mat-label>
-        <input matInput>{{user.dateBirth | date:'dd/MM/yyyy'}}
+        <input matInput readonly>{{user.dateBirth | date:'dd/MM/yyyy'}}
     </mat-form-field>
 
     <mat-form-field style="text-align: center;width: 200px;">
         <mat-label>Celular</mat-label>
-        <input matInput> {{user.cellPhone}}
+        <input matInput readonly> {{user.cellPhone}}
     </mat-form-field>
 
 </div>
