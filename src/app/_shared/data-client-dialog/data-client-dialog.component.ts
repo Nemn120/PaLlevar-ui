@@ -56,14 +56,16 @@ export class DataClientDialogComponent implements OnInit {
       placeTemp.longitud = this.mapService.newPlace.longitud;
       placeTemp.latitud = this.mapService.newPlace.latitud;
       placeTemp.nombre = this.mapService.newPlace.nombre;
+      this.order.place = placeTemp;
+      this.carService.orderHeader = this.order;
       if (placeTemp.nombre == undefined) {
         placeTemp.longitud = 0;
         placeTemp.latitud = 0;
         placeTemp.nombre = 'marcador no establecido';
 
+      }else{
+        this.notification.openSnackBar('Ubicacion guardada exito');
       }
-      this.order.place = placeTemp;
-      this.carService.orderHeader = this.order;
       this.dialog.closeAll();
 
     } else {
@@ -89,6 +91,7 @@ export class DataClientDialogComponent implements OnInit {
 
             this.dialogo.close();
             this.order.id = this.data.id;
+            this.order.status = this.data.status;
             this.orderService.updateOrder(this.order).subscribe(data => {
               this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
             });
@@ -98,8 +101,7 @@ export class DataClientDialogComponent implements OnInit {
         });
 
     }
-    console.log('orden con place: ', this.order);
-    this.notification.openSnackBar('Ubicacion guardada exito');
+    
   }
 
 

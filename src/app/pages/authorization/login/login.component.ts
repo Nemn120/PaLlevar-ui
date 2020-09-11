@@ -37,14 +37,14 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private menuService: MenuOptionService,
     private sharedService: SharedService,
-    private companyService:OrganizationService,
+    private companyService: OrganizationService,
     private sanitization: DomSanitizer,
     private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
     this.titleService.setTitle('Login paLlevar');
-    this.loginService.mensajeCambio.subscribe(data =>{
+    this.loginService.mensajeCambio.subscribe(data => {
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -73,35 +73,36 @@ export class LoginComponent implements OnInit {
 
         const decodedToken = helper.decodeToken(data.access_token);
         this.userService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
-          this.sharedService.userSession = new UserBean; 
-          this.sharedService.userSession =data; // guardo el usuario que inicia
-          this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).subscribe(data =>{
-           this.menuService.menuCambio= data; //
-         //this.menuService.menuCambio.next(data); //
-            if(this.sharedService.userSession.profile.idProfile===6){
+          this.sharedService.userSession = new UserBean;
+          this.sharedService.userSession = data; // guardo el usuario que inicia
+          this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).subscribe(data => {
+            this.menuService.menuCambio = data; //
+            //this.menuService.menuCambio.next(data); //
+            if (this.sharedService.userSession.profile.idProfile === 6) {
               this.router.navigate(['index/shop']);
-            }else{
-                this.companyService.getCompanyById(this.sharedService.getOrganizationIdByUserSession()).subscribe(data=>{
-                  this.sharedService.companySession=data;
-                  this.companyService.getPhotoById(data.id).subscribe(photo=>{
-                    if (photo.size > 0){
+            } else {
+              if (this.sharedService.userSession.profile.idProfile === 1) this.router.navigate(['suc/show']);
+              else {
+                this.companyService.getCompanyById(this.sharedService.getOrganizationIdByUserSession()).subscribe(data => {
+                  this.sharedService.companySession = data;
+                  this.companyService.getPhotoById(data.id).subscribe(photo => {
+                    if (photo.size > 0) {
                       this.sharedService.imagenData = this.convertir(photo);
                     }
-                    //
-                    
-                  this.router.navigate(['suc/show']); 
+                    this.router.navigate(['suc/show']);
+                  })
                 })
-              })
+              }
             }
           });
-        }, error =>{
+        }, error => {
           console.error(error);
-            this.loginService.mensajeCambio.next("ERROR");
+          this.loginService.mensajeCambio.next("ERROR");
         });
       }
-    }, error =>{
+    }, error => {
       console.error(error);
-        this.loginService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
+      this.loginService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
     });
   }
 
@@ -112,19 +113,19 @@ export class LoginComponent implements OnInit {
   ngAfterViewInit() {
     (window as any).initialize();
   }
-  
+
   public convertir(data: any) {
     let reader = new FileReader();
     reader.readAsDataURL(data);
     reader.onloadend = () => {
-      let base64 = reader.result;      
+      let base64 = reader.result;
       this.sanar(base64);
     }
   }
 
-  public sanar(base64 : any){
-    this.sharedService.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
-    this.sharedService.imagenStatus=true;
+  public sanar(base64: any) {
+    this.sharedService.imagenData = this.sanitization.bypassSecurityTrustResourceUrl(base64);
+    this.sharedService.imagenStatus = true;
   }
 
 
