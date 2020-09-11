@@ -7,6 +7,29 @@
         <mat-icon style="width: 30px; padding-left: 0px;">home</mat-icon>
     </button>
 
+    
+
+    <!--
+
+        <form class="example-form" action="">
+        
+            <input class="searchDish" type="text" placeholder="ingrese el platillo a buscar"  matInput/>
+            <mat-autocomplete>
+                <mat-option *ngFor="let dish of dishes" >
+                </mat-option>
+            </mat-autocomplete>
+
+            
+        </form>
+
+        <button mat-icon-button class="searchDishButton" routerLink="/platillo" (click)="showDish()">BUSCAR</button>
+    -->
+    
+
+    
+
+    
+
     <div class="example-spacer"></div>
 
 
@@ -16,7 +39,7 @@
     </button>
 
     <!--No esta logueado-->
-    <div *ngIf="!logueado" style="margin-right: 20px;padding-right: 30px;">
+    <div *ngIf="!logueado" style="margin-right: 20px;padding-right: 10px;">
         <button routerLink="/auth/login" mat-button color="primary">
         Iniciar Sesion
         </button>
