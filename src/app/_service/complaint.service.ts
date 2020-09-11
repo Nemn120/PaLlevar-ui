@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComplaintBean } from '../_model/ComplaintBean';
+import { OrderBean } from '../_model/OrderBean';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { SharedService } from './shared.service';
@@ -15,6 +16,7 @@ export class ComplaintService {
   mensajeCambio = new Subject<string>();
 
   complaint: ComplaintBean = new ComplaintBean();
+  order: OrderBean = new OrderBean();
 
   url: string = `${environment.HOST}/complaint`;
 

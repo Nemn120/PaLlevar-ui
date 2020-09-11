@@ -20,7 +20,7 @@ import { OrderBean } from '../../../../_model/OrderBean';
 })
 export class PedidosComponent implements OnInit {
 
-  ord: OrderBean[];
+  order: OrderBean[];
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail','message'];
@@ -43,7 +43,6 @@ export class PedidosComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.dataSource.data=this.ord;
     },error =>{
       this.pedidos.mensajeCambio.next("Error al mostrar");
     });

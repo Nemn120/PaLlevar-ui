@@ -73,12 +73,8 @@ export class EnviarMensajeComponent implements OnInit {
           } else {
             this.currentFileUpload = new File([""], "blanco");
           }
-        
+         
           this.complaintService.saveComplaint(this.complaint, this.currentFileUpload).subscribe(data => {
-            this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
-          }), error => {
-            this.snackBar.open(error.message, 'SUCESS', { duration: 5000 });
-          };/*.subscribe(data => {
             this.complaintService.getListComplaint().subscribe(data2 => {
               this.complaintService.complaintCambio.next(data2);
             
@@ -89,7 +85,7 @@ export class EnviarMensajeComponent implements OnInit {
             });
           },error =>{
             this.complaintService.mensajeCambio.next("Eror al actualizar/modificar producto");
-          });*/
+          });
           this.closeDialog();
           
           }

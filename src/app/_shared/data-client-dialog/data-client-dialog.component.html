@@ -1,5 +1,6 @@
-<h1 mat-dialog-title style="text-align: center;">
-    Ingresar ubicacion</h1>
+<h1 mat-dialog-title class="titulo">
+    {{title}}</h1>
+<h3 style="text-align: center;">{{ubicacion}}</h3>
 <br>
 <button style="width: 100%;" mat-raised-button (click)="abrirMapa()" color="orange">Ubicacion Exacta</button>
 <br>
@@ -23,7 +24,7 @@
             <input matInput placeholder="Telefono" formControlName="phone" [formGroup]="form" required>
         </mat-form-field>
 
-        <button style="width: 100%;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">Confirmar</button>
+        <button style="width: 100%;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">{{buttonTitle}}</button>
     </form>
 
 </div>
