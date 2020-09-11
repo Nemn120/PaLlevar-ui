@@ -53,8 +53,6 @@
         "typescript": "~3.7.5"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "~0.900.5",
-        "@angular/language-service": "~9.0.5",
         "@types/jasmine": "~3.3.8",
         "@types/jasminewd2": "~2.0.3",
         "@types/mapbox-gl": "^1.11.1",
