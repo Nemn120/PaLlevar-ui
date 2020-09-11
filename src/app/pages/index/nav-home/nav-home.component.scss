@@ -23,7 +23,7 @@
             padding-right: 10px;
             background-color: darkorange;
             border-color: darkorange;
-            height: 4rem;
+            height: 3.5rem;
             position: fixed;
             z-index: 100;
         }
@@ -115,10 +115,58 @@
         .toolbar3 {
             height: auto;
             background-color: azure;
-            padding-top: 70px;
+            padding-top: 85px;
         }
         
         .mat-toolbar-row,
         .mat-toolbar-single-row {
             box-sizing: content-box;
+        }
+
+
+        .example-form {
+            min-width: 150px;
+            max-width: 500px;
+            height: 44px;
+            width: 30%;
+            
+            line-height: 44px;
+            background: #f4f4f4;
+            color: #ff441f;
+            text-shadow: 0 0 0 #7d7d7d;
+            font-size: 16px;
+            border-radius: 15px;
+            border: 2px solid black;
+          }
+
+        .searchDish{
+            position: relative;
+            display:inline-block;
+            font-size: 20px;
+            box-sizing: border-box;
+        }
+        
+        .searchDish[type="text"]{
+            background: #f4f4f4;
+            padding-left: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .searchDishButton{
+            position: relative;
+            right: 20px;
+            line-height: 44px;
+            border-radius: 0 15px 15px 0;
+            border: 2px solid black;
+            width: 100px;
+            height: 48px;
+            color:white;
+            outline: none;
+            cursor: pointer;
+            background: orange;
+        }
+
+        .serchDishButton:hover{
+            background: #ff5722;
         }
