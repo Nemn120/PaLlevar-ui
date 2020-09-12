@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.use(express.static(__dirname + '/dist/pallevar'));
+app.use(express.static(__dirname + '/dist/pa-llevar-frontend'));
 
 app.listen(process.env.PORT || 8080);
 
 // PathLocationStrategy
 
 app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/dist/pallevar/index.html'));
+    res.sendFile(path.join(__dirname + '/dist/pa-llevar-frontend/index.html'));
 })
