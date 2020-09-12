@@ -4,27 +4,30 @@
     "scripts": {
         "ng": "ng",
         "start": "node server.js",
-        "build": "ng build --prod",
+        "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "postinstall": "ng build --aot"
     },
     "engines": {
-        "node": "6.11.1"
+        "node": "12.12.0",
+        "npm": "6.11.3"
     },
     "private": true,
     "dependencies": {
+        "@angular-devkit/build-angular": "~0.900.5",
         "@angular-material-extensions/fab-menu": "^2.0.2",
         "@angular/animations": "~9.0.5",
         "@angular/cdk": "^9.1.1",
         "@angular/cli": "~9.0.5",
-        "@angular/compiler-cli": "~9.0.5",
         "@angular/common": "~9.0.5",
         "@angular/compiler": "~9.0.5",
+        "@angular/compiler-cli": "~9.0.5",
         "@angular/core": "~9.0.5",
         "@angular/flex-layout": "^9.0.0-beta.29",
         "@angular/forms": "~9.0.5",
+        "@angular/language-service": "~9.0.5",
         "@angular/material": "^9.1.1",
         "@angular/material-moment-adapter": "^8.1.4",
         "@angular/platform-browser": "~9.0.5",
@@ -33,8 +36,6 @@
         "@angular/service-worker": "~9.0.5",
         "@auth0/angular-jwt": "^4.0.0",
         "@ecodev/fab-speed-dial": "^6.0.0",
-        "@angular-devkit/build-angular": "~0.900.5",
-        "@angular/language-service": "~9.0.5",
         "chart.js": "^2.9.3",
         "classlist.js": "^1.1.20150312",
         "exceljs": "^4.1.1",
@@ -48,11 +49,15 @@
         "path": "^0.12.7",
         "rxjs": "~6.5.4",
         "tslib": "^1.10.0",
+        "typescript": "~3.7.5",
         "web-animations-js": "^2.3.2",
-        "zone.js": "~0.10.2",
-        "typescript": "~3.7.5"
+        "zone.js": "~0.10.2"
     },
     "devDependencies": {
+        "@angular/compiler": "~9.0.5",
+        "@angular/compiler-cli": "~9.0.5",
+        "@angular/language-service": "~9.0.5",
+        "@angular/cli": "~9.0.5",
         "@types/jasmine": "~3.3.8",
         "@types/jasminewd2": "~2.0.3",
         "@types/mapbox-gl": "^1.11.1",
