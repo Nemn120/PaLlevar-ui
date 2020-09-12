@@ -8,10 +8,12 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "postinstall": "ng build --aot"
+        "postinstall": "ng build"
     },
     "engines": {
-        "node": "6.11.1"
+        "node": "6.11.1",
+        "npm": "~6.4.1"
+
     },
     "private": true,
     "dependencies": {
