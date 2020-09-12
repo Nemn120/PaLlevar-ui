@@ -4,9 +4,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Message } from '../../_DTO/messageDTO';
 import { CarServiceService } from '../../_service/car-service.service';
 import { OrderBean } from '../../_model/OrderBean';
-import { MenuDayProductBean } from '../../_model/MenuDayProductBean';
-import { MenuDayBean } from 'src/app/_model/MenyDayBean';
-
 
 @Component({
   selector: 'app-dialogo-confirmacion',
