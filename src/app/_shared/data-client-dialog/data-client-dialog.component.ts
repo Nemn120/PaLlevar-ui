@@ -26,6 +26,7 @@ export class DataClientDialogComponent implements OnInit {
   phone: FormControl;
   title: string = "Generar Pedido, Ingreso de datos";
   buttonTitle: string = "Registrar";
+  ubicacion: string = "Ingresar Ubicación";
   isUpdateOrder: boolean = false;
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<DataClientDialogComponent>,
@@ -41,15 +42,12 @@ export class DataClientDialogComponent implements OnInit {
 
   enviarOrden() {
 
-
+    this.order = new OrderBean();
+    this.order.address = this.form.value['address'];
+    this.order.reference = this.form.value['reference'];
+    this.order.phone = this.form.value['phone']
     // CUANDO ENVIA LA ORDEN
     if (!this.isUpdateOrder) {
-
-      //debugger
-      this.order = new OrderBean();
-      this.order.address = this.form.value['address'];
-      this.order.reference = this.form.value['reference'];
-      this.order.phone = this.form.value['phone'];
 
       this.order.organizationId = this.carService.orderHeader.organizationId;
       var placeTemp: PlaceBean = new PlaceBean();
@@ -80,24 +78,20 @@ export class DataClientDialogComponent implements OnInit {
         .afterClosed()
         .subscribe((confirmado: Boolean) => {
           if (confirmado) {
-
-            this.order = new OrderBean();
-
-            this.order.address = this.form.value['address'];
-            this.order.reference = this.form.value['reference'];
-            this.order.phone = this.form.value['phone'];
-            this.order.organizationId = this.carService.orderHeader.organizationId;
-            this.carService.orderHeader = this.order;
-
-            this.dialogo.close();
             this.order.id = this.data.id;
             this.order.status = this.data.status;
-            this.orderService.updateOrder(this.order).subscribe(data => {
+            if(this.order.status=="Pendiente"||this.order.status=="En proceso"){
+              this.orderService.updateOrder(this.order).subscribe(data => { 
               this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
-            });
-
+              });
+            //this.notification.openSnackBar('Ubicacion guardada exito');
+          } else{
+            this.notification.openSnackBar('No se puede modificar los datos de este pedido');
           }
-          this.dialog.closeAll();
+          }
+          setTimeout (x=>{
+            this.dialog.closeAll();
+          },2000);
         });
 
     }
@@ -125,6 +119,7 @@ export class DataClientDialogComponent implements OnInit {
       })
       this.title = "Datos de entrega del pedido"
       this.buttonTitle = "Actualizar"
+      this.ubicacion = "Modificar Ubicación"
       this.isUpdateOrder = true;
     }
   }

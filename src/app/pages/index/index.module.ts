@@ -22,7 +22,7 @@ import { CardProductNewComponent } from './card-product-new/card-product-new.com
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { SearchDishComponent } from './search-dish/search-dish.component';
-//import { MatFabMenuModule } from '@angular-materialextensions/fab-menu';
+import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 
 
 const routes: Routes = [
@@ -68,7 +68,7 @@ const routes: Routes = [
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
-    //MatFabMenuModule abr que sale luego
+    MatFabMenuModule
   ],
   exports: [
     RouterModule,
