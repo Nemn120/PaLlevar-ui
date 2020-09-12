@@ -1,9 +1,7 @@
 <div class="menu-org-detail" (click)="goShop()" style="float: right;">
     <div class="menu-org-item">
         <div class="image-item">
-		<img *ngIf="orgSelect._foto==null" class="image-position" alt="Photo of profile" src="assets/images/perfil/perfil.jpg">
-            <img *ngIf="orgSelect._foto" class="image-position" [src]="orgSelect._foto" />
-            
+            <img class="image-position" [src]="orgSelect._foto" />
         </div>
         <div class="data-item">
 
