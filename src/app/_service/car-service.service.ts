@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MenuDayProductBean } from '../_model/MenuDayProductBean';
 import { OrderDetailBean } from '../_model/OrderDetailBean';
 import { OrderBean } from '../_model/OrderBean';
 import { OrderService } from './order.service';

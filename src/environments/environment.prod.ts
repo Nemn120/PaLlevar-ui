@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+<<<<<<< HEAD
  // HOST: "https://hidden-wildwood-21108.herokuapp.com",
 
   //HOST:  "http://localhost:8080",https://fathomless-spire-26742.herokuapp.com/ //LOCAL
@@ -9,6 +10,10 @@ HOST: "https://pallevar-backend-2020.herokuapp.com", // QA NUEVO
 
 
 
+=======
+  //HOST: "https://hidden-wildwood-21108.herokuapp.com",
+  HOST: "https://pallevar-backend-2020.herokuapp.com",
+>>>>>>> 5aeb3c39d927aab05895ee7c6ddafb0c8e85ffa9
   PRECIO_ENTRADA: 'ENT',
   TOKEN_NAME : 'access_token',
   TOKEN_AUTH_USERNAME: 'pallevarR',

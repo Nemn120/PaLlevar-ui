@@ -21,6 +21,7 @@ import { DetallePedidoComponent } from './cliente/detalle-pedido/detalle-pedido.
 import { CardProductNewComponent } from './card-product-new/card-product-new.component';
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
+import { SearchDishComponent } from './search-dish/search-dish.component';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 
 
@@ -57,6 +58,7 @@ const routes: Routes = [
   CardProductNewComponent,
   HeaderOrganizationComponent,
   OrderConfirmComponent,
+  SearchDishComponent,
 
   ],
   imports: [
