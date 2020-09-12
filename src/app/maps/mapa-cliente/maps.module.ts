@@ -1,27 +1,33 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MaterialModule } from '../../_material/material.module';
+
 //MAPBOX
+import { environment } from '../../../environments/environment.prod';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { MapaClienteComponent } from './mapa-cliente.component';
-import { MaterialModule } from '../../_material/material.module';
+import { MapaEmpresaComponent } from '../mapa-empresa/mapa-empresa.component';
+
 
 
 @NgModule({
   declarations: [
     MapaClienteComponent,
+    MapaEmpresaComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
       //MAPBOX
       NgxMapboxGLModule.withConfig({
-        accessToken: 'pk.eyJ1Ijoia2F0cmllbCIsImEiOiJja2RjOXlrZTUxM3RsMnlxcmtwd3NrZWMwIn0.buu1mRI4DLdAUacSHR_2gw', // Optional, can also be set per map (accessToken input of mgl-map)
-        geocoderAccessToken: 'pk.eyJ1Ijoia2F0cmllbCIsImEiOiJja2RjOXlrZTUxM3RsMnlxcmtwd3NrZWMwIn0.buu1mRI4DLdAUacSHR_2gw',  // Optional, specify if different from the map access token, can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
+        accessToken: environment.HOST_MAPBOX,                                          // Optional, can also be set per map (accessToken input of mgl-map)
+        geocoderAccessToken: environment.HOST_MAPBOX,                                  // Optional, specify if different from the map access token, can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
       })
   ],
   exports:[
     MapaClienteComponent,
+    MapaEmpresaComponent,
   ]
 })
 export class MapsModule { }
