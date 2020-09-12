@@ -46,13 +46,10 @@ export class EnviarMensajeComponent implements OnInit {
      
     this.loadingSpinner=true;
     this.complaint = new ComplaintBean();
-    this.complaint.orderId.id=this.data.id; 
-    this.complaint.organizationId=this.data.organizationId;
-    this.complaint.titulo;
-    this.complaint.description;
-         
-    
-        
+    this.complaint.orderId=this.data.id; 
+    this.complaint.organizationId=this.data.organizationId;    
+    this.complaint.userCreateId = this.data.userOrder.id;
+
    }
 
    enviarMensaje(){
@@ -75,14 +72,11 @@ export class EnviarMensajeComponent implements OnInit {
           }
          
           this.complaintService.saveComplaint(this.complaint, this.currentFileUpload).subscribe(data => {
-            this.complaintService.getListComplaint().subscribe(data2 => {
-              this.complaintService.complaintCambio.next(data2);
-            
-              if (this.complaint.orderId.id)
+              if (this.complaint.orderId)
                 this.complaintService.mensajeCambio.next("Se actualizo");
               else
                 this.complaintService.mensajeCambio.next("Se registro");
-            });
+            
           },error =>{
             this.complaintService.mensajeCambio.next("Eror al actualizar/modificar producto");
           });

@@ -6,7 +6,7 @@ export class ComplaintBean extends MainBean{
     createDate: Date; 
     titulo:string;
     description: string;
-    orderId: OrderBean;
+    orderId: number;
     _foto: any;
     _isFoto: boolean;
     

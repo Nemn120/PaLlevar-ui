@@ -45,7 +45,6 @@ export class ComplaintService {
   }
 
   saveComplaint(complaint : ComplaintBean,file?: File) {
-    complaint.organizationId = this.orderService.order.organizationId;
     let formdata: FormData = new FormData();
     formdata.append('file', file);
     const complaintBlob = new Blob([JSON.stringify(complaint)], { type: "application/json" });
@@ -56,7 +55,7 @@ export class ComplaintService {
   //visualizar reclamos o comentarios
 
   getListComplaintByOrg(complaint: ComplaintBean) {
-    this.complaint.organizationId = this.sharedService.getUserIdSession();
+    this.complaint.organizationId = this.sharedService.userSession.organizationId;
     return this.http.post<any>(`${this.url}/glcptbo/${this.complaint.organizationId}`,complaint);
   }
 
