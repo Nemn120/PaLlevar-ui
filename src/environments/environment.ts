@@ -4,17 +4,9 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
- // HOST: "https://hidden-wildwood-21108.herokuapp.com", // PRUEBAS - ANTIGUAS
-
-  //HOST:  "http://localhost:8080",https://fathomless-spire-26742.herokuapp.com/ //LOCAL
-  //HOST: "https://fathomless-spire-26742.herokuapp.com", // PRODUCCION
- HOST: "https://pallevar-backend-2020.herokuapp.com", // QA NUEVO 
-=======
   //HOST: "https://hidden-wildwood-21108.herokuapp.com", // PRUEBAS - ANTIGUAS
   //HOST:  "http://localhost:8080",https://fathomless-spire-26742.herokuapp.com/ //LOCAL
   HOST: "https://pallevar-backend-2020.herokuapp.com", // QA NUEVO 
->>>>>>> 5aeb3c39d927aab05895ee7c6ddafb0c8e85ffa9
 
   PRECIO_ENTRADA: 'ENT',
   TOKEN_NAME : 'access_token',
