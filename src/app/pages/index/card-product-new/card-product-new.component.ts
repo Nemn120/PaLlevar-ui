@@ -18,6 +18,7 @@ export class CardProductNewComponent implements OnInit {
   // @Input() data:string;
   menuSelect: MenuDayProductBean;
   contadorCarrito = 0;
+
   constructor(
     private dialog: MatDialog,
     private carService: CarServiceService,

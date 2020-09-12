@@ -103,6 +103,14 @@ export class OrganizationFormNewComponent implements OnInit {
       this.companySelect.estimatedTime = this.data.estimatedTime;
       this.companySelect.qualification = this.data.qualification;
       this.companySelect.attentionSchedule = this.data.attentionSchedule;
+
+      this.companySelect.sendProtocol = "send 1";
+      this.companySelect.hourAttentionProtocol = "hour 1";
+      this.companySelect.timeEstimatedProtocol = "time 1";
+      this.companySelect.additionalInformationProtocol = "adicional 1";
+
+      this.companySelect._flagLogoImage = false;
+      this.companySelect._flagPanelImage = true;
     }
   }
 
@@ -137,7 +145,7 @@ export class OrganizationFormNewComponent implements OnInit {
       this.currentFileUpload = new File([''], 'blanco');
     }
 
-     this.companyService.saveCompany(this.companySelect, this.currentFileUpload).subscribe(data => {
+     this.companyService.saveCompany(this.companySelect).subscribe(data => {
       this.companyService.getListCompany().subscribe(data2 => {
         this.companyService.companyCambio.next(data2);
 
@@ -148,11 +156,27 @@ export class OrganizationFormNewComponent implements OnInit {
         }
       });
     }, error => {
-      this.companyService.mensajeCambio.next('Eror al actualizar/modificar compañoa');
+      this.companyService.mensajeCambio.next('Error al actualizar/modificar compañia');
     });
 
+
+
+     /* this.companyService.saveCompany(this.companySelect, this.currentFileUpload).subscribe(data => {
+      this.companyService.getListCompany().subscribe(data2 => {
+        this.companyService.companyCambio.next(data2);
+
+        if (this.companySelect.id) {
+          this.companyService.mensajeCambio.next('Se actualizo');
+        } else {
+          this.companyService.mensajeCambio.next('Se registro');
+        }
+      });
+    }, error => {
+      this.companyService.mensajeCambio.next('Eror al actualizar/modificar compañia');
+    }); */
+
      console.log(this.companySelect);
-     this.dialogRef.close();
+     // this.dialogRef.close();
   }
 
   selectFile(e: any) {

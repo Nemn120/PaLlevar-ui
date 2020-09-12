@@ -42,13 +42,13 @@ export class OrganizationService {
   }
 
   saveCompany(company : CompanyBean, logoImage?:File,panelImage?:File) {
-    //return this.http.post<CompanyBean>(`${this.url}/sco`,company);
-    let formdata: FormData = new FormData();
+    return this.http.post<CompanyBean>(`${this.url}/sco`,company);
+    /* let formdata: FormData = new FormData();
     formdata.append('logoImage', logoImage);
     formdata.append('panelImage', panelImage);
     const productBlob = new Blob([JSON.stringify(company)], { type: "application/json" });
     formdata.append('company', productBlob);
-    return this.http.post<CompanyBean>(`${this.url}/sco`,formdata);
+    return this.http.post<CompanyBean>(`${this.url}/sco`,formdata); */
   }
 
   updatePanelImage(idCompany : number,panelImage:File) {
