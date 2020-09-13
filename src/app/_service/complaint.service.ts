@@ -55,9 +55,9 @@ export class ComplaintService {
   //visualizar reclamos o comentarios
 
   getListComplaintByOrg() {
-    let complaint = new ComplaintBean();
-    this.complaint.organizationId = this.sharedService.userSession.organizationId;
-    return this.http.post<any>(`${this.url}/glcptbo/`,complaint);
+    let complaint = new ComplaintBean(); 
+    complaint.organizationId = this.sharedService.userSession.organizationId; //getOrganizationIdByUserSession()
+    return this.http.post<any>(`${this.url}/glcptbo`,complaint);
   }
 
 

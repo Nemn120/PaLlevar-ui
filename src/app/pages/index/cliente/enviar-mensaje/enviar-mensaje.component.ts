@@ -78,7 +78,7 @@ export class EnviarMensajeComponent implements OnInit {
                 this.complaintService.mensajeCambio.next("Se registro");
             
           },error =>{
-            this.complaintService.mensajeCambio.next("Eror al actualizar/modificar producto");
+            this.complaintService.mensajeCambio.next("Eror al mandar reclamo");
           });
           this.closeDialog();
           

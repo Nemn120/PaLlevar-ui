@@ -7,13 +7,12 @@ import { ComplaintBean } from '../../../_model/ComplaintBean';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 
-
 @Component({
-  selector: 'app-search-order',
-  templateUrl: './search-order.component.html',
-  styleUrls: ['./search-order.component.scss']
+  selector: 'app-claim-list',
+  templateUrl: './claim-list.component.html',
+  styleUrls: ['./claim-list.component.scss']
 })
-export class SearchOrderComponent implements OnInit {
+export class ClaimListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -48,5 +47,4 @@ export class SearchOrderComponent implements OnInit {
     });
 
   }
-
 }
