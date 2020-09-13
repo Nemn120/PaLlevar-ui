@@ -43,7 +43,7 @@ export class ClaimListComponent implements OnInit {
       this.dataSource.sort = this.sort;
     },error =>{
       console.error(error);
-      this.complaintService.mensajeCambio.next("Error al mostrar ordenes");
+      this.complaintService.mensajeCambio.next("Error al mostrar la lista de reclamos");
     });
 
   }
