@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { MenuDayProductBean } from '../_model/menuDayProductBean';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
+import { ProductBean } from '../_model/ProductBean';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,13 @@ export class MenuDayProductService {
     menuDayProduct.organizationId = this.sharedService.getOrganizationIdByUserSession();
     return this.http.post<any>(`${this.url}/dmdp`,menuDayProduct);
 
+  }
+
+  getSearchPlatillos(platillo: string){
+    let dish = new MenuDayProductBean;
+    dish.product = new ProductBean();
+    dish.product.name = platillo;
+    return this.http.post<MenuDayProductBean[]>(`${this.url}/glsmp`,dish);
   }
 
 

@@ -7,6 +7,8 @@ import { PedidosComponent } from '../cliente/pedidos/pedidos.component';
 import { EditarPerfilComponent } from '../cliente/editar-perfil/editar-perfil.component';
 import { CarServiceService } from '../../../_service/car-service.service';
 import { OrderBean } from '../../../_model/OrderBean';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-home',
@@ -22,7 +24,7 @@ export class NavHomeComponent implements OnInit {
   @Output() totalCarrito = new EventEmitter();
 
   constructor(public dialog: MatDialog,private sharedService: SharedService,
-              public carService: CarServiceService) {
+              public carService: CarServiceService, private router: Router) {
               }
 
   ngOnInit(): void {
@@ -72,5 +74,10 @@ export class NavHomeComponent implements OnInit {
 
  getCantidad(): number {
   return this.carService.numberProductSelected;
+ }
+
+
+ showDish(nameDish: string){
+    this.router.navigate(['index/dish',nameDish]);
  }
 }
