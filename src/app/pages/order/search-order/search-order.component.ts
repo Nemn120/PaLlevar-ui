@@ -25,7 +25,7 @@ export class SearchOrderComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['status','documentNumber','name','address','total','quantity','createDate','opciones'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
-  estados: string[] = ['En camino','Atendido','Pendiente','En proceso'];
+  estados: string[] = ['Todos','En camino','Atendido','Pendiente','En proceso','Cancelado'];
   searchOrderByFieldsDTO: SearchOrderByFieldsDTO;
   DeliveryManList: UserBean[] = [];
   DeliveryManSelect: UserBean;
@@ -50,24 +50,42 @@ export class SearchOrderComponent implements OnInit {
     user.profile = new ProfileBean();
     user.profile.idProfile = 4;
     this.userService.getUserByFields(user).subscribe(data => {
+      let allUser = new UserBean()
+      allUser.nombre="Todos";
       this.ChefList = data.dataList;
+      this.ChefList.unshift(allUser);
       user.profile.idProfile = 3;
       this.userService.getUserByFields(user).subscribe(data => {
         this.DeliveryManList = data.dataList;
+        this.DeliveryManList.unshift(allUser);
+        
       })
     })
 
   }
   public getAsignOrderByFields(){
+    if (this.searchOrderByFieldsDTO.status == 'Todos')
+      this.searchOrderByFieldsDTO.status = undefined;
 
-    this.orderService.getAsignOrderByFields(this.searchOrderByFieldsDTO).subscribe(data => {  
+    if (this.DeliveryManSelect) {
+      if (this.DeliveryManSelect.id)
+        this.searchOrderByFieldsDTO.userDeliveryId = this.DeliveryManSelect.id
+      if (this.DeliveryManSelect.nombre == 'Todos')
+        this.searchOrderByFieldsDTO.userDeliveryId = undefined;
+    }
+
+    if (this.ChefSelect) {
+      if (this.ChefSelect.id)
+        this.searchOrderByFieldsDTO.userAttendId = this.ChefSelect.id;
+      if (this.ChefSelect.nombre == 'Todos')
+        this.searchOrderByFieldsDTO.userAttendId = undefined;
+    }
+
+    this.orderService.getAsignOrderByFields(this.searchOrderByFieldsDTO).subscribe(data => {
       this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.searchOrderByFieldsDTO.userDeliveryId = this.DeliveryManSelect.id;
-      this.searchOrderByFieldsDTO.userAttendId = this.ChefSelect.id;
-      
-    },error =>{
+    }, error => {
       this.orderService.mensajeCambio.next("Error al mostrar productos");
     });
     
@@ -97,5 +115,14 @@ export class SearchOrderComponent implements OnInit {
     });
   }
 
+  public setColorStatus(status : string):string{
+    switch(status){
+      case 'En camino': return '#239BAB';
+      case 'Atendido': return '#FBF2D4';
+      case 'Pendiente': return '#E64A19';
+      case 'En proceso': return '#F1894F';
+      case 'Cancelado' : return '#3E3E3E' ;
+    }
+  }
 }
 

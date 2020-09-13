@@ -21,7 +21,6 @@
 
 table {
     width: 100%;
-    
 }
 
 .example-form-field {
@@ -29,10 +28,33 @@ table {
     padding-right: 20px;
 }
 
-
 .body-component {
     width: 80%;
     height: 80%;
     background-color: #ffff;
     display: flex;
+}
+
+.mat-column-quantity {
+    flex: 0 0 75px !important;
+}
+
+.mat-column-total {
+    flex: 0 0 75px !important;
+}
+
+.mat-column-status {
+    flex: 0 0 10% !important;
+}
+
+.mat-column-documentNumber {
+    flex: 0 0 10% !important;
+}
+
+.mat-column-opciones {
+    flex: 0 0 8% !important;
+}
+
+.mat-column-createDate {
+    flex: 0 0 13% !important;
 }
