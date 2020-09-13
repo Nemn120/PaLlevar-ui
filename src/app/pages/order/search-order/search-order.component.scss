@@ -1,0 +1,60 @@
+.title-component {
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 16px;
+    margin-top: 0px;
+    padding-top: 0px;
+    width: 85%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: initial;
+    justify-content: center;
+    //flex-direction: row;
+    width: -webkit-fill-available;
+}
+
+table {
+    width: 100%;
+}
+
+.example-form-field {
+    width: 180px;
+    padding-right: 20px;
+}
+
+.body-component {
+    width: 80%;
+    height: 80%;
+    background-color: #ffff;
+    display: flex;
+}
+
+.mat-column-quantity {
+    flex: 0 0 75px !important;
+}
+
+.mat-column-total {
+    flex: 0 0 75px !important;
+}
+
+.mat-column-status {
+    flex: 0 0 10% !important;
+}
+
+.mat-column-documentNumber {
+    flex: 0 0 10% !important;
+}
+
+.mat-column-opciones {
+    flex: 0 0 8% !important;
+}
+
+.mat-column-createDate {
+    flex: 0 0 13% !important;
+}

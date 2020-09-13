@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { SearchOrderByDeliveryManDTO } from '../_DTO/SearchOrderByDeliveryManDTO';
+import { SearchOrderByFieldsDTO } from '../_DTO/SearchOrderByFieldsDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +75,9 @@ export class OrderService {
 
   getAsignOrderByDeliveryMan(searchOrderByDeliveryMan : SearchOrderByDeliveryManDTO){
     return this.http.post<any>(`${this.url}/golbdi`,searchOrderByDeliveryMan);
+  }
+
+  getAsignOrderByFields(searchOrderByFieldsDTO : SearchOrderByFieldsDTO){
+    return this.http.post<any>(`${this.url}/golbf`,searchOrderByFieldsDTO);
   }
 }

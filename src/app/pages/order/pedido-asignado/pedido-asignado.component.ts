@@ -42,15 +42,13 @@ export class PedidoAsignadoComponent implements OnInit {
       });
     });
     this.getAsignOrderByDeliveryMan();
-  }
+    }
 
   public getAsignOrderByDeliveryMan(){
     this.orderService.getAsignOrderByDeliveryMan(this.searchOrderByDeliveryManDTO).subscribe(data => {  
-      console.log(data);
       this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      
     },error =>{
       this.orderService.mensajeCambio.next("Error al mostrar productos");
     });

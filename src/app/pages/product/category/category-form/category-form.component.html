@@ -8,7 +8,7 @@
     <input matInput placeholder="Descripcion" [(ngModel)]="categoryProductSelect.description" type="tel">
 </mat-form-field>
 <br>
-<button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archvo</button>
+<button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
 <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
 <br>
 <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
