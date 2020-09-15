@@ -1,1 +1,30 @@
-<p>search-dish works!</p>
+<div class="fondo">
+    <div class="app-container">
+        <!-- <div class="restaurant-info">
+            <div class="restaurant-image">
+                <img class="restaurant-image" [src]="companySelect._foto" *ngIf="companySelect._isFoto" />
+            </div>
+            <div class="restaurant-data title-company">
+                <h2>{{this.companySelect.nombre}}</h2>
+                <h3>{{this.companySelect.description}}</h3>
+            </div>
+        </div> -->
+
+        <div class="menu-container">
+            <!-- <div class="menu-bodycat">
+                <app-sidebar></app-sidebar>
+            </div> -->
+            <div class="menu-body">
+                <p class="f-headline" class="p-card-product"><strong>Platillos</strong></p>
+
+                <div *ngIf="!sharedService.loading" class="menuProduct-container">
+                    <div *ngFor="let menuDayProduct of listaPlatillos">
+                        <div class="card">
+                            <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

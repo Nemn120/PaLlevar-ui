@@ -5,6 +5,7 @@ import { MenuDayProductBean } from '../_model/menuDayProductBean';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { ProductBean } from '../_model/ProductBean';
+import { SearchMenuDayProductFavoritesDTO } from '../_DTO/SearchMenuDayProductFavoritesDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class MenuDayProductService {
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/menuDayProduct`;
   category = 'Menu';
+  category2 = 'Favorites';
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
     }
@@ -53,5 +55,10 @@ export class MenuDayProductService {
     return this.http.post<MenuDayProductBean[]>(`${this.url}/glsmp`,dish);
   }
 
+  getMenuProductFavorites(favorites: SearchMenuDayProductFavoritesDTO){
+    favorites.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    favorites.userId = this.sharedService.getUserIdSession();
+    return this.http.post<MenuDayProductBean[]>(`${this.url}/glfmpbuao`,favorites)
+  }
 
 }

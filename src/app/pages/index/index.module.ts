@@ -22,6 +22,7 @@ import { CardProductNewComponent } from './card-product-new/card-product-new.com
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { SearchDishComponent } from './search-dish/search-dish.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
   HeaderOrganizationComponent,
   OrderConfirmComponent,
   SearchDishComponent,
+  FavoritesComponent,
 
   ],
   imports: [
@@ -77,7 +79,7 @@ const routes: Routes = [
     [
       PerfilComponent, PedidosComponent, EditarPerfilComponent,OrderConfirmComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
-      DetallePedidoComponent
+      DetallePedidoComponent, FavoritesComponent
     ],
 })
 export class IndexModule { }
