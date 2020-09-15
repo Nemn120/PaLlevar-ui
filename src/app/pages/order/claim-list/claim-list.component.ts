@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ComplaintBean } from '../../../_model/ComplaintBean';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import {ClaimDetailComponent} from '../claim-detail/claim-detail.component'
 
 @Component({
   selector: 'app-claim-list',
@@ -46,5 +47,13 @@ export class ClaimListComponent implements OnInit {
       this.complaintService.mensajeCambio.next("Error al mostrar la lista de reclamos");
     });
 
+  }
+  public openDialog(complaint?: ComplaintBean) {
+    let complaintSelect = complaint != null ? complaint : new ComplaintBean();
+    this.dialog.open(ClaimDetailComponent, {
+      width: '600',
+      height: '600',
+      data: complaintSelect
+    });
   }
 }

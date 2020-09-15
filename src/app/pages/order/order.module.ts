@@ -19,6 +19,7 @@ import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion
 import { TradeOrderComponent } from './trade-order/trade-order.component';
 import { PedidoAsignadoComponent } from './pedido-asignado/pedido-asignado.component';
 import { ClaimListComponent } from './claim-list/claim-list.component';
+import { ClaimDetailComponent } from './claim-detail/claim-detail.component';
 
 
 
@@ -37,7 +38,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, ClaimListComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, ClaimListComponent, ClaimDetailComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,
@@ -50,6 +51,6 @@ const routes: Routes = [
   exports:[
     AttendOrderDetailComponent
   ],
-  entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent,DialogoConfirmacionComponent]
+  entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent,DialogoConfirmacionComponent,ClaimDetailComponent]
 })
 export class OrderModule { }
