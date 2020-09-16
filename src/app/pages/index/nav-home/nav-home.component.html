@@ -7,35 +7,35 @@
         <mat-icon style="width: 30px; padding-left: 0px;">home</mat-icon>
     </button>
 
-    
+
 
     <!--
 
         <form class="example-form" action="">
-        
+
             <input class="searchDish" type="text" placeholder="ingrese el platillo a buscar"  matInput/>
             <mat-autocomplete>
                 <mat-option *ngFor="let dish of dishes" >
                 </mat-option>
             </mat-autocomplete>
 
-            
+
         </form>
 
         <button mat-icon-button class="searchDishButton" routerLink="/platillo" (click)="showDish()">BUSCAR</button>
     -->
-    
 
-    
 
-    
+
+
+
 
     <div class="example-spacer"></div>
 
 
     <!--carrito-->
     <button mat-icon-button color="primary" (click)="openDialogCar()">
-        <mat-icon matBadge="{{cantidad}}" matBadgeColor="primary">shopping_cart</mat-icon>
+        <mat-icon  matBadge="{{cantidad > 0 ? cantidad: ''}}" matBadgeColor="primary">shopping_cart</mat-icon>
     </button>
 
     <!--No esta logueado-->

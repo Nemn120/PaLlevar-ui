@@ -113,6 +113,12 @@ export class CarDialogComponent implements OnInit {
               });
             } else {
               this.router.navigate(['auth/login']);
+              if(this.sharedService.userSession){
+                numSelected.forEach(x => {
+                  this.sendOrderCar.orderDetail.push(x);
+                  this.carService.numberProductSelected--;
+                });
+              }
             }
           }
 

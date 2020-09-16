@@ -26,16 +26,14 @@ export class OrganizationFormNewComponent implements OnInit {
   companias: CompanyBean[];
   companySelect: CompanyBean;
   imagenEstado = false;
-
-
+  statusSelected: string;
+  pagoSelected: string;
   initSchedulle: null;
   endSchedulle: null;
 
   lineCodes: number[] = [1, 2, 3, 4];
 
   email = new FormControl('', [Validators.required, Validators.email]);
-  statusSelected: string;
-  pagoSelected: string;
 
   constructor(private formBuilder: FormBuilder,
               private companyService: OrganizationService,
@@ -145,7 +143,7 @@ export class OrganizationFormNewComponent implements OnInit {
       this.currentFileUpload = new File([''], 'blanco');
     }
 
-     this.companyService.saveCompany(this.companySelect).subscribe(data => {
+     this.companyService.saveCompany(this.companySelect, this.currentFileUpload, this.currentFileUpload).subscribe(data => {
       this.companyService.getListCompany().subscribe(data2 => {
         this.companyService.companyCambio.next(data2);
 
@@ -156,7 +154,7 @@ export class OrganizationFormNewComponent implements OnInit {
         }
       });
     }, error => {
-      this.companyService.mensajeCambio.next('Error al actualizar/modificar compañia');
+      this.companyService.mensajeCambio.next('Error al actualizar/modificar compañia'+ error);
     });
 
 
