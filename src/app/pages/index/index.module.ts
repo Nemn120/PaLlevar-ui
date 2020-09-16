@@ -22,6 +22,8 @@ import { CardProductNewComponent } from './card-product-new/card-product-new.com
 import { HeaderOrganizationComponent } from './header-organization/header-organization.component';
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { EnviarMensajeComponent } from './cliente/enviar-mensaje/enviar-mensaje.component';
+import {ClaimDetailComponent} from '../../_shared/claim-detail/claim-detail.component';
+
 
 
 const routes: Routes = [
@@ -58,6 +60,7 @@ const routes: Routes = [
   HeaderOrganizationComponent,
   OrderConfirmComponent,
   EnviarMensajeComponent,
+  
 
   ],
   imports: [
@@ -67,6 +70,7 @@ const routes: Routes = [
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
+   
   ],
   exports: [
     RouterModule,
@@ -77,7 +81,7 @@ const routes: Routes = [
     [
       PerfilComponent, PedidosComponent, EditarPerfilComponent,OrderConfirmComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
-      DetallePedidoComponent,EnviarMensajeComponent
+      DetallePedidoComponent,EnviarMensajeComponent,ClaimDetailComponent
     ],
 })
 export class IndexModule { }

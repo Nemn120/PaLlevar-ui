@@ -11,7 +11,9 @@ import { DialogoConfirmacionComponent } from '../../../../_shared/dialogo-confir
 import { Message } from '../../../../_DTO/messageDTO';
 import { DataClientDialogComponent } from '../../../../_shared/data-client-dialog/data-client-dialog.component';
 import { OrderBean } from '../../../../_model/OrderBean';
-
+import {ClaimDetailComponent} from '../../../../_shared/claim-detail/claim-detail.component';
+import { ComplaintBean } from '../../../../_model/ComplaintBean';
+import { ComplaintService } from '../../../../_service/complaint.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -25,10 +27,12 @@ export class PedidosComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail','message'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
+  dataSource1: MatTableDataSource<ComplaintBean>;
+  
  
   constructor(
     private orderService: OrderService, private dialog: MatDialog,private snackBar: MatSnackBar,
-    private pedidos: OrderService
+    private pedidos: OrderService, private complaintService: ComplaintService
     
   ) { }
 
@@ -46,6 +50,11 @@ export class PedidosComponent implements OnInit {
     },error =>{
       this.pedidos.mensajeCambio.next("Error al mostrar");
     });
+
+    
+    
+
+    
 
   }
   public openDialog(order: OrderBean) {
@@ -85,12 +94,26 @@ public editarPedido(order: OrderBean) {
     data: orderSelect
   });
 }
-public sendMessage(order: OrderBean) {
+public sendMessage(order: OrderBean, complaint: ComplaintBean) {
   let ord = order != null ? order : new OrderBean();
-  this.dialog.open(EnviarMensajeComponent, {
-    width: '600',
-    height: '700',
-    data: ord
-  });
+    let complaintSelect = complaint != null ? complaint : new ComplaintBean();
+    
+    this.complaintService.getListComplaintByOrg().subscribe(data => {  
+      this.dataSource1 = new MatTableDataSource(data.data);
+      if (this.dataSource1.data=undefined){
+      
+        this.dialog.open(ClaimDetailComponent,{
+            data: complaintSelect
+        });
+      }
+      else
+      this.dialog.open(EnviarMensajeComponent, {
+        data: ord
+    });
+    
+
+});
+
+ 
 }
 } 

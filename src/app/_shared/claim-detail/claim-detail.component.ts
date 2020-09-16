@@ -19,6 +19,8 @@ export class ClaimDetailComponent implements OnInit {
   currentFileUpload: File;
   labelFile: string;
   loadingSpinner:boolean=false;
+  fechaCreacion: Date;
+  fecha:string;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: ComplaintBean, private snackBar: MatSnackBar,
   private complaintService:ComplaintService,private sanitization: DomSanitizer,) { }
@@ -30,6 +32,8 @@ export class ClaimDetailComponent implements OnInit {
       this.complaintSelect.id = this.data.id;
       this.complaintSelect.titulo = this.data.titulo;
       this.complaintSelect.description=this.data.description;
+      this.fechaCreacion = new Date(this.data.createDate);
+      this.fecha=this.fechaCreacion.toLocaleString();
       this.complaintSelect.userCreateId = this.data.userCreateId;
       this.complaintService.getPhotoById(this.data.id).subscribe(data => {
         if (data.size > 0)
@@ -59,3 +63,4 @@ export class ClaimDetailComponent implements OnInit {
     this.imagenEstado=true;
   }
 }
+ 

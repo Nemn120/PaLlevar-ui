@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ComplaintBean } from '../../../_model/ComplaintBean';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import {ClaimDetailComponent} from '../claim-detail/claim-detail.component'
+import {ClaimDetailComponent} from '../../../_shared/claim-detail/claim-detail.component'
 
 @Component({
   selector: 'app-claim-list',

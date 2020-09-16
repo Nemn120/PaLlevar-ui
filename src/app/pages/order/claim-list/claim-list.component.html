@@ -2,7 +2,7 @@
     <p>
         <mat-toolbar class="title-component">
             <span>Listado de reclamos</span>
-
+ 
         </mat-toolbar>
     </p>
     <div class="carousel-item " style="display: flex; width: 80%;">
@@ -35,7 +35,7 @@
                 <ng-container matColumnDef="createDate">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
-                </ng-container>
+                </ng-container> 
 
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

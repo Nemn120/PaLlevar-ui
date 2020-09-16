@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataClientDialogComponent } from './data-client-dialog/data-client-dialog.component';
 import { MapsModule } from '../maps/mapa-cliente/maps.module';
 import { MapaClienteComponent } from '../maps/mapa-cliente/mapa-cliente.component';
+import { ClaimDetailComponent } from './claim-detail/claim-detail.component';
 
 
 
@@ -14,6 +15,7 @@ import { MapaClienteComponent } from '../maps/mapa-cliente/mapa-cliente.componen
     [
       DialogoConfirmacionComponent,
       DataClientDialogComponent,
+      ClaimDetailComponent,
 
     ],
   imports: [
