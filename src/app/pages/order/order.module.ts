@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'search', component: SearchOrderComponent, canActivate: [GuardService]  },
   { path: 'trade', component: TradeOrderComponent, canActivate: [GuardService]  },
   { path: 'delivered', component: PedidoAsignadoComponent, canActivate: [GuardService]  },
- 
+
   ]}
 ];
 
@@ -47,7 +47,7 @@ const routes: Routes = [
     SharedModule
   ],
   exports:[
-    AttendOrderDetailComponent
+    AttendOrderDetailComponent, DashboardComponent
   ],
   entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent,DialogoConfirmacionComponent]
 })
