@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  HOST: "https://pallevar-backend-2020-prod.herokuapp.com",
+  HOST: "https://pallevar-backend-2020.herokuapp.com",
   PRECIO_ENTRADA: 'ENT',
   TOKEN_NAME : 'access_token',
   TOKEN_AUTH_USERNAME: 'pallevarR',
