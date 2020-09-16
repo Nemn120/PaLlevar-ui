@@ -7,9 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SucursalShowComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
-
 }
