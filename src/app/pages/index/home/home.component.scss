@@ -1,9 +1,9 @@
         .app-container {
             transition: all .3s ease;
-            width: 1440px;
+            //width: 1440px;
             min-height: 900px;
             padding-left: 20px;
-            padding-right: 20px;
+            // padding-right: 20px;
             margin: auto;
             //max-width: 1240px;
             // background-color: cornflowerblue;
@@ -17,11 +17,11 @@
             border-radius: 8px;
             background-color: #fff;
             max-width: 1560px;
-            padding: 20px 20px;
+            padding: 20px 0px;
             margin-top: 20px;
             display: auto;
             float: left;
-            margin-left: 60px // width: 15%;
+            margin-left: 80px // width: 15%;
         }
         
         .restaurant-info {
@@ -63,7 +63,7 @@
             //padding: 30px 20px;
             margin-top: 0px;
             width: 100%;
-            margin-left: 20px;
+            // margin-left: 20px;
             display: auto;
             float: inherit;
             height: initial;
@@ -124,6 +124,7 @@
         @media (max-width: 800px) {
             .menu-bodycat {
                 width: fit-content;
+                margin-left: 60px;
             }
             .menuProduct-container {
                 display: contents;

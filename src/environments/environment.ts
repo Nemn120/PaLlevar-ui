@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  //HOST: "https://hidden-wildwood-21108.herokuapp.com", // PRUEBAS - ANTIGUAS
+  HOST: "https://hidden-wildwood-21108.herokuapp.com", // PRUEBAS - ANTIGUAS
   //HOST:  "http://localhost:8080",https://fathomless-spire-26742.herokuapp.com/ //LOCAL
-  HOST: "https://pallevar-backend-2020.herokuapp.com", // QA NUEVO 
+  // HOST: "https://pallevar-backend-2020.herokuapp.com", // QA NUEVO
 
   PRECIO_ENTRADA: 'ENT',
   TOKEN_NAME : 'access_token',
