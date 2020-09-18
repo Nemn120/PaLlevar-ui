@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { CarServiceService } from 'src/app/_service/car-service.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material/dialog';
+import { MapaComponent } from 'src/app/maps/mapa/mapa.component';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +26,8 @@ export class HomeComponent implements OnInit {
     private snackBar: MatSnackBar,
     private sanitization: DomSanitizer,
     private cardService: CarServiceService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dialogMap: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +61,16 @@ export class HomeComponent implements OnInit {
 
   setterPhoto (data: any) {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
+  }
+
+  //abrir mapa general de empresas
+  verMapa(){
+    this.dialogMap.open(MapaComponent, {
+      data:this.menuOrgList,
+      width: '80%',
+      height: '80%',
+
+    });
   }
 
 }
