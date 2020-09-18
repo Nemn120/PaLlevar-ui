@@ -112,8 +112,8 @@ export class OrganizationViewComponent implements OnInit {
 
   updatePlace(){
     this.dialogMap.open(MapaEmpresaComponent, {
-      width: '50%',
-      height: '60%',
+      width: '65%',
+      height: '75%',
     });
 
   }
