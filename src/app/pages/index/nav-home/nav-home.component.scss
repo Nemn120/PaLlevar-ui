@@ -125,14 +125,12 @@
         .mat-toolbar-single-row {
             box-sizing: content-box;
         }
-
-
+        
         .example-form {
             min-width: 150px;
             max-width: 500px;
             height: 44px;
             width: 30%;
-            
             line-height: 44px;
             background: #f4f4f4;
             color: #ff441f;
@@ -140,23 +138,23 @@
             font-size: 16px;
             border-radius: 15px;
             border: 2px solid black;
-          }
-
-        .searchDish{
+        }
+        
+        .searchDish {
             position: relative;
-            display:inline-block;
+            display: inline-block;
             font-size: 20px;
             box-sizing: border-box;
         }
         
-        .searchDish[type="text"]{
+        .searchDish[type="text"] {
             background: #f4f4f4;
             padding-left: 10px;
             border: none;
             outline: none;
         }
-
-        .searchDishButton{
+        
+        .searchDishButton {
             position: relative;
             right: 20px;
             line-height: 44px;
@@ -164,12 +162,18 @@
             border: 2px solid black;
             width: 100px;
             height: 48px;
-            color:white;
+            color: white;
             outline: none;
             cursor: pointer;
             background: orange;
         }
-
-        .serchDishButton:hover{
+        
+        .serchDishButton:hover {
             background: #ff5722;
+        }
+        
+        @media (max-width: 800px) {
+            h1 {
+                font-size: 35px !important;
+            }
         }

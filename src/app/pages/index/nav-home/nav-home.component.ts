@@ -6,6 +6,8 @@ import { CarDialogComponent } from '../car-dialog/car-dialog.component';
 import { PedidosComponent } from '../cliente/pedidos/pedidos.component';
 import { EditarPerfilComponent } from '../cliente/editar-perfil/editar-perfil.component';
 import { CarServiceService } from '../../../_service/car-service.service';
+import { DashboardService } from '../../../_service/dashboard.service';
+
 import { OrderBean } from '../../../_model/OrderBean';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/_service/login.service';

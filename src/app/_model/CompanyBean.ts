@@ -26,7 +26,7 @@ export class CompanyBean{
     createDate: Date ;
     userAdmin: UserBean ;
     _foto: any ;
-    
+
     businessLineCode: string;
     paymentMethodCode: string ;
     status: string;

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  HOST:"http://localhost:8080", // "https://pallevar-backend-2020.herokuapp.com", // "http://localhost:8080", // "https://hidden-wildwood-21108.herokuapp.com",//,
-  PRECIO_ENTRADA: 'ENT',
+  //HOST:"http://localhost:8080", // "https://hidden-wildwood-21108.herokuapp.com",
+  HOST: "https://pallevar-backend-2020.herokuapp.com",
   TOKEN_NAME : 'access_token',
   TOKEN_AUTH_USERNAME: 'pallevarR',
   TOKEN_AUTH_PASSWORD: 'pallevarx',

@@ -16,7 +16,7 @@ export class CardOrganizationComponent implements OnInit {
 
   orgSelect: CompanyBean;
   imgDefault = '../../../../assets/icon-cubiertos.jpg';
-  
+
   constructor(
     private dialog: MatDialog,
     private orgService: OrganizationService,

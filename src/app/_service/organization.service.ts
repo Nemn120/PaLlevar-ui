@@ -42,7 +42,7 @@ export class OrganizationService {
   }
 
   saveCompany(company : CompanyBean, logoImage?:File,panelImage?:File) {
-    //return this.http.post<CompanyBean>(`${this.url}/sco`,company);
+    /* return this.http.post<CompanyBean>(`${this.url}/sco`,company); */
     let formdata: FormData = new FormData();
     formdata.append('logoImage', logoImage);
     formdata.append('panelImage', panelImage);

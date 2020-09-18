@@ -23,8 +23,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ConfirmDeliveryOrderComponent } from './confirm-delivery-order/confirm-delivery-order.component';
 import { IndexModule } from '../index/index.module';
 import { OrderConfirmComponent } from '../index/order-confirm/order-confirm.component';
-
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
  { path: '', component: SidebarSidenavComponent ,
@@ -41,7 +40,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent, ConfirmDeliveryOrderComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent, ConfirmDeliveryOrderComponent,DashboardComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,
@@ -53,7 +52,7 @@ const routes: Routes = [
     IndexModule
   ],
   exports:[
-    AttendOrderDetailComponent
+    AttendOrderDetailComponent, DashboardComponent
   ],
   entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent,DialogoConfirmacionComponent
   ,DeliverymanDetailComponent,UserDetailComponent,OrderConfirmComponent,DialogoConfirmacionComponent]
