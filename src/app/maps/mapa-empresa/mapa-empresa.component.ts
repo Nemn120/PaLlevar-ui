@@ -1,7 +1,7 @@
-import { Marker } from 'mapbox-gl';
-import { Component,NgZone} from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, NgZone } from '@angular/core';
 import { MapService } from '../../_service/map.service';
+import { Marker } from 'mapbox-gl';
+import { MatDialogRef } from '@angular/material/dialog';
 import { NotificationService } from '../../_service/notification.service';
 
 @Component({
@@ -9,10 +9,10 @@ import { NotificationService } from '../../_service/notification.service';
   templateUrl: './mapa-empresa.component.html',
   styleUrls: ['./mapa-empresa.component.scss']
 })
-export class MapaEmpresaComponent  {
+export class MapaEmpresaComponent {
 
-  coordinates: number[];
   estadoMarker: boolean = false;
+
   positionMarker: number[];
   long: number = -77.0824914;
   lat: number = -12.0587117;
@@ -26,7 +26,29 @@ export class MapaEmpresaComponent  {
     dialogMap.disableClose = true
   }
 
-  //REASIGNA LA POSICION DEL MARKER
+
+
+  //CAPTURA LOS RESULTADOS DEL GEOCODER
+  onGeocoder(resultado: any) {
+    this.long = resultado.result.geometry.coordinates[0];
+    this.lat = resultado.result.geometry.coordinates[1];
+  }
+
+  //CAPTURA RESULTADO DEL GEOLOCATE
+  onGeolocate(position: Position) {
+    this.long = position.coords.longitude;
+    this.lat = position.coords.latitude;
+  }
+
+
+  //CAPTURA EL RESULTADO DEL MOVIMIENTO DEL MARKER
+  onDragEnd(marker: Marker) {
+    NgZone.assertInAngularZone();//DETECCION DE CAMBIOS ASINCRONICOS
+    this.long = marker.getLngLat().lng;
+    this.lat = marker.getLngLat().lat;
+  }
+
+  //ACTUALIZA COORDENADAS
   updateMarker() {
     if (!this.estadoMarker) {
       this.estadoMarker = true;
@@ -36,47 +58,31 @@ export class MapaEmpresaComponent  {
     }
   }
 
-  //BUSCADOR
-  onGeocoder(resultado: any) {
-    this.long = resultado.result.geometry.coordinates[0];
-    this.lat = resultado.result.geometry.coordinates[1];
-  }
-
-  //GEOLOCALIZADOR
-  onGeolocate(position: Position) {
-    this.long = position.coords.longitude;
-    this.lat = position.coords.latitude;
-  }
-
-
-  //MOVER MARKER
-  onDragEnd(marker: Marker) {
-    NgZone.assertInAngularZone();
-    this.long = marker.getLngLat().lng;
-    this.lat = marker.getLngLat().lat;
-  }
-
-  closeMap() {
-    this.dialogMap.close();
-  }
-
-  //GUARDAR UBICACION EXACTA
+  //GUARDAR UBICACION SELECCIONADA
   save() {
     this.mapService.newPlace.longitud = this.long;
     this.mapService.newPlace.latitud = this.lat;
+
+    console.log('coordenadasIn: ', this.long, ' , ', this.lat);
     this.findPlace(this.long, this.lat);
+
     this.notification.openSnackBar('Ubicacion establecida con exito');
     this.dialogMap.close();
   }
 
-  //BUSQUEDA DEL LUGAR EXACTO
+  //BUSCA EL LUGAR  APARTIR DE LAS COODENADAS
   findPlace(long: number, lat: number) {
     this.mapService.getPlace(long, lat).subscribe(
       data => {
-      console.log('lugar obtenido de la url: ', data.features[0].place_name);
-       this.mapService.newPlace.nombre=data.features[0].place_name;
-
+        console.log('dataOut: ', data);
+        console.log('placeOut: ', data.features[0].place_name);
+        this.mapService.newPlace.nombre = data.features[0].place_name;
       })
+  }
+
+  //CERRAR MAPA
+  closeMap() {
+    this.dialogMap.close();
   }
 
 }
