@@ -10,6 +10,8 @@ import { DashboardService } from '../../../_service/dashboard.service';
 
 import { OrderBean } from '../../../_model/OrderBean';
 import { Router } from '@angular/router';
+import { UserBean } from 'src/app/_model/UserBean';
+import { UserService } from 'src/app/_service/user.service';
 
 @Component({
   selector: 'app-nav-home',
@@ -20,7 +22,7 @@ export class NavHomeComponent implements OnInit {
 
   logo2 = '../../../../assets/images/motoDelivery.gif';
   logueado = false;
-
+  user: UserBean;
   cantidad: number;
   @Output() totalCarrito = new EventEmitter();
 
@@ -37,6 +39,8 @@ export class NavHomeComponent implements OnInit {
       this.cantidad = this.getCantidad();
       this.totalCarrito.emit(this.cantidad);
     }, 1000);
+
+    this.user = this.sharedService.userSession;
   }
 
   cerrar() {
@@ -78,6 +82,6 @@ export class NavHomeComponent implements OnInit {
  }
 
  showDish(){
-   
+
  }
 }
