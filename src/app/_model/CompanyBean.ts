@@ -1,4 +1,5 @@
 import { UserBean } from './UserBean';
+import { PlaceBean } from './PlaceBean';
 export class CompanyBean{
     /* id:number;
     nombre:string;
@@ -43,5 +44,5 @@ export class CompanyBean{
     _panelImage: any;
     _flagPanelImage:boolean;
 
-
+    place:PlaceBean;
 }

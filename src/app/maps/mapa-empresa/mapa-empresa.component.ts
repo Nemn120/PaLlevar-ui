@@ -17,16 +17,16 @@ export class MapaEmpresaComponent {
   long: number = -77.0824914;
   lat: number = -12.0587117;
 
+  name:String='';
+
   constructor
     (
-      private dialogMap: MatDialogRef<MapaEmpresaComponent>,
       private mapService: MapService,
       private notification: NotificationService,
+      private dialogMap: MatDialogRef<MapaEmpresaComponent>,
   ) {
     dialogMap.disableClose = true
   }
-
-
 
   //CAPTURA LOS RESULTADOS DEL GEOCODER
   onGeocoder(resultado: any) {
@@ -39,7 +39,6 @@ export class MapaEmpresaComponent {
     this.long = position.coords.longitude;
     this.lat = position.coords.latitude;
   }
-
 
   //CAPTURA EL RESULTADO DEL MOVIMIENTO DEL MARKER
   onDragEnd(marker: Marker) {
@@ -59,13 +58,13 @@ export class MapaEmpresaComponent {
   }
 
   //GUARDAR UBICACION SELECCIONADA
-  save() {
-    this.mapService.newPlace.longitud = this.long;
-    this.mapService.newPlace.latitud = this.lat;
-
+  save() {    
     console.log('coordenadasIn: ', this.long, ' , ', this.lat);
     this.findPlace(this.long, this.lat);
 
+    this.mapService.newPlace.longitud = this.long;
+    this.mapService.newPlace.latitud = this.lat;
+    this.mapService.newPlace.nombre = this.name;
     this.notification.openSnackBar('Ubicacion establecida con exito');
     this.dialogMap.close();
   }
@@ -76,12 +75,15 @@ export class MapaEmpresaComponent {
       data => {
         console.log('dataOut: ', data);
         console.log('placeOut: ', data.features[0].place_name);
-        this.mapService.newPlace.nombre = data.features[0].place_name;
+        this.name=data.features[0].place_name;
       })
   }
 
   //CERRAR MAPA
   closeMap() {
+    this.mapService.newPlace.longitud =0;
+    this.mapService.newPlace.latitud = 0;
+    this.mapService.newPlace.nombre ='';
     this.dialogMap.close();
   }
 

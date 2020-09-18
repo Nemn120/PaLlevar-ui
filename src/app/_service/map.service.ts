@@ -16,7 +16,7 @@ export class MapService {
 
   constructor(private httpClient: HttpClient) { }
 
-  //OBTENCION DE LA DIRECCION EXACTA APARTIR DE LAS COORDENADAS
+  //OBTENCION DEL LUGAR APARTIR COORDENADAS
   getPlace(long: number, lat: number): Observable<any> {
     return this.httpClient.get<any>(`${this.urlPlace}/${long},${lat}.json?types=poi&access_token=${environment.TOKEN_MAPBOX}`);
   }
