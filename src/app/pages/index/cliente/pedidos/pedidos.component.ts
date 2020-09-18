@@ -101,13 +101,13 @@ public sendMessage(order: OrderBean) {
     this.complaintService.getComplaintByOrderId(order.id).subscribe(data => {  
       if (data.data){
         this.dialog.open(ClaimDetailComponent,{
-  
+          data: data.data
       });
         
       }
       else
       this.dialog.open(EnviarMensajeComponent, {
-   
+          data: ord
     });
      
     });
