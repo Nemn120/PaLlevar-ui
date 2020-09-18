@@ -86,7 +86,7 @@
                 </mat-card-header>
                 <mat-divider style="position: inherit;"></mat-divider>
                 <br>
-                <mat-panel-title>
+                <mat-panel-title *ngIf="this.companySelect.place">
                     {{this.companySelect.place.nombre}}
                 </mat-panel-title>
             </mat-card>
