@@ -14,6 +14,8 @@ export class MapaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    //FILTRADO DE UBICACIONES
     for (let i of this.data) {
       if (i.place.longitud != null) {
         this.lista.push(i);
