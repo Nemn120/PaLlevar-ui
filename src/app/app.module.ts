@@ -17,8 +17,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 
-
-
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
   let token = tk != null ? tk : '';
@@ -28,7 +26,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-   
   ],
   imports: [
     BrowserModule,

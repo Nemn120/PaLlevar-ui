@@ -20,6 +20,9 @@ import { TradeOrderComponent } from './trade-order/trade-order.component';
 import { PedidoAsignadoComponent } from './pedido-asignado/pedido-asignado.component';
 import { DeliverymanDetailComponent } from './deliveryman-detail/deliveryman-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { ConfirmDeliveryOrderComponent } from './confirm-delivery-order/confirm-delivery-order.component';
+import { IndexModule } from '../index/index.module';
+import { OrderConfirmComponent } from '../index/order-confirm/order-confirm.component';
 
 
 
@@ -31,13 +34,14 @@ const routes: Routes = [
   { path: 'search', component: SearchOrderComponent, canActivate: [GuardService]  },
   { path: 'trade', component: TradeOrderComponent, canActivate: [GuardService]  },
   { path: 'delivered', component: PedidoAsignadoComponent, canActivate: [GuardService]  },
+  { path: 'confirm-delivery', component: ConfirmDeliveryOrderComponent, canActivate: [GuardService]  },
  
   ]}
 ];
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent, ConfirmDeliveryOrderComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,
@@ -45,12 +49,13 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    IndexModule
   ],
   exports:[
     AttendOrderDetailComponent
   ],
   entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent,DialogoConfirmacionComponent
-  ,DeliverymanDetailComponent,UserDetailComponent]
+  ,DeliverymanDetailComponent,UserDetailComponent,OrderConfirmComponent,DialogoConfirmacionComponent]
 })
 export class OrderModule { }

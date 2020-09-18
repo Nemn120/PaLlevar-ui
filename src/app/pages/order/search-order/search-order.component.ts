@@ -122,6 +122,7 @@ export class SearchOrderComponent implements OnInit {
       case 'Pendiente': return '#E64A19';
       case 'En proceso': return '#F1894F';
       case 'Cancelado' : return '#3E3E3E' ;
+      case 'Entregado' : return '#0CA05B' ;
     }
   }
 }

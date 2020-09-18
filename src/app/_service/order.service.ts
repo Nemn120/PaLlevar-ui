@@ -41,9 +41,8 @@ export class OrderService {
 
   getListOrderDelivery() {
     this.order.organizationId = this.sharedService.getOrganizationIdByUserSession();
-    return this.http.post<OrderBean[]>(`${this.url}/glody`,this.order);
+    return this.http.post<any>(`${this.url}/glody`,this.order);
   }
-
 
   getListOrderByUserId() {
     this.order.organizationId = this.sharedService.getUserIdSession();
@@ -80,4 +79,11 @@ export class OrderService {
   getAsignOrderByFields(searchOrderByFieldsDTO : SearchOrderByFieldsDTO){
     return this.http.post<any>(`${this.url}/golbf`,searchOrderByFieldsDTO);
   }
+
+  saveConfirmDeliveryOrder(order: OrderBean){
+    return this.http.post<any>(`${this.url}/scdo`,order);
+  }
+
+
+
 }
