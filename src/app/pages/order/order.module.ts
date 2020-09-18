@@ -34,6 +34,7 @@ const routes: Routes = [
   { path: 'trade', component: TradeOrderComponent, canActivate: [GuardService]  },
   { path: 'delivered', component: PedidoAsignadoComponent, canActivate: [GuardService]  },
   { path: 'confirm-delivery', component: ConfirmDeliveryOrderComponent, canActivate: [GuardService]  },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [GuardService]  },
  
   ]}
 ];
