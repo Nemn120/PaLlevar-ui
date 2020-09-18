@@ -1,0 +1,27 @@
+<h1>Enviar Reclamo o Comentario</h1>
+<mat-form-field style="width: 100%;">
+    <!-- Los datos ingresados lo guarda en la variable -->
+    <input matInput placeholder="Titulo" [(ngModel)]="complaint.titulo">
+
+</mat-form-field>
+<br>
+<mat-form-field style="width: 100%;">
+    <textarea  matInput rows="5" placeholder="Mensaje" [(ngModel)]="complaint.description"></textarea>
+</mat-form-field>
+<br>
+
+<br>
+<div>
+    <button style="width: 100%;" color="primary" mat-raised-button onclick="document.getElementById('flArchivo').click();" >Seleccionar Foto</button>
+    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+    <br>
+    <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+    <p>{{labelFile}}</p>
+    <br>
+</div>
+<br>
+
+<div style="float:right;">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="enviarMensaje()">Enviar mensaje</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+</div>

@@ -23,7 +23,8 @@ import { HeaderOrganizationComponent } from './header-organization/header-organi
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { SearchDishComponent } from './search-dish/search-dish.component';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
-
+import { EnviarMensajeComponent } from './cliente/enviar-mensaje/enviar-mensaje.component';
+import {ClaimDetailComponent} from '../../_shared/claim-detail/claim-detail.component';
 
 const routes: Routes = [
 
@@ -59,6 +60,7 @@ const routes: Routes = [
   HeaderOrganizationComponent,
   OrderConfirmComponent,
   SearchDishComponent,
+  EnviarMensajeComponent
 
   ],
   imports: [
@@ -79,7 +81,7 @@ const routes: Routes = [
     [
       PerfilComponent, PedidosComponent, EditarPerfilComponent,OrderConfirmComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
-      DetallePedidoComponent
+      DetallePedidoComponent,EnviarMensajeComponent,ClaimDetailComponent
     ],
 })
 export class IndexModule { }
