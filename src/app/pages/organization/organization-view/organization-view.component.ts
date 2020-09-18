@@ -9,7 +9,7 @@ import { EditProtocolsComponent } from '../edit-protocols/edit-protocols.compone
 import { OrganizationEditComponent } from '../organization-edit/organization-edit.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MapaEmpresaComponent } from '../../../maps/mapa-empresa/mapa-empresa.component';
-import { MapService } from 'ngx-mapbox-gl';
+
 @Component({
   selector: 'app-organization-view',
   templateUrl: './organization-view.component.html',
@@ -30,7 +30,7 @@ export class OrganizationViewComponent implements OnInit {
     private sanitization: DomSanitizer,
     private snackBar: MatSnackBar,
     private dialogMap: MatDialog,
-    private mapService:MapService,
+    
   ) { }
 
   ngOnInit(): void {
@@ -114,6 +114,7 @@ export class OrganizationViewComponent implements OnInit {
 
   updatePlace(){
     this.dialogMap.open(MapaEmpresaComponent, {
+      data: this.companySelect,
       width: '65%',
       height: '75%',
     });
