@@ -36,6 +36,7 @@ export class OrganizationEditComponent implements OnInit {
       this.companySelect.additionalInformationProtocol=this.data.additionalInformationProtocol;
       this.companySelect.timeEstimatedProtocol=this.data.timeEstimatedProtocol;
       this.companySelect.description=this.data.description;
+      console.log(this.data);
     }
   }
 

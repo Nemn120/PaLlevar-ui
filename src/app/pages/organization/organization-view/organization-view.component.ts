@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CompanyBean } from '../../../_model/CompanyBean';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { OrganizationService } from '../../../_service/organization.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SharedService } from '../../../_service/shared.service';
@@ -8,6 +8,8 @@ import { FormBuilder } from '@angular/forms';
 import { EditProtocolsComponent } from '../edit-protocols/edit-protocols.component';
 import { OrganizationEditComponent } from '../organization-edit/organization-edit.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MapaEmpresaComponent } from '../../../maps/mapa-empresa/mapa-empresa.component';
+
 @Component({
   selector: 'app-organization-view',
   templateUrl: './organization-view.component.html',
@@ -26,8 +28,9 @@ export class OrganizationViewComponent implements OnInit {
     private dialog: MatDialog,
     public sharedService: SharedService,
     private sanitization: DomSanitizer,
-    private snackBar: MatSnackBar
-
+    private snackBar: MatSnackBar,
+    private dialogMap: MatDialog,
+    
   ) { }
 
   ngOnInit(): void {
@@ -105,6 +108,15 @@ export class OrganizationViewComponent implements OnInit {
   openDialogEditOrganization() {
     this.dialog.open(OrganizationEditComponent, {
       data: this.companySelect
+    });
+
+  }
+
+  updatePlace(){
+    this.dialogMap.open(MapaEmpresaComponent, {
+      data: this.companySelect,
+      width: '65%',
+      height: '75%',
     });
 
   }

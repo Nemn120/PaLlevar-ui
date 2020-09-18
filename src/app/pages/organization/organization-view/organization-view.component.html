@@ -27,6 +27,7 @@
         <div _ngcontent-gpp-c71="" id="tab1" class="tab-pane"></div>
         <div _ngcontent-gpp-c71="" id="tab2" class="tab-pane"></div>
         <div _ngcontent-gpp-c71="" id="tab3" class="tab-pane"></div>
+
     </div>
     <div class="card-container">
         <div class="card-detailIz" style="margin-right:20px;">
@@ -73,7 +74,26 @@
                     <textarea readonly="true" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="12">{{this.companySelect.additionalInformationProtocol}}</textarea>
                 </mat-expansion-panel>
             </mat-accordion>
+
+            <!--ubicacion de empresa-->
+            <br>
+            <mat-card style="margin-bottom: 10px;" hideToggle>
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title style="margin:0;">Ubicacion del negocio
+                    </mat-card-title>
+                    <button style="position: absolute;float: right; right: 3%;" mat-raised-button color="primary" (click)="updatePlace()">Actualizar</button>
+                </mat-card-header>
+                <mat-divider style="position: inherit;"></mat-divider>
+                <br>
+                <mat-panel-title>
+                    {{this.companySelect.place.nombre}}
+                </mat-panel-title>
+            </mat-card>
+            <!---->
+
         </div>
+
         <mat-card class="card-detailDer ">
             <mat-card-header>
                 <mat-card-title>Información</mat-card-title>
