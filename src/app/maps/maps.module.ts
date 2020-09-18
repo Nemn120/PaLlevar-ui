@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment.prod';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { MapaClienteComponent } from './mapa-cliente/mapa-cliente.component';
 import { MapaEmpresaComponent } from './mapa-empresa/mapa-empresa.component';
+import { MapaComponent } from './mapa/mapa.component';
 
 
 
@@ -15,6 +16,7 @@ import { MapaEmpresaComponent } from './mapa-empresa/mapa-empresa.component';
   declarations: [
     MapaClienteComponent,
     MapaEmpresaComponent,
+    MapaComponent,
   ],
   imports: [
     CommonModule,
