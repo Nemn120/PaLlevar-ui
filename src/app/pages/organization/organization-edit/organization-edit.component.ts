@@ -3,6 +3,7 @@ import { CompanyBean } from '../../../_model/CompanyBean';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OrganizationService } from '../../../_service/organization.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PlaceBean } from 'src/app/_model/PlaceBean';
 
 @Component({
   selector: 'app-organization-edit',
@@ -36,7 +37,10 @@ export class OrganizationEditComponent implements OnInit {
       this.companySelect.additionalInformationProtocol=this.data.additionalInformationProtocol;
       this.companySelect.timeEstimatedProtocol=this.data.timeEstimatedProtocol;
       this.companySelect.description=this.data.description;
-      console.log(this.data);
+      if(this.data.place){
+        this.companySelect.place =new PlaceBean();
+        this.companySelect.place= this.data.place;
+      }
     }
   }
 

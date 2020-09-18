@@ -73,16 +73,28 @@ export class MapaEmpresaComponent {
 
   //ACTUALIZAR LUGAR DEL NEGOCIO
   actualizar(){
-    let placeUpdate: PlaceBean = new PlaceBean();
-    placeUpdate.nombre=this.name;
-    placeUpdate.longitud=this.long;
-    placeUpdate.latitud= this.lat;
-    this.data.place=placeUpdate;
-
-    this.companyService.updateDataCompany(this.data).subscribe( data =>{
-      this.companyService.companyOneCambio.next(data.data);
-      this.companyService.mensajeCambio.next(data.message);
-      this.closeMap()
+    let company = new CompanyBean();
+    company.id=this.data.id;
+    if(this.data.place){
+      company.place = new PlaceBean();
+      company.place.id=this.data.place.id;
+      company.place.nombre=this.name;
+      company.place.longitud=this.long;
+      company.place.latitud= this.lat;
+    }else{
+      let placeUpdate: PlaceBean = new PlaceBean();
+      placeUpdate.nombre=this.name;
+      placeUpdate.longitud=this.long;
+      placeUpdate.latitud= this.lat;
+      company.place=placeUpdate;
+    }
+    this.companyService.updateDirectionCompany(company).subscribe( data =>{
+      this.companyService.getCompanyById(company.id).subscribe(company =>{
+        this.companyService.companyOneCambio.next(company);
+        this.companyService.mensajeCambio.next(data.message);
+        this.closeMap()
+      })
+      
     },error=>{
       this.companyService.mensajeCambio.next(error.error);
       this.closeMap();

@@ -96,4 +96,10 @@ export class OrganizationService {
     return this.http.post<any>(`${this.url}/udc`,company);
 
   }
+  updateDirectionCompany(company:CompanyBean){
+    return this.http.post<any>(`${this.url}/udirc`,company);
+
+  }
+
+  
 }

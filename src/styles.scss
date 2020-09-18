@@ -185,6 +185,12 @@ p .mat-icon {
     /*background-image: url("/assets/img/bg1.jpg");*/
 }
 
+.truncate-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .mat-step-icon-state-error .mat-icon {
     color: crimson !important;
 }
