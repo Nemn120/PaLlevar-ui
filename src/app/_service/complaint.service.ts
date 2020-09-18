@@ -41,7 +41,7 @@ export class ComplaintService {
   }
 
   getComplaintById(id: number) {
-    return this.http.get(`${this.url}/gcpt/${id}`);
+    return this.http.get<any>(`${this.url}/gcpt/${id}`);
   }
 
   saveComplaint(complaint : ComplaintBean,file?: File) {

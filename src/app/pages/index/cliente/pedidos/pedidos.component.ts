@@ -23,6 +23,7 @@ import { ComplaintService } from '../../../../_service/complaint.service';
 export class PedidosComponent implements OnInit {
 
   order: OrderBean[];
+  complaint : ComplaintBean[]
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail','message'];
@@ -51,8 +52,7 @@ export class PedidosComponent implements OnInit {
       this.pedidos.mensajeCambio.next("Error al mostrar");
     });
 
-    
-    
+  
 
     
 
@@ -94,26 +94,26 @@ public editarPedido(order: OrderBean) {
     data: orderSelect
   });
 }
-public sendMessage(order: OrderBean, complaint: ComplaintBean) {
+public sendMessage(order: OrderBean/*, complaint: ComplaintBean*/) {
   let ord = order != null ? order : new OrderBean();
-    let complaintSelect = complaint != null ? complaint : new ComplaintBean();
-    
+    /*let complaintSelect = complaint != null ? complaint : new ComplaintBean();
+
     this.complaintService.getListComplaintByOrg().subscribe(data => {  
       this.dataSource1 = new MatTableDataSource(data.data);
-      if (this.dataSource1.data=undefined){
-      
-        this.dialog.open(ClaimDetailComponent,{
-            data: complaintSelect
-        });
-      }
-      else
-      this.dialog.open(EnviarMensajeComponent, {
-        data: ord
+      this.dataSource1.data=this.complaint;
+
     });
-    
-
-});
-
+    if (this.dataSource1){
+      this.dialog.open(ClaimDetailComponent,{
+        data: complaintSelect
+    });
+      
+    }
+    else*/
+    this.dialog.open(EnviarMensajeComponent, {
+      data: ord
+  });
+   
  
 }
 } 
