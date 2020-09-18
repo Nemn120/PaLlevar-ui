@@ -19,11 +19,11 @@
                     <section id="ventas">
                         <div class="row">
                             <div class="col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-midnight-bloom">
+                                <div class="card mb-3 widget-content" style="background-color: #FFAB00;">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">Total ventas del dia</div>
-                                            <div class="widget-subheading">Today</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityToday?dashboardData.quantityToday:0}}</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
@@ -36,13 +36,13 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-arielle-smile">
+                                <div class="card mb-3 widget-content" style="background-color:#E56235 ;">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">
                                                 Total ventas dia anterior
                                             </div>
-                                            <div class="widget-subheading">Yesterday</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityYesterday ? dashboardData.quantityYesterday : 0}}</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
@@ -58,15 +58,13 @@
                                 <div class="card mb-3 widget-content bg-grow-early">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
-                                            <div class="widget-heading">Saldo del día</div>
-                                            <div class="widget-subheading">Today</div>
+                                            <div class="widget-heading">Variacion de ventas del día</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityVariationDay?(dashboardData.quantityVariationDay| number:'2.1-2'):0}} %</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
                                                 <span>{{
-                          dashboardData.salesVariationDay? (dashboardData.salesVariationDay| currency: "S/. "): 0
-                            | currency: "S/. ":true
-                        }}</span>
+                          dashboardData.salesVariationDay? (dashboardData.salesVariationDay | number:'2.1-2'): 0}} %</span>
                                             </div>
                                         </div>
                                     </div>
@@ -77,7 +75,7 @@
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">Ventas de la semana</div>
-                                            <div class="widget-subheading">This week</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityThisWeek?dashboardData.quantityThisWeek:0}}</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-warning">
@@ -90,13 +88,13 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-arielle-smile">
+                                <div class="card mb-3 widget-content" style="background-color: #FF8A65;">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">
                                                 Ventas de la semana pasada
                                             </div>
-                                            <div class="widget-subheading">Last Week</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityLastWeek?dashboardData.quantityLastWeek:0}}</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
@@ -109,17 +107,16 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-4">
-                                <div class="card mb-3 widget-content bg-midnight-bloom">
+                                <div class="card mb-3 widget-content" style="background-color: #388E3C;">
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">Saldo semanal</div>
-                                            <div class="widget-subheading">Week</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.salesVariationWeek?dashboardData.salesVariationWeek:0}} %</div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
                                                 <span>{{
-                          dashboardData.salesVariationWeek? (dashboardData.salesVariationWeek| currency: "S/. "): 0| currency: "S/. "
-                        }}</span>
+                          (dashboardData.salesVariationWeek? (dashboardData.salesVariationWeek): 0 )}} %</span>
                                             </div>
                                         </div>
                                     </div>
@@ -133,9 +130,11 @@
                                 <div class="mb-3 card">
                                     <div class="card-header-tab card-header">
                                         <div class="card-header-title">
-                                            <i class="header-icon lnr-rocket icon-gradient bg-tempting-azure">
-                      </i> My Reports
+                                            <p>
+                                                <mat-icon class="example-tab-icon">pending_actions</mat-icon> Ultimos pedidos</p>
                                         </div>
+
+
                                     </div>
                                     <div class="tab-content">
                                         <div class="tab-pane fade active show" id="tab-eg-55">
@@ -161,9 +160,9 @@
                                                                     <div role="group" class="btn-group-sm btn-group">
 
                                                                         <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
-                                                                            <mat-button-toggle value="bold" (click)="getData('solicitados')">Solicitados</mat-button-toggle>
                                                                             <mat-button-toggle value="italic" (click)="getData('pendientes')">Pendientes</mat-button-toggle>
-                                                                            <mat-button-toggle value="underline" (click)="getData('atendidos')">Atendidos</mat-button-toggle>
+                                                                            <mat-button-toggle value="bold" (click)="getData('solicitados')">En camino</mat-button-toggle>
+                                                                            <mat-button-toggle value="underline" (click)="getData('atendidos')">Entregado</mat-button-toggle>
                                                                         </mat-button-toggle-group>
 
 

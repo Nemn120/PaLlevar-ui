@@ -16,6 +16,10 @@
     border-color: #343a40;
 }
 
+.widget-subheading {
+    opacity: 0.8 !important;
+}
+
 .btn-white {
     color: #343a40;
     background-color: #fff;

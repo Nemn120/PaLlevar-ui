@@ -16,8 +16,11 @@ export class DashboardComponent implements OnInit {
   constructor( private dashboardService: DashboardService) {}
 
   ngOnInit(): void {
-    this.getDashboard();
-    this.orders = this.dashboardData.orderDelivery;
+    this.dashboardService.getDataDashboard().subscribe( dto => {
+      this.dashboardData = dto.data;
+      this.orders = this.dashboardData.orderPending;
+    });
+    
   }
 
   getDashboard(): void {
