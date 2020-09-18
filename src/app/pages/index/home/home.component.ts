@@ -67,8 +67,8 @@ export class HomeComponent implements OnInit {
   verMapa(){
     this.dialogMap.open(MapaComponent, {
       data:this.menuOrgList,
-      width: '80%',
-      height: '80%',
+      width: '70%',
+      height: '70%',
 
     });
   }

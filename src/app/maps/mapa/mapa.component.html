@@ -8,7 +8,8 @@
         </mgl-marker>
 
         <mgl-popup [marker]="myMarker" [closeOnClick]="true">
-            {{i.nombre}}
+            {{i.nombre}}<br>
+            <button mat-button (click)="redirectToCompany(i.id)">Ir</button>
         </mgl-popup>
     </div>
     <!--END MARKER EMPRESAS-->
@@ -21,3 +22,4 @@
     <mgl-control mglNavigation position="bottom-right"></mgl-control>
 
 </mgl-map>
+<button mat-raised-button style="margin-left: 4px; width:100%" color="primary" (click)="closeMap()">Cerrar</button>
