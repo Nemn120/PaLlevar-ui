@@ -60,5 +60,9 @@ export class ComplaintService {
     return this.http.post<any>(`${this.url}/glcptbo`,complaint);
   }
 
-
+  
+  getComplaintByOrderId(orderId : number) {
+    return this.http.get<any>(`${this.url}/gcboi/${orderId}`);
+  }
+  
 }

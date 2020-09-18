@@ -94,25 +94,23 @@ public editarPedido(order: OrderBean) {
     data: orderSelect
   });
 }
-public sendMessage(order: OrderBean/*, complaint: ComplaintBean*/) {
+public sendMessage(order: OrderBean) {
   let ord = order != null ? order : new OrderBean();
-    /*let complaintSelect = complaint != null ? complaint : new ComplaintBean();
+    
 
-    this.complaintService.getListComplaintByOrg().subscribe(data => {  
-      this.dataSource1 = new MatTableDataSource(data.data);
-      this.dataSource1.data=this.complaint;
-
+    this.complaintService.getComplaintByOrderId(order.id).subscribe(data => {  
+      if (data.data){
+        this.dialog.open(ClaimDetailComponent,{
+  
+      });
+        
+      }
+      else
+      this.dialog.open(EnviarMensajeComponent, {
+   
     });
-    if (this.dataSource1){
-      this.dialog.open(ClaimDetailComponent,{
-        data: complaintSelect
+     
     });
-      
-    }
-    else*/
-    this.dialog.open(EnviarMensajeComponent, {
-      data: ord
-  });
    
  
 }
