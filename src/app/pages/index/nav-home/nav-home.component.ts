@@ -41,6 +41,7 @@ export class NavHomeComponent implements OnInit {
   cerrar() {
     this.logueado = false;
     this.carService.orderDetailList = [];
+    this.sharedService.userSession = undefined;
     this.carService.orderHeader = new OrderBean();
   }
 
@@ -80,4 +81,9 @@ export class NavHomeComponent implements OnInit {
  showDish(nameDish: string){
     this.router.navigate(['index/dish',nameDish]);
  }
+
+ ocultarSearchBar(){
+   document.getElementById('ocultar').style.display="none";
+ }
+ 
 }

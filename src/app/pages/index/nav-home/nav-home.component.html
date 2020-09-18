@@ -8,9 +8,11 @@
     </button>
     
     
+    <div id="ocultar">
+        <input  id="form-control" type="search" placeholder="Buscar platillo" aria-label="Search" #buscarPlatillo>
+        <button id="btn-outline-success" type="button" (click)="showDish(buscarPlatillo.value)">Buscar</button>
+    </div>
     
-    <input   class="form-control mr-sm-2" type="search" placeholder="Buscar platillo" aria-label="Search" #buscarPlatillo>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="showDish(buscarPlatillo.value)">Buscar</button>
 
     <div class="example-spacer"></div>
 
@@ -21,8 +23,8 @@
     </button>
 
     <!--No esta logueado-->
-    <div *ngIf="!logueado" style="margin-right: 20px;">
-        <button routerLink="/auth/login" mat-button color="primary">
+    <div *ngIf="!logueado" style="margin-right: 20px;" >
+        <button routerLink="/auth/login" mat-button color="primary" (click)="ocultarSearchBar()">
         Iniciar Sesion
         </button>
     </div>

@@ -72,6 +72,7 @@
     font-family: Poppins-SemiBold, Helvetica, Arial, sans-serif;
     font-size: 20px;
     letter-spacing: 0;
+    flex-direction: column;
 }
 
 .restaurant-image {
@@ -112,16 +113,16 @@
 .menuProduct-container {
     display: flex;
     //justify-content: space-between;
-    //flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     //align-items: stretch;
-    justify-items: stretch;
+    //justify-items: stretch;
     margin: auto;
-    justify-content: center;
+    //justify-content: center;
     .card {
-        flex: 0 0 200px;
+        flex: 0 0 10px;
         margin: 10px;
-        justify-items: stretch;
+        //justify-items: stretch;
         width: auto;
     }
     @media screen and (min-width:300px) and (max-width:600px) {
@@ -149,3 +150,4 @@ mat-divider {
     font-weight: 600;
     font-family: "Roboto", sans-serif;
 }
+

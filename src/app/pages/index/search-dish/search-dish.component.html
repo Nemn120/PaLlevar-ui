@@ -15,15 +15,21 @@
                 <app-sidebar></app-sidebar>
             </div> -->
             <div class="menu-body">
-                <p class="f-headline" class="p-card-product"><strong>Platillos</strong></p>
+                
 
                 <div *ngIf="!sharedService.loading" class="menuProduct-container">
-                    <div *ngFor="let menuDayProduct of listaPlatillos">
-                        <div class="card">
-                            <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
+                    <div *ngFor = "let empresa of ListaEmpresaConProductos" >
+                        <ng-container >
+                            <p class="f-headline" class="p-card-product"><strong>{{empresa._organization.businessName}}</strong></p>
+                        </ng-container>
+                        <div *ngFor="let menuDayProduct of empresa._listOfProductsShowed">
+                            <div class="card">
+                                <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
+                            </div>
                         </div>
                     </div>
                 </div>
+            
             </div>
         </div>
     </div>

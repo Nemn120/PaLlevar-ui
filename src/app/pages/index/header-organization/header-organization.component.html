@@ -21,8 +21,8 @@
             </ng-template>
         </mat-tab>
 
-        <mat-tab>
-          <ng-template mat-tab-label>
+        <mat-tab *ngIf="this.sharedService.userSession">
+          <ng-template mat-tab-label >
               <div (click)="redirectTo('Favorites')">
                 <!-- <mat-icon class="example-tab-icon">restaurant</mat-icon> -->
                 <p style="color: darkorange !important; font-weight: 800;">
@@ -34,11 +34,11 @@
               </div>
           </ng-template>
       </mat-tab>
-
+      <!--
         <mat-tab>
             <ng-template mat-tab-label>
                 <div (click)="redirectTo('Combo')">
-                  <!-- <mat-icon class="example-tab-icon">fastfood</mat-icon> -->
+                   <mat-icon class="example-tab-icon">fastfood</mat-icon> 
                   <p style="color: darkorange !important;font-weight: 800;">
                     <mat-icon class="example-tab-icon">fastfood</mat-icon><span class="texto-menu">Combos</span></p>
                 </div>
@@ -48,12 +48,13 @@
         <mat-tab>
             <ng-template mat-tab-label>
               <div (click)="redirectTo('Promo')">
-                <!-- <mat-icon class="example-tab-icon">pending_actions</mat-icon> -->
+                 <mat-icon class="example-tab-icon">pending_actions</mat-icon> 
                 <p style="color: darkorange !important;font-weight: 800;">
                   <mat-icon class="example-tab-icon">pending_actions</mat-icon><span class="texto-menu">Promos</span></p>
               </div>
             </ng-template>
         </mat-tab>
+      -->
     </mat-tab-group>
     <!-- <ul _ngcontent-gpp-c71="" role="tablist" class="ms-profile-navigation nav nav-tabs tabs-bordered">
         <li _ngcontent-gpp-c71="" role="presentation"><a _ngcontent-gpp-c71="" href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab" class="active show"> Menus </a></li>
