@@ -4,7 +4,7 @@ import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-con
 import { MaterialModule } from '../_material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DataClientDialogComponent } from './data-client-dialog/data-client-dialog.component';
-import { MapsModule } from '../maps/mapa-cliente/maps.module';
+import { MapsModule } from '../maps/maps.module';
 import { MapaClienteComponent } from '../maps/mapa-cliente/mapa-cliente.component';
 
 

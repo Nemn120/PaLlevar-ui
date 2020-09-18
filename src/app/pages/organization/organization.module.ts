@@ -14,6 +14,8 @@ import { OrganizationFormNewComponent } from './organization-form-new/organizati
 import { OrganizationViewComponent } from './organization-view/organization-view.component';
 import { EditProtocolsComponent } from './edit-protocols/edit-protocols.component';
 import { OrganizationEditComponent } from './organization-edit/organization-edit.component';
+import { MapaEmpresaComponent } from '../../maps/mapa-empresa/mapa-empresa.component';
+import { MapsModule } from '../../maps/maps.module';
 
 
 const routes: Routes = [
@@ -38,9 +40,14 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    MapsModule
   ],
   entryComponents:[
-    OrganizationFormComponent, OrganizationFormNewComponent,OrganizationEditComponent,EditProtocolsComponent
+    OrganizationFormComponent,
+     OrganizationFormNewComponent,
+     OrganizationEditComponent,
+     EditProtocolsComponent,
+     MapaEmpresaComponent
   ]
 })
 export class OrganizationModule { }

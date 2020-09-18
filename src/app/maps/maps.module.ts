@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MaterialModule } from '../../_material/material.module';
+import { MaterialModule } from '../_material/material.module';
 
 //MAPBOX
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../environments/environment.prod';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
-import { MapaClienteComponent } from './mapa-cliente.component';
-import { MapaEmpresaComponent } from '../mapa-empresa/mapa-empresa.component';
+import { MapaClienteComponent } from './mapa-cliente/mapa-cliente.component';
+import { MapaEmpresaComponent } from './mapa-empresa/mapa-empresa.component';
 
 
 
