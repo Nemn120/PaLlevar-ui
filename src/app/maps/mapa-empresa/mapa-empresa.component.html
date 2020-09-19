@@ -1,6 +1,6 @@
-<mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14.5]" [center]="[-77.0824914,-12.0587117]" [maxBounds]="[[-81.594163,-18.733253], [-68.608323, 0.479432]]">
+<mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14.5]" [center]="positionMarker" [maxBounds]="[[-81.594163,-18.733253], [-68.608323, 0.479432]]">
 
-    <mgl-control mglGeocoder [searchInput]="'Universidad Nacional Mayor de San Marcos'" [countries]="'pe'" [limit]="8" (result)="onGeocoder($event)" class="mgl-Geocoder"></mgl-control>
+    <mgl-control mglGeocoder [countries]="'pe'" [limit]="8" (result)="onGeocoder($event)" class="mgl-Geocoder"></mgl-control>
 
     <mgl-control mglGeolocate [positionOptions]="{
         enableHighAccuracy: true
@@ -9,9 +9,10 @@
     <mgl-control mglFullscreen position="bottom-right"></mgl-control>
 
     <mgl-marker *ngIf="estadoMarker" [lngLat]="positionMarker" [draggable]="true" (dragEnd)="onDragEnd($event)"></mgl-marker>
+    <mgl-marker *ngIf="!estadoMarker" [lngLat]="positionMarker" [draggable]="true" (dragEnd)="onDragEnd($event)"></mgl-marker>
 
 </mgl-map>
-
-<button mat-raised-button style="width: 33%" color="primary" (click)="updateMarker()">Establecer ubicacion</button>
-<button mat-raised-button style="margin-left: 0.5%; width:33%" color="primary" [disabled]="!estadoMarker" (click)="actualizar()">Actualizar</button>
-<button mat-raised-button style="margin-left: 0.5%; width:33%" color="primary" (click)="closeMap()">Cancelar</button>
+<br>
+<button mat-raised-button style="width: 33%" color="primary" (click)="updateMarker()">Centrar marcador</button>
+<button mat-raised-button style="margin-left: 0.5%; width:33%" color="primary" (click)="actualizar()">Aceptar</button>
+<button mat-raised-button style="margin-left: 0.5%; width:33%" color="accent" (click)="closeMap()">Cancelar</button>
