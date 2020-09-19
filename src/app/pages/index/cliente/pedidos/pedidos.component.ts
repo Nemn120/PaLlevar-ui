@@ -101,8 +101,8 @@ public sendMessage(order: OrderBean) {
     this.complaintService.getComplaintByOrderId(order.id).subscribe(data => {  
       if (data.data){
         this.dialog.open(ClaimDetailComponent,{
-          width: '350px', 
-          height: '800px', 
+          width: '450px', 
+          height: '600px', 
           data: data.data
       });
         

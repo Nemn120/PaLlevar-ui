@@ -1,25 +1,18 @@
-<mat-form-field style="width: 100%;">
-    <input matInput placeholder="Titulo" [(ngModel)]="complaintSelect.titulo" readonly>
 
-</mat-form-field>
-<br>
-<mat-form-field style="width: 100%;">
-    <textarea class="area" matInput rows="5" placeholder="Descripcion" [(ngModel)]="complaintSelect.description" readonly></textarea>
-</mat-form-field>
-<br>
-<mat-form-field style="width: 100%;">
-    <input matInput placeholder="Fecha del reclamo" [(ngModel)]="this.fecha" name="fecha" readonly>
+    <mat-form-field class="campo">
+        <input  matInput placeholder="Titulo" [(ngModel)]="complaintSelect.titulo" readonly>
 
-</mat-form-field>
-<br>
-
-
-<div style=" width:300px ;height:300px ;" >
-   
-    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+    </mat-form-field>
     <br>
-    <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:300px ;height:300px ;margin: auto;" />
-    <p>{{labelFile}}</p>
+    <mat-form-field class="campo">
+        <textarea class="area" matInput rows="5" placeholder="Descripcion" [(ngModel)]="complaintSelect.description" readonly></textarea>
+    </mat-form-field>
     <br>
-</div>
-<br> 
+    <mat-form-field class="campo">
+        <input  matInput placeholder="Fecha del reclamo" [(ngModel)]="this.fecha" name="fecha" readonly>
+
+    </mat-form-field>
+    <br>
+    <img class="imagen"mat-card-image [src]="imagenData" *ngIf="imagenEstado"  />
+    
+
