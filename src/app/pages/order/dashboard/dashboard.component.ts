@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DashboardService } from '../../../_service/dashboard.service';
 import { DashBoardDTO } from '../../../_model/DashboardDTO';
+import { OrderBean } from 'src/app/_model/OrderBean';
 
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
   dashboardData: DashBoardDTO;
-  orders: any[];
-
+  orders: OrderBean[];
   constructor( private dashboardService: DashboardService) {}
 
   ngOnInit(): void {

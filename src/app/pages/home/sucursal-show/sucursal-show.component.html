@@ -1,4 +1,6 @@
-<ng-container [ngIf]="this.sharedService.userSession.profile.idProfile == 2">
-    <app-dashboard>
-    </app-dashboard>
-</ng-container>
+<ng-template [ngIf]="this.sharedService.userSession.profile.idProfile == 2">
+    <ng-container>
+        <app-dashboard>
+        </app-dashboard>
+    </ng-container>
+</ng-template>
