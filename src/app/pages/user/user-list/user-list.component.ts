@@ -49,7 +49,7 @@ export class UserListComponent implements OnInit {
 
     const userSelect = userBean != null ? userBean : new UserBean();
     const dialogRef = this.dialog.open(UserFormComponent, {
-      width: 'auto', height: '850px', data: userSelect
+      width: '25%', data: userSelect
     });
     dialogRef.afterClosed().subscribe(() => {
       console.log('Confirmation End');

@@ -51,8 +51,7 @@ export class ClaimListComponent implements OnInit {
   public openDialog(complaint?: ComplaintBean) {
     let complaintSelect = complaint != null ? complaint : new ComplaintBean();
     this.dialog.open(ClaimDetailComponent, {
-      width: '350px', 
-      height: '800px', 
+      width: '400px',
       data: complaintSelect
     }); 
   }

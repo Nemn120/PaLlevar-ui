@@ -46,7 +46,11 @@ export class UserDeliverysComponent implements OnInit {z
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-    this.userService.getUserByFields(new UserBean()).subscribe(data => {
+    let user =new UserBean();
+    user.profile  = new ProfileBean();
+    user.profile.idProfile = 3;
+
+    this.userService.getUserByFields(user).subscribe(data => {
       this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
