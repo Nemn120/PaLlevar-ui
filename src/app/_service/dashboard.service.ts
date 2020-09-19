@@ -15,7 +15,7 @@ export class DashboardService {
                 private sharedService: SharedService) { }
 
     getDataDashboard(): any {
-    const id = this.sharedService.getUserIdSession();
-    return this.http.get<DashBoardDTO>(`${this.url}/gdb/${id}`);
+    const id = this.sharedService.userSession.organizationId;
+    return this.http.get<any>(`${this.url}/gdb/${id}`);
     }
 }

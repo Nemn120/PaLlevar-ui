@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
 import { SearchOrderByDeliveryManDTO } from '../_DTO/SearchOrderByDeliveryManDTO';
+import { SearchOrderByFieldsDTO } from '../_DTO/SearchOrderByFieldsDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -40,9 +41,8 @@ export class OrderService {
 
   getListOrderDelivery() {
     this.order.organizationId = this.sharedService.getOrganizationIdByUserSession();
-    return this.http.post<OrderBean[]>(`${this.url}/glody`,this.order);
+    return this.http.post<any>(`${this.url}/glody`,this.order);
   }
-
 
   getListOrderByUserId() {
     this.order.organizationId = this.sharedService.getUserIdSession();
@@ -75,4 +75,15 @@ export class OrderService {
   getAsignOrderByDeliveryMan(searchOrderByDeliveryMan : SearchOrderByDeliveryManDTO){
     return this.http.post<any>(`${this.url}/golbdi`,searchOrderByDeliveryMan);
   }
+
+  getAsignOrderByFields(searchOrderByFieldsDTO : SearchOrderByFieldsDTO){
+    return this.http.post<any>(`${this.url}/golbf`,searchOrderByFieldsDTO);
+  }
+
+  saveConfirmDeliveryOrder(order: OrderBean){
+    return this.http.post<any>(`${this.url}/scdo`,order);
+  }
+
+
+
 }

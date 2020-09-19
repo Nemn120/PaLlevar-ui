@@ -11,5 +11,5 @@ export const environment = {
   MICRO_AUTH : 'uaa',
 
   HOST_MAPBOX:'https://api.mapbox.com',
-  TOKEN_MAPBOX:'pk.eyJ1Ijoia2F0cmllbCIsImEiOiJja2RjOXlrZTUxM3RsMnlxcmtwd3NrZWMwIn0.buu1mRI4DLdAUacSHR_2gw'
+  TOKEN_MAPBOX:'pk.eyJ1Ijoiam9zZWNvbmRvcmk1IiwiYSI6ImNrZTR0cW5nZzB3bjkyeXBkZXlmank2a3kifQ.z8hPiaEmZpSaEV67dtKlkw'
 };

@@ -7,7 +7,7 @@
                 <mat-icon>menu</mat-icon>
             </button>
 
-            <a class="navbar-brand" [routerLink]="['/']" matTooltip="Home">
+            <a class="navbar-brand" [routerLink]="['/suc/show']" matTooltip="Home">
                 <h1>
                     {{this.sharedService.companySession != undefined ? this.sharedService.companySession.nombre : 'Pa Llevar'}}
                 </h1>
@@ -74,22 +74,30 @@
                 <img *ngIf="!this.logoCompany" routerLink="/org/view" src="../../../assets/images/icondelivery.jpg" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
                 <mat-nav-list>
                     <span style="margin-left: 10px;">Mis opciones</span>
-                    <mat-list-item *ngFor="let m of menus">
-                        <a mat-list-item routerLink="{{m.urlMenu}}">
+                    <div style="overflow-y: auto; overflow-x: hidden;">
+                        <mat-list-item *ngFor="let m of menus">
+                            <a mat-list-item routerLink="{{m.urlMenu}}">
+                                <mat-icon mat-list-icon>
+                                    {{m.iconMenu}}
+                                </mat-icon>
+                                <p mat-line> {{m.nameMenu}} </p>
+                            </a>
+                        </mat-list-item>
+                    </div>
+
+                </mat-nav-list>
+
+                <!--- <mat-nav-list>
+                    <mat-list-item>
+                        <a id="push-bottom" mat-list-item>
                             <mat-icon mat-list-icon>
-                                {{m.iconMenu}}
+                                assignment_ind
                             </mat-icon>
-                            <p mat-line> {{m.nameMenu}} </p>
+                            <p mat-line>{{sharedService.userSession.profile.name}}</p>
                         </a>
                     </mat-list-item>
-
-                    <a id="push-bottom" mat-list-item>
-                        <mat-icon mat-list-icon>
-                            assignment_ind
-                        </mat-icon>
-                        <p mat-line>{{sharedService.userSession.profile.name}}</p>
-                    </a>
                 </mat-nav-list>
+               -->
             </mat-sidenav>
 
             <mat-sidenav-content class="sidenav-content">

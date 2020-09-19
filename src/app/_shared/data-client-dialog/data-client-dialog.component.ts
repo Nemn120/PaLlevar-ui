@@ -26,7 +26,7 @@ export class DataClientDialogComponent implements OnInit {
   phone: FormControl;
   title: string = "Generar Pedido, Ingreso de datos";
   buttonTitle: string = "Registrar";
-  ubicacion: string = "Ingresar Ubicación";
+  ubicacion: string= "Ingresar Ubicación";
   isUpdateOrder: boolean = false;
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<DataClientDialogComponent>,
@@ -46,9 +46,9 @@ export class DataClientDialogComponent implements OnInit {
     this.order.address = this.form.value['address'];
     this.order.reference = this.form.value['reference'];
     this.order.phone = this.form.value['phone']
+
     // CUANDO ENVIA LA ORDEN
     if (!this.isUpdateOrder) {
-
       this.order.organizationId = this.carService.orderHeader.organizationId;
       var placeTemp: PlaceBean = new PlaceBean();
       placeTemp.longitud = this.mapService.newPlace.longitud;

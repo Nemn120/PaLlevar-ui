@@ -1,0 +1,67 @@
+<div class="mat-parent">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Confirmar entrega</span>
+
+        </mat-toolbar>
+    </p>
+    <div class="carousel-item " style="display: flex; width: 80%;">
+
+        <div class="container">
+            <mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+                    <!-- NOMBRE DE LA COLUMNA-->
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.status}}</mat-cell>
+                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+                </ng-container>
+
+                <ng-container matColumnDef="total">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)">S/. {{row.total}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </mat-header-cell>
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.quantity}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="phone">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
+                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.phone}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="createDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha pedido</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="deliveryDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha envio</mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.deliveryDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                        <button mat-icon-button color="primary" (click)="confirmDeliveryOrder(row)">
+                            <mat-icon>where_to_vote</mat-icon>
+                  </button>
+
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+        </div>
+    </div>
+</div>

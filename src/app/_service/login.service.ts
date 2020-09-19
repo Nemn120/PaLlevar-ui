@@ -29,10 +29,11 @@ export class LoginService {
   }
 
   cerrarSesion() {
-    let access_token = sessionStorage.getItem(environment.TOKEN_NAME)
-    this.http.get(`${environment.HOST}/tokens/anular/${access_token}`).subscribe(() => {
+  //  let access_token = sessionStorage.getItem(environment.TOKEN_NAME)
+   // this.http.get(`${environment.HOST}/tokens/anular/${access_token}`).subscribe(() => {
+     
       sessionStorage.clear();
-      this.router.navigate(['auth/login']);
-    });
+      this.router.navigate(['index']);
+    //});
   }
 }

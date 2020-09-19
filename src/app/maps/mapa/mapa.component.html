@@ -1,0 +1,25 @@
+<mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14.5]" [center]="[-77.0824914,-12.0587117]" [maxBounds]="[[-81.594163,-18.733253], [-68.608323, 0.479432]]">
+
+    <!--MARKER EMPRESAS-->
+    <div *ngFor="let i of this.lista">
+        <mgl-marker #myMarker [lngLat]="[i.place.longitud,i.place.latitud]">
+            <div class="marker" style="background-image: url(/assets/images/icono1.svg); width: 50px; height: 50px
+            "></div>
+        </mgl-marker>
+
+        <mgl-popup [marker]="myMarker" [closeOnClick]="true">
+            {{i.nombre}}<br>
+            <button mat-button (click)="redirectToCompany(i.id)">Ir</button>
+        </mgl-popup>
+    </div>
+    <!--END MARKER EMPRESAS-->
+
+    <mgl-control mglGeolocate [positionOptions]="{
+          enableHighAccuracy: true
+        }" [trackUserLocation]="true" position="top-right"></mgl-control>
+
+    <mgl-control mglFullscreen position="bottom-right"></mgl-control>
+    <mgl-control mglNavigation position="bottom-right"></mgl-control>
+
+</mgl-map>
+<button mat-raised-button style="margin-left: 4px; width:100%" color="primary" (click)="closeMap()">Cerrar</button>

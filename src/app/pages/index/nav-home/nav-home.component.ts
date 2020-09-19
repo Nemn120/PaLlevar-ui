@@ -12,6 +12,8 @@ import { OrderBean } from '../../../_model/OrderBean';
 import { Router } from '@angular/router';
 import { UserBean } from 'src/app/_model/UserBean';
 import { UserService } from 'src/app/_service/user.service';
+import { LoginService } from 'src/app/_service/login.service';
+
 
 @Component({
   selector: 'app-nav-home',
@@ -27,7 +29,7 @@ export class NavHomeComponent implements OnInit {
   @Output() totalCarrito = new EventEmitter();
 
   constructor(public dialog: MatDialog,private sharedService: SharedService,
-              public carService: CarServiceService, public router: Router) {
+              public carService: CarServiceService, public router: Router, public loginService:LoginService) {
               }
 
   ngOnInit(): void {
@@ -47,6 +49,10 @@ export class NavHomeComponent implements OnInit {
     this.logueado = false;
     this.carService.orderDetailList = [];
     this.carService.orderHeader = new OrderBean();
+    this.sharedService.userSession=undefined;
+    this.carService.orderDetailList=[];
+    this.carService.orderHeader = new OrderBean();
+    this.loginService.cerrarSesion();
   }
 
   openPerfil() {
@@ -69,7 +75,7 @@ export class NavHomeComponent implements OnInit {
 
   openPedidos() {
     this.dialog.open(PedidosComponent,{
-      width: '600px',
+      width: '1000px',
     });
  }
 

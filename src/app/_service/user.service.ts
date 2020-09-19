@@ -96,12 +96,8 @@ export class UserService {
   updateStatusDelivery(userbean: UserBean) {
     return this.http.post<any>(`${this.url}/${this.subUrl}/usu`, userbean);
   }
-  getListUserDeliveryMan() {
-    const deliveryMan = new UserBean();
-    deliveryMan.organizationId = this.sharedService.getOrganizationIdByUserSession();
-    deliveryMan.profile = this.sharedService.getProfileByUserSession();
-    deliveryMan.profile.idProfile = 3;
-
-    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`, deliveryMan);
+  getUserByFields(userbean : UserBean) {
+    userbean.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`, userbean);
   }
 }

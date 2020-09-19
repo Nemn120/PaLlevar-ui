@@ -13,7 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CarDialogComponent } from './car-dialog/car-dialog.component';
 import { EditarPerfilComponent } from './cliente/editar-perfil/editar-perfil.component';
 import { PedidosComponent } from './cliente/pedidos/pedidos.component';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '../../_shared/shared.module';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DataClientDialogComponent } from '../../_shared/data-client-dialog/data-client-dialog.component';
@@ -23,7 +23,9 @@ import { HeaderOrganizationComponent } from './header-organization/header-organi
 import { OrderConfirmComponent } from './order-confirm/order-confirm.component';
 import { SearchDishComponent } from './search-dish/search-dish.component';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
-
+import { EnviarMensajeComponent } from './cliente/enviar-mensaje/enviar-mensaje.component';
+import {ClaimDetailComponent} from '../../_shared/claim-detail/claim-detail.component';
+import { MapaComponent } from '../../maps/mapa/mapa.component';
 
 const routes: Routes = [
 
@@ -59,6 +61,7 @@ const routes: Routes = [
   HeaderOrganizationComponent,
   OrderConfirmComponent,
   SearchDishComponent,
+  EnviarMensajeComponent
 
   ],
   imports: [
@@ -73,13 +76,12 @@ const routes: Routes = [
   exports: [
     RouterModule,
     NavHomeComponent,// export component a AuthorizationModule
-
   ],
   entryComponents:
     [
-      PerfilComponent, PedidosComponent, EditarPerfilComponent,OrderConfirmComponent,
+      PerfilComponent, PedidosComponent, EditarPerfilComponent, OrderConfirmComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
-      DetallePedidoComponent
+      DetallePedidoComponent,EnviarMensajeComponent,ClaimDetailComponent,MapaComponent
     ],
 })
 export class IndexModule { }
