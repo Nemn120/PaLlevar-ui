@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   HOST:"https://pallevar-backend-2020.herokuapp.com", // 
   //HOST: "https://hidden-wildwood-21108.herokuapp.com",
-  //HOST: "https://pallevar-backend-2020.herokuapp.com",
+  HOST: "https://pallevar-backend-2020.herokuapp.com",
   TOKEN_NAME : 'access_token',
   TOKEN_AUTH_USERNAME: 'pallevarR',
   TOKEN_AUTH_PASSWORD: 'pallevarx',
