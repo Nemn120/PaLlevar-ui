@@ -6,16 +6,6 @@
         <div class="app-main">
             <div class="app-main__outer">
                 <div class="app-main__inner">
-                    <div class="app-page-title">
-                        <div class="page-title-wrapper">
-                            <div class="page-title-heading">
-                                <div>
-                                    Dashboard
-                                    <div class="page-title-subheading">Reportes Pa Llevar</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <section id="ventas">
                         <div class="row">
                             <div class="col-md-6 col-xl-4">
@@ -23,7 +13,8 @@
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">Total ventas del dia</div>
-                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityToday?dashboardData.quantityToday:0}}</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityToday?dashboardData.quantityToday:0}}
+                                            </div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
@@ -59,12 +50,14 @@
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">Variacion de ventas del día</div>
-                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityVariationDay?(dashboardData.quantityVariationDay| number:'2.1-2'):0}} %</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityVariationDay?(dashboardData.quantityVariationDay| number:'2.1-2'):0}} %
+                                            </div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
                                                 <span>{{
-                          dashboardData.salesVariationDay? (dashboardData.salesVariationDay | number:'2.1-2'): 0}} %</span>
+                          dashboardData.salesVariationDay? (dashboardData.salesVariationDay | number:'2.1-2'): 0}}
+                          %</span>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +68,8 @@
                                     <div class="widget-content-wrapper text-white">
                                         <div class="widget-content-left">
                                             <div class="widget-heading">Ventas de la semana</div>
-                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityThisWeek?dashboardData.quantityThisWeek:0}}</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityThisWeek?dashboardData.quantityThisWeek:0}}
+                                            </div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-warning">
@@ -94,7 +88,8 @@
                                             <div class="widget-heading">
                                                 Ventas de la semana pasada
                                             </div>
-                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityLastWeek?dashboardData.quantityLastWeek:0}}</div>
+                                            <div class="widget-subheading">Cantidad : {{dashboardData.quantityLastWeek?dashboardData.quantityLastWeek:0}}
+                                            </div>
                                         </div>
                                         <div class="widget-content-right">
                                             <div class="widget-numbers text-white">
@@ -128,41 +123,24 @@
                         <div class="col-md-12 col-lg-12">
                             <section id="reportes">
                                 <div class="mb-3 card">
-                                    <div class="card-header-tab card-header">
-                                        <div class="card-header-title">
-                                            <p>
-                                                <mat-icon class="example-tab-icon">pending_actions</mat-icon> Ultimos pedidos</p>
-                                        </div>
-
-
-                                    </div>
                                     <div class="tab-content">
                                         <div class="tab-pane fade active show" id="tab-eg-55">
-                                            <div class="widget-chart p-3">
-                                                <div class="pt-2 card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <!-- <app-barra></app-barra> -->
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <!-- <app-circular></app-circular> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="pt-2 card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="main-card mb-3 card">
                                                             <div class="card-header">
-                                                                Resumen Pa Llevar
+                                                                Ultimos pedidos
                                                                 <div class="btn-actions-pane-right">
                                                                     <div role="group" class="btn-group-sm btn-group">
 
                                                                         <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
-                                                                            <mat-button-toggle value="italic" (click)="getData('pendientes')">Pendientes</mat-button-toggle>
-                                                                            <mat-button-toggle value="bold" (click)="getData('solicitados')">En camino</mat-button-toggle>
-                                                                            <mat-button-toggle value="underline" (click)="getData('atendidos')">Entregado</mat-button-toggle>
+                                                                            <mat-button-toggle value="italic" (click)="getData('pendientes')">Pendientes
+                                                                            </mat-button-toggle>
+                                                                            <mat-button-toggle value="bold" (click)="getData('solicitados')">En camino
+                                                                            </mat-button-toggle>
+                                                                            <mat-button-toggle value="underline" (click)="getData('atendidos')">Entregado
+                                                                            </mat-button-toggle>
                                                                         </mat-button-toggle-group>
 
 
@@ -209,25 +187,24 @@
                                                                                 </div>
                                                                             </td>
                                                                             <td class="widget-content-left flex2 text-center">
-                                                                                <span class="widget-heading">{{ item.orderDetail[0].deliveryDate | date: 'dd/MM/yyyy' }}</span
-                                        >
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </div>
-                          </div>
+                                                                                <span class="widget-heading">{{ item.orderDetail[0].deliveryDate | date: 'dd/MM/yyyy' }}</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
-              </section>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </body>
