@@ -16,22 +16,10 @@
             </mat-cell>
         </ng-container>
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-        </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="product">
             <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
-        </ng-container>
-
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->

@@ -5,8 +5,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductBean } from '../../../_model/ProductBean';
 import { MatSort } from '@angular/material/sort';
+import { Message } from '../../../_DTO/messageDTO';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-product-list',
@@ -24,6 +26,7 @@ export class ProductListComponent implements OnInit {
 
   constructor
     (
+      public dialogo: MatDialog,
       private productService: ProductService,
       private dialog: MatDialog,
       private snackBar: MatSnackBar
@@ -62,18 +65,28 @@ export class ProductListComponent implements OnInit {
     });
   }
   public delete(product: ProductBean) {
-    this.productService.deleteProduct(product.id).subscribe(data => {
-      this.productService.getListProductByOrganization().subscribe(data => {
-        this.productService.productCambio.next(data);
-        this.productService.mensajeCambio.next("Se elimino con éxito");
-      }, error => {
-        console.error(error);
-        this.productService.mensajeCambio.next("Error al mostrar listado de productos");
+    let ms = new Message();
+    ms.title='Borrar producto'; 
+    ms.description = '¿Esta seguro de borrar el producto?';
+    this.dialogo
+      .open(DialogoConfirmacionComponent, {
+        data: ms
+      }).afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        this.productService.deleteProduct(product.id).subscribe(data => {
+          this.productService.getListProductByOrganization().subscribe(data => {
+            this.productService.productCambio.next(data);
+            this.productService.mensajeCambio.next("Se elimino con éxito");
+          }, error => {
+            console.error(error);
+            this.productService.mensajeCambio.next("Error al mostrar listado de productos");
+          });
+        }, error => {
+          console.error(error);
+          this.productService.mensajeCambio.next("No eliminado");
+        });
       });
-    }, error => {
-      console.error(error);
-      this.productService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
-    });
+    
   }
 
 }

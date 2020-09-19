@@ -17,7 +17,7 @@ export class AttentOrderComponent implements OnInit {
   
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'address', 'quantity','total','createDate'];
+  displayedColumns: string[] = ['createDate', 'address', 'quantity','total'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   titleorderList: string;
   constructor(
