@@ -18,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'name', 'description', 'category', 'actions'];
+  displayedColumns: string[] = ['name', 'description', 'category', 'actions'];
   dataSource: MatTableDataSource<ProductBean>;/// tabla 
   titleProductList: string;
 
