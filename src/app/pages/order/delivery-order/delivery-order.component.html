@@ -9,17 +9,10 @@
 
         <div class="container">
             <mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.id}} </mat-cell>
-                </ng-container>
 
-                <ng-container matColumnDef="status">
-                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-                    <!-- NOMBRE DE LA COLUMNA-->
-                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.status}}</mat-cell>
-                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
+                <ng-container matColumnDef="createDate">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="total">
@@ -39,11 +32,6 @@
                 <ng-container matColumnDef="address">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
                     <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.address}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="createDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="actions">

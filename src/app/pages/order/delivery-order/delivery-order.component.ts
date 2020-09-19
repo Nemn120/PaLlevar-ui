@@ -19,7 +19,7 @@ export class DeliveryOrderComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','createDate','actions'];
+  displayedColumns: string[] = ['createDate','total','quantity','phone','address','actions'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   titleProductList: string;
 

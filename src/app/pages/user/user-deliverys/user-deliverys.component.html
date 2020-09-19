@@ -34,15 +34,21 @@
                 <!-- ESTATUS DE REPARTIDOR -->
                 <ng-container matColumnDef="status">
                     <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-                    <mat-cell mat-cell *matCellDef="let delivery_man"> {{delivery_man.status}} </mat-cell>
+                    <mat-cell mat-cell *matCellDef="let delivery_man">
+                        <mat-chip-list aria-label="Fish selection">
+                            <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(delivery_man.status)}">
+                                <span [ngStyle]="{color: delivery_man.status == 'DISPONIBLE' || delivery_man.status == 'OCUPADO'? 'white' : 'black'}">{{delivery_man.status}}</span></mat-chip>
+                        </mat-chip-list>
+                    </mat-cell>
+                    
                 </ng-container>
 
                 <!-- ACCIONES -->
                 <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
                     <mat-cell *matCellDef="let row">
                         <button mat-icon-button color="primary" (click)="changeState(row)">
-                <mat-icon>ballot</mat-icon>
+                <mat-icon>edit</mat-icon>
               </button>
 
                     </mat-cell>

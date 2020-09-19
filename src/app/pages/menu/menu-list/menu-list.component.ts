@@ -18,7 +18,7 @@ export class MenuListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'name', 'description','day','type','status','actions'];
+  displayedColumns: string[] = ['name', 'description','day','status','actions'];
   dataSource: MatTableDataSource<MenuDayBean>;/// tabla 
   titleProductList: string;
 

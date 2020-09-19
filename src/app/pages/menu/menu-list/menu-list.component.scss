@@ -35,3 +35,15 @@ table {
     align-items: center;
     white-space: nowrap;
 }
+
+.mat-column-day {
+    flex: 0 0 15% !important;
+  }
+
+.mat-column-name {
+    flex: 0 0 20% !important;
+  }
+  
+  .mat-column-status {
+    flex: 0 0 12% !important;
+  }

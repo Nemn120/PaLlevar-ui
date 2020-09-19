@@ -35,3 +35,20 @@ table {
     align-items: center;
     white-space: nowrap;
 }
+
+.mat-column-createDate {
+    flex: 0 0 20% !important;
+  }
+
+.mat-column-quantity {
+    flex: 0 0 10% !important;
+  }
+  
+  .mat-column-total {
+    flex: 0 0 10% !important;
+  }
+
+  .mat-column-phone {
+    flex: 0 0 10% !important;
+  }
+  

@@ -43,4 +43,5 @@ export class OrderConfirmComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
+
 }
