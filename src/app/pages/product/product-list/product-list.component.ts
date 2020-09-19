@@ -73,18 +73,20 @@ export class ProductListComponent implements OnInit {
         data: ms
       }).afterClosed()
       .subscribe((confirmado: Boolean) => {
-        this.productService.deleteProduct(product.id).subscribe(data => {
-          this.productService.getListProductByOrganization().subscribe(data => {
-            this.productService.productCambio.next(data);
-            this.productService.mensajeCambio.next("Se elimino con éxito");
+        if(confirmado){
+          this.productService.deleteProduct(product.id).subscribe(data => {
+            this.productService.getListProductByOrganization().subscribe(data => {
+              this.productService.productCambio.next(data);
+              this.productService.mensajeCambio.next("Se elimino con éxito");
+            }, error => {
+              console.error(error);
+              this.productService.mensajeCambio.next("Error al mostrar listado de productos");
+            });
           }, error => {
             console.error(error);
-            this.productService.mensajeCambio.next("Error al mostrar listado de productos");
+            this.productService.mensajeCambio.next("No eliminado");
           });
-        }, error => {
-          console.error(error);
-          this.productService.mensajeCambio.next("No eliminado");
-        });
+        }
       });
     
   }
