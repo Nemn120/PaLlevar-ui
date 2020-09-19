@@ -67,6 +67,12 @@ export class SearchOrderComponent implements OnInit {
     if (this.searchOrderByFieldsDTO.status == 'Todos')
       this.searchOrderByFieldsDTO.status = undefined;
 
+    if (this.searchOrderByFieldsDTO.userOrderDocumentNumber == '')
+      this.searchOrderByFieldsDTO.userOrderDocumentNumber = undefined;
+
+    if (this.searchOrderByFieldsDTO.userOrderDocumentNumber != '')
+      this.searchOrderByFieldsDTO.userOrderDocumentNumber = this.searchOrderByFieldsDTO.userOrderDocumentNumber;
+
     if (this.DeliveryManSelect) {
       if (this.DeliveryManSelect.id)
         this.searchOrderByFieldsDTO.userDeliveryId = this.DeliveryManSelect.id
@@ -88,6 +94,8 @@ export class SearchOrderComponent implements OnInit {
     }, error => {
       this.orderService.mensajeCambio.next("Error al mostrar productos");
     });
+
+    console.log(this.searchOrderByFieldsDTO.userOrderDocumentNumber);
     
   }
 
