@@ -27,9 +27,12 @@ export class SearchDishComponent implements OnInit {
   xd: any;
   dto: CompanyNameAndProductsDTO[];
 
+  arreglo1: any;
+
+
   ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
 
-
+  productosBuscadosDTO: CompanyNameAndProductsDTO[] = [];
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -49,43 +52,67 @@ export class SearchDishComponent implements OnInit {
       this.ListaEmpresaConProductos = [];
       this._menuDayProductService.getSearchPlatillos(this.platilloBuscado).subscribe(data => {
         this.activatedPhoto(data);
-        let index = 0;
-        data.forEach(plat => {
-          //prod=this.ListaEmpresaConProductos.find(x => x._organization.id == plat.organizationId)
-          if (this.ListaEmpresaConProductos[index] && this.ListaEmpresaConProductos[index]._organization.id == plat.id) {
-            this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
-          } else {
-            this._organizationService.getCompanyById(plat.organizationId).subscribe(data => {
-              index =index+1;
-              this.ListaEmpresaConProductos[index] =  new CompanyNameAndProductsDTO();
-              this.ListaEmpresaConProductos[index]._organization= new CompanyBean();
-              this.ListaEmpresaConProductos[index]._organization = data;
-              this.ListaEmpresaConProductos[index]._listOfProductsShowed = [];
-              this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
-            })
-           
-          }
-      
-        })
-        console.log(this.ListaEmpresaConProductos)
+        this.listaPlatillos = data;
+        console.log('platillos buscados sin filtros');
+        console.log(this.listaPlatillos);
+        this.adios9(this.listaPlatillos);
+        console.log(this.ListaEmpresaConProductos);
+        
+        
+        
 
+        
       })
     })
   }
 
-      /*if(!this.ListaEmpresaConProductos[plat.organizationId-1]){
-        this.ListaEmpresaConProductos[plat.organizationId-1] = new CompanyNameAndProductsDTO();
-        this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed = [];
-        this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
-        this._organizationService.getCompanyById(plat.organizationId).subscribe(data=>{
-          this.ListaEmpresaConProductos[plat.organizationId-1]._organization = new CompanyBean();
-          this.ListaEmpresaConProductos[plat.organizationId-1]._organization= data;
+  /*
+  verEmpresaConProductos(buscados: MenuDayProductBean[]){
+    let i = 0;
+    buscados.forEach(p=>{
+      if(this.productosBuscadosDTO[p.organizationId] != null){
+        this.productosBuscadosDTO[p.organizationId]._listOfProductsShowed.push(p);
+      }else{
+        let nuevoDTO = new CompanyNameAndProductsDTO();
+        nuevoDTO._listOfProductsShowed = [];
+        nuevoDTO._listOfProductsShowed.push(p);
+        this._organizationService.getCompanyById(p.organizationId).subscribe(c=>{
+          nuevoDTO._organization = new CompanyBean();
+          nuevoDTO._organization = c;
+          this.productosBuscadosDTO.push(nuevoDTO);
         })
+        i = p.organizationId;
       }
-      else{
-        this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
+    })
+    
+  }
+  */
+
+  adios9(buscados: MenuDayProductBean[]){
+    buscados.forEach(plat=>{
+      if(plat.organizationId!=2){
+          if(!this.ListaEmpresaConProductos[plat.organizationId-1]){
+          
+            this.ListaEmpresaConProductos[plat.organizationId-1] = new CompanyNameAndProductsDTO();
+            this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed = [];
+            this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
+            this._organizationService.getCompanyById(plat.organizationId).subscribe(data=>{
+              this.ListaEmpresaConProductos[plat.organizationId-1]._organization = new CompanyBean();
+              this.ListaEmpresaConProductos[plat.organizationId-1]._organization= data;
+            })
+          
+          
+        }
+        else{
+          this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
+        }
       }
-      */
+    })
+    
+    console.log("lista ordenada" ,this.ListaEmpresaConProductos);
+  }
+       
+      
 
   /*
   prueba7(){
@@ -252,3 +279,23 @@ export class SearchDishComponent implements OnInit {
 
 }
 
+/*
+        let index = 0;
+        data.forEach(plat => {
+          //prod=this.ListaEmpresaConProductos.find(x => x._organization.id == plat.organizationId)
+          if (this.ListaEmpresaConProductos[index] && this.ListaEmpresaConProductos[index]._organization.id == plat.id) {
+            this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
+          } else {
+            this._organizationService.getCompanyById(plat.organizationId).subscribe(data => {
+              index =index+1;
+              this.ListaEmpresaConProductos[index] =  new CompanyNameAndProductsDTO();
+              this.ListaEmpresaConProductos[index]._organization= new CompanyBean();
+              this.ListaEmpresaConProductos[index]._organization = data;
+              this.ListaEmpresaConProductos[index]._listOfProductsShowed = [];
+              this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
+            })
+           
+          }
+      
+        })
+        */
