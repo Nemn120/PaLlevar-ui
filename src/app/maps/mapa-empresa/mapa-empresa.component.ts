@@ -1,8 +1,7 @@
-import { Component, Inject,NgZone } from '@angular/core';
+import { Component, Inject, NgZone, OnInit } from '@angular/core';
 import { MapService } from '../../_service/map.service';
 import { Marker } from 'mapbox-gl';
 import { MAT_DIALOG_DATA,MatDialogRef } from '@angular/material/dialog';
-import { NotificationService } from '../../_service/notification.service';
 import { CompanyBean } from '../../_model/CompanyBean';
 import { OrganizationService } from '../../_service/organization.service';
 import { PlaceBean } from '../../_model/PlaceBean';
@@ -11,10 +10,10 @@ import { PlaceBean } from '../../_model/PlaceBean';
   templateUrl: './mapa-empresa.component.html',
   styleUrls: ['./mapa-empresa.component.scss']
 })
-export class MapaEmpresaComponent {
+export class MapaEmpresaComponent  implements OnInit{
   
   estadoMarker: boolean = false;
-  positionMarker: number[];
+  positionMarker: number[]=[-77.0824914,-12.0587117];
 
   long: number = -77.0824914;
   lat: number = -12.0587117;
@@ -30,12 +29,22 @@ export class MapaEmpresaComponent {
   ) {
     dialogMap.disableClose = true
   }
+  ngOnInit(){
+    if(this.data.place!=null){
+      this.estadoMarker=true;
+      this.long=this.data.place.longitud;
+      this.lat=this.data.place.latitud;
+      this.positionMarker=[this.long,this.lat];
+      
+    }
+  }
 
   //CAPTURA LOS RESULTADOS DEL GEOCODER
   onGeocoder(resultado: any) {
     this.long = resultado.result.geometry.coordinates[0];
     this.lat = resultado.result.geometry.coordinates[1];
     this.findPlace(this.long, this.lat);
+    this.updateMarker();
   }
 
   //CAPTURA RESULTADO DEL GEOLOCATE
@@ -43,6 +52,7 @@ export class MapaEmpresaComponent {
     this.long = position.coords.longitude;
     this.lat = position.coords.latitude;  
     this.findPlace(this.long, this.lat);
+    this.updateMarker();
   }
 
   //CAPTURA EL RESULTADO DEL MOVIMIENTO DEL MARKER
@@ -57,11 +67,11 @@ export class MapaEmpresaComponent {
   updateMarker() {
     if (!this.estadoMarker) {
       this.estadoMarker = true;
-      this.positionMarker = [this.long, this.lat];
-      this.findPlace(this.long, this.lat);
     } else {
       this.estadoMarker = false;
     }
+    this.positionMarker = [this.long, this.lat];
+      this.findPlace(this.long, this.lat);
   }
   //BUSCAR EL LUGAR  APARTIR DE LAS COODENADAS
   findPlace(long: number, lat: number) {
@@ -69,6 +79,7 @@ export class MapaEmpresaComponent {
       data => {
         this.name=data.features[0].place_name;
       })
+      
   }
 
   //ACTUALIZAR LUGAR DEL NEGOCIO

@@ -64,7 +64,6 @@ export class OrganizationListComponent implements OnInit {
     const productSelect = company != null ? company : new CompanyBean();
     this.dialog.open(OrganizationFormNewComponent, {
       width: 'auto',
-      height: '700px',
       data: productSelect
     });
   }

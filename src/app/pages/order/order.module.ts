@@ -10,7 +10,6 @@ import { SidebarSidenavComponent } from '../sidebar-sidenav/sidebar-sidenav.comp
 import { MaterialModule } from '../../_material/material.module';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { AttendOrderDetailComponent } from './attend-order-detail/attend-order-detail.component';
-import { ConsolidatedOrderComponent } from './consolidated-order/consolidated-order.component';
 import { DeliveryOrderDetailComponent } from './delivery-order-detail/delivery-order-detail.component';
 import { FormsModule, ReactiveFormsModule } from '../../../../node_modules/@angular/forms';
 import { DeliveryOrderAsignComponent } from './delivery-order-asign/delivery-order-asign.component';
@@ -43,7 +42,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, ConsolidatedOrderComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent, ConfirmDeliveryOrderComponent,DashboardComponent,ClaimListComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent, ConfirmDeliveryOrderComponent,DashboardComponent,ClaimListComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,

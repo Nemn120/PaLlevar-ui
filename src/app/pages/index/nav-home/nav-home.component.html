@@ -8,6 +8,13 @@
     </button>
 
 
+    <div id="ocultar">
+        <input id="form-control" type="search" placeholder="Buscar platillo" aria-label="Search" #buscarPlatillo>
+        <button id="btn-outline-success" type="button" (click)="showDish(buscarPlatillo.value)">Buscar</button>
+    </div>
+
+
+
 
     <!--
 
@@ -39,8 +46,8 @@
     </button>
 
     <!--No esta logueado-->
-    <div *ngIf="!logueado" style="margin-right: 20px;padding-right: 30px;">
-        <button routerLink="/auth/login" mat-button color="primary">
+    <div *ngIf="!logueado" style="margin-right: 20px;">
+        <button routerLink="/auth/login" mat-button color="primary" (click)="ocultarSearchBar()">
         Iniciar Sesion
         </button>
     </div>
@@ -56,7 +63,7 @@
 
         <mat-menu #beforeMenu="matMenu" xPosition="before">
             <button mat-menu-item (click)="openPerfil()">Mi Perfil</button>
-            <button mat-menu-item (click)="openPedidos()">Mis Pedidos PENDIENTES !</button>
+            <button mat-menu-item (click)="openPedidos()">Mis Pedidos</button>
             <button mat-menu-item (click)="openEditar()">Editar Perfil</button>
             <button mat-menu-item (click)="cerrar()">Cerrar Sesion</button>
         </mat-menu>

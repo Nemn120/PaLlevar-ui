@@ -28,7 +28,6 @@ export class CardOrganizationComponent implements OnInit {
   ngOnInit(): void {
     this.orgSelect = new CompanyBean();
     this.orgSelect = this.menuOrg;
-    console.log(this.menuOrg);
     this.sendCambioOrganization();
   }
 

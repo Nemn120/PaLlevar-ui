@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/_service/shared.service';
 
 @Component({
   selector: 'app-sucursal-show',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SucursalShowComponent implements OnInit {
 
-  constructor() {}
+  constructor(
+    public sharedService:SharedService
+  ) {}
 
   ngOnInit(): void {
   }

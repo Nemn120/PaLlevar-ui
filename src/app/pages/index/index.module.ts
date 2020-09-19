@@ -34,8 +34,8 @@ const routes: Routes = [
     component: IndexComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'shop/:org', component: ShoppingComponent }
-
+      { path: 'shop/:org', component: ShoppingComponent },
+      { path: 'dish/:nameDish', component: SearchDishComponent}
     ]
   }
 ];

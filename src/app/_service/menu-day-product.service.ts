@@ -4,6 +4,8 @@ import { Subject } from 'rxjs';
 import { MenuDayProductBean } from '../_model/MenuDayProductBean';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
+import { ProductBean } from '../_model/ProductBean';
+import { SearchMenuDayProductFavoritesDTO } from '../_DTO/SearchMenuDayProductFavoritesDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +16,7 @@ export class MenuDayProductService {
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}/menuDayProduct`;
   category = 'Menu';
+  category2 = 'Favorites';
   constructor(private http: HttpClient,
     private sharedService:SharedService) {
     }
@@ -45,5 +48,18 @@ export class MenuDayProductService {
 
   }
 
+  // retorna una lista de los elementos que coinciden con la búsqueda
+  getSearchPlatillos(platillo: string){
+    let dish = new MenuDayProductBean;
+    dish.product = new ProductBean();
+    dish.product.name = platillo;
+    return this.http.post<MenuDayProductBean[]>(`${this.url}/glsmp`,dish);
+  }
+
+  //retorna los productos favoritos por el usuario en una empresa.
+  getMenuProductFavorites(favorites: SearchMenuDayProductFavoritesDTO){
+    favorites.userId = this.sharedService.getUserIdSession();
+    return this.http.post<any>(`${this.url}/glfmpbuao`,favorites)
+  }
 
 }
