@@ -25,7 +25,7 @@ export class SearchOrderComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['status','documentNumber','name','address','total','quantity','createDate','opciones'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
-  estados: string[] = ['Todos','En camino','Atendido','Pendiente','En proceso','Cancelado'];
+  estados: string[] = ['Todos','En camino','Atendido','Pendiente','Entregado','Cancelado'];
   searchOrderByFieldsDTO: SearchOrderByFieldsDTO;
   DeliveryManList: UserBean[] = [];
   DeliveryManSelect: UserBean;

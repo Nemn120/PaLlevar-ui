@@ -18,22 +18,22 @@ import { ProductBean } from 'src/app/_model/ProductBean';
 export class SearchDishComponent implements OnInit {
 
 
-listaPlatillos: MenuDayProductBean[] = [];
-platilloBuscado:string;
-listaPlatillosPorEmpresa: MenuDayProductBean[] = [];
-empresas: CompanyBean[];
-compañiaYproducto : CompanyNameAndProductsDTO[];
-listaDTO : CompanyNameAndProductsDTO[] = [];   //////////////////////////////
-xd : any;
-dto: CompanyNameAndProductsDTO[];
+  listaPlatillos: MenuDayProductBean[] = [];
+  platilloBuscado: string;
+  listaPlatillosPorEmpresa: MenuDayProductBean[] = [];
+  empresas: CompanyBean[];
+  compañiaYproducto: CompanyNameAndProductsDTO[];
+  listaDTO: CompanyNameAndProductsDTO[] = [];   //////////////////////////////
+  xd: any;
+  dto: CompanyNameAndProductsDTO[];
 
-ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
+  ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
 
 
 
   constructor(
-    private _activatedRoute:ActivatedRoute, 
-    private _menuDayProductService:MenuDayProductService, 
+    private _activatedRoute: ActivatedRoute,
+    private _menuDayProductService: MenuDayProductService,
     private productService: ProductService,
     public sharedService: SharedService,
     private sanitization: DomSanitizer,
@@ -43,89 +43,37 @@ ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
     //this.platilloBuscado = this._activatedRoute.snapshot.params['nameDish'];
     //this._menuDayProductService.getSearchPlatillos(this.platilloBuscado).subscribe(data=>{
     //this.listaPlatillos = data;
-  //})
-    this._activatedRoute.params.subscribe(params=>{
-      this.platilloBuscado=params['nameDish'];
-      this._menuDayProductService.getSearchPlatillos(this.platilloBuscado).subscribe(data=>{
+    //})
+    this._activatedRoute.params.subscribe(params => {
+      this.platilloBuscado = params['nameDish'];
+      this.ListaEmpresaConProductos = [];
+      this._menuDayProductService.getSearchPlatillos(this.platilloBuscado).subscribe(data => {
         this.activatedPhoto(data);
-        this.listaPlatillos= data;
-        //this.xd = this.hola(this.listaPlatillos);
-        //console.log(this.xd);
-        //this.mostrarProductosPorEmpresa();
-        //this.adios();
-        //this.listaPlatillosPorEmpresa= this.hola(this.listaPlatillos);
-        //this.hola();
-        //console.log(this.listaDTO);
-        //console.log(this.listaPlatillosPorEmpresa);
-        this.MostrarProductoxEmpresa(this.listaPlatillos);
-        console.log(this.ListaEmpresaConProductos);
-        //this.groupMenuProductDay(this.listaPlatillos);
-        
-        //console.log(this.listaDTO);
-        
-        //console.log(this.listaPlatillos);
-        
-        //this.listaPlatillosPorEmpresa = this.hola(this.listaPlatillos);
-        
-        //this.groupMenuProductDay(this.listaPlatillos);
+        let index = 0;
+        data.forEach(plat => {
+          //prod=this.ListaEmpresaConProductos.find(x => x._organization.id == plat.organizationId)
+          if (this.ListaEmpresaConProductos[index] && this.ListaEmpresaConProductos[index]._organization.id == plat.id) {
+            this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
+          } else {
+            this._organizationService.getCompanyById(plat.organizationId).subscribe(data => {
+              index =index+1;
+              this.ListaEmpresaConProductos[index] =  new CompanyNameAndProductsDTO();
+              this.ListaEmpresaConProductos[index]._organization= new CompanyBean();
+              this.ListaEmpresaConProductos[index]._organization = data;
+              this.ListaEmpresaConProductos[index]._listOfProductsShowed = [];
+              this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
+            })
+           
+          }
+      
+        })
+        console.log(this.ListaEmpresaConProductos)
 
-        //this.groupMenuProductDay(this.listaPlatillos);
-        //console.log(this.listaDTO);
-
-        //this.asignarListaDeProductosAsignarEmpresas();
-
-        //console.log(this.empresas);
-        //console.log(this.listaPlatillosPorEmpresa);
-        //console.log(this.compañiaYproducto._listOfProductsShowed);
-        //console.log(this.compañiaYproducto._organization);
       })
     })
   }
 
-  /*
-
-  prueba8(listaPlatillos: MenuDayProductBean[]){
-    this.ListaEmpresaConProductos = [];
-    let DTOplatillosOrganizaciónX = [];
-    listaPlatillos.forEach(platillo=>{
-      let nuevoDTO = new CompanyNameAndProductsDTO(); 
-      if(!DTOplatillosOrganizaciónX[platillo.organizationId-1]){
-        DTOplatillosOrganizaciónX
-      }
-    })
-  }
-  */
-  /*
-  prueba10(listaPlatillos: MenuDayProductBean[]){
-    this.ListaEmpresaConProductos = [];
-    let index = 0;
-    listaPlatillos.forEach(plat=>{
-      
-      if(plat.organizationId-1 != index){
-        let nuevoDTO = new CompanyNameAndProductsDTO();
-        nuevoDTO._listOfProductsShowed = [];
-        nuevoDTO._listOfProductsShowed.push(plat);
-        this._organizationService.getCompanyById(plat.organizationId).subscribe(data=>{
-          nuevoDTO._organization = new CompanyBean();
-          nuevoDTO._organization= data;
-          this.ListaEmpresaConProductos[index] = nuevoDTO;
-          index = plat.organizationId-1;
-        })
-      }
-      else{
-        this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
-      }
-    })
-    
-    
-  }
-
-  */
-
-  MostrarProductoxEmpresa(listaPlatillos: MenuDayProductBean[]){
-    this.ListaEmpresaConProductos = [];
-    listaPlatillos.forEach(plat=>{
-      if(!this.ListaEmpresaConProductos[plat.organizationId-1]){
+      /*if(!this.ListaEmpresaConProductos[plat.organizationId-1]){
         this.ListaEmpresaConProductos[plat.organizationId-1] = new CompanyNameAndProductsDTO();
         this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed = [];
         this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
@@ -137,9 +85,7 @@ ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
       else{
         this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
       }
-    })
-
-  }
+      */
 
   /*
   prueba7(){
@@ -163,7 +109,7 @@ ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
     })
   }
   */
-  
+
   /*
   hola(){
     let porEmpresas = [];
@@ -280,29 +226,29 @@ ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
   }  
 
   */
-  
-  
-  
 
 
-activatedPhoto(data: any) {
-  for ( const m of data) {
-    this.productService.getPhotoById(m.product.id).subscribe(photo => {
-      const reader = new FileReader();
-      reader.readAsDataURL(photo);
-      reader.onloadend = () => {
-        const base64 = reader.result;
-        m.product._foto = this.setterPhoto(base64);
-        m.product._isFoto = true;
-      };
-      this.sharedService.loading = false;
-    });
+
+
+
+  activatedPhoto(data: any) {
+    for (const m of data) {
+      this.productService.getPhotoById(m.product.id).subscribe(photo => {
+        const reader = new FileReader();
+        reader.readAsDataURL(photo);
+        reader.onloadend = () => {
+          const base64 = reader.result;
+          m.product._foto = this.setterPhoto(base64);
+          m.product._isFoto = true;
+        };
+        this.sharedService.loading = false;
+      });
+    }
   }
-}
 
-setterPhoto(data: any) {
-  return this.sanitization.bypassSecurityTrustResourceUrl(data);
-}
-    
+  setterPhoto(data: any) {
+    return this.sanitization.bypassSecurityTrustResourceUrl(data);
+  }
+
 }
 
