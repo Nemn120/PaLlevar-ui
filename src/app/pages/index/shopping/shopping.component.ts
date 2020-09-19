@@ -9,6 +9,7 @@ import { OrganizationService } from '../../../_service/organization.service';
 import { CompanyBean } from '../../../_model/CompanyBean';
 import { SharedService } from '../../../_service/shared.service';
 import { OrderBean } from '../../../_model/OrderBean';
+import { SearchMenuDayProductFavoritesDTO } from 'src/app/_DTO/SearchMenuDayProductFavoritesDTO';
 
 @Component({
   selector: 'app-shopping',
@@ -20,6 +21,7 @@ export class ShoppingComponent implements OnInit {
   orgId: any;
   menuProductList: MenuDayProductBean[];
   param: string;
+  favoritos: SearchMenuDayProductFavoritesDTO;
   companySelect: CompanyBean;
   imgDefault = '../../../../assets/icon-cubiertos.jpg';
   mProduct: MenuDayProductBean;
@@ -47,7 +49,12 @@ export class ShoppingComponent implements OnInit {
       this.param = data;
       if (data != null) {
         this.mProduct.organizationId = this.companySelect.id;
-        this.getListMenuProductByType(this.param);
+        if(this.param != 'Favorites'){
+          this.getListMenuProductByType(this.param);
+        }else{
+          this.getListMenuFavoriteProduct();
+        }
+        
       }
     });
     this.orgId = this.activatedRoute.snapshot.paramMap.get('org');
@@ -92,6 +99,19 @@ export class ShoppingComponent implements OnInit {
     }, error => {
        console.log(error);
      });
+  }
+
+  getListMenuFavoriteProduct(){
+    this.menuProductList = [];
+    this.favoritos = new SearchMenuDayProductFavoritesDTO();
+    this.favoritos.organizationId = this.orgId;
+    this.menuDayProductService.getMenuProductFavorites(this.favoritos).subscribe(data => {
+      this.menuProductList = data.dataList;
+      this.activatedPhoto(data.dataList);
+      console.log( 'TIPO' + this.mProduct.type + this.menuProductList);
+    }, error => {
+      console.log(error);
+    });
   }
 
 

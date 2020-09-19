@@ -9,9 +9,9 @@ import { CarServiceService } from '../../../_service/car-service.service';
 import { DashboardService } from '../../../_service/dashboard.service';
 
 import { OrderBean } from '../../../_model/OrderBean';
+import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/_service/login.service';
-
 @Component({
   selector: 'app-nav-home',
   templateUrl: './nav-home.component.html',
@@ -43,6 +43,7 @@ export class NavHomeComponent implements OnInit {
   cerrar() {
     this.logueado = false;
     this.carService.orderDetailList = [];
+    this.sharedService.userSession = undefined;
     this.carService.orderHeader = new OrderBean();
     this.sharedService.userSession=undefined;
     this.carService.orderDetailList=[];
@@ -82,7 +83,13 @@ export class NavHomeComponent implements OnInit {
   return this.carService.numberProductSelected;
  }
 
- showDish(){
-   
+
+ showDish(nameDish: string){
+    this.router.navigate(['index/dish',nameDish]);
  }
+
+ ocultarSearchBar(){
+   document.getElementById('ocultar').style.display="none";
+ }
+ 
 }

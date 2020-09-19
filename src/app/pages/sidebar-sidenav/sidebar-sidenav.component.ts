@@ -83,8 +83,13 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
     this.isLogueado = false;
     this.carService.orderDetailList=[];
     this.carService.orderHeader = new OrderBean();
+<<<<<<< HEAD
     this.sharedService.userSession=undefined;
     this.loginService.cerrarSesion();
+=======
+    this.sharedService.userSession = undefined;
+    this.router.navigate(['auth/login']);
+>>>>>>> origin/platillos_recurrentes
     console.log(this.isLogueado);
   }
 }
