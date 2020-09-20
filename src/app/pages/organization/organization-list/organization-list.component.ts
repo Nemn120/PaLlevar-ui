@@ -63,7 +63,7 @@ export class OrganizationListComponent implements OnInit {
   public createDialog(company?: CompanyBean) {
     const productSelect = company != null ? company : new CompanyBean();
     this.dialog.open(OrganizationFormNewComponent, {
-      width: 'auto',
+
       data: productSelect
     });
   }

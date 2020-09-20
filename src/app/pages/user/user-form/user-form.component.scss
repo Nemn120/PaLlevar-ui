@@ -16,6 +16,32 @@
     transform: translateX(-50%) translateY(-50%);
 }
 
-button {
-    margin: 4px;
+.elipse {
+    background: #e64a19;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    color: aliceblue;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 10px;
+    /* margin-left: auto; */
+    margin-top: 12px;
+    float: right;
+}
+
+
+/* J */
+
+.diminutivo {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 23px;
+    /* identical to box height */
+    color: #fffdfd;
 }
