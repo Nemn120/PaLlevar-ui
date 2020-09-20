@@ -53,7 +53,7 @@ export class MenuDayProductService {
     let dish = new MenuDayProductBean;
     dish.product = new ProductBean();
     dish.product.name = platillo;
-    return this.http.post<MenuDayProductBean[]>(`${this.url}/glsmp`,dish);
+    return this.http.post<any>(`${this.url}/glsmp`,dish);
   }
 
   //retorna los productos favoritos por el usuario en una empresa.
