@@ -18,14 +18,12 @@ export class MapaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     //FILTRADO DE UBICACIONES
     for (let i of this.data) {
-      if (i.place.longitud != null) {
+      if (i.place!= null) {
         this.lista.push(i);
       }
     }
-
   }
 
   redirectToCompany(idCompany:number){
@@ -37,6 +35,5 @@ export class MapaComponent implements OnInit {
     this.dialogMap.close();
   }
  
-
 
 }
