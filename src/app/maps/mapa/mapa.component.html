@@ -8,8 +8,9 @@
         </mgl-marker>
 
         <mgl-popup [marker]="myMarker" [closeOnClick]="true">
-            {{i.nombre}}<br>
-            <button mat-button (click)="redirectToCompany(i.id)">Ir</button>
+            <p style="text-align: center;font-size:large;">{{i.nombre}}</p>
+
+            <button mat-button style="width:100%" (click)="redirectToCompany(i.id)">Ir</button>
         </mgl-popup>
     </div>
     <!--END MARKER EMPRESAS-->
@@ -22,4 +23,7 @@
     <mgl-control mglNavigation position="bottom-right"></mgl-control>
 
 </mgl-map>
-<button mat-raised-button style="margin-left: 4px; width:100%" color="primary" (click)="closeMap()">Cerrar</button>
+<br>
+<button mat-button style="display: block;
+margin-left: auto;
+margin-right: auto ;width:100%;font-size:large;" (click)="closeMap()">Cerrar Mapa</button>
