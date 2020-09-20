@@ -1,10 +1,10 @@
-<button mat-button mat-dialog-close>X</button>
+<div class="elipse" mat-dialog-close><span>X</span></div>
 <div>
     <div>
-        <mat-vertical-stepper #stepper>
-            <mat-step [stepControl]="personalFormGroup" errorMessage="Estos campos son requeridos">
+        <mat-horizontal-stepper #stepper>
+            <mat-step>
                 <form [formGroup]="personalFormGroup">
-                    <ng-template matStepLabel>Datos Personales</ng-template>
+                    <!-- <ng-template matStepLabel>Datos Personales</ng-template> -->
                     <div>
                         <mat-form-field>
                             <mat-label>Nombres: {{data.nombre}}</mat-label>
@@ -55,9 +55,9 @@
                     </div>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="loginFormGroup" errorMessage="Estos campos son requeridos">
+            <mat-step>
                 <form [formGroup]="loginFormGroup">
-                    <ng-template matStepLabel>Datos de Login</ng-template>
+                    <!-- <ng-template matStepLabel>Datos de Login</ng-template> -->
                     <div>
                         <mat-form-field>
                             <mat-label>Nombre de usuario: {{data.username}}</mat-label>
@@ -74,15 +74,15 @@
                         </mat-form-field>
                     </div>
                     <!--  -->
-                    <div>
+                    <div style="display: grid;">
                         <button mat-raised-button matStepperPrevious color="warn">Back</button>
                         <button mat-raised-button matStepperNext color="primary">Next</button>
                     </div>
                 </form>
             </mat-step>
-            <mat-step [stepControl]="companyFormGroup" errorMessage="Estos campos son requeridos">
+            <mat-step>
                 <form [formGroup]="companyFormGroup">
-                    <ng-template matStepLabel>Datos para organización</ng-template>
+                    <!-- <ng-template matStepLabel>Datos para organización</ng-template> -->
                     <mat-form-field appearance="fill">
                         <mat-label>Perfil</mat-label>
                         <mat-select [(value)]="idProfileSelected">
@@ -107,12 +107,12 @@
                             <input matInput placeholder={{data.employeeCode}} formControlName="employeecodeCtrl" required>
                         </mat-form-field>
                     </div>
-                    <div>
+                    <div style="display: grid;">
                         <button mat-raised-button matStepperPrevious color="warn">Back</button>
                         <button mat-raised-button color="primary" (click)="registrar()">Registrar</button>
                     </div>
                 </form>
             </mat-step>
-        </mat-vertical-stepper>
+        </mat-horizontal-stepper>
     </div>
 </div>
