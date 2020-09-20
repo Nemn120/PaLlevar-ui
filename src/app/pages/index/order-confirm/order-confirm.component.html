@@ -9,23 +9,23 @@
     <mat-label>Nombre</mat-label>
     <input matInput [(ngModel)]="this.data.userOrder.nombre" name="nombre" readonly>
   </mat-form-field>
+  <mat-form-field class="example-full-width" >
+    <mat-label>Fecha</mat-label>
+    <input matInput [(ngModel)]="this.fecha" name="fecha" readonly>
+  </mat-form-field>
   <mat-form-field class="example-full-width">
+    <mat-label>Telefono</mat-label>
+    <input matInput [(ngModel)]="this.data.phone" name="phone" readonly>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" style="width: 25%;">
+    <mat-label>Cantidad de Productos</mat-label>
+    <input matInput [(ngModel)]="this.data.quantity" name="cantidad" readonly>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" style="width: 50%;">
       <mat-label>Direccion</mat-label>
       <input matInput [(ngModel)]="this.data.address" name="address" readonly>
     </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Telefono</mat-label>
-      <input matInput [(ngModel)]="this.data.phone" name="phone" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" >
-      <mat-label>Cantidad de Productos</mat-label>
-      <input matInput [(ngModel)]="this.data.quantity" name="cantidad" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" >
-      <mat-label>Fecha</mat-label>
-      <input matInput [(ngModel)]="this.fecha" name="fecha" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" >
+    <mat-form-field class="example-full-width" style="width: 25%;">
       <mat-label>Total del Pedido</mat-label>
       <input matInput [(ngModel)]="this.data.total" name="totalO" readonly>
     </mat-form-field>
