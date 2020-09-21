@@ -47,3 +47,26 @@ table {
 .mat-column-total {
   flex: 0 0 10% !important;
 }
+
+.mat-row:nth-child(odd){
+  background-color:#F4C09B;
+}
+
+.mat-row:nth-child(even){
+  background-color:#EED2BE;
+}
+
+.mat-header-cell{
+  background-color:#E8794F;
+  font-size: 120%;
+  color: white;
+}
+
+.mat-row{
+  font-size: 120%;
+}
+
+.mat-toolbar.title-component{
+  background-color:#5B8FE7;
+  color: white;
+}
