@@ -22,8 +22,8 @@ export class ClaimDetailComponent implements OnInit {
   fechaCreacion: Date;
   fecha:string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ComplaintBean, private snackBar: MatSnackBar,
-  private complaintService:ComplaintService,private sanitization: DomSanitizer,) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ComplaintBean, public dialogo: MatDialogRef<ClaimDetailComponent>,
+  private snackBar: MatSnackBar, private complaintService:ComplaintService,private sanitization: DomSanitizer,) { }
 
   ngOnInit(): void {
     this.loadingSpinner=true;
@@ -62,5 +62,8 @@ export class ClaimDetailComponent implements OnInit {
     this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
     this.imagenEstado=true;
   }
+  closeDialog() {
+    this.dialogo.close();
+ }
 }
  

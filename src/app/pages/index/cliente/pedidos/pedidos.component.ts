@@ -121,14 +121,16 @@ public sendMessage(order: OrderBean) {
     this.complaintService.getComplaintByOrderId(order.id).subscribe(data => {  
       if (data.data){
         this.dialog.open(ClaimDetailComponent,{
-          width: '350px', 
-          height: '800px', 
+          width: '70%', 
+          height: '80%', 
           data: data.data
       });
         
       }
       else
       this.dialog.open(EnviarMensajeComponent, {
+          width: '35%', 
+          height: '75%',
           data: ord
     });
      
