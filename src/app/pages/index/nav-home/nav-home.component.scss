@@ -138,34 +138,17 @@
             border: 2px solid black;
           }
 
-        .searchDish{
+        #form-control {
             position: relative;
-            display:inline-block;
-            font-size: 20px;
-            box-sizing: border-box;
-        }
-        
-        .searchDish[type="text"]{
-            background: #f4f4f4;
-            padding-left: 10px;
+            display: inline-block;
+            font-size: 15px;
+            box-sizing: .5s;
+            background: #fff;
+            width: 250px;
+            height: 30px;
             border: none;
             outline: none;
-        }
-
-        .searchDishButton{
-            position: relative;
-            right: 20px;
-            line-height: 44px;
-            border-radius: 0 15px 15px 0;
-            border: 2px solid black;
-            width: 100px;
-            height: 48px;
-            color:white;
-            outline: none;
-            cursor: pointer;
-            background: orange;
-        }
-
-        .serchDishButton:hover{
-            background: #ff5722;
+            padding: 0 25px;
+            border-radius: 25px 0 0 25px;
+            margin-bottom: 5px;
         }

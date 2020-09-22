@@ -1,1 +1,20 @@
-<p>search-dish works!</p>
+<div class="fondo">
+    <div class="app-container">
+        <div class="menu-container">
+            <div class="menu-body">
+                <div *ngFor="let empresa of listaEmpresaConProductos">
+                    <div *ngIf="!_sharedService.loading" class="menuProduct-container">
+                        <div class="f-headline" class="p-card-product">
+                            <div *ngFor="let menuDayProduct of empresa._listOfProductsShowed" style="float:left">
+                                <div class="card">
+                                    <app-card-product-new [menuProduct]="menuDayProduct">
+                                    </app-card-product-new>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
