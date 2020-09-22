@@ -83,9 +83,8 @@ export class NavHomeComponent implements OnInit {
   return this.carService.numberProductSelected;
  }
 
-
  showDish(nameDish: string){
-    this.router.navigate(['index/dish',nameDish]);
+      this.router.navigate(['index/dish',nameDish]);
  }
 
  ocultarSearchBar(){

@@ -20,19 +20,8 @@ export class SearchDishComponent implements OnInit {
 
   listaPlatillos: MenuDayProductBean[] = [];
   platilloBuscado: string;
-  listaPlatillosPorEmpresa: MenuDayProductBean[] = [];
-  empresas: CompanyBean[];
-  compañiaYproducto: CompanyNameAndProductsDTO[];
-  listaDTO: CompanyNameAndProductsDTO[] = [];   //////////////////////////////
-  xd: any;
-  dto: CompanyNameAndProductsDTO[];
-
-  arreglo1: any;
-
-
+  
   ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
-
-  productosBuscadosDTO: CompanyNameAndProductsDTO[] = [];
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -43,259 +32,53 @@ export class SearchDishComponent implements OnInit {
     private _organizationService: OrganizationService) { }
 
   ngOnInit(): void {
-    //this.platilloBuscado = this._activatedRoute.snapshot.params['nameDish'];
-    //this._menuDayProductService.getSearchPlatillos(this.platilloBuscado).subscribe(data=>{
-    //this.listaPlatillos = data;
-    //})
-    this._activatedRoute.params.subscribe(params => {
-      this.platilloBuscado = params['nameDish'];
-      this.ListaEmpresaConProductos = [];
-      this._menuDayProductService.getSearchPlatillos(this.platilloBuscado).subscribe(data => {
-        this.activatedPhoto(data);
-        this.listaPlatillos = data;
-        console.log('platillos buscados sin filtros');
-        console.log(this.listaPlatillos);
-        this.adios9(this.listaPlatillos);
-        console.log(this.ListaEmpresaConProductos);
-        
-        
-        
-
-        
-      })
-    })
-  }
-
-  /*
-  verEmpresaConProductos(buscados: MenuDayProductBean[]){
-    let i = 0;
-    buscados.forEach(p=>{
-      if(this.productosBuscadosDTO[p.organizationId] != null){
-        this.productosBuscadosDTO[p.organizationId]._listOfProductsShowed.push(p);
-      }else{
-        let nuevoDTO = new CompanyNameAndProductsDTO();
-        nuevoDTO._listOfProductsShowed = [];
-        nuevoDTO._listOfProductsShowed.push(p);
-        this._organizationService.getCompanyById(p.organizationId).subscribe(c=>{
-          nuevoDTO._organization = new CompanyBean();
-          nuevoDTO._organization = c;
-          this.productosBuscadosDTO.push(nuevoDTO);
-        })
-        i = p.organizationId;
-      }
-    })
-    
-  }
-  */
-
-  adios9(buscados: MenuDayProductBean[]){
-    buscados.forEach(plat=>{
-      if(plat.organizationId!=2){
-          if(!this.ListaEmpresaConProductos[plat.organizationId-1]){
-          
-            this.ListaEmpresaConProductos[plat.organizationId-1] = new CompanyNameAndProductsDTO();
-            this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed = [];
-            this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
-            this._organizationService.getCompanyById(plat.organizationId).subscribe(data=>{
-              this.ListaEmpresaConProductos[plat.organizationId-1]._organization = new CompanyBean();
-              this.ListaEmpresaConProductos[plat.organizationId-1]._organization= data;
+    this._activatedRoute.params.subscribe(params=>{
+      
+        this.platilloBuscado = params['nameDish'];
+        this.ListaEmpresaConProductos = [];
+        this._menuDayProductService.getSearchPlatillos(this.platilloBuscado).subscribe(data=>{
+          Object.entries(data.dataList).forEach(element=>{
+            this.activatedPhoto(element[1]);
+          })
+          console.log(Object.entries(data.dataList));
+          for (var [organizationId, value] of Object.entries(data.dataList)) {
+            let dto = new CompanyNameAndProductsDTO();
+            dto._listOfProductsShowed = [];
+            for(var [keyProduct, valueProduct] of Object.entries(value)){
+              dto._listOfProductsShowed.push(valueProduct);
+            }
+            this._organizationService.getCompanyById(parseInt(organizationId)).subscribe(company=>{
+                dto._organization = company;
+                this.ListaEmpresaConProductos.push(dto);
             })
+          }
           
-          
-        }
-        else{
-          this.ListaEmpresaConProductos[plat.organizationId-1]._listOfProductsShowed.push(plat);
-        }
-      }
-    })
-    
-    console.log("lista ordenada" ,this.ListaEmpresaConProductos);
-  }
+          console.log(this.ListaEmpresaConProductos);
+        })
        
-      
+    })      
+}
 
-  /*
-  prueba7(){
-    let index = 0
-    
-    this.listaPlatillos.forEach(primerPlato=>{
-      let nuevoDTO = new CompanyNameAndProductsDTO();
-      nuevoDTO._listOfProductsShowed = [];
-      if(primerPlato.organizationId-1 == index){
-        
-        this.listaDTO[index]._listOfProductsShowed.push(primerPlato);
-      }else{
-        
-        nuevoDTO._listOfProductsShowed.push(primerPlato);
-        this._organizationService.getCompanyById(primerPlato.organizationId).subscribe(company=>{
-          nuevoDTO._organization = company;
-          this.listaDTO.push(nuevoDTO);
-          index = primerPlato.organizationId-1;
-        })
-      }
-    })
+
+
+activatedPhoto(data: any) {
+  for ( const m of data) {
+    this.productService.getPhotoById(m.product.id).subscribe(photo => {
+      const reader = new FileReader();
+      reader.readAsDataURL(photo);
+      reader.onloadend = () => {
+        const base64 = reader.result;
+        m.product._foto = this.setterPhoto(base64);
+        m.product._isFoto = true;
+      };
+      this.sharedService.loading = false;
+    });
   }
-  */
+}
 
-  /*
-  hola(){
-    let porEmpresas = [];
-    this.listaPlatillos.forEach(r =>{
-      if(!porEmpresas[r.organizationId-1]){
-        porEmpresas[r.organizationId-1] = [];
-      }else{
-        porEmpresas[r.organizationId-1].push(r);
-        let nuevoDTO = new CompanyNameAndProductsDTO();
-        nuevoDTO._listOfProductsShowed = [];
-        nuevoDTO._listOfProductsShowed = porEmpresas[r.organizationId-1];
-        this._organizationService.getCompanyById(r.organizationId).subscribe(company=>{
-          nuevoDTO._organization = new CompanyBean();
-          nuevoDTO._organization = company;
-          this.listaDTO.push(nuevoDTO);
-        })
-      }
-      
-
-    })
-    
-    //return porEmpresas;
-    
-  }
-
-  adios(){
-    let nuevoDTO = new CompanyNameAndProductsDTO();
-    this.listaDTO = [];
-    nuevoDTO._listOfProductsShowed = [];
-    nuevoDTO._organization = new CompanyBean();
-    let platillosPorEmpresa = [];
-    this.listaPlatillos.forEach(platillo=>{
-      if(!nuevoDTO._listOfProductsShowed[platillo.organizationId]){
-        nuevoDTO._listOfProductsShowed[platillo.organizationId] = undefined;
-        //this.listaDTO.find(dto => dto._organization.id == platillo.organizationId)._listOfProductsShowed = platillosPorEmpresa;
-      }
-      nuevoDTO._listOfProductsShowed[platillo.organizationId] = platillo;
-      this._organizationService.getCompanyById(platillo.organizationId).subscribe(company=>{
-        nuevoDTO._organization = company;
-        this.listaDTO.push(nuevoDTO);
-      })
-      //platillosPorEmpresa[platillo.organizationId].push(platillo);
-      
-      
-    })
-  }
-  
-
-  
-  public mostrarProductosPorEmpresa(){
-    this.listaDTO = [];
-    
-    this.listaPlatillos.forEach(platillo =>{
-      let nuevoDTO = new CompanyNameAndProductsDTO();
-      if(!nuevoDTO[platillo.organizationId]){
-        nuevoDTO._listOfProductsShowed = [];
-        //nuevoDTO._listOfProductsShowed.push(platillo);
-      }
-      nuevoDTO._listOfProductsShowed.push(platillo);
-      nuevoDTO._listOfProductsShowed = [];
-      this._organizationService.getCompanyById(platillo.organizationId).subscribe(data =>{
-        nuevoDTO._organization = data;
-        this.listaDTO.push(nuevoDTO);
-      })
-    })
-  }
-   //////////////////////////////////////////////////////////////////////////////////////////////
-  public groupMenuProductDay(menuProductList: MenuDayProductBean[]){
-    let index = 0;
-    this.listaDTO = [];
-    menuProductList.forEach(platillo=>{
-      if(platillo.organizationId-1 == index){
-        this.listaDTO.find(DTOseleccionado => DTOseleccionado._organization.id -1 == index)._listOfProductsShowed.push(platillo);
-      }else{
-        let nuevoDTO = new CompanyNameAndProductsDTO();
-        nuevoDTO._listOfProductsShowed = [];
-        nuevoDTO._listOfProductsShowed.push(platillo);
-        this._organizationService.getCompanyById(platillo.organizationId).subscribe(data =>{
-          nuevoDTO._organization = data;
-          this.listaDTO.push(nuevoDTO);
-          index = platillo.organizationId -1;
-        })
-        
-      }
-    })
-  }
-  //////////////////////////////////////////////////////////////////////////////////////////////
- 
-  /*
-
-  asignarListaDeProductosAsignarEmpresas(){
-    this.compañiaYproducto = [];
-    let aux = []; // para organizar la matriz de productos por id de empresa
-    let flag;   // se meterá las empresas
-    this.listaPlatillos.forEach(platillo =>{
-      if(!aux[platillo.organizationId]){
-        //aux[platillo.organizationId] = [];
-        aux[platillo.organizationId] = [];
-      }
-      aux[platillo.organizationId].push(platillo);
-      this._organizationService.getCompanyById(platillo.organizationId).subscribe(data =>{
-        flag = data; 
-      })
-    })
-    this.empresas = flag;
-    this.listaPlatillosPorEmpresa = aux;
-
-    this.compañiaYproducto._listOfProductsShowed = aux;
-    this.compañiaYproducto._organization = flag;
-    
-    a._organization = this.empresas;
-    a._listOfProductsShowed = this.listaPlatillosPorEmpresa;
-    
-  }  
-
-  */
-
-
-
-
-
-  activatedPhoto(data: any) {
-    for (const m of data) {
-      this.productService.getPhotoById(m.product.id).subscribe(photo => {
-        const reader = new FileReader();
-        reader.readAsDataURL(photo);
-        reader.onloadend = () => {
-          const base64 = reader.result;
-          m.product._foto = this.setterPhoto(base64);
-          m.product._isFoto = true;
-        };
-        this.sharedService.loading = false;
-      });
-    }
-  }
-
-  setterPhoto(data: any) {
-    return this.sanitization.bypassSecurityTrustResourceUrl(data);
-  }
+setterPhoto(data: any) {
+  return this.sanitization.bypassSecurityTrustResourceUrl(data);
+}
 
 }
 
-/*
-        let index = 0;
-        data.forEach(plat => {
-          //prod=this.ListaEmpresaConProductos.find(x => x._organization.id == plat.organizationId)
-          if (this.ListaEmpresaConProductos[index] && this.ListaEmpresaConProductos[index]._organization.id == plat.id) {
-            this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
-          } else {
-            this._organizationService.getCompanyById(plat.organizationId).subscribe(data => {
-              index =index+1;
-              this.ListaEmpresaConProductos[index] =  new CompanyNameAndProductsDTO();
-              this.ListaEmpresaConProductos[index]._organization= new CompanyBean();
-              this.ListaEmpresaConProductos[index]._organization = data;
-              this.ListaEmpresaConProductos[index]._listOfProductsShowed = [];
-              this.ListaEmpresaConProductos[index]._listOfProductsShowed.push(plat);
-            })
-           
-          }
-      
-        })
-        */

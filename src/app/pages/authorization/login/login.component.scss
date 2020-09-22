@@ -4,6 +4,47 @@
 }
 */
 
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Ranchers', cursive;
+}
+
+.img{
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 50px;
+}
+
+.img img{
+    width: 500px;
+    height: 300px;
+}
+
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+.toolbar3 {
+    height: auto;
+    background-color: azure;
+    padding-top: 20px;
+    width: 100%;
+    
+}
+
+
+
+.cuadroCredenciales{
+    position: relative;
+}
+
+.form{
+    background:blue;
+    padding:10px;
+}
+
 .toolbar2 {
     opacity: 0.6;
     padding-left: 10px;
@@ -74,7 +115,7 @@ img {
 }
 
 .background {
-    background-image: url('/assets/images/background1.jpg');
+    //background-image: url('/assets/images/background1.jpg');
     background-position: center center;
     background-size: cover;
     height: 100%;

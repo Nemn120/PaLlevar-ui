@@ -1,9 +1,19 @@
 <!--menu del cliente final-->
 <app-nav-home></app-nav-home>
 
+
+
+
+
 <div class="background">
 
     <div class="login-container" fxLayout="row" fxLayoutAlign="center center">
+
+        <mat-card class = "img">
+            <mat-card>
+                <img src='/assets/images/undrawbreakfastpsiw.svg'>
+            </mat-card>
+        </mat-card>
 
         <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="60%" fxFlex.xs="90%">
             <mat-card>
@@ -38,10 +48,10 @@
 
                 </mat-card-content>
 
-                <mat-card-actions class="login-actions">
-                    <button mat-raised-button style="margin-left:2px;" id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Ingresa</button>
-                    <button mat-raised-button color="accent" routerLink="/auth/registry">Regístrate</button>
-                </mat-card-actions>
+                
+                    <button mat-raised-button style="display:block; border:none; width:100%; font-size:20px; margin-bottom: 10px" id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Iniciar sesión</button>
+                    <button mat-raised-button style="display:block; border:none; width:100%; font-size:20px;" color="accent" routerLink="/auth/registry">Regístrate</button>
+                
 
             </mat-card>
 

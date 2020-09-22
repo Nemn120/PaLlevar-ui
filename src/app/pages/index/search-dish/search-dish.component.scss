@@ -1,3 +1,9 @@
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+}
+
 .fondo {
     //background-repeat: repeat-x;
     background-color: #F9F9F8; //#F0F0FA;
@@ -111,7 +117,7 @@
 }
 
 .menuProduct-container {
-    display: flex;
+    display: flow-root;
     //justify-content: space-between;
     flex-direction: column;
     flex-wrap: wrap;

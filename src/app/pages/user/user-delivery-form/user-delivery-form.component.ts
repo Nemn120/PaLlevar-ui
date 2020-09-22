@@ -8,6 +8,10 @@ import { DialogConfirmacionComponent } from '../dialog-confirmacion/dialog-confi
 import { UserService } from 'src/app/_service/user.service';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ProfileService } from '../../../_service/profile.service';
+import { Message } from '../../../_DTO/messageDTO';
+import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { runInThisContext } from 'vm';
+
 
 @Component({
   selector: 'app-user-delivery-form',
@@ -15,45 +19,46 @@ import { ProfileService } from '../../../_service/profile.service';
   styleUrls: ['./user-delivery-form.component.scss']
 })
 export class UserDeliveryFormComponent implements OnInit {
-  dataEmployee = new UserBean();
-  @ViewChild('stepper') stepper: MatVerticalStepper;
-  estadoSelected: string;
-  companyFormGroup: FormGroup;
-  mensaje = 'cambio realizado con éxito';
-  hide = true;
-  constructor(private formBuilder: FormBuilder,
+  dataEmployee: UserBean;
+  constructor(
               private dialog: MatDialog,
               private serviceUser: UserService,
-              private profileService: ProfileService,
+              
               @Inject(MAT_DIALOG_DATA) public data: UserBean) { }
 
   ngOnInit(): void {
-    this.dataEmployee = this.data;
-    this.companyFormGroup = this.formBuilder.group({
-      statusCtrl: ['', Validators.required],
-    });
+    this.dataEmployee= new UserBean();
+    this.dataEmployee.id = this.data.id;
+    this.dataEmployee.status=this.data.status;
+    this.dataEmployee.profile.idProfile=this.data.profile.idProfile;
   }
 
-  change(): void {
-      // this.dataEmployee.status = 'Vacaciones';
-      this.openConfirmation();
 
-      // this.serviceUser.updateStatusDelivery(this.dataEmployee).subscribe(data => {
-      //   this.serviceUser.mensajeCambio.next('Se modificó');
-      // });
-      console.log('status' + this.data.status);
+  CambiarEstadoDeliveryMan(){
+    let messageConfirmation = new Message();
+    messageConfirmation.title = 'Confirmar cambio de estado';
+    messageConfirmation.description = '¿Desea cambiar el estado del repartidor?';
+    this.dialog.open(DialogoConfirmacionComponent,{
+      data: messageConfirmation
+    })
+    .afterClosed().subscribe(t=>{
+      this.serviceUser.updateStatusDelivery(this.dataEmployee).subscribe(data=>{
+        let user = new UserBean();
+        user.profile = new ProfileBean();
+        user.profile.idProfile = 3
+        this.serviceUser.getUserByFields(user).subscribe(data2=>{
+          this.serviceUser.userCambio.next(data2.dataList);
+          this.serviceUser.mensajeCambio.next(data.message);
+        }, error=>{
+          this.serviceUser.mensajeCambio.next(error.message);
+        })
+        this.dialog.closeAll();
+      })
+    })
+    
   }
 
-  openConfirmation() {
-    const dialogRef = this.dialog.open(DialogConfirmacionComponent, {
-      width: '250px', data: this.mensaje
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.serviceUser.updateStatusDelivery(this.dataEmployee).subscribe(data => {
-        this.serviceUser.mensajeCambio.next('Se modificó');
-      });
-    });
-  }
+  
+  
 
 }

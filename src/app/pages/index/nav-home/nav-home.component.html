@@ -9,8 +9,8 @@
 
 
     <div id="ocultar">
-        <input id="form-control" type="search" placeholder="Buscar platillo" aria-label="Search" #buscarPlatillo>
-        <button id="btn-outline-success" type="button" (click)="showDish(buscarPlatillo.value)">Buscar</button>
+        <input id="form-control" type="search" placeholder="Buscar platillo" aria-label="Search" (keyup)="showDish(buscar.value)" #buscar>
+        
     </div>
 
 

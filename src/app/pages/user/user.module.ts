@@ -14,6 +14,7 @@ import { MaterialModule } from 'src/app/_material/material.module';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
 import { UserDeliverysComponent } from './user-deliverys/user-deliverys.component';
 import { UserDeliveryFormComponent } from './user-delivery-form/user-delivery-form.component';
+import { SharedModule } from 'src/app/_shared/shared.module';
 
 const routes: Routes = [
   {
@@ -46,7 +47,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     MaterialModule,
     MatNativeDateModule,
-    SidebarSidenavModule
+    SidebarSidenavModule,
+    SharedModule
   ],
   exports: [RouterModule],
   entryComponents: [DialogConfirmacionComponent, DialogFotoComponent, UserDeliveryFormComponent],
