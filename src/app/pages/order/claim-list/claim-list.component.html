@@ -10,32 +10,32 @@
         <div class="container">
             <mat-table [dataSource]="dataSource" matSort>
                 <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-header-cell class="tabla" *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="titulo">
 
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </mat-header-cell>
+                    <mat-header-cell class="tabla"*matHeaderCellDef mat-sort-header> Titulo </mat-header-cell>
 
                     <mat-cell *matCellDef="let row"> {{row.titulo}}</mat-cell>
 
                 </ng-container>
 
                 <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+                    <mat-header-cell class="tabla"*matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                         <p class="truncate-text"> {{row.description}}</p>
                     </mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="orderId">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID de la orden </mat-header-cell>
+                    <mat-header-cell class="tabla" *matHeaderCellDef mat-sort-header> ID de la orden </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.orderId}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="createDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                    <mat-header-cell class="tabla"*matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
                 </ng-container>
 

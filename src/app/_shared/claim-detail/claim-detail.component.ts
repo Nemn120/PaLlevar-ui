@@ -22,7 +22,7 @@ export class ClaimDetailComponent implements OnInit {
   fechaCreacion: Date;
   fecha:string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: ComplaintBean, private snackBar: MatSnackBar,
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ComplaintBean,public dialogo: MatDialogRef<ClaimDetailComponent>, private snackBar: MatSnackBar,
   private complaintService:ComplaintService,private sanitization: DomSanitizer,) { }
 
   ngOnInit(): void {
@@ -61,6 +61,9 @@ export class ClaimDetailComponent implements OnInit {
   public sanar(base64 : any){
     this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
     this.imagenEstado=true;
+  }
+  closeDialog() {
+    this.dialogo.close();
   }
 }
  

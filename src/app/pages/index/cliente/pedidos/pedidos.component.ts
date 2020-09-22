@@ -27,7 +27,7 @@ export class PedidosComponent implements OnInit {
   complaint : ComplaintBean[]
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail','message'];
+  displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail','modificar','cancell','message'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   dataSource1: MatTableDataSource<ComplaintBean>;
   
@@ -121,14 +121,16 @@ public sendMessage(order: OrderBean) {
     this.complaintService.getComplaintByOrderId(order.id).subscribe(data => {  
       if (data.data){
         this.dialog.open(ClaimDetailComponent,{
-          width: '350px', 
-          height: '800px', 
+          width: '70%', 
+          height: '80%',
           data: data.data
       });
         
       }
       else
       this.dialog.open(EnviarMensajeComponent, {
+          width: '35%', 
+          height: '75%',
           data: ord
     });
      

@@ -38,22 +38,36 @@
         </ng-container>
 
         <ng-container matColumnDef="detail">
-            <mat-header-cell *matHeaderCellDef>Detalles ,Modificar </mat-header-cell>
+            <mat-header-cell fxFlex="150px"*matHeaderCellDef >Detalles Pedido </mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary" (click)="openDialog(row)">
+                <button mat-icon-button class="button" color="primary" (click)="openDialog(row)">
           <mat-icon>fastfood</mat-icon>
         </button>
-                <button class="color" mat-icon-button (click)="editarPedido(row)">
-            <mat-icon>description</mat-icon>
-        </button>
-                <button *ngIf="row.status=='Pendiente'" mat-icon-button (click)="cancelOrder(row)">
-            <mat-icon>cancel</mat-icon> 
-                  </button>
             </mat-cell>
 
         </ng-container>
+
+        <ng-container matColumnDef="modificar">
+            <mat-header-cell fxFlex="150px"*matHeaderCellDef >Modificar Datos </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button class="color" mat-icon-button (click)="editarPedido(row)">
+            <mat-icon>description</mat-icon>
+        </button>
+            </mat-cell>
+
+        </ng-container>
+
+        <ng-container matColumnDef="cancell">
+            <mat-header-cell fxFlex="150px"*matHeaderCellDef> Cancelar Pedido </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button class="button"*ngIf="row.status=='Pendiente'" mat-icon-button (click)="cancelOrder(row)">
+                    <mat-icon>cancel</mat-icon> 
+                </button>
+            </mat-cell>
+        </ng-container>
+
         <ng-container matColumnDef="message">
-            <mat-header-cell *matHeaderCellDef> Enviar Reclamo o Comentario </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Enviar Reclamo  </mat-header-cell>
             <mat-cell *matCellDef="let row">
                 <button class="button" mat-icon-button color="primary" (click)="sendMessage(row)">
           <mat-icon>message</mat-icon>

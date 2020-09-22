@@ -1,8 +1,13 @@
 .color{
-    color: darken($color: #000000, $amount: 0)
+    color: darken($color: #000000, $amount: 0);
+    margin-left:30px;
 
 }
 
 .button{
     margin-left:30px;
+}
+
+.texto{
+    text-align: center;
 }
