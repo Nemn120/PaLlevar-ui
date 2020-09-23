@@ -28,6 +28,7 @@ export class DeliveryOrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.titleProductList="Listar Productos";
     this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
       this.snackBar.open(data, 'INFO', {

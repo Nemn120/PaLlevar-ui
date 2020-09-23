@@ -38,6 +38,7 @@ export class SearchOrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.searchOrderByFieldsDTO = new SearchOrderByFieldsDTO();
     this.searchOrderByFieldsDTO.organizationId= this.sharedService.getOrganizationIdByUserSession();
     this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
