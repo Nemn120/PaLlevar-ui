@@ -4,7 +4,7 @@
     padding: 0 16px;
     margin-top: 0px;
     padding-top: 0px;
-    width: 85%;
+    width: 80%;
     flex-direction: row;
     align-items: center;
     white-space: nowrap;
@@ -63,15 +63,7 @@ table {
     flex: 0 0 13% !important;
 }
 
-.mat-row:nth-child(odd){
-    background-color:#F4C09B;
-  }
-  
-  .mat-row:nth-child(even){
-    background-color:#EED2BE;
-  }
-  
-  .mat-header-cell{
+.mat-header-cell{
     background-color:#E8794F;
     font-size: 120%;
     color: white;
@@ -82,8 +74,10 @@ table {
   }
   
   .mat-toolbar.title-component{
-    background-color:#5B8FE7;
+    background-color:#e64a19;
     color: white;
   }
-
   
+  .mat-raised-button{
+    margin-left: 15px;
+  }

@@ -37,14 +37,6 @@
                     </mat-select>
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width">
-                    <mat-label>Nro. Documento</mat-label>
-                    <input matInput [(ngModel)]="searchOrderByFieldsDTO.userOrderDocumentNumber">
-                    <button mat-button *ngIf="searchOrderByFieldsDTO.userOrderDocumentNumber" matSuffix mat-icon-button aria-label="Clear" (click)="searchOrderByFieldsDTO.userOrderDocumentNumber=''">
-                        <mat-icon>close</mat-icon>
-                      </button>
-                </mat-form-field>
-
                 <mat-form-field class="example-form-field">
                     <mat-label>Fecha Delivery Inicio</mat-label>
                     <input matInput [matDatepicker]="picker1" [(ngModel)]="searchOrderByFieldsDTO.deliveryDateIni">
@@ -71,6 +63,14 @@
                     <input matInput [matDatepicker]="picker4" [(ngModel)]="searchOrderByFieldsDTO.attendDateFin">
                     <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
                     <mat-datepicker #picker4></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nro. Documento</mat-label>
+                    <input matInput [(ngModel)]="searchOrderByFieldsDTO.userOrderDocumentNumber">
+                    <button mat-button *ngIf="searchOrderByFieldsDTO.userOrderDocumentNumber" matSuffix mat-icon-button aria-label="Clear" (click)="searchOrderByFieldsDTO.userOrderDocumentNumber=''">
+                        <mat-icon>close</mat-icon>
+                      </button>
                 </mat-form-field>
 
                 <button mat-raised-button color="primary" (click)="getAsignOrderByFields()">Buscar</button>

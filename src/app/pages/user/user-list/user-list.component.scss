@@ -47,3 +47,18 @@ table {
 .mat-dialog-container {
     width: 0px !important;
 }
+
+.mat-header-cell{
+    background-color:#E8794F;
+    font-size: 120%;
+    color: white;
+  }
+  
+  .mat-row{
+    font-size: 120%;
+  }
+  
+  .mat-toolbar.title-component{
+    background-color:#e64a19;
+    color: white;
+  }
