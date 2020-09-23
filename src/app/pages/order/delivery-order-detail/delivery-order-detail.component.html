@@ -1,17 +1,9 @@
 <div class="example-container mat-elevation-z8">
-    <p>
         <mat-toolbar class="title-component">
             <span>Detalle del pedido</span>
 
         </mat-toolbar>
-    </p>
     <mat-table #table [dataSource]="dataSource">
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-        </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="product">

@@ -26,7 +26,7 @@ export class DeliveryOrderAsignComponent implements OnInit {
   dataSource: MatTableDataSource<UserBean>;/// tabla 
   titleProductList: string;
 
-  displayedColumns = ['select','id', 'nombre','lastName','cellPhone'];
+  displayedColumns = ['select','nombre','lastName','cellPhone'];
   selection : SelectionModel<UserBean>;
   constructor(
     public dialogo: MatDialog,private dialogRef: MatDialogRef<UserBean>,private orderService:OrderService,private userService:UserService, private dialog:MatDialog, private snackBar: MatSnackBar,
