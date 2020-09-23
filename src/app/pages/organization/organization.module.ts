@@ -16,6 +16,7 @@ import { EditProtocolsComponent } from './edit-protocols/edit-protocols.componen
 import { OrganizationEditComponent } from './organization-edit/organization-edit.component';
 import { MapaEmpresaComponent } from '../../maps/mapa-empresa/mapa-empresa.component';
 import { MapsModule } from '../../maps/maps.module';
+import { DialogDeleteConfirmationComponent } from './dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 
 const routes: Routes = [
@@ -31,8 +32,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SucursalListComponent, SucursalFormComponent, OrganizationListComponent, 
-    OrganizationFormComponent, OrganizationFormNewComponent, OrganizationViewComponent, EditProtocolsComponent, OrganizationEditComponent],
+  declarations: [SucursalListComponent, SucursalFormComponent, OrganizationListComponent,
+    OrganizationFormComponent, OrganizationFormNewComponent, OrganizationViewComponent, EditProtocolsComponent, OrganizationEditComponent, DialogDeleteConfirmationComponent],
   imports: [
     CommonModule,
     SidebarSidenavModule,
@@ -47,7 +48,8 @@ const routes: Routes = [
      OrganizationFormNewComponent,
      OrganizationEditComponent,
      EditProtocolsComponent,
-     MapaEmpresaComponent
+     MapaEmpresaComponent,
+     DialogDeleteConfirmationComponent
   ]
 })
 export class OrganizationModule { }

@@ -1,17 +1,20 @@
+<div class="elipse" mat-dialog-close><span>X</span></div>
 <ng-template [ngIf]="odList.length==0">
     <p>
         Aun no ha agregado productos al carrito.
     </p>
 </ng-template>
 <ng-template [ngIf]="odList.length>0">
-    <h3>Carrito de pedidos Costo total: {{this.carService.costTotal()}} </h3>
+    <h3>Carrito de pedidos
+    </h3>
+    <h5>Total: {{this.carService.costTotal() | currency: 'S/.'}}</h5>
     <div class="example-container mat-elevation-z8">
         <mat-table #table [dataSource]="dataSource">
             <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
                 <mat-header-cell *matHeaderCellDef>
-                    <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
-                    </mat-checkbox>
+                    <!-- <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                    </mat-checkbox> -->
                 </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
@@ -38,12 +41,12 @@
 
 
     </div>
-    <div style="margin: auto; left: 50%; margin-top: 10px;">
-        <button mat-raised-button color="primary" (click)="sendOrder()">
-        Enviar orden
-      </button>
+    <div class="button-opcions">
         <button style="margin-left:5px;" mat-raised-button color="accent" (click)="deleteProductsSelect()">
         Eliminar
+      </button>
+        <button style="margin-left:5px;" mat-raised-button color="primary" (click)="deleteProductsSelect()">
+        Enviar orden
       </button>
     </div>
 </ng-template>

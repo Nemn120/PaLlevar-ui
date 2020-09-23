@@ -63,7 +63,7 @@ export class NavHomeComponent implements OnInit {
     const count = this.carService.getItems().length || null;
     let height: any;
     if(count){
-      height = 50 * count + 205;
+      height = 50 * count + 225;
       height = height.toString();
       height = height + 'px';
     }

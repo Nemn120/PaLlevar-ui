@@ -1,0 +1,22 @@
+.button-opcions {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.elipse {
+    background-color: #e4e6eb;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    color: rgb(72, 35, 35);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    font-size: 14px;
+    cursor: pointer;
+    float: right;
+    z-index: 100;
+}
