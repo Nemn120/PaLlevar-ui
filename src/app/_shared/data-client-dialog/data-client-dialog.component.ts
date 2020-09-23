@@ -49,7 +49,6 @@ export class DataClientDialogComponent implements OnInit {
 
     // CUANDO ENVIA LA ORDEN
     if (!this.isUpdateOrder) {
-      this.order.organizationId = this.carService.orderHeader.organizationId;
       var placeTemp: PlaceBean = new PlaceBean();
       placeTemp.longitud = this.mapService.newPlace.longitud;
       placeTemp.latitud = this.mapService.newPlace.latitud;
