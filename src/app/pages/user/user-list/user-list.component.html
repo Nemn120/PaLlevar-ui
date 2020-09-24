@@ -2,7 +2,6 @@
     <p>
         <mat-toolbar class="title-component">
             <span>Mis trabajadores</span>
-            <button mat-raised-button color="primary" (click)="openDialog()">Registrar Empleado</button>
         </mat-toolbar>
     </p>
     <div class="carousel-item" style="display: flex; width: 80%;">
@@ -59,9 +58,7 @@
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
                     <mat-cell *matCellDef="let row">
-                        <button mat-mini-fab color="primary" style="float: right" (click)="openDialog(row)">
-                            <mat-icon>settings</mat-icon>
-                          </button>
+                        <mat-icon (click)="openDialog(row)" class="icon-setting">settings</mat-icon>
                     </mat-cell>
 
                 </ng-container>

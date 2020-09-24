@@ -58,5 +58,4 @@ export class CardProductNewComponent implements OnInit {
       data: order
     });
   }
-
 }

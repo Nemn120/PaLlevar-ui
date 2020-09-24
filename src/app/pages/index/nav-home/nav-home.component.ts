@@ -11,7 +11,10 @@ import { DashboardService } from '../../../_service/dashboard.service';
 import { OrderBean } from '../../../_model/OrderBean';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { UserBean } from 'src/app/_model/UserBean';
+import { UserService } from 'src/app/_service/user.service';
 import { LoginService } from 'src/app/_service/login.service';
+
 @Component({
   selector: 'app-nav-home',
   templateUrl: './nav-home.component.html',
@@ -21,7 +24,7 @@ export class NavHomeComponent implements OnInit {
 
   logo2 = '../../../../assets/images/motoDelivery.gif';
   logueado = false;
-
+  user: UserBean;
   cantidad: number;
   @Output() totalCarrito = new EventEmitter();
 
@@ -38,6 +41,8 @@ export class NavHomeComponent implements OnInit {
       this.cantidad = this.getCantidad();
       this.totalCarrito.emit(this.cantidad);
     }, 1000);
+
+    this.user = this.sharedService.userSession;
   }
 
   cerrar() {
@@ -58,7 +63,7 @@ export class NavHomeComponent implements OnInit {
     const count = this.carService.getItems().length || null;
     let height: any;
     if(count){
-      height = 50 * count + 205;
+      height = 50 * count + 225;
       height = height.toString();
       height = height + 'px';
     }
@@ -91,5 +96,5 @@ export class NavHomeComponent implements OnInit {
  ocultarSearchBar(){
    document.getElementById('ocultar').style.display="none";
  }
- 
+
 }

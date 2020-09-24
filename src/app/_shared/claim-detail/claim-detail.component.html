@@ -1,25 +1,18 @@
-<mat-form-field style="width: 100%;">
-    <input matInput placeholder="Titulo" [(ngModel)]="complaintSelect.titulo" readonly>
+<div class="card-container">
+    <div class="card u-clearfix">
+      <div class="card-body">
+        <span class="card-number card-circle subtle">{{complaintSelect.id}}</span>
+        <h3 class="card-title">{{complaintSelect.titulo}}</h3>
+        <span class="card-description subtle">{{complaintSelect.description}}</span>
+        <br>
+        <br>
+        <div class="card-read">{{this.fecha}}</div>
+      </div>
+      <img  class="card-media" [src]="imagenData" *ngIf="imagenEstado"/>
+      <div >
+        <button style="margin-left: 4px;margin-top:20px;float:right; width: 25%;" mat-raised-button color="accent" (click)="closeDialog()">Cerrar</button>
+      </div>
+    </div>
+    <div class="card-shadow"></div>
 
-</mat-form-field>
-<br>
-<mat-form-field style="width: 100%;">
-    <textarea matInput rows="5" placeholder="Descripcion" [(ngModel)]="complaintSelect.description" readonly></textarea>
-</mat-form-field>
-<br>
-<mat-form-field style="width: 100%;">
-    <input matInput placeholder="Fecha del reclamo" [(ngModel)]="this.fecha" name="fecha" readonly>
-
-</mat-form-field>
-<br>
-
-
-<div style=" width:300px ;height:300px ;" >
-   
-    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-    <br>
-    <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:300px ;height:300px ;margin: auto;" />
-    <p>{{labelFile}}</p>
-    <br>
 </div>
-<br> 

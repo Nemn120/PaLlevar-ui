@@ -1,5 +1,5 @@
 <mat-toolbar class="toolbar2">
-    <h1 routerLink="/index" style="text-align: center;justify-content: center;">PALLEVAR.PE</h1>
+    <h1 style="text-align: center;justify-content: center;">PALLEVAR.PE</h1>
 </mat-toolbar>
 <mat-toolbar class="toolbar3">
 
@@ -56,9 +56,10 @@
     <div *ngIf="logueado">
         <!--mat-fab-->
         <!--mat-icon-button-->
-        <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary" style="margin-right: 20px;padding-right: 30px;">
-            <mat-icon>account_circle</mat-icon>
-        </button>
+        <!-- <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary" style="margin-right: 20px;padding-right: 30px;"> -->
+        <!-- <mat-icon>account_circle</mat-icon> -->
+        <div class="elipse" [matMenuTriggerFor]="beforeMenu"><span>{{(user.nombre.toUpperCase()) | slice: 0:1 }}</span></div>
+        <!-- </button> -->
 
         <mat-menu #beforeMenu="matMenu" xPosition="before">
             <button mat-menu-item (click)="openPerfil()">Mi Perfil</button>

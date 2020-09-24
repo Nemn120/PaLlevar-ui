@@ -1,10 +1,8 @@
 <div class="container-card-big">
     <mat-card class="card-top">
-        <div class="contact-header">
-            <p>Form</p>
-            <button mat-button [mat-dialog-close]="true" cdkFocusInitial>X</button>
-        </div>
+        <p style="color: white">Formulario Organización</p>
     </mat-card>
+    <div class="elipse" mat-dialog-close><span>X</span></div>
     <mat-card>
         <mat-horizontal-stepper #stepper>
             <mat-step [stepControl]="publicFormGroup" errorMessage="Fields is required.">
@@ -13,15 +11,15 @@
                     <mat-form-field>
                         <mat-label>Nombre</mat-label>
                         <mat-icon matSuffix>create</mat-icon>
-                        <input matInput #message maxlength="20" formControlName="nameCtrl" placeholder="El Padrino" required [(ngModel)]="companySelect.nombre">
-                        <mat-hint align="end">{{message.value.length}} / 20</mat-hint>
+                        <input matInput #message maxlength="40" formControlName="nameCtrl" placeholder="El Padrino" required [(ngModel)]="companySelect.nombre">
+                        <mat-hint align="end">{{message.value.length}} / 40</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Descripción</mat-label>
                         <mat-icon matSuffix>storage</mat-icon>
-                        <input matInput #message maxlength="20" formControlName="descriptionCtrl" placeholder="Description" required [(ngModel)]="companySelect.description">
+                        <input matInput #message maxlength="40" formControlName="descriptionCtrl" placeholder="Description" required [(ngModel)]="companySelect.description">
 
-                        <mat-hint align="end">{{message.value.length}} / 20</mat-hint>
+                        <mat-hint align="end">{{message.value.length}} / 40</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Dirección</mat-label>
@@ -46,10 +44,9 @@
 
                     <mat-form-field>
                         <mat-label>Ruc</mat-label>
-                        <span matPrefix>10 &nbsp;</span>
                         <mat-icon matSuffix>create</mat-icon>
-                        <input matInput #message3 maxlength="8" formControlName="rucCtrl" placeholder="1021453687" required [(ngModel)]="companySelect.ruc">
-                        <mat-hint align="end">{{message3.value.length}} / 8</mat-hint>
+                        <input matInput #message3 maxlength="11" formControlName="rucCtrl" placeholder="10241453687" required [(ngModel)]="companySelect.ruc">
+                        <mat-hint align="end">{{message3.value.length}} / 11</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Razón Social</mat-label>
@@ -141,8 +138,8 @@
                     <mat-form-field>
                         <mat-label>Responsable de pago</mat-label>
                         <mat-icon matSuffix>account_circle</mat-icon>
-                        <input matInput #message11 maxlength="20" formControlName="responsiblePaymentNameCtrl" placeholder="Lucas Contreras Ramos" required [(ngModel)]="companySelect.responsiblePaymentName">
-                        <mat-hint align="end">{{message11.value.length}} / 20</mat-hint>
+                        <input matInput #message11 maxlength="40" formControlName="responsiblePaymentNameCtrl" placeholder="Lucas Contreras Ramos" required [(ngModel)]="companySelect.responsiblePaymentName">
+                        <mat-hint align="end">{{message11.value.length}} / 40</mat-hint>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Celular de responsable de pago</mat-label>

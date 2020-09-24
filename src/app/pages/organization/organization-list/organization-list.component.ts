@@ -9,6 +9,8 @@ import { OrganizationService } from '../../../_service/organization.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganizationFormNewComponent } from '../organization-form-new/organization-form-new.component';
 import { OrganizationFormComponent } from '../organization-form/organization-form.component';
+import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogDeleteConfirmationComponent } from '../dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 @Component({
   selector: 'app-organization-list',
@@ -23,7 +25,9 @@ export class OrganizationListComponent implements OnInit {
   dataSource: MatTableDataSource<CompanyBean>;/// tabla
   titleProductList: string;
   constructor(
-    private companyService:OrganizationService, private dialog:MatDialog, private snackBar: MatSnackBar
+    private companyService: OrganizationService,
+    private dialog: MatDialog, private snackBar: MatSnackBar,
+    private dialogDeleteConfirmation: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -60,27 +64,36 @@ export class OrganizationListComponent implements OnInit {
     });
   } */
 
-  public createDialog(company?: CompanyBean) {
+  public createOrganization(company?: CompanyBean) {
     const productSelect = company != null ? company : new CompanyBean();
     this.dialog.open(OrganizationFormNewComponent, {
-      width: 'auto',
+
       data: productSelect
     });
   }
 
-  public delete(company: CompanyBean){
-      this.companyService.deleteCompany(company.id).subscribe(data => {
-        this.companyService.getListCompany().subscribe(data => {
-          this.companyService.companyCambio.next(data);
-          this.companyService.mensajeCambio.next('Se elimino con éxito');
-        }, error => {
+  public deleteOrganization(company: CompanyBean) {
+    const mensajeDeleteConfirmation = '¿Esta seguro de eliminar?';
+    const dialogDeleteRef = this.dialogDeleteConfirmation.open(DialogDeleteConfirmationComponent, {
+      width: '250px', data: mensajeDeleteConfirmation
+    });
+    dialogDeleteRef.afterClosed().subscribe (result => {
+      if(result) {
+        this.companyService.deleteCompany(company.id).subscribe(data => {
+          this.companyService.getListCompany().subscribe(data => {
+            this.companyService.companyCambio.next(data);
+            this.companyService.mensajeCambio.next('Se elimino con éxito');
+          }, error => {
+            console.error(error);
+            this.companyService.mensajeCambio.next('Error al mostrar listado de compañias');
+          });
+        }, error =>{
           console.error(error);
-          this.companyService.mensajeCambio.next('Error al mostrar listado de compañias');
+          this.companyService.mensajeCambio.next('La organizacion que desea eliminar esta siendo usada');
         });
-      }, error =>{
-        console.error(error);
-        this.companyService.mensajeCambio.next('La organizacion que desea eliminar esta siendo usada');
-      });
-    }
-
+      } else {
+        dialogDeleteRef.close();
+      }
+    });
+  }
 }
