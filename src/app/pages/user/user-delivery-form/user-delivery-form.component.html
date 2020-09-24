@@ -1,12 +1,24 @@
-<div style="margin-left: 30px; margin-top: 15px;">
-    <p _ngcontent-bse-c28="" style="margin-bottom: 40px;font-size: large;font-weight: bolder;">CAMBIAR ESTADO DE DISPONIBILIDAD</p>
-    <mat-icon>cancel</mat-icon>
+<div style="display: flex;">
+    <p style="margin-bottom: 40px; font-size: large;font-weight: bolder;">CAMBIAR ESTADO DE DISPONIBILIDAD</p>
+    <button mat-icon-button class="close-dialog" (click)="cerrar()"><mat-icon>cancel</mat-icon></button>
 </div>
 <div style="text-align: center;">
     <div class="big-circle">
         <img class="small-circle" *ngIf="!dataEmployee._foto" src="assets/images/perfil/perfil.jpg">
         <img class="small-circle" *ngIf="dataEmployee._foto" [src]="data._foto">
         </div>
+        <!--
+        <div>
+            <p>Datos del repartidor</p>
+            <p>username: {{dataEmployee.username}}</p>
+            <p>nombre: {{dataEmployee.nombre}}</p>
+        </div>
+        <div>
+            <p>apellidos: {{dataEmployee.lastName}}</p>
+            <p>Nro. documento: {{dataEmployee.documentNumber}}</p>
+            <p>celular: {{dataEmployee.cellPhone}}</p>
+        </div>
+        -->
     <mat-form-field appearance="fill" >
         <mat-label>Estado/ Disponibilidad</mat-label>
         <mat-select [(value)]="dataEmployee.status">

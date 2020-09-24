@@ -18,3 +18,17 @@
     background-position: center;
     background-size: cover;
 }
+
+
+.close-dialog{
+    margin-right: -10px;
+    margin-top: 7px;
+    margin-left: 5px;
+    border: none;
+    background: none;
+    
+}
+
+.mat-icon-button ::ng-deep .mat-button-focus-overlay {
+    display: none;
+}

@@ -35,6 +35,11 @@ export class UserDeliveryFormComponent implements OnInit {
     this.dataEmployee.profile.idProfile=this.data.profile.idProfile;
     this.dataEmployee._isFoto = this.data._isFoto;
     this.dataEmployee._foto = this.data._foto;
+    this.dataEmployee.username = this.data.username;
+    this.dataEmployee.cellPhone = this.data.cellPhone;
+    this.dataEmployee.documentNumber = this.data.documentNumber;
+    this.dataEmployee.nombre = this.data.nombre;
+    this.dataEmployee.lastName = this.data.lastName;
   }
 
 
@@ -61,7 +66,9 @@ export class UserDeliveryFormComponent implements OnInit {
     })
   }
 
-  
+  cerrar(){
+    this.dialog.closeAll();
+  }
   
 
 }
