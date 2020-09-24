@@ -19,64 +19,74 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './user-deliverys.component.html',
   styleUrls: ['./user-deliverys.component.scss']
 })
-export class UserDeliverysComponent implements OnInit {z
+export class UserDeliverysComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['nombre', 'username' , 'employeeCode', 'status', 'actions'];
   //dataSource: MatTableDataSource<UserBean>;
-  userList: Array<UserBean>;
-  deliveryMan = new UserBean();
+  estadosRepartidor: string[] = ['TODOS','DISPONIBLE','OCUPADO','EN VACACIONES']; // para la búsqueda
+  telefono: string;   // para la búsqueda;
+  nombre: string; // para la búsqueda;
+  apellidos: string; // para la búsqueda;
+  repartidorBuscado: UserBean;  // para la búsqueda;
+  deliveryMan: UserBean;
   deliveryMen: any;
   profile: ProfileBean;
   userDeliveryList: UserBean[];
-
-  dato: any;
-  toShow: boolean = false;
-  imageData: any;
+  deliveryManSelect: UserBean;
 
   constructor(private dialog: MatDialog, private router: Router,
               private userService: UserService, private snackBar: MatSnackBar,
-              private sanitization: DomSanitizer, private sharedService: SharedService) {
+              private sanitization: DomSanitizer, public sharedService: SharedService) {
               }
 
   ngOnInit(): void {
-    
-    let user = new UserBean();
-    user.profile = new ProfileBean();
-    user.profile.idProfile = 3;
-    this.userService.getUserByFields(user).subscribe(data => {
-      this.userDeliveryList = data.dataList;
-      console.log(this.userDeliveryList);
-      this.userDeliveryList.forEach(r=>{
-        this.userService.getPhotoById(r.id).subscribe(photo=>{
-          let reader = new FileReader();
-          reader.readAsDataURL(photo);
-          reader.onload = () => {
-            const base64 = reader.result;
-            r._foto = this.setterPhoto(base64);
-          };
-        })
-      })
-      /*
-      this.userDeliveryList.forEach(r=>{
-        /*
-        this.userService.getPhotoById(r.id).subscribe(data=>{
-          if(data){
-            r._isFoto = true;
-            r._foto = this.convertir(data);
-          }else{
-            r._isFoto = false;
-            r._foto = [];
-          }
-        })
-        debe ir comentario cerrado
-      })
-      */
-      })
+
+    this.getListDeliveryMan();
+
+    this.repartidorBuscado = new UserBean();
     
     
   }
+
+  getListDeliveryMan(){
+    this.deliveryMan = new UserBean();
+    this.deliveryMan.profile = new ProfileBean();
+    this.deliveryMan.profile.idProfile = 3;
+    this.userDeliveryList = [];
+    this.userService.getUserByFields(this.deliveryMan).subscribe(data=>{
+      this.activatedPhoto(data.dataList);
+      this.userDeliveryList = data.dataList;
+      console.log(this.userDeliveryList);
+    }, error =>{
+      console.error(error);
+    });
+  }
+
+  getDeliveryManbyFields(){
+    console.log(this.repartidorBuscado);
+    this.userService.getUserByFields(this.repartidorBuscado).subscribe(data=>{
+      this.activatedPhoto(data.dataList);
+      //this.userService.userCambio.next(data.dataList);
+      this.userDeliveryList = data.dataList;
+      console.log(this.userDeliveryList);
+    }, error =>{
+      this.userService.mensajeCambio.next("Error al mostrar repartidor");
+    });
+  }
+
+  public setColorStatus(status : string):string{
+    switch(status){
+      case 'DISPONIBLE': return 'green';
+      case 'OCUPADO': return 'red';
+      case 'EN VACACIONES': return '#f5dd42';
+    }
+  }
+
+
+
+
 
 
   // buscar repartidor (en proceso)
@@ -86,16 +96,18 @@ export class UserDeliverysComponent implements OnInit {z
   }
 
   activatedPhoto(data: any) {
-    for (const r of data) {
-      this.userService.getPhotoById(r.id).subscribe(photo => {
-        let reader = new FileReader();
-        reader.readAsDataURL(photo);
-        reader.onloadend = () => {
+    for ( const m of data) {
+      this.userService.getPhotoById(m.id).subscribe(photo => {
+        if(photo.size>0){
+          const reader = new FileReader();
+          reader.readAsDataURL(photo);
+          reader.onloadend = () => {
           const base64 = reader.result;
-          r._foto = this.setterPhoto(base64);
-          r._isFoto = true;
-        };
-        this.sharedService.loading = false;
+          m._foto = this.setterPhoto(base64);
+          m._isFoto = true;
+          };
+        }
+        //this.sharedService.loading = false;
       });
     }
   }
@@ -103,7 +115,7 @@ export class UserDeliverysComponent implements OnInit {z
   setterPhoto(data: any) {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
-
+  
 
 
 }

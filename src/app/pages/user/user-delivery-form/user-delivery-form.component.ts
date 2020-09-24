@@ -10,7 +10,8 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ProfileService } from '../../../_service/profile.service';
 import { Message } from '../../../_DTO/messageDTO';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
-import { runInThisContext } from 'vm';
+import { UserDeliverysComponent } from '../user-deliverys/user-deliverys.component';
+
 
 
 @Component({
@@ -30,7 +31,10 @@ export class UserDeliveryFormComponent implements OnInit {
     this.dataEmployee= new UserBean();
     this.dataEmployee.id = this.data.id;
     this.dataEmployee.status=this.data.status;
+    this.dataEmployee.profile = new ProfileBean();
     this.dataEmployee.profile.idProfile=this.data.profile.idProfile;
+    this.dataEmployee._isFoto = this.data._isFoto;
+    this.dataEmployee._foto = this.data._foto;
   }
 
 
@@ -55,7 +59,6 @@ export class UserDeliveryFormComponent implements OnInit {
         this.dialog.closeAll();
       })
     })
-    
   }
 
   

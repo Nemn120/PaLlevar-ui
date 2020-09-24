@@ -1,15 +1,24 @@
-<p>CAMBIAR ESTADO DE DISPONIBILIDAD</p>
+<div style="margin-left: 30px; margin-top: 15px;">
+    <p _ngcontent-bse-c28="" style="margin-bottom: 40px;font-size: large;font-weight: bolder;">CAMBIAR ESTADO DE DISPONIBILIDAD</p>
+    <mat-icon>cancel</mat-icon>
+</div>
+<div style="text-align: center;">
+    <div class="big-circle">
+        <img class="small-circle" *ngIf="!dataEmployee._foto" src="assets/images/perfil/perfil.jpg">
+        <img class="small-circle" *ngIf="dataEmployee._foto" [src]="data._foto">
+        </div>
+    <mat-form-field appearance="fill" >
+        <mat-label>Estado/ Disponibilidad</mat-label>
+        <mat-select [(value)]="dataEmployee.status">
+            <mat-option value="DISPONIBLE">Disponible</mat-option>
+            <mat-option value="OCUPADO">Ocupado</mat-option>
+            <mat-option value="EN VACACIONES">En Vacaciones</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
 
-<mat-form-field appearance="fill">
-    <mat-label>Estado/ Disponibilidad</mat-label>
-    <mat-select [(value)]="dataEmployee.status">
-        <mat-option value="DISPONIBLE">Disponible</mat-option>
-        <mat-option value="OCUPADO">Ocupado</mat-option>
-        <mat-option value="EN VACACIONES">En Vacaciones</mat-option>
-    </mat-select>
-</mat-form-field>
 
-<div>
+<div style="text-align: center;">
     <button mat-raised-button color="primary" style="text-align: center;" (click)="CambiarEstadoDeliveryMan()">Aceptar cambios</button>
 <!--    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="CloseDialog()">Cancelar</button>  -->
 </div>

@@ -1,23 +1,66 @@
-<div class = "container">
-    <div class="repartidor" *ngFor = "let repartidor of userDeliveryList">
-        <!--
-        <img *ngIf="toShow" mat-card-image [src]="imageData" alt="Photo of profile">
-        <img *ngIf="!toShow" mat-card-image src="assets/images/perfil/perfil.jpg" alt="Photo of profile">
-        -->
-        <div>
-            <div class="img">
-                <img [src]="repartidor._foto" />
-            </div>
-            <div class="texto">
-                <p>Nombre: {{repartidor.nombre}}</p>
-                <p>Código Empleado: {{repartidor.employeeCode}}</p>
-                <p>Celular: {{repartidor.cellPhone}}</p>
-                <p>Username: {{repartidor.username}}</p>
-                <p>Estado: {{repartidor.status}}</p>
+<div class="mat-parent">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Buscar Repartidor</span>
+        </mat-toolbar>
+    </p>
+
+    <div class="body-component">
+            <mat-card style="width: 100%;">
+                <mat-form-field appearance="fill" class="example-form-field">
+                    <mat-label>Estado</mat-label>
+                    <mat-select name="estado" [(ngModel)]="repartidorBuscado.status">
+                        <mat-option *ngFor="let e of estadosRepartidor" [value]="e">
+                            {{e}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Id trabajador</mat-label>
+                    <input matInput [(ngModel)]="repartidorBuscado.employeeCode">
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width">
+                    <mat-label>Teléfono</mat-label>
+                    <input matInput [(ngModel)]="repartidorBuscado.cellPhone">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nro. Documento</mat-label>
+                    <input matInput [(ngModel)]="repartidorBuscado.documentNumber">
+                </mat-form-field>
+               
+                <mat-form-field class="example-full-width">
+                    <mat-label>Username</mat-label>
+                    <input matInput [(ngModel)]="repartidorBuscado.username">
+                </mat-form-field>
+                
+
+                <button mat-raised-button color="primary" (click)="getDeliveryManbyFields()">Buscar</button>
+            </mat-card>
+    </div>   
+    
+
+
+    
+        <div *ngFor = "let repartidor of userDeliveryList">
+            <div class="body">
+                <div class="main-box">
+                    <div class="big-circle">
+                    <img class="small-circle" *ngIf="!repartidor._foto" src="assets/images/perfil/perfil.jpg">
+                    <img class="small-circle" *ngIf="repartidor._foto" [src]="repartidor._foto">
+                    </div>
+                    <h2 class="heading-name">{{repartidor.nombre}} {{repartidor.lastName}}</h2>
+                    <h3 class="heading-work">{{repartidor.username}}</h3>
+                    <div class="info">
+                        <p><mat-icon>phone</mat-icon> {{repartidor.cellPhone}}</p>
+                    </div>
+                    <button class="follow_btn" [ngStyle]="{ 'background-color':this.setColorStatus(repartidor.status)}" (click)="changeState(repartidor)">{{repartidor.status}}</button>
+                </div>
             </div>
         </div>
-        
-        
-        
-    </div>
+    
+
+
 </div>
