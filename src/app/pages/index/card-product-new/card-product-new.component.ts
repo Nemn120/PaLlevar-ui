@@ -42,20 +42,5 @@ export class CardProductNewComponent implements OnInit {
     orderDetail.price = this.menuSelect.price;
     orderDetail.menuProductId = this.menuSelect.id;
     this.carService.addProduct(orderDetail);
-    // this.contadorCarrito++;
-    if (!this.carService.orderHeader.address) {
-      this.openDialog(orderDetail);
-    }
-
-    console.log(this.menuProduct);
-    console.log(this.carService.getItems());
-  }
-  public openDialog(orderDetail: OrderDetailBean) {
-    const order = orderDetail != null ? orderDetail : new OrderDetailBean();
-    this.dialog.open(DataClientDialogComponent, {
-      width: '600',
-      height: '600',
-      data: order
-    });
   }
 }

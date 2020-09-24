@@ -153,7 +153,7 @@ export class CarDialogComponent implements OnInit {
     let order = orderBean != null ? orderBean : new OrderBean();
     this.dialogo.open(DataClientDialogComponent, {
      width: '20%',
-     height: '52%',
+    // height: '52%',
     data: order
     });
   }

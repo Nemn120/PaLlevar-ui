@@ -77,6 +77,7 @@ export class AttendOrderDetailComponent implements OnInit {
             this.orderService.getListOrderPendding().subscribe(data =>{ // ACTUALIZA
               this.orderService.orderCambio.next(data); 
             })
+            if(this.orderDetailList.length>0)this.dialogRef.close();
           }, error =>{
             console.error(error);
           })
