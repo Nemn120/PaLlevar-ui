@@ -35,18 +35,8 @@ export class CardProductComponent implements OnInit {
     orderDetail.organizationId=this.menuSelect.organizationId;
     orderDetail.price=this.menuSelect.price
     orderDetail.menuProductId=this.menuSelect.id;
-    this.carService.addProduct(orderDetail);
-    if (!this.carService.orderHeader.address) {
-      this.openDialog(orderDetail);
-    }
+    this.carService.addProduct(orderDetail); 
   }
-  public openDialog(orderDetail: OrderDetailBean) {
-    let order = orderDetail != null ? orderDetail : new OrderDetailBean();
-    this.dialog.open(DataClientDialogComponent, {
-     width: '20%',
-     height: '52%',
-    data: order
-    });
-  }
+
 }
 

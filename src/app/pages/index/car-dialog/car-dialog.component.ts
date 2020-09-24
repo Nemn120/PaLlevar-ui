@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderConfirmComponent } from '../order-confirm/order-confirm.component';
+import { DataClientDialogComponent } from 'src/app/_shared/data-client-dialog/data-client-dialog.component';
 
 @Component({
   selector: 'app-car-dialog',
@@ -83,6 +84,10 @@ export class CarDialogComponent implements OnInit {
           // if (confirm("¿Desea realizar el pedido? ")) {
           if (confirmado) {
             if (this.sharedService.userSession) {
+              if (!this.carService.orderHeader.address) {
+                let order = new OrderBean();
+                this.openDialog(order);
+              }else{
               this.sendOrderCar = new OrderBean();
               this.sendOrderCar=this.carService.orderHeader;
               /*this.carService.newOrder.subscribe(x =>{
@@ -111,6 +116,7 @@ export class CarDialogComponent implements OnInit {
               }, error => {
                 this.snackBar.open(error.error, 'ERROR', { duration: 5000 });
               });
+            }
             } else {
               this.router.navigate(['auth/login']);
               if(this.sharedService.userSession){
@@ -119,6 +125,7 @@ export class CarDialogComponent implements OnInit {
                   this.carService.numberProductSelected--;
                 });
               }
+              this.closeDialog();
             }
           }
 
@@ -140,6 +147,15 @@ export class CarDialogComponent implements OnInit {
     } else {
       alert('Seleccione el producto a eliminar');
     }
+  }
+
+  public openDialog(orderBean: OrderBean) {
+    let order = orderBean != null ? orderBean : new OrderBean();
+    this.dialogo.open(DataClientDialogComponent, {
+     width: '20%',
+     height: '52%',
+    data: order
+    });
   }
 
 

@@ -12,7 +12,7 @@ export class HeaderOrganizationComponent implements OnInit {
 
   @Input() companySelect: CompanyBean;
 
-  constructor( private sharedService: SharedService) {
+  constructor( public sharedService: SharedService) {
    }
 
   ngOnInit(): void {
