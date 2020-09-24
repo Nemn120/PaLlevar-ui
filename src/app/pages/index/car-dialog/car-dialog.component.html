@@ -1,8 +1,9 @@
 <div class="elipse" mat-dialog-close><span>X</span></div>
 <ng-template [ngIf]="odList.length==0">
-    <p>
-        Aun no ha agregado productos al carrito.
-    </p>
+    <div class="center">
+        <mat-icon class="icon-card-empty">remove_shopping_cart</mat-icon>
+        <p style="z-index: 100;">Aun no ha agregado productos al carrito.</p>
+    </div>
 </ng-template>
 <ng-template [ngIf]="odList.length>0">
     <h3>Carrito de pedidos

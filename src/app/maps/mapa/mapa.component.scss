@@ -10,3 +10,18 @@ mgl-map {
     cursor: pointer;
     padding: 0;
 }
+
+img {
+    border-radius: 100px;
+    width: 50%;
+    height: 50%;
+}
+
+.center {
+    justify-content: center;
+    text-align: center;
+}
+
+.mapboxgl-popup-content {
+    padding: 0px 0px 0px!important;
+}

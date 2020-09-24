@@ -8,7 +8,10 @@
         </mgl-marker>
 
         <mgl-popup [marker]="myMarker" [closeOnClick]="true">
-            <p style="text-align: center;font-size:large;">{{i.nombre}}</p>
+            <div class="center">
+                <p style="text-align: center;font-size:large;">{{i.nombre}}</p>
+                <img [src]="i._foto" />
+            </div>
 
             <button mat-button style="width:100%" (click)="redirectToCompany(i.id)">Ir</button>
         </mgl-popup>

@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   orgId: string;
   menuOrgList: CompanyBean[];
   param: string;
-
   mOrg: CompanyBean;
 
   constructor(
