@@ -5,8 +5,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductBean } from '../../../_model/ProductBean';
 import { MatSort } from '@angular/material/sort';
+import { Message } from '../../../_DTO/messageDTO';
 import { MatPaginator } from '@angular/material/paginator';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 @Component({
   selector: 'app-product-list',
@@ -18,18 +20,20 @@ export class ProductListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'name', 'description', 'category', 'actions'];
+  displayedColumns: string[] = ['name', 'description', 'category', 'actions'];
   dataSource: MatTableDataSource<ProductBean>;/// tabla 
   titleProductList: string;
 
   constructor
     (
+      public dialogo: MatDialog,
       private productService: ProductService,
       private dialog: MatDialog,
       private snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.titleProductList="Listar Productos";
     this.productService.mensajeCambio.subscribe(data => { // cuando actualizas o creas se muestra una notificacion
       this.snackBar.open(data, 'INFO', {
@@ -62,18 +66,30 @@ export class ProductListComponent implements OnInit {
     });
   }
   public delete(product: ProductBean) {
-    this.productService.deleteProduct(product.id).subscribe(data => {
-      this.productService.getListProductByOrganization().subscribe(data => {
-        this.productService.productCambio.next(data);
-        this.productService.mensajeCambio.next("Se elimino con éxito");
-      }, error => {
-        console.error(error);
-        this.productService.mensajeCambio.next("Error al mostrar listado de productos");
+    let ms = new Message();
+    ms.title='Borrar producto'; 
+    ms.description = '¿Esta seguro de borrar el producto?';
+    this.dialogo
+      .open(DialogoConfirmacionComponent, {
+        data: ms
+      }).afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if(confirmado){
+          this.productService.deleteProduct(product.id).subscribe(data => {
+            this.productService.getListProductByOrganization().subscribe(data => {
+              this.productService.productCambio.next(data);
+              this.productService.mensajeCambio.next("Se elimino con éxito");
+            }, error => {
+              console.error(error);
+              this.productService.mensajeCambio.next("Error al mostrar listado de productos");
+            });
+          }, error => {
+            console.error(error);
+            this.productService.mensajeCambio.next("No eliminado");
+          });
+        }
       });
-    }, error => {
-      console.error(error);
-      this.productService.mensajeCambio.next("El producto que desea eliminar esta siendo usado");
-    });
+    
   }
 
 }

@@ -11,6 +11,8 @@ import { SidebarSidenavModule } from "../sidebar-sidenav/sidebar-sidenav.module"
 import { GuardService } from "../../_service/guard.service";
 import { FormsModule } from "@angular/forms";
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
+import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { SharedModule } from '../../_shared/shared.module';
 
 const routes: Routes = [
   {
@@ -44,10 +46,11 @@ const routes: Routes = [
     MaterialModule,
     SidebarSidenavModule,
     FormsModule,
-    EcoFabSpeedDialModule
+    EcoFabSpeedDialModule,
+    SharedModule
   ],
   exports: [RouterModule],
   entryComponents: [ProductFormComponent,
-    CategoryFormComponent],
+    CategoryFormComponent,DialogoConfirmacionComponent],
 })
 export class ProductModule {}

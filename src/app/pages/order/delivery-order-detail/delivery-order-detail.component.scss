@@ -13,3 +13,18 @@
 .mat-column-select {
     overflow: visible;
 }
+
+.mat-column-price {
+    flex: 0 0 15% !important;
+  }
+
+  .mat-header-cell{
+    background-color:#E8794F;
+    font-size: 100%;
+    color: white;
+  }
+
+  .mat-toolbar.title-component{
+    background-color:#e64a19;
+    color: white;
+  }

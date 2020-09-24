@@ -26,6 +26,7 @@ export class OrderConfirmComponent implements OnInit {
   cantidad:number;
   fechaCreacion: Date;
   fecha:string;
+  cantidadT: number[];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: OrderBean, private snackBar: MatSnackBar,
@@ -43,4 +44,5 @@ export class OrderConfirmComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
+
 }

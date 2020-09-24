@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     max-height: 500px;
-    min-width: 300px;
+    min-width: 200px;
   }
   
   .mat-table {
@@ -14,3 +14,16 @@
     overflow: visible;
   }
   
+  .mat-column-price {
+    flex: 0 0 20% !important;
+  }
+
+  .mat-column-select {
+    flex: 0 0 20% !important;
+  }
+
+  .mat-header-cell{
+    background-color:#E8794F;
+    font-size: 100%;
+    color: white;
+  }

@@ -5,9 +5,8 @@
 
         </mat-toolbar>
     </p>
-
-    <div class="body-component">
-        <div class="carousel-item " style="display: flex;">
+        
+        <div class="carousel-item " style="display: flex; width: 80%;">
 
             <mat-card>
                 <mat-form-field appearance="fill" class="example-form-field">
@@ -38,23 +37,22 @@
             </mat-card>
 
         </div>
-    </div>
 
 
     <div class="carousel-item " style="display: flex; width: 80%;">
 
         <div class="container">
             <mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                </ng-container>
-
                 <ng-container matColumnDef="status">
                     <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
                     <!-- NOMBRE DE LA COLUMNA-->
-                    <mat-cell *matCellDef="let row"> {{row.status}}</mat-cell>
+                    <mat-cell *matCellDef="let row">
+                        <mat-chip-list aria-label="Fish selection">
+                            <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(row.status)}">
+                                <span [ngStyle]="{color: row.status == 'Entregado' || row.status == 'En camino'? 'white' : 'black'}">{{row.status}}</span></mat-chip>
+                        </mat-chip-list>
+                    </mat-cell>
                     <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
                 </ng-container>
 

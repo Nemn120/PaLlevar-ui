@@ -19,12 +19,12 @@ import { SharedService } from 'src/app/_service/shared.service';
 })
 export class PedidoAsignadoComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','reference','createDate'];
+  displayedColumns: string[] = ['status', 'total','quantity','phone','address','reference','createDate'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   titleProductList: string;
-  estados: string[] = ['Entregado','En camino'];
+  estados: string[] = ['Todos','Entregado','En camino'];
   orderSelect:OrderBean;
   searchOrderByDeliveryManDTO: SearchOrderByDeliveryManDTO;
 
@@ -45,6 +45,9 @@ export class PedidoAsignadoComponent implements OnInit {
     }
 
   public getAsignOrderByDeliveryMan(){
+    if (this.searchOrderByDeliveryManDTO.status == 'Todos')
+      this.searchOrderByDeliveryManDTO.status = undefined;
+
     this.orderService.getAsignOrderByDeliveryMan(this.searchOrderByDeliveryManDTO).subscribe(data => {  
       this.dataSource = new MatTableDataSource(data.dataList);
       this.dataSource.paginator = this.paginator;
@@ -62,6 +65,11 @@ export class PedidoAsignadoComponent implements OnInit {
     });
   }
 
-
+  public setColorStatus(status : string):string{
+    switch(status){
+      case 'En camino': return '#239BAB';
+      case 'Entregado' : return '#0CA05B' ;
+    }
+  }
 
 }

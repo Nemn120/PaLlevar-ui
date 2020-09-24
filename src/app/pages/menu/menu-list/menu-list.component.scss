@@ -35,3 +35,30 @@ table {
     align-items: center;
     white-space: nowrap;
 }
+
+.mat-column-day {
+    flex: 0 0 15% !important;
+  }
+
+.mat-column-name {
+    flex: 0 0 20% !important;
+  }
+  
+  .mat-column-status {
+    flex: 0 0 12% !important;
+  }
+
+  .mat-header-cell{
+    background-color:#E8794F;
+    font-size: 120%;
+    color: white;
+  }
+  
+  .mat-row{
+    font-size: 120%;
+  }
+  
+  .mat-toolbar.title-component{
+    background-color:#e64a19;
+    color: white;
+  }

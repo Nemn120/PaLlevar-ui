@@ -13,11 +13,6 @@
 
         <div class="container">
             <mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                </ng-container>
-
                 <ng-container matColumnDef="name">
                     <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
@@ -35,7 +30,7 @@
                     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
                     <mat-cell *matCellDef="let row">
                         <button mat-icon-button color="primary" (click)="openDialog(row)">
-                <mat-icon>ballot</mat-icon>
+                <mat-icon>edit</mat-icon>
               </button>
                         <button mat-icon-button color="accent" (click)="delete(row)">
                 <mat-icon>delete</mat-icon>

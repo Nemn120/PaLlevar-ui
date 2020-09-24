@@ -1,7 +1,10 @@
 <div class="example-container mat-elevation-z8">
-    <button mat-raised-button color="primary" (click)="atenderPedido()">
-    Atender Pedidos
-  </button>
+    <div class="buttons" style="display: inline-block !important;">
+        <button style="width: 50%;" mat-raised-button color="primary" (click)="atenderPedido()">
+            Atender Pedidos
+          </button>
+          <button style="width: 50%;" mat-flat-button color="accent" mat-dialog-close>Cerrar</button>
+    </div>
     <mat-table #table [dataSource]="dataSource">
 
         <!-- Checkbox Column -->
@@ -16,22 +19,10 @@
             </mat-cell>
         </ng-container>
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-        </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="product">
             <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
-        </ng-container>
-
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->

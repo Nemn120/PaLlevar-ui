@@ -13,21 +13,21 @@
         <mat-label>Apellido</mat-label>
         <input matInput [(ngModel)]="this.data.userOrder.lastName" name="apellido" readonly>
       </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Direccion</mat-label>
-        <input matInput [(ngModel)]="this.data.userOrder.address" name="address" readonly>
-      </mat-form-field>
-      <mat-form-field class="example-full-width" >
-        <mat-label>Telefono</mat-label>
-        <input matInput [(ngModel)]="this.data.userOrder.cellPhone" name="cellPhone" readonly>
-      </mat-form-field>
-      <mat-form-field class="example-full-width" >
-        <mat-label>DNI</mat-label>
-        <input matInput [(ngModel)]="this.data.userOrder.documentNumber" name="documentNumber" readonly>
-      </mat-form-field>
       <mat-form-field class="example-full-width" >
         <mat-label>Fecha Creacion</mat-label>
         <input matInput [(ngModel)]="this.fecha" name="employeeCode" readonly>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" style="width: 25%">
+        <mat-label>Telefono</mat-label>
+        <input matInput [(ngModel)]="this.data.userOrder.cellPhone" name="cellPhone" readonly>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" style="width: 25%">
+        <mat-label>DNI</mat-label>
+        <input matInput [(ngModel)]="this.data.userOrder.documentNumber" name="documentNumber" readonly>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" style="width: 50%">
+        <mat-label>Direccion</mat-label>
+        <input matInput [(ngModel)]="this.data.userOrder.address" name="address" readonly>
       </mat-form-field>
 
   <div class="parent">

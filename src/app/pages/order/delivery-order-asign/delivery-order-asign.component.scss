@@ -29,3 +29,17 @@
 .mat-column-select {
     overflow: visible;
 }
+
+.mat-column-lastName {
+    flex: 0 0 35% !important;
+  }
+
+  .mat-column-select {
+    flex: 0 0 20% !important;
+  }
+
+  .mat-header-cell{
+    background-color:#E8794F;
+    font-size: 100%;
+    color: white;
+  }

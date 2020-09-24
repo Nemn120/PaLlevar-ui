@@ -19,7 +19,7 @@ export class DeliveryOrderComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','address','createDate','actions'];
+  displayedColumns: string[] = ['createDate','total','quantity','phone','address','actions'];
   dataSource: MatTableDataSource<OrderBean>;/// tabla 
   titleProductList: string;
 
@@ -28,6 +28,7 @@ export class DeliveryOrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.titleProductList="Listar Productos";
     this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
       this.snackBar.open(data, 'INFO', {

@@ -27,7 +27,7 @@ export class AttendOrderDetailComponent implements OnInit {
   orderDetailList: OrderDetailBean[];
  
 
-  displayedColumns = ['select', 'id','product', 'price','status'];
+  displayedColumns = ['select','product', 'price'];
   dataSource : MatTableDataSource<OrderDetailBean>;
   selection : SelectionModel<OrderDetailBean>;
 

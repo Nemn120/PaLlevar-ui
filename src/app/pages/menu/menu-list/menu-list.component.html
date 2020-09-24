@@ -9,11 +9,6 @@
 
         <div class="container">
             <mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                </ng-container>
-
                 <ng-container matColumnDef="name">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
@@ -27,10 +22,6 @@
                 <ng-container matColumnDef="day">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Dia </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.day}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="type">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.type}}</mat-cell>
                 </ng-container>
 
                 <ng-container matColumnDef="status">

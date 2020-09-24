@@ -22,7 +22,7 @@ export class DeliveryOrderDetailComponent implements OnInit {
   
   dataSource: MatTableDataSource<OrderDetailBean>;/// tabla 
   titleOrderDetailList: string;
-  displayedColumns: string[] = ['id', 'product','price','attendDate','userAttend'];
+  displayedColumns: string[] = ['product','price','attendDate','userAttend'];
   orderDetailList: OrderDetailBean[];
   constructor(
     private dialogRef: MatDialogRef<OrderDetailBean>,private orderDetailService:OrderDetailService, private OrderDetailService : OrderDetailService,private dialog:MatDialog, private snackBar: MatSnackBar,

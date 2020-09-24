@@ -64,6 +64,14 @@ export class UserDeliverysComponent implements OnInit {z
     console.log('employee: ' + employee.status);
   }
 
+  public setColorStatus(status : string):string{
+    switch(status){
+      case 'DISPONIBLE': return '#0CA05B';
+      case 'OCUPADO': return '#E64A19';
+      case 'EN VACACIONES': return '#FBF2D4';
+    }
+  }
+
 
 
 
