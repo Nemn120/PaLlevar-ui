@@ -63,7 +63,7 @@ export class DataClientDialogComponent implements OnInit {
       }else{
         this.notification.openSnackBar('Ubicacion guardada exito');
       }
-      this.dialog.closeAll();
+      this.confirmado();
 
     } else {
 
@@ -133,10 +133,13 @@ export class DataClientDialogComponent implements OnInit {
 
     });
 
+  }  
+  cerrarDialogo(): void {
+    this.dialogo.close(false);
   }
+  confirmado(): void {
 
-  closeDialog(){
-    this.dialog.closeAll();
+    this.dialogo.close(true);
   }
 
 }

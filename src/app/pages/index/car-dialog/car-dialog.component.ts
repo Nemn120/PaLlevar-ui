@@ -9,7 +9,7 @@ import { OrderService } from '../../../_service/order.service';
 import { LoginService } from '../../../_service/login.service';
 import { Router } from '@angular/router';
 import { OrderBean } from '../../../_model/OrderBean';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderConfirmComponent } from '../order-confirm/order-confirm.component';
@@ -30,6 +30,7 @@ export class CarDialogComponent implements OnInit {
   sendOrderCar: OrderBean;
 
   constructor(
+    public dialog: MatDialogRef<CarDialogComponent>,
     public carService: CarServiceService,
     public sharedService: SharedService,
     public orderService: OrderService,
@@ -56,7 +57,7 @@ export class CarDialogComponent implements OnInit {
     this.isAllSelected() ? this.selection.clear() : this.dataSource.data.forEach(r => this.selection.select(r));
   }
   closeDialog() {
-    this.dialogo.closeAll();
+    this.dialog.close();
   }
 
   checkboxLabel(row: OrderDetailBean): string {
@@ -67,34 +68,52 @@ export class CarDialogComponent implements OnInit {
   }
   sendOrder() {
     // debugger;
+    
+    const numSelected = this.selection.selected;
+    if (numSelected.length > 0) {
+      if (!this.sharedService.userSession){
+        this.snackBar.open('Inicie sesión para enviar la orden', 'INFO', { duration: 5000 });
+        this.closeDialog();
+        this.router.navigate(['auth/login']);
+        return;
+      }
+      if(this.carService.orderHeader.address){
+        this.sendOrderConfirm();
+      }else{
+        this.dialogo
+        .open(DataClientDialogComponent, {
+          data: new OrderBean()
+        })
+        .afterClosed()
+        .subscribe((confirmado) => {
+            if (confirmado){
+              this.sendOrderConfirm();
+            }     
+         
+        });
+      }
+      
+    } else {
+      alert('Seleccione algun producto');
+    }
+  }
+
+  sendOrderConfirm(){
+    const numSelected = this.selection.selected;
     const params = {
       title: 'Generar pedido',
       description: '¿Desea realizar el pedido?',
       inputData: true
     };
-    const numSelected = this.selection.selected;
-    if (numSelected.length > 0) {
-      // debugger
-      this.dialogo
-        .open(DialogoConfirmacionComponent, {
-          data: params
-        })
-        .afterClosed()
-        .subscribe((confirmado) => {
-          // if (confirm("¿Desea realizar el pedido? ")) {
-          if (confirmado) {
-            if (this.sharedService.userSession) {
-              if (!this.carService.orderHeader.address) {
-                let order = new OrderBean();
-                this.openDialog(order);
-              }else{
+    this.dialogo
+      .open(DialogoConfirmacionComponent, {
+        data: params
+      })
+      .afterClosed()
+      .subscribe((confirmado) => {
+        if (confirmado) {
               this.sendOrderCar = new OrderBean();
-              this.sendOrderCar=this.carService.orderHeader;
-              /*this.carService.newOrder.subscribe(x =>{
-                this.sendOrderCar=x;
-              })
-              */
-              // this.sendOrderCar=this.carService.getOrder();
+              this.sendOrderCar = this.carService.orderHeader;
               this.sendOrderCar.orderDetail = [];
               numSelected.forEach(x => {
                 this.sendOrderCar.orderDetail.push(x);
@@ -107,7 +126,6 @@ export class CarDialogComponent implements OnInit {
                 this.odList = this.carService.getItems();
                 this.dataSource.data = this.odList;
                 this.closeDialog();
-                // LLAMAS AL DIALOGO QUE TIENE EL RESUMEN DEL PEDIDO
                 this.dialogo.open(OrderConfirmComponent, {
                   width: '600px',
                   data: data.data
@@ -116,24 +134,10 @@ export class CarDialogComponent implements OnInit {
               }, error => {
                 this.snackBar.open(error.error, 'ERROR', { duration: 5000 });
               });
-            }
-            } else {
-              this.router.navigate(['auth/login']);
-              if(this.sharedService.userSession){
-                numSelected.forEach(x => {
-                  this.sendOrderCar.orderDetail.push(x);
-                  this.carService.numberProductSelected--;
-                });
-              }
-              this.closeDialog();
-            }
+            this.closeDialog();
           }
-
-        });
-
-    } else {
-      alert('Seleccione algun producto');
-    }
+        
+      });
   }
   deleteProductsSelect() {
     const numSelected = this.selection.selected;

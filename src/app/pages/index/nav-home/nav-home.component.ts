@@ -52,6 +52,7 @@ export class NavHomeComponent implements OnInit {
     this.carService.orderHeader = new OrderBean();
     this.sharedService.userSession=undefined;
     this.carService.orderDetailList=[];
+    this.carService.numberProductSelected=0;
     this.carService.orderHeader = new OrderBean();
     this.loginService.cerrarSesion();
   }
