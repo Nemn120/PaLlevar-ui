@@ -20,9 +20,6 @@ listaPlatillos: MenuDayProductBean[] = [];
 platilloBuscado:string;
 listaEmpresaConProductos: CompanyNameAndProductsDTO[];
 
-  ListaEmpresaConProductos: CompanyNameAndProductsDTO[];
-
-
   constructor(
     private _activatedRoute:ActivatedRoute, 
     private _menuDayProductService:MenuDayProductService, 

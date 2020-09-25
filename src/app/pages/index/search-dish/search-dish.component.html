@@ -3,7 +3,8 @@
         <div class="menu-container">
             <div class="menu-body">
                 <div *ngFor="let empresa of listaEmpresaConProductos">
-                    <div *ngIf="!_sharedService.loading" class="menuProduct-container">
+                    <div class="menuProduct-container">
+                        <p class="f-headline" class="p-card-product"><strong>{{empresa._organization.businessName}}</strong></p>
                         <div class="f-headline" class="p-card-product">
                             <div *ngFor="let menuDayProduct of empresa._listOfProductsShowed" style="float:left">
                                 <div class="card">
