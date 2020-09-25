@@ -116,9 +116,9 @@ export class DataClientDialogComponent implements OnInit {
 
 
       })
-      this.title = "Datos de entrega del pedido"
+      this.title = "Actualizar lugar de entrega"
       this.buttonTitle = "Actualizar"
-      this.ubicacion = "Modificar Ubicación"
+      this.ubicacion = "Modificar lugar de entrega"
       this.isUpdateOrder = true;
     }
   }
@@ -136,6 +136,10 @@ export class DataClientDialogComponent implements OnInit {
   }  
   cerrarDialogo(): void {
     this.dialogo.close(false);
+
+    this.mapService.newPlace.longitud=0;
+    this.mapService.newPlace.latitud=0;
+    this.mapService.newPlace.nombre='';
   }
   confirmado(): void {
 
