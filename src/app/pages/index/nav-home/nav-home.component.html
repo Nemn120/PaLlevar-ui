@@ -28,7 +28,7 @@
     </div>
 
     <!--Esta logueado-->
-    <div *ngIf="logueado">
+    <div *ngIf="this.sharedService.userSession != undefined">
         <!--mat-fab-->
         <!--mat-icon-button-->
         <!-- <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary" style="margin-right: 20px;padding-right: 30px;"> -->

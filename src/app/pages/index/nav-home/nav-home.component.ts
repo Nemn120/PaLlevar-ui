@@ -28,7 +28,7 @@ export class NavHomeComponent implements OnInit {
   cantidad: number;
   @Output() totalCarrito = new EventEmitter();
 
-  constructor(public dialog: MatDialog,private sharedService: SharedService,
+  constructor(public dialog: MatDialog,public sharedService: SharedService,
               public carService: CarServiceService, public router: Router, public loginService:LoginService) {
               }
 

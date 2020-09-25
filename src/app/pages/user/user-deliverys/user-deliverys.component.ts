@@ -29,7 +29,7 @@ export class UserDeliverysComponent implements OnInit {
   telefono: string;   // para la búsqueda;
   nombre: string; // para la búsqueda;
   apellidos: string; // para la búsqueda;
-  repartidorBuscado: UserBean;  // para la búsqueda;
+  repartidorBuscado: UserBean = new UserBean() ;  // para la búsqueda;
   deliveryMan: UserBean;
   deliveryMen: any;
   profile: ProfileBean;
@@ -42,35 +42,19 @@ export class UserDeliverysComponent implements OnInit {
               }
 
   ngOnInit(): void {
+    this.getDeliveryManByFields(); 
+   }
 
-    this.getListDeliveryMan();
-
-    this.repartidorBuscado = new UserBean();
-    
-    
-  }
-
-  getListDeliveryMan(){
-    this.deliveryMan = new UserBean();
-    this.deliveryMan.profile = new ProfileBean();
-    this.deliveryMan.profile.idProfile = 3;
-    this.userDeliveryList = [];
-    this.userService.getUserByFields(this.deliveryMan).subscribe(data=>{
-      this.activatedPhoto(data.dataList);
-      this.userDeliveryList = data.dataList;
-      console.log(this.userDeliveryList);
-    }, error =>{
-      console.error(error);
-    });
-  }
-
-  getDeliveryManbyFields(){
-    console.log(this.repartidorBuscado);
+  getDeliveryManByFields(){
+    if (this.repartidorBuscado.status == 'Todos')
+      this.repartidorBuscado.status = undefined;
+    this.repartidorBuscado.profile= new ProfileBean();
+    this.repartidorBuscado.profile.idProfile=3;
     this.userService.getUserByFields(this.repartidorBuscado).subscribe(data=>{
       this.activatedPhoto(data.dataList);
       //this.userService.userCambio.next(data.dataList);
       this.userDeliveryList = data.dataList;
-      console.log(this.userDeliveryList);
+      this.repartidorBuscado=new UserBean() ;  // para la búsqueda;
     }, error =>{
       this.userService.mensajeCambio.next("Error al mostrar repartidor");
     });
