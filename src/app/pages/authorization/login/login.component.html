@@ -7,11 +7,11 @@
 
         <form [formGroup]="loginForm" fxFlex="30%" fxFlex.sm="60%" fxFlex.xs="90%">
             <mat-card>
-                <mat-card-title style="text-align: center;">Iniciar Sesión</mat-card-title>
-                <mat-card-subtitle style="text-align: center;">Ingrese sus credenciales</mat-card-subtitle>
+                <mat-card-title style="text-align: center;">Iniciar sesion</mat-card-title>
+                <mat-card-subtitle style="text-align: center;">Ingresar credenciales</mat-card-subtitle>
                 <mat-card-content>
 
-                    <mat-form-field class="full-width">
+                    <mat-form-field class="full-width" style="height: 30%;font-size:large">
                         <input id="emailInput" matInput placeholder="Usuario" formControlName="email" autocomplete="email" type="email">
 
                         <mat-error id="invalidEmailError" *ngIf="loginForm.controls['email'].hasError('email')">
@@ -24,7 +24,7 @@
 
                     </mat-form-field>
 
-                    <mat-form-field class="full-width">
+                    <mat-form-field class="full-width" style="height: 30%;font-size:large">
                         <input id="passwordInput" matInput placeholder="Password" formControlName="password" type="password" autocomplete="current-password">
                         <mat-error id="requiredPasswordError" *ngIf="loginForm.controls['password'].hasError('required')">
                             Contraseña es
@@ -39,8 +39,12 @@
                 </mat-card-content>
 
                 <mat-card-actions class="login-actions">
-                    <button mat-raised-button style="margin-left:2px;" id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Ingresa</button>
-                    <button mat-raised-button color="accent" routerLink="/auth/registry">Regístrate</button>
+
+
+                    <button mat-raised-button style="width: 100%;height: 40%;font-size:large" id="login" color="primary" [disabled]="loginForm.invalid || loading" (click)="login()">Ingresar</button>
+                    <br>
+                    <br>
+                    <button mat-raised-button style="margin-left: 0%; width: 100%;height: 30%;margin-bottom: 5%;" routerLink="/auth/registry">Registrarse</button>
                 </mat-card-actions>
 
             </mat-card>
