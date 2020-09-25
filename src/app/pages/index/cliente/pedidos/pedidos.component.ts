@@ -71,11 +71,7 @@ export class PedidosComponent implements OnInit {
     },error =>{
       this.pedidos.mensajeCambio.next("Error al mostrar");
     });
-
-  
-
     
-
   }
   public openDialog(order: OrderBean) {
     let ord = order != null ? order : new OrderBean();
@@ -121,8 +117,7 @@ public sendMessage(order: OrderBean) {
     this.complaintService.getComplaintByOrderId(order.id).subscribe(data => {  
       if (data.data){
         this.dialog.open(ClaimDetailComponent,{
-          width: '70%', 
-          height: '80%', 
+          width: '729px', 
           data: data.data
       });
         
@@ -130,7 +125,6 @@ public sendMessage(order: OrderBean) {
       else
       this.dialog.open(EnviarMensajeComponent, {
           width: '35%', 
-          height: '75%',
           data: ord
     });
      
