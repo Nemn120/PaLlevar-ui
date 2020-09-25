@@ -74,9 +74,7 @@ export class MapaClienteComponent {
   findPlace(long: number, lat: number) {
     this.mapService.getPlace(long, lat).subscribe(
       data => {
-      console.log('lugar obtenido de la url: ', data.features[0].place_name);
        this.mapService.newPlace.nombre=data.features[0].place_name;
-
       })
   }
 

@@ -7,6 +7,7 @@ import { DataClientDialogComponent } from './data-client-dialog/data-client-dial
 import { MapsModule } from '../maps/maps.module';
 import { MapaClienteComponent } from '../maps/mapa-cliente/mapa-cliente.component';
 import { ClaimDetailComponent } from './claim-detail/claim-detail.component';
+import { SummaryOrderComponent } from './summary-order/summary-order.component';
 
 
 
@@ -16,6 +17,7 @@ import { ClaimDetailComponent } from './claim-detail/claim-detail.component';
       DialogoConfirmacionComponent,
       DataClientDialogComponent,
       ClaimDetailComponent,
+      SummaryOrderComponent,
 
     ],
   imports: [

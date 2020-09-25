@@ -76,7 +76,6 @@ export class UserDeliverysComponent implements OnInit {
   // buscar repartidor (en proceso)
   changeState(employee: UserBean) {
     this.dialog.open(UserDeliveryFormComponent, {data: employee});
-    console.log('employee: ' + employee.status);
   }
 
   activatedPhoto(data: any) {

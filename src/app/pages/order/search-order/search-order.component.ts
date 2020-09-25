@@ -95,8 +95,6 @@ export class SearchOrderComponent implements OnInit {
     }, error => {
       this.orderService.mensajeCambio.next("Error al mostrar productos");
     });
-
-    console.log(this.searchOrderByFieldsDTO.userOrderDocumentNumber);
     
   }
 

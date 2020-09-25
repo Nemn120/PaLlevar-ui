@@ -26,6 +26,7 @@ import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EnviarMensajeComponent } from './cliente/enviar-mensaje/enviar-mensaje.component';
 import {ClaimDetailComponent} from '../../_shared/claim-detail/claim-detail.component';
 import { MapaComponent } from '../../maps/mapa/mapa.component';
+import { SummaryOrderComponent } from 'src/app/_shared/summary-order/summary-order.component';
 
 const routes: Routes = [
 
@@ -81,7 +82,7 @@ const routes: Routes = [
     [
       PerfilComponent, PedidosComponent, EditarPerfilComponent, OrderConfirmComponent,
       SidebarComponent, CarDialogComponent, DialogoConfirmacionComponent, DataClientDialogComponent,
-      DetallePedidoComponent,EnviarMensajeComponent,ClaimDetailComponent,MapaComponent
+      DetallePedidoComponent,EnviarMensajeComponent,ClaimDetailComponent,MapaComponent,SummaryOrderComponent
     ],
 })
 export class IndexModule { }

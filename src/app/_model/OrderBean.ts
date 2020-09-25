@@ -8,8 +8,8 @@ export class OrderBean extends MainBean{
      total:number;
      quantity:number;
      userOrder:UserBean;
-     phone:String;
-     address:String;
+     phone:string;
+     address:string;
      place:PlaceBean;
      orderDetail:OrderDetailBean[];
      deliveryDate : Date;
@@ -17,4 +17,5 @@ export class OrderBean extends MainBean{
      userAttendId:number;
      userDeliveryId:number;
      reference:string;
+     companyName:string;
 }

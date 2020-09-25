@@ -84,7 +84,6 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganization(this.mProduct).subscribe(data => {
       this.menuProductList = data;
       this.activatedPhoto(data);
-      console.log(this.menuProductList);
      }, error => {
        console.error(error);
      });
@@ -95,9 +94,8 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getListByOrganizationAndType(this.mProduct).subscribe(data => {
       this.menuProductList = data;
       this.activatedPhoto(data);
-      console.log( 'TIPO' + this.mProduct.type + this.menuProductList);
     }, error => {
-       console.log(error);
+       console.error(error);
      });
   }
 
@@ -108,9 +106,8 @@ export class ShoppingComponent implements OnInit {
     this.menuDayProductService.getMenuProductFavorites(this.favoritos).subscribe(data => {
       this.menuProductList = data.dataList;
       this.activatedPhoto(data.dataList);
-      console.log( 'TIPO' + this.mProduct.type + this.menuProductList);
     }, error => {
-      console.log(error);
+      console.error(error);
     });
   }
 

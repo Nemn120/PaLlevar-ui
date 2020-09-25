@@ -14,6 +14,7 @@ import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmac
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderConfirmComponent } from '../order-confirm/order-confirm.component';
 import { DataClientDialogComponent } from 'src/app/_shared/data-client-dialog/data-client-dialog.component';
+import { SummaryOrderComponent } from 'src/app/_shared/summary-order/summary-order.component';
 
 @Component({
   selector: 'app-car-dialog',
@@ -67,8 +68,6 @@ export class CarDialogComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
   sendOrder() {
-    // debugger;
-    
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
       if (!this.sharedService.userSession){
@@ -88,11 +87,9 @@ export class CarDialogComponent implements OnInit {
         .subscribe((confirmado) => {
             if (confirmado){
               this.sendOrderConfirm();
-            }     
-         
+            }       
         });
       }
-      
     } else {
       alert('Seleccione algun producto');
     }
@@ -126,9 +123,9 @@ export class CarDialogComponent implements OnInit {
                 this.odList = this.carService.getItems();
                 this.dataSource.data = this.odList;
                 this.closeDialog();
-                this.dialogo.open(OrderConfirmComponent, {
+                this.dialogo.open(SummaryOrderComponent, {
                   width: '600px',
-                  data: data.data
+                  data: data
                 });
                 this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
               }, error => {

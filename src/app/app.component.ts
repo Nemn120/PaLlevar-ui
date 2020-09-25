@@ -23,7 +23,6 @@ export class AppComponent {
     ngOnInit(){
       this.sharedService.loadingSpinner.subscribe(x =>{
         this.loadingSpinner=x;
-        console.log(x);
       })
 
     }

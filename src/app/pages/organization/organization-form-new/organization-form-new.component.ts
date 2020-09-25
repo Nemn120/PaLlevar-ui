@@ -156,25 +156,6 @@ export class OrganizationFormNewComponent implements OnInit {
     }, error => {
       this.companyService.mensajeCambio.next('Error al actualizar/modificar compañia'+ error);
     });
-
-
-
-     /* this.companyService.saveCompany(this.companySelect, this.currentFileUpload).subscribe(data => {
-      this.companyService.getListCompany().subscribe(data2 => {
-        this.companyService.companyCambio.next(data2);
-
-        if (this.companySelect.id) {
-          this.companyService.mensajeCambio.next('Se actualizo');
-        } else {
-          this.companyService.mensajeCambio.next('Se registro');
-        }
-      });
-    }, error => {
-      this.companyService.mensajeCambio.next('Eror al actualizar/modificar compañia');
-    }); */
-
-     console.log(this.companySelect);
-     // this.dialogRef.close();
   }
 
   selectFile(e: any) {
