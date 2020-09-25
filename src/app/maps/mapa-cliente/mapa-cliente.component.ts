@@ -14,7 +14,8 @@ export class MapaClienteComponent {
 
   coordinates: number[];
   estadoMarker: boolean = false;
-  positionMarker: number[];
+  
+  positionMarker: number[]=[-77.0824914,-12.0587117];
   long: number = -77.0824914;
   lat: number = -12.0587117;
 
