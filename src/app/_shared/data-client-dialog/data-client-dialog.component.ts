@@ -135,4 +135,8 @@ export class DataClientDialogComponent implements OnInit {
 
   }
 
+  closeDialog(){
+    this.dialog.closeAll();
+  }
+
 }

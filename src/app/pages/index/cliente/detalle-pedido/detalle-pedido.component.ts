@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { OrderBean } from '../../../../_model/OrderBean';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OrderDetailBean } from '../../../../_model/OrderDetailBean';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -23,6 +23,7 @@ export class DetallePedidoComponent implements OnInit {
   displayedColumns: string[] = ['product', 'price', 'status'];
   constructor(
     private dialogRef: MatDialogRef<DetallePedidoComponent>,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
   ) { }
 
@@ -32,8 +33,9 @@ export class DetallePedidoComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-  closeDialog() {
+  public closeDialog() {
     this.dialogRef.close();
   }
+
 
 }

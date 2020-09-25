@@ -2,7 +2,7 @@
     <p>
         <mat-toolbar class="title-component">
             <span>Detalle de pedido</span>
-
+            <button mat-icon-button class="close-dialog" (click)="closeDialog()"><mat-icon>cancel</mat-icon></button>
         </mat-toolbar>
     </p>
     <mat-table #table [dataSource]="dataSource">
@@ -12,16 +12,16 @@
 
         <!-- Name Column -->
         <ng-container matColumnDef="product">
-            <mat-header-cell *matHeaderCellDef> Platillo </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
+            <mat-header-cell style="justify-content: center;" *matHeaderCellDef> Platillo </mat-header-cell>
+            <mat-cell style="justify-content: center;" *matCellDef="let element"> {{element.product.name}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
-            <mat-cell *matCellDef="let element">S/. {{element.price}} </mat-cell>
+            <mat-header-cell style="justify-content: center;" *matHeaderCellDef> Precio </mat-header-cell>
+            <mat-cell style="justify-content: center;" *matCellDef="let element">S/. {{element.price}} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="status">
-            <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-            <mat-cell *matCellDef="let element">
+            <mat-header-cell style="justify-content: center;" *matHeaderCellDef> Estado </mat-header-cell>
+            <mat-cell style="justify-content: center;" *matCellDef="let element">
                 <mat-chip-list aria-label="Fish selection">
                     <mat-chip mat-icon-button style="background-color: #ffb293;">{{element.status}}</mat-chip>
                 </mat-chip-list>

@@ -5,3 +5,16 @@
     border-bottom-style: solid;
     border-left-style: solid;
 }
+
+.close-dialog{
+    margin-right: -10px;
+    //margin-top: 7px;
+    margin-left: auto;
+    border: none;
+    background: none;
+    
+}
+
+.close-dialog ::ng-deep .mat-button-focus-overlay {
+    display: none;
+}

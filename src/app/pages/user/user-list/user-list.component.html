@@ -57,7 +57,7 @@
 
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
-                    <mat-cell *matCellDef="let row">
+                    <mat-cell *matCellDef="let row" style="justify-content: center; cursor: pointer">
                         <mat-icon (click)="openDialog(row)" class="icon-setting">settings</mat-icon>
                     </mat-cell>
 

@@ -138,4 +138,10 @@ public sendMessage(order: OrderBean) {
    
  
 }
+
+
+public CloseDialog(){
+  this.dialog.closeAll();
+}
+
 } 
