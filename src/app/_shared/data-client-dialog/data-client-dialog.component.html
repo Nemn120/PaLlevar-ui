@@ -4,9 +4,10 @@
 </mat-toolbar>
 
 <br>
-<button style="width: 100%;" mat-raised-button (click)="abrirMapa()" color="orange"><mat-icon>my_location</mat-icon> Seleccionar ubicación</button>
+<button style="width: 100%;" mat-raised-button (click)="abrirMapa()" color="orange"><mat-icon>my_location</mat-icon></button>
 <br>
-<br>
+<p> {{this.mapService.newPlace.nombre}} </p>
+
 <div mat-dialog-content>
 
     <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">

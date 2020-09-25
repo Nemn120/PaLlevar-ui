@@ -84,6 +84,7 @@ export class CarDialogComponent implements OnInit {
       }else{
         this.dialogo
         .open(DataClientDialogComponent, {
+          width:'25%',
           data: new OrderBean()
         })
         .afterClosed()

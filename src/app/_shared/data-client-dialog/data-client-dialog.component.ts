@@ -24,7 +24,7 @@ export class DataClientDialogComponent implements OnInit {
   address: FormControl;
   reference: FormControl;
   phone: FormControl;
-  title: string = "Generar Pedido, Ingreso de datos";
+  title: string = "Lugar de entrega";
   buttonTitle: string = "Registrar";
   ubicacion: string= "Ingresar Ubicación";
   isUpdateOrder: boolean = false;
@@ -36,7 +36,7 @@ export class DataClientDialogComponent implements OnInit {
     private orderService: OrderService,
     private snackBar: MatSnackBar,
     private dialogMap: MatDialog,
-    private mapService: MapService,
+    public mapService: MapService,
     private notification: NotificationService,
   ) { }
 
