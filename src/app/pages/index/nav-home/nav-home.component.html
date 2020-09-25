@@ -8,33 +8,8 @@
     </button>
 
 
-    <div id="ocultar">
-        <input id="form-control" type="search" placeholder="Buscar platillo" aria-label="Search" #buscarPlatillo>
-        <button id="btn-outline-success" type="button" (click)="showDish(buscarPlatillo.value)">Buscar</button>
-    </div>
-
-
-
-
-    <!--
-
-        <form class="example-form" action="">
-
-            <input class="searchDish" type="text" placeholder="ingrese el platillo a buscar"  matInput/>
-            <mat-autocomplete>
-                <mat-option *ngFor="let dish of dishes" >
-                </mat-option>
-            </mat-autocomplete>
-
-
-        </form>
-
-        <button mat-icon-button class="searchDishButton" routerLink="/platillo" (click)="showDish()">BUSCAR</button>
-    -->
-
-
-
-
+    <!--búsqueda de platillo-->
+    <input id="form-control" type="search" placeholder="Buscar platillo" aria-label="Search" (keyup)="showDish(buscarPlatillo.value)" #buscarPlatillo>
 
 
     <div class="example-spacer"></div>

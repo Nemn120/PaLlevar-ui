@@ -132,9 +132,6 @@ h1 {
     height: auto;
     background-color: azure;
     padding-top: 70px;
-    width: 98%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .mat-toolbar-row,
@@ -156,38 +153,6 @@ h1 {
     border: 2px solid black;
 }
 
-.searchDish {
-    position: relative;
-    display: inline-block;
-    font-size: 20px;
-    box-sizing: border-box;
-}
-
-.searchDish[type="text"] {
-    background: #f4f4f4;
-    padding-left: 10px;
-    border: none;
-    outline: none;
-}
-
-.searchDishButton {
-    position: relative;
-    right: 20px;
-    line-height: 44px;
-    border-radius: 0 15px 15px 0;
-    border: 2px solid black;
-    width: 100px;
-    height: 48px;
-    color: white;
-    outline: none;
-    cursor: pointer;
-    background: orange;
-}
-
-.serchDishButton:hover {
-    background: #ff5722;
-}
-
 #form-control {
     position: relative;
     display: inline-block;
@@ -201,60 +166,4 @@ h1 {
     padding: 0 25px;
     border-radius: 25px 0 0 25px;
     margin-bottom: 5px;
-}
-
-#btn-outline-success {
-    position: relative;
-    font-size: 15px;
-    border-radius: 0 25px 25px 0;
-    height: 30px;
-    width: 80px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: #ffc107;
-    color: #fff;
-    margin-bottom: 5px;
-}
-
-#btn-outline-success:hover {
-    background: #ff5722;
-    transition-duration: 0.3s;
-}
-
-@media (max-width: 800px) {
-    h1 {
-        font-size: 35px !important;
-    }
-}
-
-
-/* Ellipse 1 */
-
-.elipse {
-    background: #e64a19;
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-    color: aliceblue;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    display: flex;
-    font-size: 20px;
-    cursor: pointer;
-    margin-right: 40px;
-    margin-left: 20px;
-}
-
-
-/* J */
-
-.diminutivo {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 23px;
-    /* identical to box height */
-    color: #fffdfd;
 }
