@@ -1,10 +1,4 @@
 <div class="example-container mat-elevation-z8">
-    <div class="buttons" style="display: inline-block !important;">
-        <button style="width: 50%;" mat-raised-button color="primary" (click)="asignarPedido()">
-            Asignar Delivery
-          </button>
-          <button style="width: 50%;" mat-flat-button color="accent" mat-dialog-close>Cerrar</button>
-    </div>
     <mat-table #table [dataSource]="dataSource">
 
         <!-- Checkbox Column -->
@@ -37,15 +31,20 @@
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="cellPhone">
-            <mat-header-cell *matHeaderCellDef> Telefono</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Telefono
+                <div class="elipse" mat-dialog-close><span>X</span></div>
+            </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.cellPhone}} </mat-cell>
         </ng-container>
-
-
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
         </mat-row>
     </mat-table>
 
+    <div class="buttons" style="display: inline-block !important;">
+        <button style="width: 100%;" mat-raised-button color="primary" (click)="asignarPedido()">
+            Asignar Delivery
+          </button>
+    </div>
 </div>

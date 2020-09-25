@@ -22,6 +22,7 @@ table {
     justify-content: center;
     //flex-direction: row;
     width: -webkit-fill-available;
+    align-items: center;
 }
 
 .title-component {
@@ -62,3 +63,25 @@ table {
     background-color: #e64a19;
     color: white;
 }
+
+.mat-column-id {
+    flex: 0 0 10% !important;
+  }
+
+  .mat-column-employeeCode {
+    flex: 0 0 10% !important;
+    justify-content: center !important;
+  }
+
+  .mat-column-status {
+    flex: 0 0 10% !important;
+  }
+
+  .mat-column-profile {
+    flex: 0 0 15% !important;
+  }
+
+  .mat-column-dateBirth {
+    flex: 0 0 15% !important;
+    justify-content: center !important;
+  }
