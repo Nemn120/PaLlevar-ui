@@ -1,10 +1,5 @@
+<div class="elipse" mat-dialog-close><span>X</span></div>
 <div class="example-container mat-elevation-z8">
-    <div class="buttons" style="display: inline-block !important;">
-        <button style="width: 50%;" mat-raised-button color="primary" (click)="asignarPedido()">
-            Asignar Delivery
-          </button>
-          <button style="width: 50%;" mat-flat-button color="accent" mat-dialog-close>Cerrar</button>
-    </div>
     <mat-table #table [dataSource]="dataSource">
 
         <!-- Checkbox Column -->
@@ -48,4 +43,9 @@
         </mat-row>
     </mat-table>
 
+    <div class="buttons" style="display: inline-block !important;">
+        <button style="width: 100%;" mat-raised-button color="primary" (click)="asignarPedido()">
+            Asignar Delivery
+          </button>
+    </div>
 </div>

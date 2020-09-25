@@ -55,4 +55,23 @@ export class UserListComponent implements OnInit {
       console.log('Confirmation End');
     });
   }
+
+  public setColorStatus(status : string):string{
+    switch(status){
+      case 'DISPONIBLE': return '#0CA05B';
+      case 'OCUPADO': return '#F1894F';
+      case 'EN VACACIONES': return '#F1894F';
+    }
+  }
+
+  public setColorStatus2(name : string):string{
+    switch(name){
+      case 'ADMIN_NEG': return '#F24E3E';
+      case 'DELIVERY_MAN': return '#C39272';
+      case 'CHEF_MAIN': return '#4C78DE';
+      case 'ADMIN_DEL': return '#C9446D';
+    }
+  }
 }
+
+

@@ -27,11 +27,14 @@
                     <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
                 </ng-container>
 
-
-                <!-- Name Column -->
                 <ng-container matColumnDef="status">
                     <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-                    <mat-cell mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+                    <mat-cell mat-cell *matCellDef="let element"> 
+                    <mat-chip-list aria-label="Fish selection" *ngIf="element.status!=undefined">
+                        <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(element.status)}">
+                            <span [ngStyle]="{color: element.status == 'DISPONIBLE' || element.status == 'EN VACACIONES'? 'white' : 'black'}">{{element.status}}</span></mat-chip>
+                    </mat-chip-list>
+                    </mat-cell>
                 </ng-container>
 
                 <!-- Symbol Column -->
@@ -50,7 +53,13 @@
                 <ng-container matColumnDef="profile">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </mat-header-cell>
                     <mat-cell *matCellDef="let element">
-                        <div *ngIf="element.profile"> {{element.profile.name}} </div>
+                        <div *ngIf="element.profile"> 
+                            <mat-chip-list aria-label="Fish selection">
+                                <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus2(element.profile.name)}">
+                                    <span [ngStyle]="{color: element.profile.name == 'ADMIN_NEG' || element.profile.name == 'DELIVERY_MAN'|| element.profile.name == 'CHEF_MAIN'? 'white' : 'black'}">{{element.profile.name}}</span>
+                                </mat-chip>
+                            </mat-chip-list>
+                        </div>
                     </mat-cell>
 
                 </ng-container>

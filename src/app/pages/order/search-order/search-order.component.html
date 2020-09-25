@@ -89,7 +89,7 @@
                     <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)">
                         <mat-chip-list aria-label="Fish selection">
                             <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(row.status)}">
-                                <span [ngStyle]="{color: row.status == 'Pendiente' || row.status == 'Cancelado'? 'white' : 'black'}">{{row.status}}</span></mat-chip>
+                                <span [ngStyle]="{color: row.status == 'En proceso' ||row.status == 'Pendiente' || row.status == 'Cancelado' || row.status == 'Entregado'? 'white' : 'black'}">{{row.status}}</span></mat-chip>
                         </mat-chip-list>
                     </mat-cell>
                 </ng-container>
