@@ -7,7 +7,7 @@
 <ng-template [ngIf]="odList.length>0">
 
     <mat-toolbar>
-        <span>Carrito de pedidos</span>
+        <span>Costo del carrito: {{this.carService.costTotal() | currency: 'S/ '}}</span>
         <div class="elipse" style="margin-left:auto;" mat-dialog-close><span>X</span></div>
     </mat-toolbar>
     <br>
@@ -36,26 +36,25 @@
 
             <ng-container matColumnDef="price">
                 <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
-                <mat-cell *matCellDef="let element">S/. {{element.price}} </mat-cell>
+                <mat-cell *matCellDef="let element"> {{element.price | currency: 'S/ '}}</mat-cell>
             </ng-container>
 
             <!-- Symbol Column -->
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
             </mat-row>
+
         </mat-table>
 
 
     </div>
-    <!--
+
     <br>
-    <span>Total: {{this.carService.costTotal() | currency: 'S/.'}}</span>
--->
-    <br>
-    <button style="margin-left: 39%; width: 30%;" mat-raised-button color="accent" (click)="deleteProductsSelect()">
-        Eliminar
+
+    <button style="margin-left: 49%; width: 25%;" mat-raised-button color="accent" (click)="deleteProductsSelect()">
+        Sacar
       </button>
-    <button style=" margin-left: 1%;width: 30%;" mat-raised-button color="primary" (click)="sendOrder()">
+    <button style=" margin-left: 1%;width: 25%;" mat-raised-button color="primary" (click)="sendOrder()">
        Pedir
       </button>
 

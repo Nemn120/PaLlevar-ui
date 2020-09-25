@@ -70,8 +70,8 @@ export class NavHomeComponent implements OnInit {
     }
 
     this.dialog.open(CarDialogComponent, {
-        width: '400px',
-        height: height || '100px'
+        width: '40%',//'400px',
+        //height: height || '100px'
       });
   }
 
