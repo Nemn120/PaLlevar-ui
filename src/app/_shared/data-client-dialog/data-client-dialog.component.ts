@@ -24,7 +24,7 @@ export class DataClientDialogComponent implements OnInit {
   address: FormControl;
   reference: FormControl;
   phone: FormControl;
-  title: string = "Generar Pedido, Ingreso de datos";
+  title: string = "Lugar de entrega";
   buttonTitle: string = "Registrar";
   ubicacion: string= "Ingresar Ubicación";
   isUpdateOrder: boolean = false;
@@ -36,7 +36,7 @@ export class DataClientDialogComponent implements OnInit {
     private orderService: OrderService,
     private snackBar: MatSnackBar,
     private dialogMap: MatDialog,
-    private mapService: MapService,
+    public mapService: MapService,
     private notification: NotificationService,
   ) { }
 
@@ -116,9 +116,9 @@ export class DataClientDialogComponent implements OnInit {
 
 
       })
-      this.title = "Datos de entrega del pedido"
+      this.title = "Actualizar lugar de entrega"
       this.buttonTitle = "Actualizar"
-      this.ubicacion = "Modificar Ubicación"
+      this.ubicacion = "Modificar lugar de entrega"
       this.isUpdateOrder = true;
     }
   }
@@ -128,14 +128,18 @@ export class DataClientDialogComponent implements OnInit {
 
   abrirMapa() {
     this.dialogMap.open(MapaClienteComponent, {
-      width: '50%',
-      height: '50%',
+      width: '60%',
+      height: '60%',
 
     });
 
   }  
   cerrarDialogo(): void {
     this.dialogo.close(false);
+
+    this.mapService.newPlace.longitud=0;
+    this.mapService.newPlace.latitud=0;
+    this.mapService.newPlace.nombre='';
   }
   confirmado(): void {
 

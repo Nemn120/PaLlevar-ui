@@ -1,11 +1,13 @@
-<h1 mat-dialog-title class="titulo">
-    {{title}}
-    <button mat-icon-button class="close-dialog" (click)="cerrarDialogo()"><mat-icon>cancel</mat-icon></button></h1>
-<h3 style="text-align: center;">{{ubicacion}}</h3>
+<mat-toolbar class="title-component">
+    <span>{{title}}</span>
+    <button mat-icon-button class="close-dialog" (click)="cerrarDialogo()"><mat-icon>cancel</mat-icon></button>
+</mat-toolbar>
+
 <br>
-<button style="width: 100%;" mat-raised-button (click)="abrirMapa()" color="orange">Ubicacion Exacta</button>
+<button style="width: 100%;" mat-raised-button (click)="abrirMapa()" color="orange"><mat-icon>my_location</mat-icon></button>
 <br>
-<br>
+<p> {{this.mapService.newPlace.nombre}} </p>
+
 <div mat-dialog-content>
 
     <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">

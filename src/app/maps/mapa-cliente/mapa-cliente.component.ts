@@ -1,10 +1,9 @@
-import { MatDialogRef } from '@angular/material/dialog';
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone} from '@angular/core';
 
 import { Marker } from 'mapbox-gl';
 import { MapService } from '../../_service/map.service';
 import { NotificationService } from '../../_service/notification.service';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-mapa-cliente',
   templateUrl: './mapa-cliente.component.html',
@@ -14,7 +13,8 @@ export class MapaClienteComponent {
 
   coordinates: number[];
   estadoMarker: boolean = false;
-  positionMarker: number[];
+  
+  positionMarker: number[]=[-77.0824914,-12.0587117];
   long: number = -77.0824914;
   lat: number = -12.0587117;
 
@@ -75,6 +75,7 @@ export class MapaClienteComponent {
     this.mapService.getPlace(long, lat).subscribe(
       data => {
        this.mapService.newPlace.nombre=data.features[0].place_name;
+       console.log('outpu:',data);
       })
   }
 
