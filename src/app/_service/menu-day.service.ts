@@ -50,5 +50,9 @@ export class MenuDayService {
     return this.http.post<MenuDayBean>(`${this.url}/emd`,menuDay);
   }
 
+  getListMenuDayByDay(id:number){
+    return this.http.get<any>(`${this.url}/glmdbd/${id}`);
+  }
+
 
 }

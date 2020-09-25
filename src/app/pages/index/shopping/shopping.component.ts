@@ -10,6 +10,8 @@ import { CompanyBean } from '../../../_model/CompanyBean';
 import { SharedService } from '../../../_service/shared.service';
 import { OrderBean } from '../../../_model/OrderBean';
 import { SearchMenuDayProductFavoritesDTO } from 'src/app/_DTO/SearchMenuDayProductFavoritesDTO';
+import { MenuDayService } from 'src/app/_service/menu-day.service';
+import { CompanyNameAndProductsDTO } from 'src/app/_DTO/CompanyNameAndProductsDTO';
 
 @Component({
   selector: 'app-shopping',
@@ -26,8 +28,10 @@ export class ShoppingComponent implements OnInit {
   imgDefault = '../../../../assets/icon-cubiertos.jpg';
   mProduct: MenuDayProductBean;
   panelOpenState:boolean=false;
+  menuByDay:CompanyNameAndProductsDTO[]=[];
   constructor(
               private menuDayProductService: MenuDayProductService,
+              private menuDayService: MenuDayService,
               private productService: ProductService,
               private sanitization: DomSanitizer,
               private activatedRoute: ActivatedRoute,
@@ -73,6 +77,7 @@ export class ShoppingComponent implements OnInit {
             this.companySelect._foto = this.setterPhoto(base64);
           };
           this.getListMenuProduct();
+         // this.getListMenuDayByDay();
         });
       });
       } else {
@@ -110,6 +115,19 @@ export class ShoppingComponent implements OnInit {
       console.error(error);
     });
   }
+   getListMenuDayByDay(){
+    this.menuDayService.getListMenuDayByDay(this.orgId).subscribe(data=>{
+      for(var [categoryName, value] of Object.entries(data.dataList)){
+        let dto = new CompanyNameAndProductsDTO();
+        dto._categoryProductName=categoryName;
+        dto._menuProductList = [];
+        dto._menuProductList=value;
+        this.activatedPhoto(dto._menuProductList);
+        this.menuByDay.push(dto);
+      } 
+    })
+    
+  }
 
 
   activatedPhoto(data: any) {
@@ -130,6 +148,8 @@ export class ShoppingComponent implements OnInit {
   setterPhoto(data: any) {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
+
+
 
 
 }

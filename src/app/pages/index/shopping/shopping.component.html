@@ -19,67 +19,81 @@
             <div class="menu-body">
                 <p class="f-headline" class="p-card-product"><strong>Platillos</strong></p>
 
-                <div *ngIf="!sharedService.loading" class="menuProduct-container">
+                <div class="menuProduct-container">
                     <div *ngFor="let menuDayProduct of menuProductList">
                         <div class="card">
                             <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
                         </div>
                     </div>
+
+                    <!--     <div *ngFor="let menuDay of menuByDay">
+                        <p class="f-headline" class="p-card-product">
+                            {{menuDay._categoryProductName}}</p>
+                        <div class="f-headline" class="p-card-product">
+                            <div *ngFor="let menuDayProduct of menuDay._menuProductList" style="float:left">
+                                <div class="card">
+                                    <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                -->
+
+
+                </div>
+                <div style="width: 70%; margin-left: auto;
+            margin-right: auto;margin-top:30px;">
+                    <mat-card style="margin-bottom: 10px;">
+                        <mat-card-header style="margin-bottom: -15px;">
+                            <div mat-card-avatar class="example-header-image"></div>
+
+                            <mat-card-title style="margin:0; display: flex">
+                                <mat-icon style="margin-left:-50px; margin-right: 10px;">help</mat-icon>
+                                <span>Preguntas frecuentes</span>
+
+                            </mat-card-title>
+                        </mat-card-header>
+                    </mat-card>
+                    <mat-accordion>
+                        <mat-expansion-panel hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    ¿Cúal es el tiempo de espera para tu Pedido a Domicilio en {{companySelect.nombre}}?
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>{{this.companySelect.timeEstimatedProtocol}}</p>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    ¿Cúales son los protocolos de entrega en {{companySelect.nombre}}?
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <textarea readonly="true" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="12">{{this.companySelect.sendProtocol}}</textarea>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    ¿Cúal es el horario de atención en {{companySelect.nombre}}?
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p>{{this.companySelect.hourAttentionProtocol}}</p>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Informacion adicional en {{companySelect.nombre}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <textarea readonly="true" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="12">{{this.companySelect.additionalInformationProtocol}}</textarea>
+                        </mat-expansion-panel>
+                    </mat-accordion>
                 </div>
 
 
             </div>
-            <div style="width: 70%; margin-left: auto;
-            margin-right: auto;margin-top:30px;">
-                <mat-card style="margin-bottom: 10px;">
-                    <mat-card-header style="margin-bottom: -15px;">
-                        <div mat-card-avatar class="example-header-image"></div>
-
-                        <mat-card-title style="margin:0; display: flex">
-                            <mat-icon style="margin-left:-50px; margin-right: 10px;">help</mat-icon>
-                            <span>Preguntas frecuentes</span>
-
-                        </mat-card-title>
-                    </mat-card-header>
-                </mat-card>
-                <mat-accordion>
-                    <mat-expansion-panel hideToggle>
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                ¿Cúal es el tiempo de espera para tu Pedido a Domicilio en {{companySelect.nombre}}?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <p>{{this.companySelect.timeEstimatedProtocol}}</p>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                ¿Cúales son los protocolos de entrega en {{companySelect.nombre}}?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <textarea readonly="true" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="12">{{this.companySelect.sendProtocol}}</textarea>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                ¿Cúal es el horario de atención en {{companySelect.nombre}}?
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <p>{{this.companySelect.hourAttentionProtocol}}</p>
-                    </mat-expansion-panel>
-                    <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                Informacion adicional en {{companySelect.nombre}}
-                            </mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <textarea readonly="true" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="12">{{this.companySelect.additionalInformationProtocol}}</textarea>
-                    </mat-expansion-panel>
-                </mat-accordion>
-            </div>
-
 
         </div>
-
     </div>
-</div>

@@ -121,6 +121,7 @@ export class MenuFormComponent implements OnInit {
   guardar() {
     if (!this.menuDaySelect.id) {
       this.menuDaySelect.menuDayProductList = this.menuDayProductList;
+      this.menuDaySelect.type='Menu';
       this.menuDayService.saveMenuDay(this.menuDaySelect).subscribe(data => {
         this.menuDayService.getListMenuDayByOrganization().subscribe(data2=>{
           this.menuDayService.menuDayCambio.next(data2);
@@ -149,6 +150,8 @@ export class MenuFormComponent implements OnInit {
       nuevoMenuDayProduct.product = this.producto;
       nuevoMenuDayProduct.price = this.precio;
       nuevoMenuDayProduct.quantity = this.cant;
+      nuevoMenuDayProduct.available=this.cant;
+      nuevoMenuDayProduct.status='Disponible';
       this.menuDayProductList.push(nuevoMenuDayProduct);
       this.menuDayService.mensajeCambio.next("Se agrego el producto");
     } else {
