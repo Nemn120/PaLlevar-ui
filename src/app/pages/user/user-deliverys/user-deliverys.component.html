@@ -1,68 +1,67 @@
 <div class="mat-parent">
     <p>
         <mat-toolbar class="title-component">
-            <span>Lista de repartidores</span>
-            <!--<button mat-raised-button color="primary" (click)="openDialog()"></button>-->
+            <span>Buscar Repartidor</span>
         </mat-toolbar>
     </p>
-    <div class="carousel-item" style="display: flex; width: 80%;">
-        <div class="container">
 
-            <mat-table [dataSource]="dataSource" matSort>
+    <div class="body-component">
+        <mat-card style="width: 100%;">
+            <mat-form-field appearance="fill" class="example-form-field">
+                <mat-label>Estado</mat-label>
+                <mat-select name="estado" [(ngModel)]="repartidorBuscado.status">
+                    <mat-option *ngFor="let e of estadosRepartidor" [value]="e">
+                        {{e}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
 
-                <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+            <mat-form-field class="example-full-width">
+                <mat-label>Id trabajador</mat-label>
+                <input matInput [(ngModel)]="repartidorBuscado.employeeCode">
+            </mat-form-field>
 
-                <!-- NOMBRE DE REPARTIDOR -->
-                <ng-container matColumnDef="nombre">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-                    <mat-cell *matCellDef="let delivery_man" > {{delivery_man.nombre}} {{delivery_man.lastName}} </mat-cell>
-                </ng-container>
+            <mat-form-field class="example-full-width">
+                <mat-label>Teléfono</mat-label>
+                <input matInput [(ngModel)]="repartidorBuscado.cellPhone">
+            </mat-form-field>
 
-                <!-- USUARIO DE REPARTIDOR-->
-                <ng-container matColumnDef="username">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre de usuario </mat-header-cell>
-                    <mat-cell *matCellDef="let delivery_man" > {{delivery_man.username}} </mat-cell>
-                </ng-container>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nro. Documento</mat-label>
+                <input matInput [(ngModel)]="repartidorBuscado.documentNumber">
+            </mat-form-field>
 
-                <!-- CÓDIGO DE REPARTIDOR -->
-                <ng-container matColumnDef="employeeCode">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo de empleado </mat-header-cell>
-                    <mat-cell *matCellDef="let delivery_man" > {{delivery_man.employeeCode}} </mat-cell>
-                </ng-container>
-
-                <!-- ESTATUS DE REPARTIDOR -->
-                <ng-container matColumnDef="status">
-                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-                    <mat-cell mat-cell *matCellDef="let delivery_man">
-                        <mat-chip-list aria-label="Fish selection">
-                            <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(delivery_man.status)}">
-                                <span [ngStyle]="{color: delivery_man.status == 'DISPONIBLE' || delivery_man.status == 'OCUPADO'? 'white' : 'black'}">{{delivery_man.status}}</span></mat-chip>
-                        </mat-chip-list>
-                    </mat-cell>
-                    
-                </ng-container>
-
-                <!-- ACCIONES -->
-                <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="changeState(row)">
-                <mat-icon>edit</mat-icon>
-              </button>
-
-                    </mat-cell>
-                </ng-container>
+            <mat-form-field class="example-full-width">
+                <mat-label>Username</mat-label>
+                <input matInput [(ngModel)]="repartidorBuscado.username">
+            </mat-form-field>
 
 
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            <button mat-raised-button color="primary" (click)="getDeliveryManbyFields()">Buscar</button>
+        </mat-card>
+    </div>
 
 
 
 
+    <div *ngFor="let repartidor of userDeliveryList">
+        <div class="body">
+            <div class="main-box">
+                <div class="big-circle">
+                    <img class="small-circle" *ngIf="!repartidor._foto" src="assets/images/perfil/perfil.jpg">
+                    <img class="small-circle" *ngIf="repartidor._foto" [src]="repartidor._foto">
+                </div>
+                <h2 class="heading-name">{{repartidor.nombre}} {{repartidor.lastName}}</h2>
+                <h3 class="heading-work">{{repartidor.username}}</h3>
+                <div class="info">
+                    <p>
+                        <mat-icon>phone</mat-icon> {{repartidor.cellPhone}}</p>
+                </div>
+                <button class="follow_btn" [ngStyle]="{ 'background-color':this.setColorStatus(repartidor.status)}" (click)="changeState(repartidor)">{{repartidor.status}}</button>
+            </div>
         </div>
     </div>
+
+
+
 </div>

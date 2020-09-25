@@ -68,8 +68,9 @@ listaEmpresaConProductos: CompanyNameAndProductsDTO[];
       });
     }
   }
+}
 
-  setterPhoto(data:any){
+ public  setterPhoto(data:any){
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
     

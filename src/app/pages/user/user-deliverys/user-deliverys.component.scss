@@ -1,27 +1,42 @@
-.title-nav {
-    width: 200px;
-    padding: 0 1rem;
-    margin: 1rem;
-    display: block;
-    margin-bottom: 10px;
+/*
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
 }
 
-table {
-    width: 100%;
-    display: block;
-}
-
-.mat-card {
-    position: absolute !important;
-}
-
-.container {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: initial;
+.mat-card-container{
+    width: 240px;
     justify-content: center;
-    //flex-direction: row;
-    width: -webkit-fill-available;
+}
+
+.size-letter{
+    font-size: 18px;
+}
+
+.mat-card-container .tama-image{
+    width: 80%;
+    height: 120px;
+    border-radius: 50%;
+}
+
+*/
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,400&display=swap');
+.body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    //height: 100vh;
+    font-family: "Roboto", sans-serif;
+    float: left;
+    margin-right: 30px;
+    margin-top: 30px;
 }
 
 .title-component {
@@ -30,28 +45,99 @@ table {
     padding: 0 16px;
     margin-top: 0px;
     padding-top: 0px;
-    width: 80%;
+    width: 85%;
     flex-direction: row;
     align-items: center;
     white-space: nowrap;
-}
-
-.mat-raised-button {
-    margin-inline-start: auto;
+    background-color: rgb(255, 94, 0);
+    color: white;
 }
 
 .mat-parent {
-    position: display;
+    margin-top: 0 !important;
 }
 
-.mat-dialog-container {
-    width: 0px !important;
+.main-box {
+    width: 300px;
+    //height: 400px;
+    box-shadow: 2px 4px 2px 4px #b1adaca2; // aca
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: white;
 }
 
-.mat-column-employeeCode {
-    flex: 0 0 15% !important;
+.big-circle {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(2px 2px 6px black);
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
 }
 
-.mat-column-status {
-    flex: 0 0 25% !important;
+.small-circle {
+    width: 165px;
+    height: 140px;
+    //border: 10px solid #8F7A77;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    //background-image: url("profile-image.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.heading-name {
+    margin: 3px 0;
+}
+
+.heading-work {
+    color: #ff5722;
+    font-weight: 300;
+    margin: 3px 0;
+}
+
+//
+.info {
+    padding: 0 20px;
+    margin-bottom: 25px;
+}
+
+//
+.follow_btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 1px 1px rgba(70, 224, 151, 0.65);
+}
+
+.follow_btn:hover {
+    color: black;
+    font-weight: 600;
+}
+
+/// para los campos de búsqueda
+.body-component {
+    width: 85%;
+    height: 80%;
+    background-color: #ffff;
+    display: flex;
+}
+
+.carousel-item {
+    height: 596px;
+    width: 100%;
+    position: relative;
+    background-color: white;
+}
+
+.example-full-width {
+    padding-right: 25px;
+}
+
+.example-form-field {
+    padding-right: 25px;
 }
