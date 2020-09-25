@@ -14,7 +14,11 @@
     <mgl-control mglFullscreen position="bottom-right"></mgl-control>
 
 </mgl-map>
+<br>
+<button mat-raised-button style=" width:32%" color="accent" (click)="closeMap()">Cancelar</button>
 
-<button mat-raised-button style="margin-left: 4px ;width: 32%" color="primary" (click)="updateMarker()">Establecer ubicacion</button>
-<button mat-raised-button style="margin-left: 4px; width:32%" color="primary" [disabled]="!estadoMarker" (click)="save()">Guardar</button>
-<button mat-raised-button style="margin-left: 4px; width:32%" color="primary" (click)="closeMap()">Cancelar</button>
+<button *ngIf="!estadoMarker" mat-raised-button style="margin-left: 2%; width: 32%" (click)="updateMarker()">Activar marker</button>
+
+<button *ngIf="estadoMarker" mat-raised-button style="margin-left: 2%; width: 32%" (click)="updateMarker()">Desactivar marker</button>
+
+<button mat-raised-button style="margin-left: 2%; width:32%" color="primary" [disabled]="!estadoMarker" (click)="save()">Guardar</button>
