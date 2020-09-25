@@ -14,6 +14,7 @@ import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmac
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderConfirmComponent } from '../order-confirm/order-confirm.component';
 import { DataClientDialogComponent } from 'src/app/_shared/data-client-dialog/data-client-dialog.component';
+import { NotificationService } from '../../../_service/notification.service';
 
 @Component({
   selector: 'app-car-dialog',
@@ -37,7 +38,9 @@ export class CarDialogComponent implements OnInit {
     public loginService: LoginService,
     private router: Router,
     public dialogo: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+
+    private notificacionService:NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -94,7 +97,8 @@ export class CarDialogComponent implements OnInit {
       }
       
     } else {
-      alert('Seleccione algun producto');
+      //alert('Seleccione algun producto');
+      this.notificacionService.openSnackBar('Seleccione como minimo un producto del carrito!');
     }
   }
 
@@ -142,14 +146,15 @@ export class CarDialogComponent implements OnInit {
   deleteProductsSelect() {
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
-      if (confirm('¿Desea borrar los productos seleccionados del carrito? ')) {
+     // if (confirm('¿Desea borrar los productos seleccionados del carrito? ')) {
         this.carService.deleteProductList(numSelected);
         this.odList = this.carService.getItems();
         this.dataSource.data = this.odList;
         numSelected.forEach(x => {this.carService.numberProductSelected--; });
-      }
+      //}
     } else {
-      alert('Seleccione el producto a eliminar');
+      //alert('Seleccione el producto a eliminar');
+      this.notificacionService.openSnackBar('Seleccione como minimo un producto del carrito!');
     }
   }
 
