@@ -1,12 +1,8 @@
         .app-container {
             transition: all .3s ease;
-            //width: 1440px;
-            min-height: 900px;
-            padding-left: 20px;
-            // padding-right: 20px;
-            margin: auto;
-            //max-width: 1240px;
-            // background-color: cornflowerblue;
+            min-height: 10px;
+            padding-left: 2px;
+            //margin: auto;
         }
         
         body {
@@ -16,12 +12,12 @@
         .menu-bodycat {
             border-radius: 8px;
             background-color: #fff;
-            max-width: 1560px;
-            padding: 20px 0px;
-            margin-top: 20px;
+            //max-width: 1560px;
+            padding: 2px 0px;
+            margin-top: 10px;
             display: auto;
             float: left;
-            margin-left: 80px // width: 15%;
+            margin-left: 20px // width: 80px ;
         }
         
         .restaurant-info {
@@ -58,17 +54,13 @@
         
         .menu-body {
             border-radius: 8px;
-            // background-color: rgb(160, 253, 131);
             max-width: 1560px;
-            //padding: 30px 20px;
             margin-top: 0px;
             display: contents;
             width: 100%;
-            // margin-left: 20px;
             display: auto;
             float: inherit;
             height: initial;
-            //height: 70%;
         }
         
         .restaurant-data {
@@ -80,17 +72,14 @@
         
         .menuProduct-container {
             display: flex;
-            //justify-content: space-between;
-            //flex-direction: row;
             flex-wrap: wrap;
-            //align-items: stretch;
             justify-items: stretch;
             margin: auto;
             .card {
-                flex: 0 0 200px;
+                flex: 0 0 20px;
                 margin: 0px;
                 justify-items: stretch;
-                width: 400px;
+                width: 340px;
             }
         }
         
@@ -133,9 +122,6 @@
             .app-container {
                 width: auto;
                 padding: 0px;
-            }
-            .background {
-                // background-image: none;
             }
             .card {
                 width: 100px !important;

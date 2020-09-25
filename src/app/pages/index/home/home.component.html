@@ -1,4 +1,5 @@
-<mat-toolbar style="height: 22px;margin-bottom: 30px;" class="text">Nuestros Afiliados</mat-toolbar>
+<mat-toolbar style="height: 0px;margin-bottom: 20px;margin-top: 20px;" class="text">Nuestros Afiliados</mat-toolbar>
+
 
 <div class="menu-bodycat" style="text-align:center;">
     <div class="menu-category">
@@ -27,21 +28,26 @@
                         </p>
                     </mat-list-item>
                 </div>
+                <mat-divider></mat-divider>
                 <div class="categories-item">
                     <div>
                         <img src="../../../../assets/images/logos/logoo.jpeg" style="width: 200px; height: 200px;">
                     </div>
                 </div>
-                <mat-divider></mat-divider>
+
             </mat-list>
         </div>
     </div>
     <br>
+    <mat-divider></mat-divider>
     <!--ubicacion empresa-->
-    <button style="width: 100%;" mat-raised-button (click)="verMapa()">
-            <p><mat-icon>location_on</mat-icon>Ubique el restaurante mas cercano a usted</p>
-    </button>
+    <button mat-raised-button (click)="verMapa()">
+    <p><mat-icon>location_on</mat-icon>Ubique el restaurante mas cercano a usted</p>
+</button>
 </div>
+
+
+
 
 <mat-divider [vertical]="true"></mat-divider>
 <div class="app-container">
