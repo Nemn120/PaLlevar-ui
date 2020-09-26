@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { MatVerticalStepper } from '@angular/material/stepper';
 import { UserBean } from 'src/app/_model/UserBean';
 import { ProfileBean } from 'src/app/_model/ProfileBean';
-import { MatDialog,  MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog,  MatDialogRef,  MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogConfirmacionComponent } from '../dialog-confirmacion/dialog-confirmacion.component';
 import { UserService } from 'src/app/_service/user.service';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
@@ -24,7 +24,7 @@ export class UserDeliveryFormComponent implements OnInit {
   constructor(
               private dialog: MatDialog,
               private serviceUser: UserService,
-              
+              public dialg: MatDialogRef<UserDeliveryFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: UserBean) { }
 
   ngOnInit(): void {
@@ -51,18 +51,22 @@ export class UserDeliveryFormComponent implements OnInit {
       data: messageConfirmation
     })
     .afterClosed().subscribe(t=>{
-      this.serviceUser.updateStatusDelivery(this.dataEmployee).subscribe(data=>{
-        let user = new UserBean();
-        user.profile = new ProfileBean();
-        user.profile.idProfile = 3
-        this.serviceUser.getUserByFields(user).subscribe(data2=>{
-          this.serviceUser.userCambio.next(data2.dataList);
-          this.serviceUser.mensajeCambio.next(data.message);
-        }, error=>{
-          this.serviceUser.mensajeCambio.next(error.message);
+      if(t){
+        this.serviceUser.updateStatusDelivery(this.dataEmployee).subscribe(data=>{
+          let user = new UserBean();
+          user.profile = new ProfileBean();
+          user.profile.idProfile = 3
+          this.serviceUser.getUserByFields(user).subscribe(data2=>{
+            this.serviceUser.userCambio.next(data2.dataList);
+            this.serviceUser.mensajeCambio.next(data.message);
+          }, error=>{
+            this.serviceUser.mensajeCambio.next(error.message);
+          })
+          this.dialog.closeAll();
         })
+      }else{
         this.dialog.closeAll();
-      })
+      }
     })
   }
 

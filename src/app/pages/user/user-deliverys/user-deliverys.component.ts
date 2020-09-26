@@ -42,7 +42,14 @@ export class UserDeliverysComponent implements OnInit {
               }
 
   ngOnInit(): void {
+    this.userService.userCambio.subscribe(data=>{
+      this.userDeliveryList = data;
+      this.activatedPhoto(data);
+    });
+
     this.getDeliveryManByFields(); 
+    
+  
    }
 
   getDeliveryManByFields(){
