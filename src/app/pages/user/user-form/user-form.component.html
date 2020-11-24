@@ -4,7 +4,6 @@
         <mat-horizontal-stepper #stepper>
             <mat-step>
                 <form [formGroup]="personalFormGroup">
-                    <!-- <ng-template matStepLabel>Datos Personales</ng-template> -->
                     <div>
                         <mat-form-field>
                             <mat-label>Nombres: {{data.nombre}}</mat-label>
@@ -57,7 +56,6 @@
             </mat-step>
             <mat-step>
                 <form [formGroup]="loginFormGroup">
-                    <!-- <ng-template matStepLabel>Datos de Login</ng-template> -->
                     <div>
                         <mat-form-field>
                             <mat-label>Nombre de usuario: {{data.username}}</mat-label>
@@ -73,7 +71,6 @@
                                     </button>
                         </mat-form-field>
                     </div>
-                    <!--  -->
                     <div style="display: grid;">
                         <button mat-raised-button matStepperPrevious color="warn">Back</button>
                         <button mat-raised-button matStepperNext color="primary">Next</button>
@@ -82,7 +79,6 @@
             </mat-step>
             <mat-step>
                 <form [formGroup]="companyFormGroup">
-                    <!-- <ng-template matStepLabel>Datos para organización</ng-template> -->
                     <mat-form-field appearance="fill">
                         <mat-label>Perfil</mat-label>
                         <mat-select [(value)]="idProfileSelected">

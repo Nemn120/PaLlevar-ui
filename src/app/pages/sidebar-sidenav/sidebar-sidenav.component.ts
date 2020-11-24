@@ -28,7 +28,6 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
   showSpinner: boolean;
   userName: string;
   isAdmin: boolean;
-  //menus: Array<MenuOptionBean> = new Array();
   menus:MenuOptionBean[];
   isLogueado: boolean = false;
   userMenu: string;
@@ -49,7 +48,6 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
 
       this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-      // tslint:disable-next-line: deprecation
       this.mobileQuery.addListener(this._mobileQueryListener);
       this.companyService.companyOneCambio.subscribe(data =>{
         if(data._foto != null){
@@ -76,7 +74,6 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
       this.mobileQuery.removeListener(this._mobileQueryListener);
-      //this.autoLogoutSubscription.unsubscribe();
     }
 
   cerrarSesion() {

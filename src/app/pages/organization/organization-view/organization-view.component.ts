@@ -112,7 +112,6 @@ export class OrganizationViewComponent implements OnInit {
 
   }
 
-  //ACTUALIZAR MAPA
   updatePlace(){
     this.dialogMap.open(MapaEmpresaComponent, {
       data: this.companySelect,

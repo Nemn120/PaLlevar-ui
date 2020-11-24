@@ -65,10 +65,8 @@ export class EditAddProfileComponent implements OnInit {
   }
 
   SelectFile(e: any) {
-    console.log(e);
     this.labelFile = e.target.files[0].name;
     this.selectedFiles = e.target.files;
-
   }
 
   public convertir(data: any) {

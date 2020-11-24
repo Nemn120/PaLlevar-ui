@@ -9,10 +9,6 @@
 
             <mat-table [dataSource]="dataSource" matSort>
 
-                <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-                <!-- Position Column -->
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -37,19 +33,16 @@
                     </mat-cell>
                 </ng-container>
 
-                <!-- Symbol Column -->
                 <ng-container matColumnDef="employeeCode">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo empleado </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.employeeCode}} </mat-cell>
                 </ng-container>
 
-                <!-- Symbol Column -->
                 <ng-container matColumnDef="dateBirth">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de cumpleaños </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.dateBirth | date:'dd/MM/yyyy'}} </mat-cell>
                 </ng-container>
 
-                <!-- Symbol Column -->
                 <ng-container matColumnDef="profile">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </mat-header-cell>
                     <mat-cell *matCellDef="let element">

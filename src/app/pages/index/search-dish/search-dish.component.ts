@@ -36,7 +36,6 @@ listaEmpresaConProductos: CompanyNameAndProductsDTO[];
       Object.entries(data.dataList).forEach(element=>{
         this.activatedPhoto(element[1]);
       })
-      //console.log(Object.entries(data.dataList));
       for(var [organizationId, value] of Object.entries(data.dataList)){
         let dto = new CompanyNameAndProductsDTO();
         dto._listOfProductsShowed = [];
@@ -48,7 +47,6 @@ listaEmpresaConProductos: CompanyNameAndProductsDTO[];
           this.listaEmpresaConProductos.push(dto);
         })
       }
-      //console.log(this.listaEmpresaConProductos);
       })
     })
   

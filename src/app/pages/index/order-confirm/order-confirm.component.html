@@ -34,8 +34,6 @@
       
       <mat-table #table [dataSource]="dataSource">
   
-  
-          <!-- Name Column -->
           <ng-container matColumnDef="name">
               <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
               <mat-cell *matCellDef="let element">{{element.product.name}} </mat-cell>

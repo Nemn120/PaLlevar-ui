@@ -24,12 +24,11 @@ export class UserDeliverysComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['nombre', 'username' , 'employeeCode', 'status', 'actions'];
-  //dataSource: MatTableDataSource<UserBean>;
-  estadosRepartidor: string[] = ['TODOS','DISPONIBLE','OCUPADO','EN VACACIONES']; // para la búsqueda
-  telefono: string;   // para la búsqueda;
-  nombre: string; // para la búsqueda;
-  apellidos: string; // para la búsqueda;
-  repartidorBuscado: UserBean = new UserBean() ;  // para la búsqueda;
+  estadosRepartidor: string[] = ['TODOS','DISPONIBLE','OCUPADO','EN VACACIONES']; 
+  telefono: string;   
+  nombre: string; 
+  apellidos: string;
+  repartidorBuscado: UserBean = new UserBean() ; 
   deliveryMan: UserBean;
   deliveryMen: any;
   profile: ProfileBean;
@@ -52,9 +51,8 @@ export class UserDeliverysComponent implements OnInit {
     this.repartidorBuscado.profile.idProfile=3;
     this.userService.getUserByFields(this.repartidorBuscado).subscribe(data=>{
       this.activatedPhoto(data.dataList);
-      //this.userService.userCambio.next(data.dataList);
       this.userDeliveryList = data.dataList;
-      this.repartidorBuscado=new UserBean() ;  // para la búsqueda;
+      this.repartidorBuscado=new UserBean() ;  
     }, error =>{
       this.userService.mensajeCambio.next("Error al mostrar repartidor");
     });
@@ -68,12 +66,6 @@ export class UserDeliverysComponent implements OnInit {
     }
   }
 
-
-
-
-
-
-  // buscar repartidor (en proceso)
   changeState(employee: UserBean) {
     this.dialog.open(UserDeliveryFormComponent, {data: employee});
   }
@@ -90,7 +82,6 @@ export class UserDeliverysComponent implements OnInit {
           m._isFoto = true;
           };
         }
-        //this.sharedService.loading = false;
       });
     }
   }

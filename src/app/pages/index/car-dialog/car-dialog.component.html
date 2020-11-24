@@ -14,13 +14,10 @@
 
     <div class="example-container mat-elevation-z8">
         <mat-table #table [dataSource]="dataSource">
-            <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
                 <mat-header-cell *matHeaderCellDef>
-                    <!-- estaba comentado -->
                     <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
                     </mat-checkbox>
-                    <!-- -->
                 </mat-header-cell>
                 <mat-cell *matCellDef="let row">
                     <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
@@ -28,7 +25,6 @@
                 </mat-cell>
             </ng-container>
 
-            <!-- Position Column -->
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
@@ -39,7 +35,6 @@
                 <mat-cell *matCellDef="let element"> {{element.price | currency: 'S/ '}}</mat-cell>
             </ng-container>
 
-            <!-- Symbol Column -->
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
             </mat-row>

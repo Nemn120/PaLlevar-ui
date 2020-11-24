@@ -52,7 +52,6 @@ export class UserListComponent implements OnInit {
       width: 'auto', height: 'auto', data: userSelect
     });
     dialogRef.afterClosed().subscribe(() => {
-      console.log('Confirmation End');
     });
   }
 

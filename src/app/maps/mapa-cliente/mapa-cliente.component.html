@@ -2,9 +2,7 @@
 
     <mgl-control mglGeocoder [searchInput]="'Universidad Nacional Mayor de San Marcos'" [countries]="'pe'" [limit]="5" (result)="onGeocoder($event)"></mgl-control>
 
-    <!--MARKER-->
     <mgl-marker *ngIf="estadoMarker" [lngLat]="positionMarker" [draggable]="true" (dragEnd)="onDragEnd($event)"></mgl-marker>
-    <!--END MARKER-->
 
     <mgl-control mglGeolocate [positionOptions]="{
           enableHighAccuracy: true

@@ -28,7 +28,6 @@ export class PerfilComponent implements OnInit {
     this.obtenerPerfil();
   }
 
-
   obtenerPerfil() {
     this.user = this.sharedService.userSession;
     this.userService.getPhotoById(this.user.id).subscribe(data => {
@@ -37,12 +36,7 @@ export class PerfilComponent implements OnInit {
         this.mostrar = true;
       }
     });
-
-
-    console.log(this.user);
   }
-
-
 
   public convertir(data: any) {
     let reader = new FileReader();

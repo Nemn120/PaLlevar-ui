@@ -15,12 +15,9 @@
                 </ng-container>
 
                 <ng-container matColumnDef="ruc">
-                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Ruc </mat-header-cell>
-                    <!-- NOMBRE DE LA COLUMNA-->
                     <mat-cell *matCellDef="let row"> {{row.ruc}}</mat-cell>
-                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
-                </ng-container>
+                    </ng-container>
 
                 <ng-container matColumnDef="nombre">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>

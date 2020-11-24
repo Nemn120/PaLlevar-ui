@@ -59,7 +59,6 @@ export class AttentOrderComponent implements OnInit {
     }
       this.dialog.open(AttendOrderDetailComponent, {
         width: '600px',
-        //height: height || '130px',
         data: orderSelect
       });
   }

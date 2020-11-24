@@ -15,32 +15,10 @@
 
             <span class="navbar-spacer"></span>
 
-            <!--
-            <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
-                <mat-icon matBadge="2" matBadgeColor="accent">Notificaciones</mat-icon>
-            </button>
-            -->
-
-            <!--
-            <mat-menu #notificationMenu="matMenu" xPosition="before" yPosition="above" [overlapTrigger]="false">
-
-                <a mat-menu-item>
-                    <span>Usted no tiene notificaciones</span>
-                </a>
-                <a mat-menu-item>
-                    <span>Usted tiene un nuevo mensaje</span>
-                </a>
-
-            </mat-menu>
-            -->
+           
             <span style="left: 0vh;">{{this.sharedService.userSession.nombre}} {{this.sharedService.userSession.lastName}}</span>
             <button mat-icon-button style="left: 0vh;" [matMenuTriggerFor]="userMenu">
                 <mat-icon>person</mat-icon>
-                <!--
-                <span fxShow fxHide.xs>
-                    {{userName}}
-                </span>
-                -->
                 
             </button>
 
@@ -87,17 +65,6 @@
 
                 </mat-nav-list>
 
-                <!--- <mat-nav-list>
-                    <mat-list-item>
-                        <a id="push-bottom" mat-list-item>
-                            <mat-icon mat-list-icon>
-                                assignment_ind
-                            </mat-icon>
-                            <p mat-line>{{sharedService.userSession.profile.name}}</p>
-                        </a>
-                    </mat-list-item>
-                </mat-nav-list>
-               -->
             </mat-sidenav>
 
             <mat-sidenav-content class="sidenav-content">

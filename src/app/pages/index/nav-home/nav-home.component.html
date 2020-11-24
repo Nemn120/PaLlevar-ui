@@ -8,33 +8,24 @@
     </button>
 
 
-    <!--búsqueda de platillo-->
     <input id="form-control" type="search" placeholder="Buscar platillo" aria-label="Search" (keyup.enter)="showDish(buscarPlatillo.value)" #buscarPlatillo>
 
 
     <div class="example-spacer"></div>
 
 
-    <!--carrito-->
     <button mat-icon-button color="primary" (click)="openDialogCar()">
         <mat-icon  matBadge="{{cantidad > 0 ? cantidad: ''}}" matBadgeColor="primary">shopping_cart</mat-icon>
     </button>
 
-    <!--No esta logueado-->
     <div *ngIf="!logueado" style="margin-right: 60px;">
         <button routerLink="/auth/login" mat-button color="primary" (click)="ocultarSearchBar()">
         Iniciar Sesion
         </button>
     </div>
 
-    <!--Esta logueado-->
     <div *ngIf="this.sharedService.userSession != undefined">
-        <!--mat-fab-->
-        <!--mat-icon-button-->
-        <!-- <button mat-icon-button [matMenuTriggerFor]="beforeMenu" color="primary" style="margin-right: 20px;padding-right: 30px;"> -->
-        <!-- <mat-icon>account_circle</mat-icon> -->
         <div class="elipse" [matMenuTriggerFor]="beforeMenu"><span>{{(user.nombre.toUpperCase()) | slice: 0:1 }}</span></div>
-        <!-- </button> -->
 
         <mat-menu #beforeMenu="matMenu" xPosition="before">
             <button mat-menu-item (click)="openPerfil()">Mi Perfil</button>

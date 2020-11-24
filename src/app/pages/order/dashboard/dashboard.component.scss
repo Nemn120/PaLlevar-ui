@@ -29,7 +29,6 @@
 .btn-dark:hover {
     color: #fff;
     background-color: #23272b;
-    //border-color: #1d2124;
 }
 
 .fade {
@@ -285,7 +284,6 @@ mat-button-toggle-group {
     color: white !important;
 }
 
-// :::::::::::::::::::::::::::::::::::::
 .mat-accordion .mat-header-row {
     padding-left: 1.5rem;
     padding-right: 2rem;
@@ -296,7 +294,6 @@ mat-button-toggle-group {
     border-bottom: none;
 }
 
-//copied from https://github.com/angular/material2/blob/master/src/lib/table/table.scss
 $mat-header-row-height: 56px;
 $mat-row-height: 48px;
 $mat-row-horizontal-padding: 24px;

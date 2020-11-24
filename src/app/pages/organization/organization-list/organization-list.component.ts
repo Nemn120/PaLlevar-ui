@@ -43,10 +43,7 @@ export class OrganizationListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-
-    // this.companyService.getListProduct().subscribe(data => {
     this.companyService.getListCompany().subscribe(data => {
-    // this.companyService.getListProductByOrganizationAndSucursal().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -56,13 +53,6 @@ export class OrganizationListComponent implements OnInit {
     });
 
   }
-  /* public editDialog(company: CompanyBean) {
-    let productSelect = company != null ? company : new CompanyBean();
-    this.dialog.open(OrganizationFormComponent, {
-      height: '600px',
-      data: productSelect
-    });
-  } */
 
   public createOrganization(company?: CompanyBean) {
     const productSelect = company != null ? company : new CompanyBean();

@@ -23,7 +23,7 @@ export class DeliveryOrderAsignComponent implements OnInit {
   
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  dataSource: MatTableDataSource<UserBean>;/// tabla 
+  dataSource: MatTableDataSource<UserBean>;
   titleProductList: string;
 
   displayedColumns = ['select','nombre','lastName','cellPhone'];
@@ -68,13 +68,12 @@ export class DeliveryOrderAsignComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado: Boolean) => {
         if (confirmado){
-          //debugger
           this.data.userDeliveryId =this.selection.selected[0].id;
-          this.orderService.saveDeliveryOrder(this.data).subscribe(data =>{ // LLAMADA AL SERVICIO
-            this.dataSource.data=  this.dataSource.data.filter(x => { //ELIMINAR
+          this.orderService.saveDeliveryOrder(this.data).subscribe(data =>{ 
+            this.dataSource.data=  this.dataSource.data.filter(x => { 
               return this.selection.selected.indexOf(x) == -1;
             })
-           this.orderService.getListOrderAttend().subscribe(data =>{ // ACTUALIZA
+           this.orderService.getListOrderAttend().subscribe(data =>{ 
              this.orderService.orderCambio.next(data); 
            })
           })

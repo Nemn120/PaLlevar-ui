@@ -18,7 +18,7 @@ export class ClaimListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['id', 'titulo', 'description','orderId','createDate'];
-  dataSource: MatTableDataSource<ComplaintBean>;// tabla 
+  dataSource: MatTableDataSource<ComplaintBean>;
   titleclaimList: string;
   constructor(
     private complaintService:ComplaintService, private dialog:MatDialog, private snackBar: MatSnackBar
@@ -52,7 +52,6 @@ export class ClaimListComponent implements OnInit {
     let complaintSelect = complaint != null ? complaint : new ComplaintBean();
     this.dialog.open(ClaimDetailComponent, {
       width: '729px', 
-      //height: '80%',
       data: complaintSelect
     }); 
   }

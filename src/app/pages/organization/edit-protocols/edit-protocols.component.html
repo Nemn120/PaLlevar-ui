@@ -6,7 +6,6 @@
 </p>
 
 <mat-form-field style="width: 100%;">
-    <!-- Los datos ingresados lo guarda en la variable -->
     <input matInput placeholder="Tiempo de espera estimado" [(ngModel)]="companySelect.timeEstimatedProtocol">
 
 </mat-form-field>
@@ -14,7 +13,6 @@
 <div style=" height: 130px;">
     <mat-form-field class="custom-form" style="width: 100%;height: 100%;">
         <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="7" placeholder="Protocolos de entrega" [(ngModel)]="companySelect.sendProtocol"></textarea>
-        <!--<input type="tel">-->
     </mat-form-field>
 </div>
 <br>
@@ -24,7 +22,6 @@
 <br>
 <mat-form-field style="width: 100%;  height: 120px;">
     <textarea matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="6" placeholder="Información adicional" matInput [(ngModel)]="companySelect.additionalInformationProtocol"></textarea>
-    <!--<input type="tel">-->
 </mat-form-field>
 <br>
 

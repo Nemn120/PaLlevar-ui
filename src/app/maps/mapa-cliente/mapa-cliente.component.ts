@@ -75,7 +75,6 @@ export class MapaClienteComponent {
     this.mapService.getPlace(long, lat).subscribe(
       data => {
        this.mapService.newPlace.nombre=data.features[0].place_name;
-       console.log('outpu:',data);
       })
   }
 
