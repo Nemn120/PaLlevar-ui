@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { SharedService } from 'src/app/_service/shared.service';
 import { CompanyBean } from '../../_model/CompanyBean';
 @Component({
   selector: 'app-mapa',

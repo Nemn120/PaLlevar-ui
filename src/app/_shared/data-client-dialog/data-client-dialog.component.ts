@@ -10,7 +10,6 @@ import { OrderService } from 'src/app/_service/order.service';
 import { MapaClienteComponent } from '../../maps/mapa-cliente/mapa-cliente.component';
 import { PlaceBean } from '../../_model/PlaceBean';
 import { MapService } from '../../_service/map.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NotificationService } from '../../_service/notification.service';
 
 @Component({

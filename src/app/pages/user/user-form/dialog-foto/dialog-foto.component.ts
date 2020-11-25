@@ -1,9 +1,9 @@
-import { Component, OnInit, Inject, Output } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UserFormComponent } from '../user-form.component';
 import { UserService } from 'src/app/_service/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { IfStmt } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-dialog-foto',

@@ -1,14 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../../_service/login.service';
 import { MenuOptionService } from '../../_service/menu-option.service';
-import { UserService } from '../../_service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { SpinnerService } from '../../_service/spinner.service';
 import { MenuOptionBean } from '../../_model/MenuOptionBean';
-import { UserBean } from '../../_model/UserBean';
 import { SharedService } from '../../_service/shared.service';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {OrderBean} from '../../_model/OrderBean';
 import {CarServiceService} from '../../_service/car-service.service';
 import {ProfileComponent} from '../sidebar-sidenav/profile/profile.component';

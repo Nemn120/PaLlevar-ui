@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CompanyBean } from '../../../_model/CompanyBean';
 import { Router } from '@angular/router';
 import { SharedService } from '../../../_service/shared.service';

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../_service/dashboard.service';
 import { DashBoardDTO } from '../../../_model/DashboardDTO';
 import { OrderBean } from 'src/app/_model/OrderBean';

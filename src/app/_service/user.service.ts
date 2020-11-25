@@ -5,9 +5,7 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { UserBean } from '../_model/UserBean';
 import { ProfileMenuOptionBean } from '../_model/ProfileMenuOptionBean';
-import { ProfileBean } from '../_model/ProfileBean';
-import { MainBean } from '../_model/MainBean';
-import { isError } from 'util';
+
 
 @Injectable({
   providedIn: 'root'

@@ -75,7 +75,6 @@ export class OrganizationListComponent implements OnInit {
             this.companyService.mensajeCambio.next('Error al mostrar listado de compañias');
           });
         }, error =>{
-          console.error(error);
           this.companyService.mensajeCambio.next('La organizacion que desea eliminar esta siendo usada');
         });
       } else {

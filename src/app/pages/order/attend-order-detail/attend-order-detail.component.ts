@@ -79,7 +79,7 @@ export class AttendOrderDetailComponent implements OnInit {
             })
             if(this.orderDetailList.length==numSelected.length)this.dialogRef.close();
           }, error =>{
-            console.error(error);
+            this.orderService.mensajeCambio.next("Error al atender pedido");
           })
         
         }

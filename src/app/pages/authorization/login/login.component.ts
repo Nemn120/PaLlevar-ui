@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title, DomSanitizer } from '@angular/platform-browser';
-import { NotificationService } from '../../../_service/notification.service';
-import { AuthenticationService } from '../../../_service/auth.service';
 import { MenuOptionService } from '../../../_service/menu-option.service';
 import { environment } from '../../../../environments/environment.prod';
 import { LoginService } from '../../../_service/login.service';
@@ -12,7 +10,6 @@ import { UserService } from '../../../_service/user.service';
 import { SharedService } from '../../../_service/shared.service';
 import { UserBean } from '../../../_model/UserBean';
 import { ProfileMenuOptionBean } from '../../../_model/ProfileMenuOptionBean';
-import { MenuOptionBean } from '../../../_model/MenuOptionBean';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganizationService } from '../../../_service/organization.service';
 

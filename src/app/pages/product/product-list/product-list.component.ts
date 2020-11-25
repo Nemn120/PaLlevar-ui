@@ -80,11 +80,9 @@ export class ProductListComponent implements OnInit {
               this.productService.productCambio.next(data);
               this.productService.mensajeCambio.next("Se elimino con éxito");
             }, error => {
-              console.error(error);
               this.productService.mensajeCambio.next("Error al mostrar listado de productos");
             });
           }, error => {
-            console.error(error);
             this.productService.mensajeCambio.next("No eliminado");
           });
         }

@@ -44,7 +44,6 @@ export class AttentOrderComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     },error =>{
-      console.error(error);
       this.orderService.mensajeCambio.next("Error al mostrar ordenes");
     });
 

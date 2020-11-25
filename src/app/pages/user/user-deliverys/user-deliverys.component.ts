@@ -1,13 +1,10 @@
-import { Component, OnInit, Sanitizer, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserBean } from '../../../_model/UserBean';
-import { ProfileMenuOptionBean } from '../../../_model/ProfileMenuOptionBean';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { UserFormComponent } from '../user-form/user-form.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from '../../../_service/user.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {UserDeliveryFormComponent} from '../user-delivery-form/user-delivery-form.component';
 import { ProfileBean } from '../../../_model/ProfileBean';

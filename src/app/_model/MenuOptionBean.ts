@@ -1,4 +1,3 @@
-import { ProfileMenuOptionBean } from './ProfileMenuOptionBean';
 import { MainBean } from './MainBean';
 
 export class MenuOptionBean extends MainBean {
