@@ -18,7 +18,7 @@ export class AttentOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['createDate', 'address', 'quantity','total'];
-  dataSource: MatTableDataSource<OrderBean>;/// tabla 
+  dataSource: MatTableDataSource<OrderBean>;
   titleorderList: string;
   constructor(
     private orderService:OrderService, private dialog:MatDialog, private snackBar: MatSnackBar
@@ -27,7 +27,7 @@ export class AttentOrderComponent implements OnInit {
   ngOnInit(): void {
     this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.titleorderList="Listar ordenes";
-    this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.orderService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });

@@ -48,7 +48,6 @@ export class MenuDayProductService {
 
   }
 
-  // retorna una lista de los elementos que coinciden con la búsqueda
   getSearchPlatillos(platillo: string){
     let dish = new MenuDayProductBean;
     dish.product = new ProductBean();
@@ -56,7 +55,6 @@ export class MenuDayProductService {
     return this.http.post<any>(`${this.url}/glsmp`,dish);
   }
 
-  //retorna los productos favoritos por el usuario en una empresa.
   getMenuProductFavorites(favorites: SearchMenuDayProductFavoritesDTO){
     favorites.userId = this.sharedService.getUserIdSession();
     return this.http.post<any>(`${this.url}/glfmpbuao`,favorites)

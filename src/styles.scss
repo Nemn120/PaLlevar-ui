@@ -1,5 +1,4 @@
-//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-//ESTILOS DE MAPBOX
+
 @import '~mapbox-gl/dist/mapbox-gl.css';
 @import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 body {
@@ -28,7 +27,6 @@ body {
     margin-bottom: 10px;
     display: initial;
     justify-content: center;
-    //flex-direction: row;
 }
 
 html,
@@ -143,12 +141,7 @@ p .mat-icon {
     bottom: 3%;
 }
 
-
-/* Highlight on hover */
-
 .submitted-timesheet-day:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
-
-/* Highlight */
 
 .submitted-timesheet-day>div:not(.mat-calendar-body-selected) {
     border-radius: 999px;
@@ -159,7 +152,6 @@ p .mat-icon {
     overflow: auto;
     height: calc(100vh - 270px);
     max-height: 450px;
-    /* padding: 10px 5px; */
 }
 
 .animate {
@@ -182,7 +174,6 @@ p .mat-icon {
     width: 80%;
     margin-left: 10%;
     position: fixed;
-    /*background-image: url("/assets/img/bg1.jpg");*/
 }
 
 .truncate-text {

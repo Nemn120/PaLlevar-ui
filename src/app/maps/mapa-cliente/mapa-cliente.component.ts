@@ -27,7 +27,6 @@ export class MapaClienteComponent {
     dialogMap.disableClose = true
   }
 
-  //REASIGNA LA POSICION DEL MARKER
   updateMarker() {
     if (!this.estadoMarker) {
       this.estadoMarker = true;
@@ -37,20 +36,16 @@ export class MapaClienteComponent {
     }
   }
 
-  //BUSCADOR
   onGeocoder(resultado: any) {
     this.long = resultado.result.geometry.coordinates[0];
     this.lat = resultado.result.geometry.coordinates[1];
   }
 
-  //GEOLOCALIZADOR
   onGeolocate(position: Position) {
     this.long = position.coords.longitude;
     this.lat = position.coords.latitude;
   }
 
-
-  //MOVER MARKER
   onDragEnd(marker: Marker) {
     NgZone.assertInAngularZone();
     this.long = marker.getLngLat().lng;
@@ -61,7 +56,6 @@ export class MapaClienteComponent {
     this.dialogMap.close();
   }
 
-  //GUARDAR UBICACION EXACTA
   save() {
     this.mapService.newPlace.longitud = this.long;
     this.mapService.newPlace.latitud = this.lat;
@@ -70,7 +64,6 @@ export class MapaClienteComponent {
     this.dialogMap.close();
   }
 
-  //BUSQUEDA DEL LUGAR EXACTO
   findPlace(long: number, lat: number) {
     this.mapService.getPlace(long, lat).subscribe(
       data => {

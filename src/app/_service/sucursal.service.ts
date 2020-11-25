@@ -4,6 +4,5 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SucursalService {
-  // PENDIENTE PARA SPRINT 2 O 3
   constructor() { }
 }

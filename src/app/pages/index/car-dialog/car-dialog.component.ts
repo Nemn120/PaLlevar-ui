@@ -95,7 +95,6 @@ export class CarDialogComponent implements OnInit {
         });
       }
     } else {
-      //alert('Seleccione algun producto');
       this.notificacionService.openSnackBar('Seleccione como minimo un producto del carrito!');
     }
   }
@@ -144,14 +143,11 @@ export class CarDialogComponent implements OnInit {
   deleteProductsSelect() {
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
-     // if (confirm('¿Desea borrar los productos seleccionados del carrito? ')) {
         this.carService.deleteProductList(numSelected);
         this.odList = this.carService.getItems();
         this.dataSource.data = this.odList;
         numSelected.forEach(x => {this.carService.numberProductSelected--; });
-      //}
     } else {
-      //alert('Seleccione el producto a eliminar');
       this.notificacionService.openSnackBar('Seleccione como minimo un producto del carrito!');
     }
   }
@@ -160,7 +156,6 @@ export class CarDialogComponent implements OnInit {
     let order = orderBean != null ? orderBean : new OrderBean();
     this.dialogo.open(DataClientDialogComponent, {
      width: '20%',
-    // height: '52%',
     data: order
     });
   }

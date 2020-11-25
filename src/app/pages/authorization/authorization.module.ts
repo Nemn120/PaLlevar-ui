@@ -24,7 +24,7 @@ import { IndexModule } from '../index/index.module';
     AuthRoutingModule,
     FlexLayoutModule,
 
-    IndexModule,//importando modulo para traer el nav-home
+    IndexModule,
     
   ]
 })

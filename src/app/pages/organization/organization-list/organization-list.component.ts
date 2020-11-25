@@ -5,11 +5,8 @@ import { CompanyBean } from '../../../_model/CompanyBean';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { OrganizationService } from '../../../_service/organization.service';
-/* import { OrganizationFormComponent } from '../organization-form/organization-form.component'; */
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganizationFormNewComponent } from '../organization-form-new/organization-form-new.component';
-import { OrganizationFormComponent } from '../organization-form/organization-form.component';
-import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DialogDeleteConfirmationComponent } from '../dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 @Component({
@@ -22,7 +19,7 @@ export class OrganizationListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['id', 'ruc', 'nombre','actions'];
-  dataSource: MatTableDataSource<CompanyBean>;/// tabla
+  dataSource: MatTableDataSource<CompanyBean>;
   titleProductList: string;
   constructor(
     private companyService: OrganizationService,
@@ -32,7 +29,7 @@ export class OrganizationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleProductList="Listar Organizaciones";
-    this.companyService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.companyService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });

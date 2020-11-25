@@ -26,7 +26,7 @@ export class OrderDetailService {
     return this.http.get<OrderDetailBean[]>(`${this.url}/glod`);
   }
 
-  getListOrderDetailByOrderId(id:number) { // PENDIENTE DE CORRECCION
+  getListOrderDetailByOrderId(id:number) {
     return this.http.get<OrderDetailBean[]>(`${this.url}/glodbo/${this.sharedService.getOrganizationIdByUserSession()}`);
   }
 

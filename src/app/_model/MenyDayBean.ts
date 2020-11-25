@@ -3,12 +3,12 @@ import { MainBean } from './MainBean';
 export class MenuDayBean extends MainBean{
     id:number;
     name:string;
-    description:string;  // fecha de creacion
-    day:String; // LUNES, MARTES ,MIERCOLES DOMINGO
-    type:string; // COMBO ,MENU , Promocion
+    description:string;  
+    day:String; 
+    type:string; 
     
-    menuDayProductList:MenuDayProductBean[] // PRODUCTOS , PRECIO, CANTIDAD , ESTADO 
-    status:string; // ACTIVO O DESACTIVO
+    menuDayProductList:MenuDayProductBean[] 
+    status:string; 
     localDateTime:Date;
     total:number;
     countTotal:number;

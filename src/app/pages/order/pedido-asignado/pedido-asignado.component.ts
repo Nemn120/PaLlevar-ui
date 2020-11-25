@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from 'src/app/_service/user.service';
 import { MatDialog } from '@angular/material/dialog';
-import { UserBean } from 'src/app/_model/UserBean';
 import { OrderBean } from 'src/app/_model/OrderBean';
 import { DeliveryOrderDetailComponent } from '../delivery-order-detail/delivery-order-detail.component';
 import { OrderService } from 'src/app/_service/order.service';
@@ -20,7 +19,7 @@ import { SharedService } from 'src/app/_service/shared.service';
 export class PedidoAsignadoComponent implements OnInit {
 
   displayedColumns: string[] = ['status', 'total','quantity','phone','address','reference','createDate'];
-  dataSource: MatTableDataSource<OrderBean>;/// tabla 
+  dataSource: MatTableDataSource<OrderBean>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   titleProductList: string;
@@ -36,7 +35,7 @@ export class PedidoAsignadoComponent implements OnInit {
     this.searchOrderByDeliveryManDTO = new SearchOrderByDeliveryManDTO();
     this.searchOrderByDeliveryManDTO.deliveryId= this.sharedService.getUserIdSession();
     this.titleProductList="Listar Productos";
-    this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.orderService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });

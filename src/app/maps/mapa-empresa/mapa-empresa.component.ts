@@ -39,7 +39,6 @@ export class MapaEmpresaComponent  implements OnInit{
     }
   }
 
-  //CAPTURA LOS RESULTADOS DEL GEOCODER
   onGeocoder(resultado: any) {
     this.long = resultado.result.geometry.coordinates[0];
     this.lat = resultado.result.geometry.coordinates[1];
@@ -47,7 +46,6 @@ export class MapaEmpresaComponent  implements OnInit{
     this.updateMarker();
   }
 
-  //CAPTURA RESULTADO DEL GEOLOCATE
   onGeolocate(position: Position) {
     this.long = position.coords.longitude;
     this.lat = position.coords.latitude;  
@@ -55,15 +53,13 @@ export class MapaEmpresaComponent  implements OnInit{
     this.updateMarker();
   }
 
-  //CAPTURA EL RESULTADO DEL MOVIMIENTO DEL MARKER
   onDragEnd(marker: Marker) {
-    NgZone.assertInAngularZone();//DETECCION DE CAMBIOS ASINCRONICOS
+    NgZone.assertInAngularZone();
     this.long = marker.getLngLat().lng;
     this.lat = marker.getLngLat().lat;
     this.findPlace(this.long, this.lat);
   }
 
-  //ACTUALIZA COORDENADAS
   updateMarker() {
     if (!this.estadoMarker) {
       this.estadoMarker = true;
@@ -73,7 +69,6 @@ export class MapaEmpresaComponent  implements OnInit{
     this.positionMarker = [this.long, this.lat];
       this.findPlace(this.long, this.lat);
   }
-  //BUSCAR EL LUGAR  APARTIR DE LAS COODENADAS
   findPlace(long: number, lat: number) {
     this.mapService.getPlace(long, lat).subscribe(
       data => {
@@ -82,7 +77,6 @@ export class MapaEmpresaComponent  implements OnInit{
       
   }
 
-  //ACTUALIZAR LUGAR DEL NEGOCIO
   actualizar(){
     let company = new CompanyBean();
     company.id=this.data.id;
@@ -113,7 +107,6 @@ export class MapaEmpresaComponent  implements OnInit{
 
   }
 
-  //CERRAR MAPA
   closeMap() {
     this.dialogMap.close();
   }

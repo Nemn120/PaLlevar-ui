@@ -12,7 +12,7 @@ import { SharedService } from './shared.service';
 export class MenuDayService {
 
 
-  menuDayEditar:MenuDayBean=null;//katriel//para poder editarlo en otro componente
+  menuDayEditar:MenuDayBean=null;
 
   menuDayCambio = new Subject<MenuDayBean[]>();
   menuDayOneCambio= new Subject<MenuDayBean>();
@@ -29,7 +29,7 @@ export class MenuDayService {
   getListMenuDay() {
     return this.http.get<MenuDayBean[]>(`${this.url}/glmd`);
   }
-  getListMenuDayByOrganization() { // ESTE LISTAR
+  getListMenuDayByOrganization() {
     return this.http.get<MenuDayBean[]>(`${this.url}/glpbo/${this.sharedService.getOrganizationIdByUserSession()}`);
   }
 
@@ -38,7 +38,7 @@ export class MenuDayService {
     menu.organizationId= this.sharedService.getOrganizationIdByUserSession();
     return this.http.post<MenuDayBean[]>(`${this.url}/gmdbso`,menu);
   }
-  saveMenuDay(menuDay : MenuDayBean) { // S
+  saveMenuDay(menuDay : MenuDayBean) { 
     menuDay.organizationId = this.sharedService.getOrganizationIdByUserSession();
     return this.http.post<MenuDayBean>(`${this.url}/smd`,menuDay);
   }
@@ -46,7 +46,7 @@ export class MenuDayService {
   deleteMenuDay(id: number) { 
     return this.http.delete(`${this.url}/dmd/${id}`);
   }
-  editMenuDay(menuDay : MenuDayBean) { // MENUDAY
+  editMenuDay(menuDay : MenuDayBean) { 
     return this.http.post<MenuDayBean>(`${this.url}/emd`,menuDay);
   }
 

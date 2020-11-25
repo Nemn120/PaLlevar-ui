@@ -76,7 +76,7 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule,
-    NavHomeComponent,// export component a AuthorizationModule
+    NavHomeComponent,
   ],
   entryComponents:
     [

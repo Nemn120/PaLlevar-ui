@@ -30,12 +30,8 @@ export class EnviarMensajeComponent implements OnInit {
   constructor(
     public dialog:MatDialog,public dialogo: MatDialogRef<EnviarMensajeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
-    private carService:CarServiceService,
-    private orderService: OrderService,
     private complaintService: ComplaintService,
-    private snackBar: MatSnackBar,
     private sanitization: DomSanitizer,
-    //private fb: FormBuilder,
    
   ) {
 

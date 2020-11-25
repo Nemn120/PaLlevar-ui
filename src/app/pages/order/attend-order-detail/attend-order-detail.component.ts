@@ -70,11 +70,11 @@ export class AttendOrderDetailComponent implements OnInit {
         
           this.data.orderDetail=attendODetail;
           this.orderService.saveAttendOrder(this.data).subscribe(data =>{
-            this.orderDetailList= this.orderDetailList.filter(x => { //ELIMINAR
+            this.orderDetailList= this.orderDetailList.filter(x => { 
               return numSelected.indexOf(x) == -1;
             })
             this.dataSource.data=this.orderDetailList;
-            this.orderService.getListOrderPendding().subscribe(data =>{ // ACTUALIZA
+            this.orderService.getListOrderPendding().subscribe(data =>{ 
               this.orderService.orderCambio.next(data); 
             })
             if(this.orderDetailList.length==numSelected.length)this.dialogRef.close();
@@ -86,9 +86,6 @@ export class AttendOrderDetailComponent implements OnInit {
   });
  }
 
-
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
       this.selection.clear() :

@@ -40,7 +40,6 @@
     width: 80%;
     margin-left: 10%;
     position: fixed;
-    /*background-image: url("/assets/img/bg1.jpg");*/
 }
 
 .mat-parent-small {
@@ -48,7 +47,6 @@
 }
 
 
-/*for ipad and other lage tabs*/
 
 @media only screen and (max-width: 768px) {
     .mat-parent-small {
@@ -80,9 +78,6 @@
     }
 }
 
-
-/*for mobile devices*/
-
 @media only screen and (max-width: 500px) {
     .mat-parent-small {
         display: block;
@@ -99,7 +94,6 @@
         position: relative;
         height: 440px;
         padding-bottom: 10%;
-        /*background-image: url("/assets/img/bg1.jpg");*/
     }
     .carousel-item {
         height: 385px;

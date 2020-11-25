@@ -77,11 +77,10 @@ export class ShoppingComponent implements OnInit {
             this.companySelect._foto = this.setterPhoto(base64);
           };
           this.getListMenuProduct();
-         // this.getListMenuDayByDay();
         });
       });
       } else {
-        this.router.navigate(['']); // RUTA REDIRIGIDA AL INICIAR SESION
+        this.router.navigate(['']); 
       }
 }
   getListMenuProduct() {

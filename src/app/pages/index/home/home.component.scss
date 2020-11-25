@@ -2,7 +2,6 @@
             transition: all .3s ease;
             min-height: 10px;
             padding-left: 2px;
-            //margin: auto;
         }
         
         body {
@@ -12,12 +11,11 @@
         .menu-bodycat {
             border-radius: 8px;
             background-color: #fff;
-            //max-width: 1560px;
             padding: 2px 0px;
             margin-top: 10px;
             display: auto;
             float: left;
-            margin-left: 20px // width: 80px ;
+            margin-left: 20px 
         }
         
         .restaurant-info {
@@ -93,10 +91,8 @@
         
         .background {
             background-image: url('../../../../assets/images/vista.jpg');
-            //background-position: center center;
             background-size: cover;
             background-repeat: no-repeat;
-            //background-attachment: fixed;
             position: relative;
             height: 100%;
             width: 100%;

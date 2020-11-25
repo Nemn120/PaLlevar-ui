@@ -1,8 +1,3 @@
-/*.container {
-    margin-top: 80px;
-    margin-bottom: 10px;
-}
-*/
 
 .toolbar2 {
     opacity: 0.6;
@@ -56,9 +51,6 @@ h1 {
     text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, .6);
 }
 
-
-/* ANIMATION */
-
 @-webkit-keyframes bounce {
     100% {
         top: -30px;
@@ -74,9 +66,7 @@ img {
 }
 
 .background {
-    //background-color: rgb(243, 146, 20);
-    background-image: url('/assets/images/fondos/f12.jpg'); //2-3-5-8-12-13
-    //margin-top: 1%;
+    background-image: url('/assets/images/fondos/f12.jpg');
     background-position: center center;
     background-size: cover;
     height: 100%;

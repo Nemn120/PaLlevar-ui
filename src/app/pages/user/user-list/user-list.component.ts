@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
               private userService: UserService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.userService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.userService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });

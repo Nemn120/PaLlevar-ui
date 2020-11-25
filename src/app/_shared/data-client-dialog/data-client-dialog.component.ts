@@ -47,7 +47,6 @@ export class DataClientDialogComponent implements OnInit {
     this.order.reference = this.form.value['reference'];
     this.order.phone = this.form.value['phone']
 
-    // CUANDO ENVIA LA ORDEN
     if (!this.isUpdateOrder) {
       var placeTemp: PlaceBean = new PlaceBean();
       placeTemp.longitud = this.mapService.newPlace.longitud;
@@ -83,7 +82,6 @@ export class DataClientDialogComponent implements OnInit {
               this.orderService.updateOrder(this.order).subscribe(data => { 
               this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
               });
-            //this.notification.openSnackBar('Ubicacion guardada exito');
           } else{
             this.notification.openSnackBar('No se puede modificar los datos de este pedido');
           }

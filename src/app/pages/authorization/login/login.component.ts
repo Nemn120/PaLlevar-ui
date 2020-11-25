@@ -74,10 +74,9 @@ export class LoginComponent implements OnInit {
         const decodedToken = helper.decodeToken(data.access_token);
         this.userService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
           this.sharedService.userSession = new UserBean;
-          this.sharedService.userSession = data; // guardo el usuario que inicia
+          this.sharedService.userSession = data; 
           this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).subscribe(data => {
-            this.menuService.menuCambio = data; //
-            //this.menuService.menuCambio.next(data); //
+            this.menuService.menuCambio = data; 
             if (this.sharedService.userSession.profile.idProfile === 6) {
               this.router.navigate(['index/shop']);
             } else {

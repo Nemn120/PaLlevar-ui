@@ -55,12 +55,5 @@ export class SharedService{
       return this.companySession;
     }
 
-    // public setCategoryCambio(category: string) {
-    //   this.categorySubject.next({ text: category});
-    // }
-    //
-    // public getCategoryCambio(): Observable<string> {
-    //   return this.categorySubject.asObservable();
-    // }
 
 }

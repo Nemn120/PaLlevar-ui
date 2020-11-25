@@ -7,10 +7,7 @@ import { OrderBean } from 'src/app/_model/OrderBean';
 import { OrderService } from 'src/app/_service/order.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DeliveryOrderDetailComponent } from '../delivery-order-detail/delivery-order-detail.component';
-import { DeliveryOrderAsignComponent } from '../delivery-order-asign/delivery-order-asign.component';
 import { OrderConfirmComponent } from '../../index/order-confirm/order-confirm.component';
-import { MenuDayProductBean } from 'src/app/_model/MenuDayProductBean';
 import { Message } from '../../../_DTO/messageDTO';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
@@ -24,7 +21,7 @@ export class ConfirmDeliveryOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['id', 'status', 'total','quantity','phone','deliveryDate','createDate','actions'];
-  dataSource: MatTableDataSource<OrderBean>;/// tabla 
+  dataSource: MatTableDataSource<OrderBean>;
   titleProductList: string;
   orderList:OrderBean[];
   constructor(
@@ -33,7 +30,7 @@ export class ConfirmDeliveryOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleProductList="Listar Productos";
-    this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.orderService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 7000
       });

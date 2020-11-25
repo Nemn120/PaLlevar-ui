@@ -15,7 +15,6 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class CardProductNewComponent implements OnInit {
 
   @Input() menuProduct: MenuDayProductBean;
-  // @Input() data:string;
   menuSelect: MenuDayProductBean;
   contadorCarrito = 0;
 
@@ -33,7 +32,6 @@ export class CardProductNewComponent implements OnInit {
 
 
   agregarCarrito() {
-    // Incrementa el carrito
     this.carService.numberProductSelected ++;
 
     const orderDetail = new OrderDetailBean();
