@@ -3,9 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MenuDayProductBean } from '../../../_model/MenuDayProductBean';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { CarServiceService } from '../../../_service/car-service.service';
-import { DataClientDialogComponent } from '../../../_shared/data-client-dialog/data-client-dialog.component';
 import { SharedService } from '../../../_service/shared.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-card-product-new',
@@ -15,7 +13,6 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class CardProductNewComponent implements OnInit {
 
   @Input() menuProduct: MenuDayProductBean;
-  // @Input() data:string;
   menuSelect: MenuDayProductBean;
   contadorCarrito = 0;
 
@@ -33,7 +30,6 @@ export class CardProductNewComponent implements OnInit {
 
 
   agregarCarrito() {
-    // Incrementa el carrito
     this.carService.numberProductSelected ++;
 
     const orderDetail = new OrderDetailBean();

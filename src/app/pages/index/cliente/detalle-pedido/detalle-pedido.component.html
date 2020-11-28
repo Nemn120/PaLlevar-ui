@@ -7,10 +7,6 @@
     </p>
     <mat-table #table [dataSource]="dataSource">
 
-        <!-- Position Column -->
-
-
-        <!-- Name Column -->
         <ng-container matColumnDef="product">
             <mat-header-cell style="justify-content: center;" *matHeaderCellDef> Platillo </mat-header-cell>
             <mat-cell style="justify-content: center;" *matCellDef="let element"> {{element.product.name}} </mat-cell>

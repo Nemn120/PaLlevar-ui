@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserBean } from 'src/app/_model/UserBean';
 
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef} from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SharedService } from 'src/app/_service/shared.service';
@@ -65,10 +65,8 @@ export class EditAddProfileComponent implements OnInit {
   }
 
   SelectFile(e: any) {
-    console.log(e);
     this.labelFile = e.target.files[0].name;
     this.selectedFiles = e.target.files;
-
   }
 
   public convertir(data: any) {

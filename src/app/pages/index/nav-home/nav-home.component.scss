@@ -54,7 +54,6 @@ h1 {
     margin: auto;
     display: flex;
     padding-left: 0px;
-    // -webkit-animation: bounce .3s ease infinite alternate;
     font-family: "Erica One", cursive, Arial, Helvetica, sans-serif;
     font-size: 50px;
     color: firebrick;
@@ -63,30 +62,11 @@ h1 {
     text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.6);
 }
 
-
-/* ANIMATION */
-
-
-/* @-webkit-keyframes bounce {
-    100% {
-        top: -10px;
-        text-shadow: 0 1px 0 azure, 0 2px 0 azure, 0 3px 0 azure, 0 4px 0 azure, 0 5px 0 azure, 0 6px 0 azure, 0 7px 0 azure, 0 8px 0 azure, 0 9px 0 azure, 0 30px 30px rgba(0, 0, 0, .3);
-    }
-} */
-
-
-/* Style para barra desplegable*/
-
-
-/* Style The Dropdown Button */
-
 .dropdown {
     position: relative;
     display: block;
 }
 
-
-/* Dropdown Content (Hidden by Default) */
 
 .dropdown-content {
     display: none;
@@ -96,8 +76,6 @@ h1 {
     z-index: 0;
 }
 
-
-/* Links inside the dropdown */
 
 .dropdown-content a {
     padding: 10px 0px;
@@ -109,14 +87,12 @@ h1 {
 }
 
 
-/* Change color of dropdown links on hover */
 
 .dropdown-content a:hover {
     background-color: #f1f1f1;
 }
 
 
-/* Show the dropdown menu on hover */
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -169,7 +145,6 @@ h1 {
 }
 
 
-/* Ellipse 1 */
 
 .elipse {
     background: #e64a19;
@@ -188,13 +163,11 @@ h1 {
 }
 
 
-/* J */
 
 .diminutivo {
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
     font-size: 23px;
-    /* identical to box height */
     color: #fffdfd;
 }

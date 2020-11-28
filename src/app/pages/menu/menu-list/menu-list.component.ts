@@ -19,7 +19,7 @@ export class MenuListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['name', 'description','day','status','actions'];
-  dataSource: MatTableDataSource<MenuDayBean>;/// tabla 
+  dataSource: MatTableDataSource<MenuDayBean>; 
   titleProductList: string;
 
   constructor(
@@ -32,7 +32,7 @@ export class MenuListComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleProductList="Listar Productos";
-    this.menuDayService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.menuDayService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -78,7 +78,6 @@ export class MenuListComponent implements OnInit {
    
     this.dialog.open(VerProductosMenuComponent, {
       width: '1000',
-      //height: '600',
       data: menuDay
     });
 

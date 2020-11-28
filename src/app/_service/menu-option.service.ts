@@ -9,9 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class MenuOptionService {
 
-  //menuCambio = new Subject<MenuOptionBean[]>();
   menuCambio : MenuOptionBean[];
- // menuCambio: Array<MenuOptionBean> = new Array();
   mensajeCambio = new Subject<string>();
   url: string = `${environment.HOST}`;    
 

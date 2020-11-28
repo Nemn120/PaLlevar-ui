@@ -18,7 +18,7 @@ export class DetallePedidoComponent implements OnInit {
 
 
 
-  dataSource: MatTableDataSource<OrderDetailBean>;/// tabla 
+  dataSource: MatTableDataSource<OrderDetailBean>;
   titleOrderDetailList: string;
   displayedColumns: string[] = ['product', 'price', 'status'];
   constructor(

@@ -1,6 +1,5 @@
 <mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14.5]" [center]="[-77.0824914,-12.0587117]" [maxBounds]="[[-81.594163,-18.733253], [-68.608323, 0.479432]]">
 
-    <!--MARKER EMPRESAS-->
     <div *ngFor="let i of this.lista">
         <mgl-marker #myMarker [lngLat]="[i.place.longitud,i.place.latitud]">
             <div class="marker" style="background-image: url(/assets/images/icono1.svg); width: 50px; height: 50px
@@ -13,7 +12,6 @@
             <button mat-button style="width:100%" (click)="redirectToCompany(i.id)">Ir</button>
         </mgl-popup>
     </div>
-    <!--END MARKER EMPRESAS-->
 
     <mgl-control mglGeolocate [positionOptions]="{
           enableHighAccuracy: true

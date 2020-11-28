@@ -7,18 +7,6 @@
         <img class="small-circle" *ngIf="!dataEmployee._foto" src="assets/images/perfil/perfil.jpg">
         <img class="small-circle" *ngIf="dataEmployee._foto" [src]="data._foto">
         </div>
-        <!--
-        <div>
-            <p>Datos del repartidor</p>
-            <p>username: {{dataEmployee.username}}</p>
-            <p>nombre: {{dataEmployee.nombre}}</p>
-        </div>
-        <div>
-            <p>apellidos: {{dataEmployee.lastName}}</p>
-            <p>Nro. documento: {{dataEmployee.documentNumber}}</p>
-            <p>celular: {{dataEmployee.cellPhone}}</p>
-        </div>
-        -->
     <mat-form-field appearance="fill" >
         <mat-label>Estado/ Disponibilidad</mat-label>
         <mat-select [(value)]="dataEmployee.status">
@@ -32,5 +20,4 @@
 
 <div style="text-align: center;">
     <button mat-raised-button color="primary" style="text-align: center;" (click)="CambiarEstadoDeliveryMan()">Aceptar cambios</button>
-<!--    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="CloseDialog()">Cancelar</button>  -->
 </div>

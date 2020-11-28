@@ -21,7 +21,7 @@ import { DialogDeleteConfirmationComponent } from './dialog-delete-confirmation/
 
 const routes: Routes = [
 
-  {///////////mequede aui
+  {
     path: "",
     component: SidebarSidenavComponent,
     children: [

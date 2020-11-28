@@ -18,7 +18,6 @@ export class GuardService implements CanActivate {
     private sharedService: SharedService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    //SI ESTAS LOGEADO
     
     let rpta = this.loginService.estaLogueado();
     if (!rpta) {
@@ -26,17 +25,14 @@ export class GuardService implements CanActivate {
       this.router.navigate(['auth/login']);
       return false;
     } else {
-      //SI TOKEN ESTA VIGENTE
       let token = sessionStorage.getItem(environment.TOKEN_NAME);
 
       const helper = new JwtHelperService();
       if (!helper.isTokenExpired(token)) {
-        //SI TIENES EL ROL NECESARIO  
         const decodedToken = helper.decodeToken(token);
-        let url = state.url; // /pelicul
+        let url = state.url; 
         return this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).pipe(map((data: MenuOptionBean[]) => {
           this.menuService.menuCambio=data; 
-          //this.menuService.menuCambio.next(data);
           let cont = 0;
           for (let menuBD of data) {
             if (url.startsWith(menuBD.urlMenu)) {

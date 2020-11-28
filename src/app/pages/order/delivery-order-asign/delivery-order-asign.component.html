@@ -1,7 +1,6 @@
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
 
-        <!-- Checkbox Column -->
         <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef>Repartidor</mat-header-cell>
             <mat-cell *matCellDef="let row">
@@ -10,26 +9,20 @@
             </mat-cell>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="nombre">
             <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
         </ng-container>
-
-
-        <!-- Name Column -->
         <ng-container matColumnDef="lastName">
             <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="price">
             <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
         </ng-container>
 
-        <!-- Symbol Column -->
         <ng-container matColumnDef="cellPhone">
             <mat-header-cell *matHeaderCellDef> Telefono
                 <div class="elipse" mat-dialog-close><span>X</span></div>

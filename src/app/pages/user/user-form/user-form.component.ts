@@ -70,11 +70,8 @@ export class UserFormComponent implements OnInit {
   }
 
   registrar(): void {
-    // debugger
-    // this.selected = this.personalFormGroup.value.nombreCtrl;
     if(this.data != null) {
       this.dataEmployee.id = this.data.id;
-      // this.mensaje = 'Se actualizó';
     }
     this.dataEmployee.nombre = this.personalFormGroup.value.nombreCtrl;
     this.dataEmployee.lastName = this.personalFormGroup.value.lastNameCtrl;
@@ -83,9 +80,6 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.documentNumber = this.personalFormGroup.value.documentNumberCtrl;
     this.dataEmployee.cellPhone = this.personalFormGroup.value.cellPhoneCtrl;
     this.dataEmployee.dateBirth = this.date.value;
-    // this.dataEmployee._foto = this.serviceUser.imagen;
-    // this.dataEmployee._isFoto = this.tieneFoto(this.serviceUser.imagen);
-
     this.dataEmployee.username = this.loginFormGroup.value.usernameCtrl;
     this.dataEmployee.password = this.loginFormGroup.value.passwordCtrl;
 

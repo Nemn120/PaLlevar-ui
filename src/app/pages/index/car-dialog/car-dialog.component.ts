@@ -4,7 +4,6 @@ import { SharedService } from '../../../_service/shared.service';
 import { OrderDetailBean } from '../../../_model/OrderDetailBean';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
-import { MenuDayService } from '../../../_service/menu-day.service';
 import { OrderService } from '../../../_service/order.service';
 import { LoginService } from '../../../_service/login.service';
 import { Router } from '@angular/router';
@@ -12,7 +11,6 @@ import { OrderBean } from '../../../_model/OrderBean';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { OrderConfirmComponent } from '../order-confirm/order-confirm.component';
 import { DataClientDialogComponent } from 'src/app/_shared/data-client-dialog/data-client-dialog.component';
 import { SummaryOrderComponent } from 'src/app/_shared/summary-order/summary-order.component';
 import { NotificationService } from '../../../_service/notification.service';
@@ -95,7 +93,6 @@ export class CarDialogComponent implements OnInit {
         });
       }
     } else {
-      //alert('Seleccione algun producto');
       this.notificacionService.openSnackBar('Seleccione como minimo un producto del carrito!');
     }
   }
@@ -144,14 +141,11 @@ export class CarDialogComponent implements OnInit {
   deleteProductsSelect() {
     const numSelected = this.selection.selected;
     if (numSelected.length > 0) {
-     // if (confirm('¿Desea borrar los productos seleccionados del carrito? ')) {
         this.carService.deleteProductList(numSelected);
         this.odList = this.carService.getItems();
         this.dataSource.data = this.odList;
         numSelected.forEach(x => {this.carService.numberProductSelected--; });
-      //}
     } else {
-      //alert('Seleccione el producto a eliminar');
       this.notificacionService.openSnackBar('Seleccione como minimo un producto del carrito!');
     }
   }
@@ -160,7 +154,6 @@ export class CarDialogComponent implements OnInit {
     let order = orderBean != null ? orderBean : new OrderBean();
     this.dialogo.open(DataClientDialogComponent, {
      width: '20%',
-    // height: '52%',
     data: order
     });
   }

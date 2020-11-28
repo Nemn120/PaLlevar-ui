@@ -20,7 +20,7 @@ export class DeliveryOrderDetailComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   
-  dataSource: MatTableDataSource<OrderDetailBean>;/// tabla 
+  dataSource: MatTableDataSource<OrderDetailBean>;
   titleOrderDetailList: string;
   displayedColumns: string[] = ['product','price','attendDate','userAttend'];
   orderDetailList: OrderDetailBean[];
@@ -30,7 +30,6 @@ export class DeliveryOrderDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  //debugger
     this.orderDetailList=this.data.orderDetail;
     this.dataSource = new MatTableDataSource<OrderDetailBean>(this.orderDetailList);
     this.titleOrderDetailList="Detalle de pedido"; 

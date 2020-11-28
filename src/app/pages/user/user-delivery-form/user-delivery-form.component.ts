@@ -1,18 +1,10 @@
 import { Component, OnInit, ViewChild, Inject} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
-import { MatVerticalStepper } from '@angular/material/stepper';
 import { UserBean } from 'src/app/_model/UserBean';
 import { ProfileBean } from 'src/app/_model/ProfileBean';
 import { MatDialog,  MatDialogRef,  MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { DialogConfirmacionComponent } from '../dialog-confirmacion/dialog-confirmacion.component';
 import { UserService } from 'src/app/_service/user.service';
-import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import { ProfileService } from '../../../_service/profile.service';
 import { Message } from '../../../_DTO/messageDTO';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
-import { UserDeliverysComponent } from '../user-deliverys/user-deliverys.component';
-
-
 
 @Component({
   selector: 'app-user-delivery-form',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './shared.service';
-import { DashBoardDTO} from '../_model/DashboardDTO';
+
 
 @Injectable({
   providedIn: 'root'

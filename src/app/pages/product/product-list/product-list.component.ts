@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['name', 'description', 'category', 'actions'];
-  dataSource: MatTableDataSource<ProductBean>;/// tabla 
+  dataSource: MatTableDataSource<ProductBean>;
   titleProductList: string;
 
   constructor
@@ -35,7 +35,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.titleProductList="Listar Productos";
-    this.productService.mensajeCambio.subscribe(data => { // cuando actualizas o creas se muestra una notificacion
+    this.productService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -80,11 +80,9 @@ export class ProductListComponent implements OnInit {
               this.productService.productCambio.next(data);
               this.productService.mensajeCambio.next("Se elimino con éxito");
             }, error => {
-              console.error(error);
               this.productService.mensajeCambio.next("Error al mostrar listado de productos");
             });
           }, error => {
-            console.error(error);
             this.productService.mensajeCambio.next("No eliminado");
           });
         }

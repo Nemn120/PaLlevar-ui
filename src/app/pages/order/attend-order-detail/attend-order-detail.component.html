@@ -1,7 +1,6 @@
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
 
-        <!-- Checkbox Column -->
         <ng-container matColumnDef="select">
             <mat-header-cell *matHeaderCellDef>
                 <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()">
@@ -13,13 +12,11 @@
             </mat-cell>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="product">
             <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="price">
             <mat-header-cell *matHeaderCellDef> Precio 
                 <div class="elipse" mat-dialog-close><span>X</span></div>

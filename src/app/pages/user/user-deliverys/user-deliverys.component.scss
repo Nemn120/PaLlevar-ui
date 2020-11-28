@@ -1,29 +1,5 @@
-/*
 
-*{
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
-}
 
-.mat-card-container{
-    width: 240px;
-    justify-content: center;
-}
-
-.size-letter{
-    font-size: 18px;
-}
-
-.mat-card-container .tama-image{
-    width: 80%;
-    height: 120px;
-    border-radius: 50%;
-}
-
-*/
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,400&display=swap');
 .body {
     margin: 0;
@@ -32,7 +8,6 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    //height: 100vh;
     font-family: "Roboto", sans-serif;
     float: left;
     margin-right: 30px;
@@ -59,8 +34,7 @@
 
 .main-box {
     width: 300px;
-    //height: 400px;
-    box-shadow: 2px 4px 2px 4px #b1adaca2; // aca
+    box-shadow: 2px 4px 2px 4px #b1adaca2; 
     border-radius: 10px;
     text-align: center;
     padding: 20px 0;
@@ -79,12 +53,10 @@
 .small-circle {
     width: 165px;
     height: 140px;
-    //border: 10px solid #8F7A77;
     border-radius: 50%;
     position: absolute;
     top: -5px;
     left: -5px;
-    //background-image: url("profile-image.jpg");
     background-position: center;
     background-size: cover;
 }
@@ -99,13 +71,11 @@
     margin: 3px 0;
 }
 
-//
 .info {
     padding: 0 20px;
     margin-bottom: 25px;
 }
 
-//
 .follow_btn {
     text-decoration: none;
     color: #fff;
@@ -119,7 +89,6 @@
     font-weight: 600;
 }
 
-/// para los campos de búsqueda
 .body-component {
     width: 85%;
     height: 80%;

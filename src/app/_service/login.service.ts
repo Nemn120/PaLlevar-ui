@@ -10,7 +10,6 @@ import { Subject } from 'rxjs';
 export class LoginService {
 
   url: string = `${environment.HOST}/oauth/token`;    
-  //url: string = `${environment.HOST}/${environment.MICRO_AUTH}/oauth/token`;   
   mensajeCambio = new Subject<string>();
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -29,11 +28,7 @@ export class LoginService {
   }
 
   cerrarSesion() {
-  //  let access_token = sessionStorage.getItem(environment.TOKEN_NAME)
-   // this.http.get(`${environment.HOST}/tokens/anular/${access_token}`).subscribe(() => {
-     
       sessionStorage.clear();
       this.router.navigate(['index']);
-    //});
   }
 }

@@ -1,9 +1,6 @@
 import { SharedService } from './../../../../_service/shared.service';
-import { Component, OnInit, Inject } from '@angular/core';
-import { CategoryProductBean } from './../../../../_model/CategoryProductBean';
-import { CategoryProductService } from './../../../../_service/category-product.service';
-
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit} from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../../../../_service/user.service';
 import { UserBean } from 'src/app/_model/UserBean';

@@ -27,7 +27,7 @@ export class TradeOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['id', 'productName', 'categoryName','price','countSales','sumSales'];
-  dataSource: MatTableDataSource<any>;/// tabla 
+  dataSource: MatTableDataSource<any>;
   titleProductList: string;
 
   productList:Array<ProductBean>=[];

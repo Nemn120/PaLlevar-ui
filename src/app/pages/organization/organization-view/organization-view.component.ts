@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CompanyBean } from '../../../_model/CompanyBean';
 import { MatDialog } from '@angular/material/dialog';
 import { OrganizationService } from '../../../_service/organization.service';
@@ -112,7 +112,6 @@ export class OrganizationViewComponent implements OnInit {
 
   }
 
-  //ACTUALIZAR MAPA
   updatePlace(){
     this.dialogMap.open(MapaEmpresaComponent, {
       data: this.companySelect,

@@ -6,13 +6,10 @@ import { CarDialogComponent } from '../car-dialog/car-dialog.component';
 import { PedidosComponent } from '../cliente/pedidos/pedidos.component';
 import { EditarPerfilComponent } from '../cliente/editar-perfil/editar-perfil.component';
 import { CarServiceService } from '../../../_service/car-service.service';
-import { DashboardService } from '../../../_service/dashboard.service';
 
 import { OrderBean } from '../../../_model/OrderBean';
-import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { UserBean } from 'src/app/_model/UserBean';
-import { UserService } from 'src/app/_service/user.service';
 import { LoginService } from 'src/app/_service/login.service';
 
 @Component({
@@ -70,8 +67,7 @@ export class NavHomeComponent implements OnInit {
     }
 
     this.dialog.open(CarDialogComponent, {
-        width: '40%',//'400px',
-        //height: height || '100px'
+        width: '40%',
       });
   }
 

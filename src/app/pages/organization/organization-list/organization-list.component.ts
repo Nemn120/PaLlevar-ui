@@ -5,11 +5,8 @@ import { CompanyBean } from '../../../_model/CompanyBean';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { OrganizationService } from '../../../_service/organization.service';
-/* import { OrganizationFormComponent } from '../organization-form/organization-form.component'; */
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganizationFormNewComponent } from '../organization-form-new/organization-form-new.component';
-import { OrganizationFormComponent } from '../organization-form/organization-form.component';
-import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { DialogDeleteConfirmationComponent } from '../dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 @Component({
@@ -22,7 +19,7 @@ export class OrganizationListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['id', 'ruc', 'nombre','actions'];
-  dataSource: MatTableDataSource<CompanyBean>;/// tabla
+  dataSource: MatTableDataSource<CompanyBean>;
   titleProductList: string;
   constructor(
     private companyService: OrganizationService,
@@ -32,7 +29,7 @@ export class OrganizationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleProductList="Listar Organizaciones";
-    this.companyService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.companyService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -43,10 +40,7 @@ export class OrganizationListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-
-    // this.companyService.getListProduct().subscribe(data => {
     this.companyService.getListCompany().subscribe(data => {
-    // this.companyService.getListProductByOrganizationAndSucursal().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -56,13 +50,6 @@ export class OrganizationListComponent implements OnInit {
     });
 
   }
-  /* public editDialog(company: CompanyBean) {
-    let productSelect = company != null ? company : new CompanyBean();
-    this.dialog.open(OrganizationFormComponent, {
-      height: '600px',
-      data: productSelect
-    });
-  } */
 
   public createOrganization(company?: CompanyBean) {
     const productSelect = company != null ? company : new CompanyBean();
@@ -88,7 +75,6 @@ export class OrganizationListComponent implements OnInit {
             this.companyService.mensajeCambio.next('Error al mostrar listado de compañias');
           });
         }, error =>{
-          console.error(error);
           this.companyService.mensajeCambio.next('La organizacion que desea eliminar esta siendo usada');
         });
       } else {

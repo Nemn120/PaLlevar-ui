@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit {
               private userService: UserService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.userService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.userService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -52,7 +52,6 @@ export class UserListComponent implements OnInit {
       width: 'auto', height: 'auto', data: userSelect
     });
     dialogRef.afterClosed().subscribe(() => {
-      console.log('Confirmation End');
     });
   }
 

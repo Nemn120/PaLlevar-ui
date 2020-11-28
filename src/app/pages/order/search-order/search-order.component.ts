@@ -24,7 +24,7 @@ export class SearchOrderComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['status','documentNumber','name','address','total','quantity','createDate','opciones'];
-  dataSource: MatTableDataSource<OrderBean>;/// tabla 
+  dataSource: MatTableDataSource<OrderBean>;
   estados: string[] = ['Todos','En camino','Atendido','Pendiente','Entregado','Cancelado'];
   searchOrderByFieldsDTO: SearchOrderByFieldsDTO;
   DeliveryManList: UserBean[] = [];
@@ -41,7 +41,7 @@ export class SearchOrderComponent implements OnInit {
     this.paginator._intl.itemsPerPageLabel = 'Items por pagina';
     this.searchOrderByFieldsDTO = new SearchOrderByFieldsDTO();
     this.searchOrderByFieldsDTO.organizationId= this.sharedService.getOrganizationIdByUserSession();
-    this.orderService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.orderService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });

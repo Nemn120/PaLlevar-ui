@@ -44,16 +44,13 @@
         <div class="container">
             <mat-table [dataSource]="dataSource" matSort>
                 <ng-container matColumnDef="status">
-                    <!-- HACE REFERENCIA AL CAPO DEL ARRAY DE displayedColumns-->
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-                    <!-- NOMBRE DE LA COLUMNA-->
                     <mat-cell *matCellDef="let row">
                         <mat-chip-list aria-label="Fish selection">
                             <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(row.status)}">
                                 <span [ngStyle]="{color: row.status == 'Entregado' || row.status == 'En camino'? 'white' : 'black'}">{{row.status}}</span></mat-chip>
                         </mat-chip-list>
                     </mat-cell>
-                    <!-- HACE REFERENCIA AL atributo DEL Objecto Producto-->
                 </ng-container>
 
                 <ng-container matColumnDef="total">

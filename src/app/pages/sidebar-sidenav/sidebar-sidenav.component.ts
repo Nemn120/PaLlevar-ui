@@ -1,14 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { LoginService } from '../../_service/login.service';
 import { MenuOptionService } from '../../_service/menu-option.service';
-import { UserService } from '../../_service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { SpinnerService } from '../../_service/spinner.service';
 import { MenuOptionBean } from '../../_model/MenuOptionBean';
-import { UserBean } from '../../_model/UserBean';
 import { SharedService } from '../../_service/shared.service';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {OrderBean} from '../../_model/OrderBean';
 import {CarServiceService} from '../../_service/car-service.service';
 import {ProfileComponent} from '../sidebar-sidenav/profile/profile.component';
@@ -28,7 +25,6 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
   showSpinner: boolean;
   userName: string;
   isAdmin: boolean;
-  //menus: Array<MenuOptionBean> = new Array();
   menus:MenuOptionBean[];
   isLogueado: boolean = false;
   userMenu: string;
@@ -49,7 +45,6 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
 
       this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-      // tslint:disable-next-line: deprecation
       this.mobileQuery.addListener(this._mobileQueryListener);
       this.companyService.companyOneCambio.subscribe(data =>{
         if(data._foto != null){
@@ -76,7 +71,6 @@ export class SidebarSidenavComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
       this.mobileQuery.removeListener(this._mobileQueryListener);
-      //this.autoLogoutSubscription.unsubscribe();
     }
 
   cerrarSesion() {

@@ -14,7 +14,6 @@ export class CarServiceService {
   orderService: OrderService;
   newOrder = new Subject<OrderBean>();
 
-  // Cantidad de productos en el carrito
   numberProductSelected = 0;
 
   constructor() {

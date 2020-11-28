@@ -1,4 +1,3 @@
-import { ProfileMenuOptionBean } from './ProfileMenuOptionBean';
 import { CategoryProductBean } from './CategoryProductBean';
 import { MainBean } from './MainBean';
 

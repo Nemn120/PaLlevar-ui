@@ -2,7 +2,6 @@ import { UserBean } from '../_model/UserBean';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subject, Observable } from 'rxjs';
 import { CompanyBean } from '../_model/CompanyBean';
@@ -55,12 +54,5 @@ export class SharedService{
       return this.companySession;
     }
 
-    // public setCategoryCambio(category: string) {
-    //   this.categorySubject.next({ text: category});
-    // }
-    //
-    // public getCategoryCambio(): Observable<string> {
-    //   return this.categorySubject.asObservable();
-    // }
 
 }

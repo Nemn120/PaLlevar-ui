@@ -1,7 +1,5 @@
 
-
 import { Component, OnInit } from '@angular/core';
-
 import { MenuDayBean } from '../../../_model/MenyDayBean';
 import { MenuDayService } from '../../../_service/menu-day.service';
 
@@ -9,7 +7,6 @@ import { MenuDayProductBean } from '../../../_model/MenuDayProductBean';
 import { ProductService } from '../../../_service/product.service';
 import { ProductBean } from 'src/app/_model/ProductBean';
 
-//
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -27,7 +24,7 @@ export interface User {
   name: string;
   apellido: string;
 }
-//
+
 @Component({
   selector: 'app-menu-form',
   templateUrl: './menu-form.component.html',
@@ -96,7 +93,7 @@ export class MenuFormComponent implements OnInit {
       this.menuDaySelect = new MenuDayBean();
     }
 
-    this.menuDayService.mensajeCambio.subscribe(data => { // cuando actualizas o creas se muestra una notificacion
+    this.menuDayService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -104,8 +101,7 @@ export class MenuFormComponent implements OnInit {
 
     this.menuDayService.menuDayOneCambio.subscribe(data => {
       this.menuDaySelect;
-      this.menuDayProductList = data.menuDayProductList
-      console.log(data);
+      this.menuDayProductList = data.menuDayProductList;
     });
 
     this.filteredOptions = this.myControl.valueChanges
@@ -114,7 +110,6 @@ export class MenuFormComponent implements OnInit {
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.options.slice())
       );
-    //
 
   }
 
@@ -186,7 +181,6 @@ export class MenuFormComponent implements OnInit {
   }
 
   remove(menuProduct: MenuDayProductBean) {
-    //debugger
     if (!this.menuId) {
       const itemIndex = this.menuDayProductList.findIndex(temp => temp.id === menuProduct.id);
       if (itemIndex > -1) {
@@ -232,7 +226,6 @@ export class MenuFormComponent implements OnInit {
   private _filter(name: string): ProductBean[] {
     const filterValue = name.toLowerCase();
     return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
-  }
-  //
+  } 
 
 }

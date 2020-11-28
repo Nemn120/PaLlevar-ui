@@ -28,7 +28,7 @@ export class PedidosComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['companyName', 'date', 'total', 'quantity', 'status', 'detail','message'];
-  dataSource: MatTableDataSource<OrderBean>;/// tabla 
+  dataSource: MatTableDataSource<OrderBean>;
   dataSource1: MatTableDataSource<ComplaintBean>;
   
  

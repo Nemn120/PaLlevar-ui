@@ -53,7 +53,6 @@ export class HomeComponent implements OnInit {
         reader.onload = () => {
           let base64 = reader.result;
           m._foto = this.setterPhoto(base64);
-          // m._isFoto = true;
         }
       })
     }
@@ -63,7 +62,6 @@ export class HomeComponent implements OnInit {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
 
-  //abrir mapa general de empresas
   verMapa(){
     this.dialogMap.open(MapaComponent, {
       data:this.menuOrgList,

@@ -9,7 +9,6 @@ import { CategoryProductBean } from '../../../../_model/CategoryProductBean';
 import { CategoryProductService } from '../../../../_service/category-product.service';
 import { CategoryFormComponent } from '../category-form/category-form.component';
 
-
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -20,7 +19,7 @@ export class CategoryListComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['name', 'description','actions'];
-  dataSource: MatTableDataSource<CategoryProductBean>;/// tabla 
+  dataSource: MatTableDataSource<CategoryProductBean>;
   titleCategoryProductList: string;
   constructor(
     private categoryProductService:CategoryProductService, private dialog:MatDialog, private snackBar: MatSnackBar
@@ -28,7 +27,7 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleCategoryProductList="Listar Categorias";
-    this.categoryProductService.mensajeCambio.subscribe(data => { // cuando actuqalizas o creas se muestra una notificacion
+    this.categoryProductService.mensajeCambio.subscribe(data => { 
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -41,8 +40,6 @@ export class CategoryListComponent implements OnInit {
     });
 
     this.categoryProductService.getListCategoryProductByOrganization().subscribe(data => {
-    //this.productService.getListProductByOrganization().subscribe(data => {  
-    //this.productService.getListProductByOrganizationAndSucursal().subscribe(data => {  
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

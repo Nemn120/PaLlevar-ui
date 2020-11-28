@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title, DomSanitizer } from '@angular/platform-browser';
-import { NotificationService } from '../../../_service/notification.service';
-import { AuthenticationService } from '../../../_service/auth.service';
 import { MenuOptionService } from '../../../_service/menu-option.service';
 import { environment } from '../../../../environments/environment.prod';
 import { LoginService } from '../../../_service/login.service';
@@ -12,7 +10,6 @@ import { UserService } from '../../../_service/user.service';
 import { SharedService } from '../../../_service/shared.service';
 import { UserBean } from '../../../_model/UserBean';
 import { ProfileMenuOptionBean } from '../../../_model/ProfileMenuOptionBean';
-import { MenuOptionBean } from '../../../_model/MenuOptionBean';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganizationService } from '../../../_service/organization.service';
 
@@ -74,10 +71,9 @@ export class LoginComponent implements OnInit {
         const decodedToken = helper.decodeToken(data.access_token);
         this.userService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
           this.sharedService.userSession = new UserBean;
-          this.sharedService.userSession = data; // guardo el usuario que inicia
+          this.sharedService.userSession = data; 
           this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).subscribe(data => {
-            this.menuService.menuCambio = data; //
-            //this.menuService.menuCambio.next(data); //
+            this.menuService.menuCambio = data; 
             if (this.sharedService.userSession.profile.idProfile === 6) {
               this.router.navigate(['index/shop']);
             } else {

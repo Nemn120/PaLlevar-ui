@@ -1,13 +1,10 @@
-import { Component, OnInit, Sanitizer, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserBean } from '../../../_model/UserBean';
-import { ProfileMenuOptionBean } from '../../../_model/ProfileMenuOptionBean';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { UserFormComponent } from '../user-form/user-form.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from '../../../_service/user.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {UserDeliveryFormComponent} from '../user-delivery-form/user-delivery-form.component';
 import { ProfileBean } from '../../../_model/ProfileBean';
@@ -24,12 +21,11 @@ export class UserDeliverysComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   displayedColumns: string[] = ['nombre', 'username' , 'employeeCode', 'status', 'actions'];
-  //dataSource: MatTableDataSource<UserBean>;
-  estadosRepartidor: string[] = ['TODOS','DISPONIBLE','OCUPADO','EN VACACIONES']; // para la búsqueda
-  telefono: string;   // para la búsqueda;
-  nombre: string; // para la búsqueda;
-  apellidos: string; // para la búsqueda;
-  repartidorBuscado: UserBean = new UserBean() ;  // para la búsqueda;
+  estadosRepartidor: string[] = ['TODOS','DISPONIBLE','OCUPADO','EN VACACIONES']; 
+  telefono: string;   
+  nombre: string; 
+  apellidos: string;
+  repartidorBuscado: UserBean = new UserBean() ; 
   deliveryMan: UserBean;
   deliveryMen: any;
   profile: ProfileBean;
@@ -59,9 +55,8 @@ export class UserDeliverysComponent implements OnInit {
     this.repartidorBuscado.profile.idProfile=3;
     this.userService.getUserByFields(this.repartidorBuscado).subscribe(data=>{
       this.activatedPhoto(data.dataList);
-      //this.userService.userCambio.next(data.dataList);
       this.userDeliveryList = data.dataList;
-      this.repartidorBuscado=new UserBean() ;  // para la búsqueda;
+      this.repartidorBuscado=new UserBean() ;  
     }, error =>{
       this.userService.mensajeCambio.next("Error al mostrar repartidor");
     });
@@ -75,12 +70,6 @@ export class UserDeliverysComponent implements OnInit {
     }
   }
 
-
-
-
-
-
-  // buscar repartidor (en proceso)
   changeState(employee: UserBean) {
     this.dialog.open(UserDeliveryFormComponent, {data: employee});
   }
@@ -97,7 +86,6 @@ export class UserDeliverysComponent implements OnInit {
           m._isFoto = true;
           };
         }
-        //this.sharedService.loading = false;
       });
     }
   }
