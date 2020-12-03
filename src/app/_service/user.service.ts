@@ -15,7 +15,7 @@ export class UserService {
   userCambio = new Subject<UserBean[]>();
   mensajeCambio = new Subject<string>();
   menuCambio = new Subject<ProfileMenuOptionBean[]>();
-  url: string = `${environment.HOST}`;
+  url = `${environment.HOST}`;
   subUrl = 'user';
   imagen: any;
   constructor(private http: HttpClient, private sharedService: SharedService) { }
@@ -49,9 +49,9 @@ export class UserService {
     return this.http.get<UserBean[]>(`${this.url}/${this.subUrl}/gubo/${a}`);
   }
 
-  registrarTrabajador(user:UserBean){
-    user.organizationId=this.sharedService.getOrganizationIdByUserSession();
-    return this.http.post<UserBean>(`${this.url}/${this.subUrl}/su`,user);
+  registrarTrabajador(user: UserBean) {
+    user.organizationId = this.sharedService.getOrganizationIdByUserSession();
+    return this.http.post<UserBean>(`${this.url}/${this.subUrl}/su`, user);
   }
 
   getDeliveryUserList() {
@@ -94,8 +94,11 @@ export class UserService {
   updateStatusDelivery(userbean: UserBean) {
     return this.http.post<any>(`${this.url}/${this.subUrl}/usu`, userbean);
   }
-  getUserByFields(userbean : UserBean) {
+  getUserByFields(userbean: UserBean) {
     userbean.organizationId = this.sharedService.getOrganizationIdByUserSession();
     return this.http.post<any>(`${this.url}/${this.subUrl}/gludmos`, userbean);
+  }
+  registrarAdmin(userBean: UserBean) {
+    return this.http.post(`${this.url}/${this.subUrl}/su`, userBean);
   }
 }

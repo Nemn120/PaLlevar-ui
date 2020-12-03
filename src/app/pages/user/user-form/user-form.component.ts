@@ -20,7 +20,6 @@ import { ProfileService } from '../../../_service/profile.service';
 export class UserFormComponent implements OnInit {
 
   personalFormGroup: FormGroup;
-  loginFormGroup: FormGroup;
   companyFormGroup: FormGroup;
   date = new FormControl((new Date()).toISOString());
   profileList: Array<ProfileBean>;
@@ -56,10 +55,6 @@ export class UserFormComponent implements OnInit {
         dateBirthCtrl: ['', Validators.required]
 
       });
-    this.loginFormGroup = this.formBuilder.group({
-        passwordCtrl: ['', Validators.required],
-        usernameCtrl: ['', Validators.required],
-      });
     this.companyFormGroup = this.formBuilder.group({
         statusCtrl: ['', Validators.required],
         employeecodeCtrl: ['', Validators.required],
@@ -70,7 +65,7 @@ export class UserFormComponent implements OnInit {
   }
 
   registrar(): void {
-    if(this.data != null) {
+    if (this.data != null) {
       this.dataEmployee.id = this.data.id;
     }
     this.dataEmployee.nombre = this.personalFormGroup.value.nombreCtrl;
@@ -80,8 +75,6 @@ export class UserFormComponent implements OnInit {
     this.dataEmployee.documentNumber = this.personalFormGroup.value.documentNumberCtrl;
     this.dataEmployee.cellPhone = this.personalFormGroup.value.cellPhoneCtrl;
     this.dataEmployee.dateBirth = this.date.value;
-    this.dataEmployee.username = this.loginFormGroup.value.usernameCtrl;
-    this.dataEmployee.password = this.loginFormGroup.value.passwordCtrl;
 
     this.dataEmployee.profile.idProfile = this.idProfileSelected;
     this.dataEmployee.status = this.estadoSelected;

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SucursalListComponent } from './sucursal-list/sucursal-list.component';
 import { SucursalFormComponent } from './sucursal-form/sucursal-form.component';
 import { OrganizationListComponent } from './organization-list/organization-list.component';
-import { OrganizationFormComponent } from './organization-form/organization-form.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SidebarSidenavComponent } from '../sidebar-sidenav/sidebar-sidenav.component';
 import { SidebarSidenavModule } from '../sidebar-sidenav/sidebar-sidenav.module';
@@ -17,23 +16,24 @@ import { OrganizationEditComponent } from './organization-edit/organization-edit
 import { MapaEmpresaComponent } from '../../maps/mapa-empresa/mapa-empresa.component';
 import { MapsModule } from '../../maps/maps.module';
 import { DialogDeleteConfirmationComponent } from './dialog-delete-confirmation/dialog-delete-confirmation.component';
+import { AdminFormComponent } from './admin-form/admin-form.component';
 
 
 const routes: Routes = [
 
   {
-    path: "",
+    path: '',
     component: SidebarSidenavComponent,
     children: [
-          { path: "list", component: OrganizationListComponent  , canActivate: [GuardService] },
-          { path: "view", component: OrganizationViewComponent },
+          { path: 'list', component: OrganizationListComponent  , canActivate: [GuardService] },
+          { path: 'view', component: OrganizationViewComponent },
     ]
   }
 ];
 
 @NgModule({
   declarations: [SucursalListComponent, SucursalFormComponent, OrganizationListComponent,
-    OrganizationFormComponent, OrganizationFormNewComponent, OrganizationViewComponent, EditProtocolsComponent, OrganizationEditComponent, DialogDeleteConfirmationComponent],
+    OrganizationFormNewComponent, OrganizationViewComponent, EditProtocolsComponent, OrganizationEditComponent, DialogDeleteConfirmationComponent, AdminFormComponent],
   imports: [
     CommonModule,
     SidebarSidenavModule,
@@ -43,13 +43,13 @@ const routes: Routes = [
     ReactiveFormsModule,
     MapsModule
   ],
-  entryComponents:[
-    OrganizationFormComponent,
+  entryComponents: [
      OrganizationFormNewComponent,
      OrganizationEditComponent,
      EditProtocolsComponent,
      MapaEmpresaComponent,
-     DialogDeleteConfirmationComponent
+     DialogDeleteConfirmationComponent,
+     AdminFormComponent
   ]
 })
 export class OrganizationModule { }
