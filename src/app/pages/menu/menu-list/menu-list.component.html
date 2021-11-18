@@ -1,5 +1,10 @@
 <div class="mat-parent">
-    <h2>Listado de Menús</h2>
+    <h2>Listado de Menús
+        <button mat-raised-button color="accent" routerLink="/menu/form"
+            style="float: right;">
+            Crear Menú
+          </button>
+    </h2>
     <mat-divider></mat-divider>
     <div style="width: 100%;">
 
@@ -8,33 +13,33 @@
                 <mat-table [dataSource]="dataSource" matSort>
                     <ng-container matColumnDef="name">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+                        <mat-cell *matCellDef="let row"> {{row.name || '-'}}</mat-cell>
                     </ng-container>
     
                     <ng-container matColumnDef="description">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
+                        <mat-cell *matCellDef="let row"> {{row.description || '-'}}</mat-cell>
                     </ng-container>
     
                     <ng-container matColumnDef="day">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Dia </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.day}}</mat-cell>
+                        <mat-cell *matCellDef="let row"> {{row.day || '-'}}</mat-cell>
                     </ng-container>
     
                     <ng-container matColumnDef="status">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.status}}</mat-cell>
+                        <mat-cell *matCellDef="let row"> {{row.status || '-'}}</mat-cell>
                     </ng-container>
     
                     <ng-container matColumnDef="actions">
-                        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
                         <mat-cell *matCellDef="let row">
     
-                            <button mat-icon-button color="primary" (click)="editar(row)">
+                            <button mat-icon-button color="accent" (click)="editar(row)">
                              <mat-icon>settings</mat-icon>
                         </button>
     
-                            <button mat-icon-button color="primary" (click)="ver(row)">
+                            <button mat-icon-button color="accent" (click)="ver(row)">
                             <mat-icon>info </mat-icon>
                         </button>
     
@@ -51,10 +56,6 @@
                 </mat-table>
     
                 <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    
-                <button mat-fab color="accent" style="float: right" routerLink="/menu/form" class="buton-product">
-                <mat-icon>create</mat-icon>
-                </button>
             </div>
         </div>
     </div>

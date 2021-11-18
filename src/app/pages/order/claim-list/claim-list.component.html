@@ -1,53 +1,48 @@
 <div class="mat-parent">
-    <p>
-        <mat-toolbar class="title-component">
-            <span>Listado de reclamos</span>
-
-        </mat-toolbar>
-    </p>
-    <div class="carousel-item " style="display: flex; width: 80%;">
+    <h2>Listado de reclamos
+    </h2>
+    <mat-divider></mat-divider>
+    <div style="width: 100%;">
 
         <div class="container">
-            <mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="titulo">
-
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </mat-header-cell>
-
-                    <mat-cell *matCellDef="let row"> {{row.titulo}}</mat-cell>
-
-                </ng-container>
-
-                <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <p class="truncate-text"> {{row.description}}</p>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="orderId">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID de la orden </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.orderId}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="createDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
-                </ng-container>
-
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></mat-row>
-            </mat-table>
-
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
-
-
+            <div style="display: block; width: 95%;">
+                <mat-table [dataSource]="dataSource" matSort>
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="titulo">
+    
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </mat-header-cell>
+    
+                        <mat-cell *matCellDef="let row"> {{row.titulo}}</mat-cell>
+    
+                    </ng-container>
+    
+                    <ng-container matColumnDef="description">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <p class="truncate-text"> {{row.description}}</p>
+                        </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="orderId">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> ID de la orden </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.orderId}}</mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="createDate">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
+                    </ng-container>
+    
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+    
+                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
         </div>
     </div>
 </div>

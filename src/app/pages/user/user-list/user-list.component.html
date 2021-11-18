@@ -1,78 +1,78 @@
 <div class="mat-parent">
-    <p>
-        <mat-toolbar class="title-component">
-            <span>Mis trabajadores</span>
-        </mat-toolbar>
-    </p>
-    <div class="carousel-item" style="display: flex; width: 80%;">
+    <h2>Personal
+        <button mat-raised-button color="accent" (click)="openDialog()"
+            style="float: right;">
+            Agregar Personal
+          </button>
+    </h2>
+    <mat-divider></mat-divider>
+    <div style="width: 100%;">
+
         <div class="container">
-
-            <mat-table [dataSource]="dataSource" matSort>
-
-                <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="nombre">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.nombre}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="username">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="status">
-                    <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
-                    <mat-cell mat-cell *matCellDef="let element"> 
-                    <mat-chip-list aria-label="Fish selection" *ngIf="element.status!=undefined">
-                        <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(element.status)}">
-                            <span [ngStyle]="{color: element.status == 'DISPONIBLE' || element.status == 'EN VACACIONES'? 'white' : 'black'}">{{element.status}}</span></mat-chip>
-                    </mat-chip-list>
-                    </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="employeeCode">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo empleado </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.employeeCode}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="dateBirth">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de cumpleaños </mat-header-cell>
-                    <mat-cell *matCellDef="let element"> {{element.dateBirth | date:'dd/MM/yyyy'}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="profile">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </mat-header-cell>
-                    <mat-cell *matCellDef="let element">
-                        <div *ngIf="element.profile"> 
-                            <mat-chip-list aria-label="Fish selection">
-                                <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus2(element.profile.name)}">
-                                    <span [ngStyle]="{color: element.profile.name == 'ADMIN_NEG' || element.profile.name == 'DELIVERY_MAN'|| element.profile.name == 'CHEF_MAIN'? 'white' : 'black'}">{{element.profile.name}}</span>
-                                </mat-chip>
-                            </mat-chip-list>
-                        </div>
-                    </mat-cell>
-
-                </ng-container>
-
-                <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
-                    <mat-cell *matCellDef="let row" style="justify-content: center; cursor: pointer">
-                        <mat-icon (click)="openDialog(row)" class="icon-setting">settings</mat-icon>
-                    </mat-cell>
-
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
-            <button mat-fab color="accent" style="float: right" (click)="openDialog()">
-                <mat-icon>create</mat-icon>
-              </button>
+            <div style="display: block; width: 95%;">
+                <mat-table [dataSource]="dataSource" matSort>
+                    <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="nombre">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.nombre || '-'}} </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="username">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.username || '-'}} </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+                        <mat-cell mat-cell *matCellDef="let element"> 
+                        <mat-chip-list aria-label="Fish selection" *ngIf="element.status!=undefined">
+                            <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus(element.status)}">
+                                <span [ngStyle]="{color: element.status == 'DISPONIBLE' || element.status == 'EN VACACIONES'? 'white' : 'black'}">{{element.status || '-'}}</span></mat-chip>
+                        </mat-chip-list>
+                        </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="employeeCode">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Codigo empleado </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.employeeCode || '-'}} </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="dateBirth">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de cumpleaños </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.dateBirth | date:'dd/MM/yyyy' || '-'}} </mat-cell>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="profile">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Perfil </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <div *ngIf="element.profile"> 
+                                <mat-chip-list aria-label="Fish selection">
+                                    <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus2(element.profile.name)}">
+                                        <span [ngStyle]="{color: element.profile.name == 'ADMIN_NEG' || element.profile.name == 'DELIVERY_MAN'|| element.profile.name == 'CHEF_MAIN'? 'white' : 'black'}">{{element.profile.name}}</span>
+                                    </mat-chip>
+                                </mat-chip-list>
+                            </div>
+                        </mat-cell>
+    
+                    </ng-container>
+    
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </mat-header-cell>
+                        <mat-cell *matCellDef="let row" style="justify-content: center; cursor: pointer">
+                            <mat-icon (click)="openDialog(row)" class="icon-setting">settings</mat-icon>
+                        </mat-cell>
+    
+                    </ng-container>
+    
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+    
+                <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
         </div>
     </div>
 </div>

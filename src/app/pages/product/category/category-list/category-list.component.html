@@ -1,50 +1,3 @@
-<!-- 
-<div class="mat-parent">
-    <p>
-        <mat-toolbar class="title-component">
-            <span>Listado de categorias</span>
-
-        </mat-toolbar>
-    </p>
-    <div class="carousel-item " style="display: flex; width: 80%;">
-
-        <div class="container">
-            <mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="description">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="openDialog(row)">
-                <mat-icon>edit</mat-icon>
-              </button>
-                        <button mat-icon-button color="accent" (click)="delete(row)">
-                <mat-icon>delete</mat-icon>
-              </button>
-                    </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
-            <button mat-fab color="accent" style="float: right" (click)="openDialog()">
-        <mat-icon>create</mat-icon>
-      </button>
-        </div>
-    </div>
-</div> -->
-
 <div class="mat-parent">
     <h2>Listado de productos
         <button mat-raised-button color="accent" (click)="openDialog()"
@@ -75,7 +28,7 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary" (click)="openDialog(row)">
+                <button mat-icon-button color="accent" (click)="openDialog(row)">
         <mat-icon>edit</mat-icon>
       </button>
                 <button mat-icon-button color="accent" (click)="delete(row)">

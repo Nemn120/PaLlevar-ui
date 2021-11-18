@@ -47,11 +47,11 @@ export class ClaimListComponent implements OnInit {
     });
 
   }
-  public openDialog(complaint?: ComplaintBean) {
+  /* public openDialog(complaint?: ComplaintBean) {
     let complaintSelect = complaint != null ? complaint : new ComplaintBean();
     this.dialog.open(ClaimDetailComponent, {
       width: '729px', 
       data: complaintSelect
     }); 
-  }
+  } */
 }
