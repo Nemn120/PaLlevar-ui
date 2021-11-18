@@ -1,0 +1,90 @@
+@media (max-width: 960px) {
+  .container {
+    background-image: none !important;
+  }
+
+  .div1 {
+    background-image: url("../../../../assets/images/fondos/ventas.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+.container {
+  min-height: 900px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-image: url("../../../../assets/images/fondos/ventas.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Shippori+Antique+B1&display=swap");
+
+.div1 {
+  span {
+    margin-top: 180px;
+    font-weight: bold;
+    font-family: "Raleway", sans-serif;
+    font-family: "Shippori Antique B1", sans-serif;
+    font-size: 30px;
+    color: white;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+  /* background-image: url("../../../../assets/images/fondos/ventas.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%; */
+}
+
+.form {
+  background-color: white;
+  width: 90%;
+  border-radius: 2px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+h4 {
+  font-weight: bold;
+  font-family: "Raleway", sans-serif;
+  font-family: "Shippori Antique B1", sans-serif;
+  color: #4a4a4a;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+form {
+  width: 90%;
+}
+
+mat-label {
+  color: #9e9e9e;
+  font-family: "Raleway", sans-serif;
+  font-family: "Shippori Antique B1", sans-serif;
+  font-size: 15px;
+}
+
+mat-divider {
+  margin-bottom: 10px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.button-success {
+  background-color: #f52f41;
+  font-weight: 700;
+  color: white;
+  padding: 10px;
+  border: none !important;
+  border-radius: 2px;
+  font-size: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

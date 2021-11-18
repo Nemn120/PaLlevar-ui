@@ -25,6 +25,9 @@ const routes: Routes = [
   },
   { path: 'user', loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
   },
+  {
+    path: 'register', loadChildren: () => import('./pages/register-local/register-local.module').then(m => m.RegisterLocalModule)
+  },
   { path: '**', pathMatch: 'full', redirectTo: '/index' },
 ];
 
