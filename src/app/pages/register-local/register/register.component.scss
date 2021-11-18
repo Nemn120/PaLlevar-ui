@@ -9,11 +9,19 @@
     background-size: 100% 100%;
     background-position: center center;
     background-attachment: fixed;
+    /* opacity: 0.8; */
   }
+
+  .texto {
+    span {
+      font-size: 15px;
+    }
+  }
+
 }
 
 .container {
-  min-height: 900px;
+  min-height: 400px;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -24,24 +32,32 @@
   background-attachment: fixed;
 }
 
-
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Shippori+Antique+B1&display=swap");
 
 .div1 {
-  span {
-    margin-top: 180px;
+  .title-mayor {
     font-weight: bold;
     font-family: "Raleway", sans-serif;
     font-family: "Shippori Antique B1", sans-serif;
-    font-size: 30px;
+    font-size: 28px;
     color: white;
-    width: 80%;
     margin-bottom: 20px;
+    margin-top: 40%;
+    margin-right: 10%;
+    margin-left: 10%;
   }
 
-  .title-menor{
-    font-size: 22px ;
-}
+  .title-menor {
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: bold;
+    font-family: "Raleway", sans-serif;
+    font-family: "Shippori Antique B1", sans-serif;
+    color: white;
+    margin-bottom: 20%;
+    margin-right: 10%;
+    margin-left: 10%;
+  }
   /* background-image: url("../../../../assets/images/fondos/ventas.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%; */
@@ -91,35 +107,108 @@ mat-form-field {
   padding: 10px;
   border: none !important;
   border-radius: 2px;
-  font-size: 15px;
+  font-size: 18px;
   width: 100%;
   margin-bottom: 15px;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
-
-.container2{
-    padding-top: 45px;
-    padding-bottom: 45px;
+.container2 {
+  padding-top: 45px;
+  padding-bottom: 45px;
 }
 
-h5{
-    font-family: "Raleway", sans-serif;
+h5 {
+  font-family: "Raleway", sans-serif;
   font-family: "Shippori Antique B1", sans-serif;
   font-size: 15px;
   color: #6b6b6b;
   text-align: center;
 }
 
-.card{
-    img{
-        width: 90px;
-        height: 90px;
-    }
+.card {
+  img {
+    width: 90px;
+    height: 90px;
+  }
 }
 
-h4{
-    margin-top: 0;
-    margin-bottom: 25px;
+h4 {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.container3 {
+  height: 370px;
+}
+
+.izq {
+  height: 370px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.der {
+  background: #f52f41;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 370px;
+
+  .ctr3 {
+    width: 80%;
+    height: 100%;
+
+    span > img {
+      margin-right: 15px;
+    }
+  }
+}
+
+.texto {
+  font-family: "Raleway", sans-serif;
+  font-family: "Shippori Antique B1", sans-serif;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  padding: 50px;
+}
+
+mat-panel-title {
+  font-family: "Raleway", sans-serif;
+  font-family: "Shippori Antique B1", sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+mat-expansion-panel {
+  span {
+    font-family: "Raleway", sans-serif;
+    font-family: "Shippori Antique B1", sans-serif;
+    font-size: 20px;
+    color: #6b6b6b;
+  }
+}
+
+.container6 {
+  background: black;
+  .cont6 {
+    padding: 40px;
+    p {
+      color: white;
+      margin-right: 20px;
+      font-family: "Raleway", sans-serif;
+      font-family: "Shippori Antique B1", sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
 }

@@ -7,14 +7,14 @@
     fxFlex="100"
     fxLayout.lt-md="column"
   >
-    <div class="div1" fxFlex="50" fxLayoutAlign="center">
-      <span>
+    <div class="div1" fxFlex="50" fxLayout="column">
+      <span class="title-mayor">
         ¡Registra tu negocio!
         <br />
-        <span class="title-menor">
-          Regístrate en simples pasos y empieza a hacer crecer tu negocio junto
-          a nosotros.
-        </span>
+      </span>
+      <span class="title-menor">
+        Regístrate en simples pasos y empieza a hacer crecer tu negocio junto a
+        nosotros.
       </span>
     </div>
     <div class="div2" fxFlex="50" fxLayoutAlign="center">
@@ -167,25 +167,213 @@
   </div>
   <div class="container2">
     <h4>Pasos para comenzar</h4>
-    <div class="cont2-box" fxLayout="row"
-    fxLayout.xs="column"
-    fxLayout.lt-md="column" fxLayoutAlign="space-around center">
-      <div class="card" fxLayout="column" fxFlex="32" fxLayoutAlign="center center" >
-        <img src="../../../../assets/images/fondos/icon-step-a.svg">
+    <div
+      class="cont2-box"
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="space-around center"
+    >
+      <div
+        class="card"
+        fxLayout="column"
+        fxFlex="32"
+        fxLayoutAlign="center center"
+      >
+        <img src="../../../../assets/images/fondos/icon-step-a.svg" />
         <h5>Primero, completa un sencillo formulario.</h5>
       </div>
-      <div class="card" fxLayout="column" fxFlex="32" fxLayoutAlign="center center" >
-        <img src="../../../../assets/images/fondos/icon-step-b.svg">
-        <h5>Luego, necesitamos que agregues <br>algunos datos y documentación de tu local.</h5>
+      <div
+        class="card"
+        fxLayout="column"
+        fxFlex="32"
+        fxLayoutAlign="center center"
+      >
+        <img src="../../../../assets/images/fondos/icon-step-b.svg" />
+        <h5>
+          Luego, necesitamos que agregues <br />algunos datos y documentación de
+          tu local.
+        </h5>
       </div>
-      <div class="card" fxLayout="column" fxFlex="32" fxLayoutAlign="center center" >
-        <img src="../../../../assets/images/fondos/icon-step-c.svg">
-        <h5>Una vez que lo completes,
-          <br>
-          ¡ya estarás listo para que empecemos a trabajar juntos!</h5>
+      <div
+        class="card"
+        fxLayout="column"
+        fxFlex="32"
+        fxLayoutAlign="center center"
+      >
+        <img src="../../../../assets/images/fondos/icon-step-c.svg" />
+        <h5>
+          Una vez que lo completes,
+          <br />
+          ¡ya estarás listo para que empecemos a trabajar juntos!
+        </h5>
       </div>
     </div>
     <br />
   </div>
-  <div class="container3"></div>
+  <div class="container3" fxLayout="row" fxLayout.xs="column">
+    <div class="izq" fxFlex="35" fxFlex.xs="100">
+      <img src="../../../../assets/images/fondos/pedido.jpg" />
+    </div>
+    <div class="der" fxFlex="65" fxFlex.xs="100" fxHide.xs>
+      <div class="ctr3" fxLayout="column" fxLayoutAlign="center">
+        <div class="texto">
+          <span style="margin-bottom: 30px"
+            ><img src="../../../../assets/images/fondos/icon-check.svg" />Van a
+            aumentar tus ventas.</span
+          >
+          <br /><br />
+          <span
+            ><img src="../../../../assets/images/fondos/icon-check.svg" />Va a
+            mejorar la visibilidad de tu local.</span
+          >
+          <br /><br />
+          <span
+            ><img src="../../../../assets/images/fondos/icon-check.svg" />Vas a
+            optimizar tu sistema de entrega a domicilio.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="der" fxFlex="65" fxFlex.xs="100" fxShow.xs fxHide>
+    <div class="ctr3" fxLayout="column" fxLayoutAlign="center">
+      <div class="texto">
+        <span style="margin-bottom: 30px"
+          ><img src="../../../../assets/images/fondos/icon-check.svg" />Van a
+          aumentar tus ventas.</span
+        >
+        <br /><br />
+        <span
+          ><img src="../../../../assets/images/fondos/icon-check.svg" />Va a
+          mejorar la visibilidad de tu local.</span
+        >
+        <br /><br />
+        <span
+          ><img src="../../../../assets/images/fondos/icon-check.svg" />Vas a
+          optimizar tu sistema de entrega a domicilio.</span
+        >
+      </div>
+    </div>
+  </div>
+  <div class="container4">
+    <h4>Te llega el pedido, preparas y entregas</h4>
+    <div
+      class="cont4-box"
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayout.lt-md="column"
+      fxLayoutAlign="space-around center"
+    >
+      <div
+        class="card"
+        fxLayout="column"
+        fxFlex="25"
+        fxLayoutAlign="center center"
+      >
+        <img src="../../../../assets/images/fondos/icon-peya-step-1.svg" />
+        <h5>El cliente realiza un pedido a tu local desde PaLlevar.</h5>
+      </div>
+      <div
+        class="card"
+        fxLayout="column"
+        fxFlex="25"
+        fxLayoutAlign="center center"
+      >
+        <img src="../../../../assets/images/fondos/icon-peya-step-2.svg" />
+        <h5>Recibes el pedido al instante.</h5>
+      </div>
+      <div
+        class="card"
+        fxLayout="column"
+        fxFlex="25"
+        fxLayoutAlign="center center"
+      >
+        <img src="../../../../assets/images/fondos/icon-peya-step-3.svg" />
+        <h5>
+          El repartidor retira el pedido en tu local y lo lleva al cliente.
+        </h5>
+      </div>
+      <div
+        class="card"
+        fxLayout="column"
+        fxFlex="25"
+        fxLayoutAlign="center center"
+      >
+        <img src="../../../../assets/images/fondos/icon-peya-step-4.svg" />
+        <h5>El cliente recibe el pedido.</h5>
+      </div>
+    </div>
+    <div fxLayoutAlign="space-around center">
+      <button
+        class="button-success"
+        style="width: 324px; margin-top: 15px;"
+        fxLayoutAlign="center center"
+        (click)="goToTop()"
+      >
+        Quiero registrarme
+      </button>
+    </div>
+  </div>
+  <div class="container5">
+    <h4>Conoce más</h4>
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> ¿Cómo recibo los pedidos? </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <span>
+          El repartidor se comunica contigo cuando esté cerca a tu domicilio
+          para que puedas recibir tu pedido.
+        </span>
+      </mat-expansion-panel>
+      <br />
+    </mat-accordion>
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            ¿Cómo es el proceso desde que entra un pedido?
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <span>
+          Los pedidos ingresan a nuestro sistema en la cual se realiza el
+          pedido, se confirma el pedido y se envía a un repartidor para que lo
+          lleve a tu domicilio.
+        </span>
+      </mat-expansion-panel>
+      <br />
+    </mat-accordion>
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> ¿Cómo gestiono mi local? </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <span>
+          Para gestionar tu catálogo de productos, tus horarios de atención
+          online y ver cómo se desempeña tu negocio, dispones de la plataforma
+          PaLlevar. Esta herramienta es segura, fácil de usar y te permitirá
+          controlar tu local con independencia. Además, te ofrecemos soporte las
+          24 horas en el chat de Ayuda en Línea.
+        </span>
+      </mat-expansion-panel>
+      <br />
+    </mat-accordion>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="container6">
+    <div class="cont6" fxLayoutAlign="end center">
+      <div>
+        <p>Siguenos en</p>
+        <div class="logos">
+          <a href="https://www.instagram.com/?hl=es" target="_blank"><img src="../../../../assets/images/fondos/instagram.svg" /></a> &nbsp;
+          <a href="https://twitter.com/home" target="_blank"><img src="../../../../assets/images/fondos/twitter.svg" /></a> &nbsp;
+          <a href="https://facebook.com" target="_blank"><img src="../../../../assets/images/fondos/icon-facebook.svg" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
