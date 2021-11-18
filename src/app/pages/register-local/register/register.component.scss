@@ -7,6 +7,8 @@
     background-image: url("../../../../assets/images/fondos/ventas.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    background-position: center center;
+    background-attachment: fixed;
   }
 }
 
@@ -18,7 +20,10 @@
   background-image: url("../../../../assets/images/fondos/ventas.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  background-position: center center;
+  background-attachment: fixed;
 }
+
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Shippori+Antique+B1&display=swap");
 
@@ -33,6 +38,10 @@
     width: 80%;
     margin-bottom: 20px;
   }
+
+  .title-menor{
+    font-size: 22px ;
+}
   /* background-image: url("../../../../assets/images/fondos/ventas.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%; */
@@ -43,7 +52,7 @@
   width: 90%;
   border-radius: 2px;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 h4 {
@@ -87,4 +96,30 @@ mat-form-field {
   margin-bottom: 15px;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+
+.container2{
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+h5{
+    font-family: "Raleway", sans-serif;
+  font-family: "Shippori Antique B1", sans-serif;
+  font-size: 15px;
+  color: #6b6b6b;
+  text-align: center;
+}
+
+.card{
+    img{
+        width: 90px;
+        height: 90px;
+    }
+}
+
+h4{
+    margin-top: 0;
+    margin-bottom: 25px;
 }
