@@ -1,13 +1,5 @@
 
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
-import { OrderBean } from '../../../_model/OrderBean';
-import { OrderDetailService } from '../../../_service/order-detail.service';
+import { Component, OnInit, ViewChild, Inject, Input } from '@angular/core';
 
 @Component({
   selector: 'app-delivery-order-detail',
@@ -16,28 +8,13 @@ import { OrderDetailService } from '../../../_service/order-detail.service';
 })
 export class DeliveryOrderDetailComponent implements OnInit {
 
-
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  
-  dataSource: MatTableDataSource<OrderDetailBean>;
-  titleOrderDetailList: string;
-  displayedColumns: string[] = ['product','price','attendDate','userAttend'];
-  orderDetailList: OrderDetailBean[];
+  @Input() data: any;
   constructor(
-    private dialogRef: MatDialogRef<OrderDetailBean>,private orderDetailService:OrderDetailService, private OrderDetailService : OrderDetailService,private dialog:MatDialog, private snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: OrderBean
   ) { }
 
   ngOnInit(): void {
-    this.orderDetailList=this.data.orderDetail;
-    this.dataSource = new MatTableDataSource<OrderDetailBean>(this.orderDetailList);
-    this.titleOrderDetailList="Detalle de pedido"; 
+    console.log(this.data)
   }
-  closeDialog() {
-    this.dialogRef.close();
-  }
-
 
 }
 

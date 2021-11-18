@@ -9,11 +9,19 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeliveryOrderDetailComponent } from '../delivery-order-detail/delivery-order-detail.component';
 import { DeliveryOrderAsignComponent } from '../delivery-order-asign/delivery-order-asign.component';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-delivery-order',
   templateUrl: './delivery-order.component.html',
-  styleUrls: ['./delivery-order.component.scss']
+  styleUrls: ['./delivery-order.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('400ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class DeliveryOrderComponent implements OnInit {
 
@@ -22,6 +30,8 @@ export class DeliveryOrderComponent implements OnInit {
   displayedColumns: string[] = ['createDate','total','quantity','phone','address','actions'];
   dataSource: MatTableDataSource<OrderBean>;
   titleProductList: string;
+
+  expandedElement: OrderBean | null;
 
   constructor(
     private orderService:OrderService, private dialog:MatDialog, private snackBar: MatSnackBar

@@ -1,55 +1,95 @@
 <div class="mat-parent">
-    <p>
-        <mat-toolbar class="title-component">
-            <span>Entregar Pedido</span>
-
-        </mat-toolbar>
-    </p>
-    <div class="carousel-item " style="display: flex; width: 80%;">
-
-        <div class="container">
-            <mat-table [dataSource]="dataSource" matSort>
-
-                <ng-container matColumnDef="createDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="total">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
-                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)">S/. {{row.total}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="quantity">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </mat-header-cell>
-                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.quantity}}</mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="phone">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </mat-header-cell>
-                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.phone}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="address">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
-                    <mat-cell *matCellDef="let row" (click)="openDialogDetail(row)"> {{row.address}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="actions">
-                    <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-                    <mat-cell *matCellDef="let row">
-                        <button mat-icon-button color="primary" (click)="openDialogAsign(row)">
-                            <mat-icon>where_to_vote</mat-icon>
-                  </button>
-
-                    </mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
+    <h2>Entregar Pedido</h2>
+    <mat-divider></mat-divider>
+    <div style="width: 100%">
+      <div class="container">
+        <div style="display: block; width: 95%">
+          <mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="mat-elevation-z8">
+            <ng-container matColumnDef="createDate">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Fecha
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                {{ row.createDate | date: "dd/MM/yyyy HH:mm:ss" }}
+              </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="total">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Total
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row"
+                >S/. {{ row.total }}</mat-cell
+              >
+            </ng-container>
+  
+            <ng-container matColumnDef="quantity">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Cantidad
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                {{ row.quantity }}</mat-cell
+              >
+            </ng-container>
+            <ng-container matColumnDef="phone">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Telefono
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                {{ row.phone }}</mat-cell
+              >
+            </ng-container>
+  
+            <ng-container matColumnDef="address">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Dirección
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                {{ row.address }}</mat-cell
+              >
+            </ng-container>
+  
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+              <mat-cell *matCellDef="let row">
+                <button
+                  mat-icon-button
+                  color="accent"
+                  (click)="openDialogAsign(row)"
+                >
+                  <mat-icon>assignment_ind</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
+  
+            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+            <ng-container matColumnDef="expandedDetail">
+              <mat-cell *matCellDef="let element"
+                [attr.colspan]="displayedColumns.length" style="background-color: #8D8C8B; color: white;">
+                <div class="example-element-detail"
+                [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <app-delivery-order-detail [data]="element"></app-delivery-order-detail>
+                </div>
+              </mat-cell>
+            </ng-container>
+  
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row
+              *matRowDef="let element; columns: displayedColumns"
+              class="example-element-row"
+              [class.example-expanded-row]="expandedElement === element"
+              (click)="
+                expandedElement = expandedElement === element ? null : element">
+            </mat-row>
+          <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"
+          [class.hidden-detail]="expandedElement !== row"></mat-row>
+      </mat-table>
+  
+          <mat-paginator
+            [pageSize]="10"
+            [pageSizeOptions]="[5, 10, 25, 100]"
+          ></mat-paginator>
         </div>
+      </div>
     </div>
-</div>
+  </div>

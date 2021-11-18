@@ -1,38 +1,13 @@
-<div class="example-container mat-elevation-z8">
-        <mat-toolbar class="title-component">
-            <span>Detalle del pedido</span>
-
-        </mat-toolbar>
-    <mat-table #table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="product">
-            <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="price">
-            <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
-            <mat-cell *matCellDef="let element">S/. {{element.price}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="attendDate">
-            <mat-header-cell *matHeaderCellDef> Fecha Atención </mat-header-cell>
-
-            <mat-cell *matCellDef="let element">
-                <div *ngIf="element.userAttend"> {{element.attendDate | date:'dd/MM/yyyy HH:mm:ss'}}</div>
-                <div *ngIf="!element.userAttend"> Pendiente </div>
-            </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="userAttend">
-            <mat-header-cell *matHeaderCellDef> Chef </mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                <div *ngIf="element.userAttend">{{element.userAttend.nombre}} {{element.userAttend.lastName}}</div>
-                <div *ngIf="!element.userAttend"> Sin asignar </div>
-
-            </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;">
-        </mat-row>
-    </mat-table>
-    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cerrar</button>
+<div class="container">
+  <div *ngFor="let detail of data.orderDetail">
+    <p style="width: 50%"><b>Producto:</b> {{ detail.product.name }}</p>
+    <p><b>Precio:</b> S/. {{ detail.price | number: "1.0-2" }}</p>
+    <p style="width: 50%"><b>Fecha de Atención:</b> {{ detail.attendDate | date: "dd/MM/yyyy HH:mm:ss" }}</p>
+    <p *ngIf="detail.userAttend.nombre; else notExists"><b>Chef:</b> {{ detail.userAttend.nombre | titlecase }}
+        {{ detail.userAttend.lastName | titlecase }}
+      </p>
+      <ng-template #notExists><b>Chef:</b> Sin asignar</ng-template>
+    <hr />
+    <br />
+  </div>
 </div>

@@ -1,67 +1,158 @@
 .title-nav {
-    width: 200px;
-    padding: 0 1rem;
-    margin: 1rem;
-    display: block;
-    margin-bottom: 10px;
+  width: 200px;
+  padding: 0 1rem;
+  margin: 1rem;
+  display: block;
+  margin-bottom: 10px;
 }
+
+h2 {
+  font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@200&display=swap");
 
 table {
-    width: 100%;
-    display: block;
-}
-
-.mat-card {
-    position: absolute !important;
+  width: 100%;
+  display: block;
 }
 
 .container {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: initial;
-    justify-content: center;
-    width: -webkit-fill-available;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  justify-content: center;
+  width: -webkit-fill-available;
 }
 
-.title-component {
-    display: flex;
-    box-sizing: border-box;
-    padding: 0 16px;
-    margin-top: 0px;
-    padding-top: 0px;
-    width: 80%;
-    flex-direction: row;
-    align-items: center;
-    white-space: nowrap;
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
 }
 
 .mat-column-createDate {
-    flex: 0 0 20% !important;
-  }
+  flex: 0 0 20% !important;
+}
 
 .mat-column-quantity {
-    flex: 0 0 10% !important;
-  }
-  
-  .mat-column-total {
-    flex: 0 0 10% !important;
-  }
+  flex: 0 0 10% !important;
+}
 
-  .mat-column-phone {
-    flex: 0 0 10% !important;
-  }
+.mat-column-total {
+  flex: 0 0 10% !important;
+}
+
+.mat-column-phone {
+  flex: 0 0 10% !important;
+}
+
+.mat-header-cell {
+  background-color: #4C4C4C;
+  font-size: 120%;
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+.mat-cell{
+  font-family: "Lato", sans-serif;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+}
+
+.mat-row {
+  font-size: 120%;
+}
+
+.mat-toolbar.title-component {
+  background-color: #e64a19;
+  color: white;
+}
+
+
+////////////////////////////
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+   height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  width: 100%;
   
-  .mat-header-cell{
-    background-color:#E8794F;
-    font-size: 120%;
-    color: white;
-  }
-  
-  .mat-row{
-    font-size: 120%;
-  }
-  
-  .mat-toolbar.title-component{
-    background-color:#e64a19;
-    color: white;
-  }
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+
+
+
+
+mat-table {
+  width: 100%;
+}
+
+mat-row.hidden-detail {
+  height: 0;
+  min-height: initial; 
+}
+
+mat-row.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+mat-row.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row, /* override mat-row styling */
+.example-element-row mat-cell {
+  border-bottom-width: 0;
+}
+

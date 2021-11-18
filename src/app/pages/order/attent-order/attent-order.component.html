@@ -1,42 +1,57 @@
 <div class="mat-parent">
-    <p>
-        <mat-toolbar class="title-component">
-            <span>Listado de ordenes</span>
+  <h2>Listado de ordenes</h2>
+  <mat-divider></mat-divider>
+  <div style="width: 100%">
+    <div class="container">
+      <div style="display: block; width: 95%">
+        <mat-table
+          [dataSource]="dataSource"
+          matSort
+          multiTemplateDataRows
+          class="mat-elevation-z8"
+        >
+        <ng-container matColumnDef="createDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Fecha
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              {{ row.createDate | date: "dd/MM/yyyy HH:mm:ss" }}
+            </mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="address">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Direccion
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.address }}</mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Cantidad
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{ row.quantity }}</mat-cell>
+          </ng-container>
+  
+          <ng-container matColumnDef="total">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Total
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row"> S/. {{ row.total | number: "1.0-2"}}</mat-cell>
+          </ng-container>
 
-        </mat-toolbar>
-    </p>
-    <div class="carousel-item " style="display: flex; width: 80%;">
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="openDialog(row)"
+          ></mat-row>
+        </mat-table>
 
-        <div class="container">
-            <mat-table [dataSource]="dataSource" matSort>
-                <ng-container matColumnDef="createDate">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="address">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.address}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="quantity">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.quantity}}</mat-cell>
-                </ng-container>
-
-                <ng-container matColumnDef="total">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> Total </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> S/. {{row.total}}</mat-cell>
-                </ng-container>
-
-                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></mat-row>
-            </mat-table>
-
-            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-
-
-
-        </div>
+        <mat-paginator
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+        ></mat-paginator>
+      </div>
     </div>
+  </div>
 </div>

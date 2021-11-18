@@ -1,30 +1,16 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-    max-height: 500px;
-    min-width: 300px;
+.container{
+  margin-top: 7px;
+  margin-bottom: 7px;
+  justify-content: center;
+  width: 100%
 }
 
-.mat-table {
-    overflow: auto;
-    max-height: 500px;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+b{
+  font-family: 'Raleway', sans-serif;
 }
 
-.mat-column-select {
-    overflow: visible;
+p{
+  display: inline-block;
 }
-
-.mat-column-price {
-    flex: 0 0 15% !important;
-  }
-
-  .mat-header-cell{
-    background-color:#E8794F;
-    font-size: 100%;
-    color: white;
-  }
-
-  .mat-toolbar.title-component{
-    background-color:#e64a19;
-    color: white;
-  }
