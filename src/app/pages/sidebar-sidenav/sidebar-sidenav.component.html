@@ -15,7 +15,7 @@
 
             <span class="navbar-spacer"></span>
 
-           
+
             <span style="left: 0vh;">{{this.sharedService.userSession.nombre}} {{this.sharedService.userSession.lastName}}</span>
             <button mat-icon-button style="left: 0vh;" [matMenuTriggerFor]="userMenu">
                 <mat-icon>person</mat-icon>
@@ -44,12 +44,12 @@
             </ng-template>
         </mat-toolbar>
 
-
-
         <mat-sidenav-container class="navbar-sidenav-container">
             <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
-                <img *ngIf="this.logoCompany" routerLink="/org/view" [src]="this.logoCompany" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
-                <img *ngIf="!this.logoCompany" routerLink="/org/view" src="../../../assets/images/icondelivery.jpg" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
+                <img *ngIf="this.logoCompany && this.sharedService.userSession.profile.idProfile!=1" routerLink="/org/view" [src]="this.logoCompany" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
+                <img *ngIf="!this.logoCompany && this.sharedService.userSession.profile.idProfile!=1" routerLink="/org/view" src="../../../assets/images/icondelivery.jpg" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
+                <img *ngIf="this.sharedService.userSession.profile.idProfile==1" src="../../../assets/images/icondelivery.jpg" width="128" height="120" style="margin-left: 40px;;margin-top: 20px;">
+
                 <mat-nav-list>
                     <span style="margin-left: 10px;">Mis opciones</span>
                     <div style="overflow-y: auto; overflow-x: hidden;">
