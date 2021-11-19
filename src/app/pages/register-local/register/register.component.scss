@@ -79,6 +79,7 @@ h4 {
   text-align: center;
   font-size: 25px;
   margin-bottom: 10px;
+  width: 90%;
 }
 
 form {
@@ -211,4 +212,14 @@ mat-expansion-panel {
       font-weight: bold;
     }
   }
+}
+
+mat-form-field{
+  margin-bottom: -1.25em;
+}
+
+.validation{
+  margin-left: 15px;
+  color: #df4168;
+  font-weight: bold;
 }

@@ -17,27 +17,52 @@
         nosotros.
       </span>
     </div>
-    <div class="div2" fxFlex="50" fxLayoutAlign="center">
+    <div class="div2" fxFlex="40" fxLayoutAlign="center">
       <div class="form" fxLayoutAlign="center">
-        <form autocomplete="off">
+        <form
+          autocomplete="off"
+          [formGroup]="miFormulario"
+          (ngSubmit)="createLocal()"
+        >
           <h4>Registro de tu local</h4>
           <mat-divider></mat-divider>
           <div>
             <mat-label>Nombre del Local</mat-label>
             <br />
             <mat-form-field appearance="outline">
-              <input matInput />
+              <input matInput formControlName="localName" />
             </mat-form-field>
+            <span class="validation" *ngIf="campoNoValido('localName')">
+              El nombre es obligatorio
+            </span>
+            <br />
             <mat-label>Descripción del Local</mat-label>
             <br />
             <mat-form-field appearance="outline">
-              <input matInput />
+              <input matInput formControlName="localDescription" />
             </mat-form-field>
+            <span class="validation" *ngIf="campoNoValido('localDescription')">
+              La descripción es obligatoria
+            </span>
+            <br />
             <mat-label>Dirección del Local</mat-label>
             <br />
             <mat-form-field appearance="outline">
-              <input matInput />
+              <input matInput formControlName="localAddress" />
             </mat-form-field>
+            <span class="validation" *ngIf="campoNoValido('localAddress')">
+              La dirección es obligatoria
+            </span>
+            <br />
+            <mat-label>Razón Social</mat-label>
+            <br />
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="businessName" />
+            </mat-form-field>
+            <span class="validation" *ngIf="campoNoValido('businessName')">
+              La razón social es obligatoria
+            </span>
+            <br />
             <div
               fxLayout="row"
               fxLayout.xs="column"
@@ -50,15 +75,27 @@
                 <mat-label>RUC</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput type="number" />
+                  <input matInput type="number" formControlName="ruc" />
                 </mat-form-field>
+                <span class="validation" *ngIf="campoNoValido('ruc')">
+                  El RUC debe tener 11 dígitos
+                </span>
+                <br />
               </div>
               <div fxFlex="47" fxFlex.lt-md="100">
-                <mat-label>Razón Social</mat-label>
+                <mat-label>Tiempo Estimado</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput />
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="estimatedTime"
+                  />
                 </mat-form-field>
+                <span class="validation" *ngIf="campoNoValido('estimatedTime')">
+                  El tiempo es obligatorio
+                </span>
+                <br />
               </div>
             </div>
             <div
@@ -73,15 +110,23 @@
                 <mat-label>Usuario</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput />
+                  <input matInput formControlName="userName" />
                 </mat-form-field>
+                <span class="validation" *ngIf="campoNoValido('userName')">
+                  El Usuario debe ser de mínimo 5 dígitos
+                </span>
+                <br />
               </div>
               <div fxFlex="47" fxFlex.lt-md="100">
                 <mat-label>Contraseña</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput type="password" />
+                  <input matInput type="password" formControlName="password" />
                 </mat-form-field>
+                <span class="validation" *ngIf="campoNoValido('password')">
+                  La contraseña debe ser de mínimo 5 dígitos
+                </span>
+                <br />
               </div>
             </div>
             <div
@@ -96,45 +141,41 @@
                 <mat-label>Celular</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput type="number" />
+                  <input matInput type="number" formControlName="phone" />
                 </mat-form-field>
+                <span class="validation" *ngIf="campoNoValido('phone')">
+                  Debe ser de 8 dígitos
+                </span>
+                <br />
               </div>
               <div fxFlex="47" fxFlex.lt-md="100">
                 <mat-label>Aniversario</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput type="date" />
+                  <input
+                    matInput
+                    type="date"
+                    formControlName="aniversaryDate"
+                  />
                 </mat-form-field>
+                <span
+                  class="validation"
+                  *ngIf="campoNoValido('aniversaryDate')"
+                >
+                  La fecha es obligatoria
+                </span>
+                <br />
               </div>
             </div>
-            <div
-              fxLayout="row"
-              fxLayout.xs="column"
-              fxLayoutGap="30px"
-              fxLayoutGap.xs="0"
-              fxLayoutGap.lt-md="0"
-              fxLayout.lt-md="column"
-            >
-              <div fxFlex="47" fxFlex.lt-md="100">
-                <mat-label>Estado</mat-label>
-                <br />
-                <mat-form-field appearance="outline">
-                  <input matInput />
-                </mat-form-field>
-              </div>
-              <div fxFlex="47" fxFlex.lt-md="100">
-                <mat-label>Tiempo Estimado</mat-label>
-                <br />
-                <mat-form-field appearance="outline">
-                  <input matInput type="number" />
-                </mat-form-field>
-              </div>
-            </div>
-            <mat-label>Responsable de pago</mat-label>
+            <mat-label>Responsable</mat-label>
             <br />
             <mat-form-field appearance="outline">
-              <input matInput />
+              <input matInput formControlName="responsable" />
             </mat-form-field>
+            <span class="validation" *ngIf="campoNoValido('responsable')">
+              El responsable es obligatorio
+            </span>
+            <br />
             <div
               fxLayout="row"
               fxLayout.xs="column"
@@ -144,21 +185,49 @@
               fxLayout.lt-md="column"
             >
               <div fxFlex="47" fxFlex.lt-md="100">
-                <mat-label>Celular Responsable de Pago</mat-label>
+                <mat-label>Celular Responsable</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput type="number" />
+                  <input
+                    matInput
+                    type="number"
+                    formControlName="responsablePhone"
+                  />
                 </mat-form-field>
+                <span
+                  class="validation"
+                  *ngIf="campoNoValido('responsablePhone')"
+                >
+                  El celular es obligatorio
+                </span>
+                <br />
               </div>
               <div fxFlex="47" fxFlex.lt-md="100">
-                <mat-label>Email Responsable de Pago</mat-label>
+                <mat-label>Email Responsable</mat-label>
                 <br />
                 <mat-form-field appearance="outline">
-                  <input matInput type="email" />
+                  <input
+                    matInput
+                    type="email"
+                    formControlName="responsableEmail"
+                  />
                 </mat-form-field>
+                <span
+                  class="validation"
+                  *ngIf="campoNoValido('responsableEmail')"
+                >
+                  {{ emailErrorMsg }}
+                </span>
+                <br />
               </div>
             </div>
-            <button class="button-success">Comenzar</button>
+            <button
+              class="button-success"
+              (click)="createLocal()"
+              type="submit" style="margin-top: 15px;"
+            >
+              Comenzar
+            </button>
             <br />
           </div>
         </form>
@@ -307,7 +376,7 @@
     <div fxLayoutAlign="space-around center">
       <button
         class="button-success"
-        style="width: 324px; margin-top: 15px;"
+        style="width: 324px; margin-top: 15px"
         fxLayoutAlign="center center"
         (click)="goToTop()"
       >
@@ -369,9 +438,17 @@
       <div>
         <p>Siguenos en</p>
         <div class="logos">
-          <a href="https://www.instagram.com/?hl=es" target="_blank"><img src="../../../../assets/images/fondos/instagram.svg" /></a> &nbsp;
-          <a href="https://twitter.com/home" target="_blank"><img src="../../../../assets/images/fondos/twitter.svg" /></a> &nbsp;
-          <a href="https://facebook.com" target="_blank"><img src="../../../../assets/images/fondos/icon-facebook.svg" /></a>
+          <a href="https://www.instagram.com/?hl=es" target="_blank"
+            ><img src="../../../../assets/images/fondos/instagram.svg"
+          /></a>
+          &nbsp;
+          <a href="https://twitter.com/home" target="_blank"
+            ><img src="../../../../assets/images/fondos/twitter.svg"
+          /></a>
+          &nbsp;
+          <a href="https://facebook.com" target="_blank"
+            ><img src="../../../../assets/images/fondos/icon-facebook.svg"
+          /></a>
         </div>
       </div>
     </div>

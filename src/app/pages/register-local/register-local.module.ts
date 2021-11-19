@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../../_material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MaterialModule } from '../../_material/material.module';
     CommonModule,
     RegisterLocalRoutingModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class RegisterLocalModule { }
