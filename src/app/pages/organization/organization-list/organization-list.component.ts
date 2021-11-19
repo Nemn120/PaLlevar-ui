@@ -8,6 +8,7 @@ import { OrganizationService } from '../../../_service/organization.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrganizationFormNewComponent } from '../organization-form-new/organization-form-new.component';
 import { DialogDeleteConfirmationComponent } from '../dialog-delete-confirmation/dialog-delete-confirmation.component';
+import { AdminFormComponent } from '../admin-form/admin-form.component';
 
 @Component({
   selector: 'app-organization-list',
@@ -18,7 +19,7 @@ export class OrganizationListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  displayedColumns: string[] = ['id', 'ruc', 'nombre','actions'];
+  displayedColumns: string[] = ['id', 'ruc', 'nombre', 'actions'];
   dataSource: MatTableDataSource<CompanyBean>;
   titleProductList: string;
   constructor(
@@ -28,8 +29,8 @@ export class OrganizationListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.titleProductList="Listar Organizaciones";
-    this.companyService.mensajeCambio.subscribe(data => { 
+    this.titleProductList = 'Listar Organizaciones';
+    this.companyService.mensajeCambio.subscribe(data => {
       this.snackBar.open(data, 'INFO', {
         duration: 2000
       });
@@ -45,7 +46,7 @@ export class OrganizationListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
-    },error =>{
+    }, error => {
       this.companyService.mensajeCambio.next('Error al mostrar compañia');
     });
 
@@ -65,7 +66,7 @@ export class OrganizationListComponent implements OnInit {
       width: '250px', data: mensajeDeleteConfirmation
     });
     dialogDeleteRef.afterClosed().subscribe (result => {
-      if(result) {
+      if (result) {
         this.companyService.deleteCompany(company.id).subscribe(data => {
           this.companyService.getListCompany().subscribe(data => {
             this.companyService.companyCambio.next(data);
@@ -74,12 +75,20 @@ export class OrganizationListComponent implements OnInit {
             console.error(error);
             this.companyService.mensajeCambio.next('Error al mostrar listado de compañias');
           });
-        }, error =>{
+        }, error => {
           this.companyService.mensajeCambio.next('La organizacion que desea eliminar esta siendo usada');
         });
       } else {
         dialogDeleteRef.close();
       }
+    });
+  }
+
+  createAdmin(id: number) {
+    console.log(id);
+    this.dialog.open(AdminFormComponent, {
+      width: 'auto', height: 'auto',
+      data: id
     });
   }
 }

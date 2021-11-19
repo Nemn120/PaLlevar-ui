@@ -5,6 +5,7 @@ import { OrganizationService } from '../../../_service/organization.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserBean } from 'src/app/_model/UserBean';
 
 @Component({
   selector: 'app-organization-form-new',
@@ -24,7 +25,7 @@ export class OrganizationFormNewComponent implements OnInit {
   imagenData: any;
   currentFileUpload: File;
   companias: CompanyBean[];
-  companySelect: CompanyBean;
+  companySelect: CompanyBean = new CompanyBean();
   imagenEstado = false;
   statusSelected: string;
   pagoSelected: string;
@@ -53,7 +54,6 @@ export class OrganizationFormNewComponent implements OnInit {
       rucCtrl: ['', Validators.required],
       businessManCtrl: ['', Validators.required],
       phoneCtrl: ['', Validators.required],
-      userAdminCtrl: ['', Validators.required],
       anniversaryDateCtrl: ['', Validators.required],
       createDateCtrl: ['', Validators.required],
       statusCtrl: ['', Validators.required],
@@ -74,8 +74,6 @@ export class OrganizationFormNewComponent implements OnInit {
       responsiblePaymentPhoneCtrl: ['', Validators.required],
     });
 
-    this.companySelect = new CompanyBean();
-    this.companySelect.userAdmin = this.sharedService.userSession;
     if (this.data.id > 0) {
       this.companySelect.id = this.data.id;
       this.companySelect.nombre = this.data.nombre;
@@ -89,7 +87,7 @@ export class OrganizationFormNewComponent implements OnInit {
       this.companySelect.responsiblePaymentEmail = this.data.responsiblePaymentEmail;
       this.companySelect.anniversaryDate = this.data.anniversaryDate;
       this.companySelect.createDate = this.data.createDate;
-      this.companySelect.userAdmin = this.data.userAdmin;
+      // this.companySelect.userAdmin = this.data.userAdmin;
       this.companyService.getPhotoById(this.data.id).subscribe(data => {
         if (data.size > 0) {
           this.imagenData = this.convertir(data);
@@ -102,10 +100,10 @@ export class OrganizationFormNewComponent implements OnInit {
       this.companySelect.qualification = this.data.qualification;
       this.companySelect.attentionSchedule = this.data.attentionSchedule;
 
-      this.companySelect.sendProtocol = "send 1";
-      this.companySelect.hourAttentionProtocol = "hour 1";
-      this.companySelect.timeEstimatedProtocol = "time 1";
-      this.companySelect.additionalInformationProtocol = "adicional 1";
+      this.companySelect.sendProtocol = 'send 1';
+      this.companySelect.hourAttentionProtocol = 'hour 1';
+      this.companySelect.timeEstimatedProtocol = 'time 1';
+      this.companySelect.additionalInformationProtocol = 'adicional 1';
 
       this.companySelect._flagLogoImage = false;
       this.companySelect._flagPanelImage = true;
@@ -121,12 +119,12 @@ export class OrganizationFormNewComponent implements OnInit {
     };
   }
 
-  public sanar(base64: any){
+  public sanar(base64: any) {
     this.imagenData = this.sanitization.bypassSecurityTrustResourceUrl(base64);
     this.imagenEstado = true;
   }
 
-  getErrorMessage(): any{
+  getErrorMessage(): any {
     if (this.email.hasError('required')) {
       return 'mail obligatorio';
     }
@@ -154,7 +152,7 @@ export class OrganizationFormNewComponent implements OnInit {
         }
       });
     }, error => {
-      this.companyService.mensajeCambio.next('Error al actualizar/modificar compañia'+ error);
+      this.companyService.mensajeCambio.next('Error al actualizar/modificar compañia' + error);
     });
   }
 

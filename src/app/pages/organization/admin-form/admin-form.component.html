@@ -1,3 +1,4 @@
+<p>Creando Admin</p>
 <div class="elipse" mat-dialog-close><span>X</span></div>
 <div>
     <div>
@@ -6,25 +7,25 @@
                 <form [formGroup]="personalFormGroup">
                     <div>
                         <mat-form-field>
-                            <mat-label>Nombres: {{data.nombre}}</mat-label>
-                            <input matInput placeholder={{data.nombre}} formControlName="nombreCtrl" required>
+                            <mat-label>Nombres:</mat-label>
+                            <input matInput formControlName="nombreCtrl" required>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
-                            <mat-label>Apellidos: {{data.lastName}}</mat-label>
-                            <input matInput placeholder={{data.lastName}} formControlName="lastNameCtrl" required>
+                            <mat-label>Apellidos:</mat-label>
+                            <input matInput formControlName="lastNameCtrl" required>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
-                            <mat-label>Dirección: {{data.address}}</mat-label>
-                            <input matInput placeholder={{data.address}} formControlName="addressCtrl" required>
+                            <mat-label>Dirección:</mat-label>
+                            <input matInput formControlName="addressCtrl" required>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field appearance="fill">
-                            <mat-label>Tipo de documento: {{data.documentTypeId}} </mat-label>
+                            <mat-label>Tipo de documento:</mat-label>
                             <mat-select [(value)]="documentTypeselected">
                                 <mat-option value="DNI">DNI</mat-option>
                                 <mat-option value="CARNET DE EXTRANJERIA">Carnet de extranjería</mat-option>
@@ -34,14 +35,14 @@
                     </div>
                     <div>
                         <mat-form-field>
-                            <mat-label>Numero de documento: {{data.documentNumber}}</mat-label>
-                            <input matInput placeholder={{data.documentNumber}} formControlName="documentNumberCtrl" required>
+                            <mat-label>Numero de documento:</mat-label>
+                            <input matInput formControlName="documentNumberCtrl" required>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
-                            <mat-label>Celular/Teléfono: {{data.cellPhone}}</mat-label>
-                            <input matInput placeholder={{data.cellPhone}} formControlName="cellPhoneCtrl" required>
+                            <mat-label>Celular/Teléfono:</mat-label>
+                            <input matInput formControlName="cellPhoneCtrl" required>
                         </mat-form-field>
                     </div>
                     <div>
@@ -55,18 +56,41 @@
                 </form>
             </mat-step>
             <mat-step>
-                <form [formGroup]="companyFormGroup">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Perfil</mat-label>
-                        <mat-select [(value)]="idProfileSelected">
-                            <mat-option *ngFor="let profile of profileList" value={{profile.idProfile}}>
-                                {{profile.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <form [formGroup]="loginFormGroup">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Nombre de usuario:</mat-label>
+                            <input matInput placeholder="Usuario" formControlName="usernameCtrl" required>
+                        </mat-form-field>
+                    </div>
                     <div>
                         <mat-form-field appearance="fill">
-                            <mat-label>Estado/Disponibilidad: {{data.status}}</mat-label>
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="passwordCtrl" required>
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                        </mat-form-field>
+                    </div>
+                    <div style="display: grid;">
+                        <button mat-raised-button matStepperPrevious color="warn">Back</button>
+                        <button mat-raised-button matStepperNext color="primary">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <form [formGroup]="companyFormGroup">
+                    <!-- <mat-form-field appearance="fill">
+                        <mat-label>Perfil</mat-label>
+                        <mat-select [(value)]="idProfileSelected">
+                            <mat-option value={{2}}>
+                                {{'ADMIN_NEG'}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
+                    <div>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Estado/Disponibilidad:</mat-label>
                             <mat-select [(value)]="estadoSelected">
                                 <mat-option value="DISPONIBLE">Disponible</mat-option>
                                 <mat-option value="OCUPADO">Ocupado</mat-option>
@@ -76,13 +100,13 @@
                     </div>
                     <div>
                         <mat-form-field>
-                            <mat-label>Codigo de empleado: {{data.employeeCode}}</mat-label>
-                            <input matInput placeholder={{data.employeeCode}} formControlName="employeecodeCtrl" required>
+                            <mat-label>Codigo de empleado:</mat-label>
+                            <input matInput formControlName="employeecodeCtrl" required>
                         </mat-form-field>
                     </div>
                     <div style="display: grid;">
                         <button mat-raised-button matStepperPrevious color="warn">Back</button>
-                        <button mat-raised-button color="primary" (click)="registrar()">Registrar</button>
+                        <button mat-raised-button color="primary" (click)="registrarAdmin()">Registrar</button>
                     </div>
                 </form>
             </mat-step>

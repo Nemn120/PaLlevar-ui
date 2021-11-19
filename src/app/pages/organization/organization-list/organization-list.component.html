@@ -17,7 +17,7 @@
                 <ng-container matColumnDef="ruc">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Ruc </mat-header-cell>
                     <mat-cell *matCellDef="let row"> {{row.ruc}}</mat-cell>
-                    </ng-container>
+                </ng-container>
 
                 <ng-container matColumnDef="nombre">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
@@ -26,12 +26,15 @@
 
                 <ng-container matColumnDef="actions">
                     <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-                    <mat-cell *matCellDef="let row">
+                    <mat-cell *matCellDef="let row" style="padding-right: 100px!important;">
                         <button mat-icon-button color="primary" (click)="createOrganization(row)">
               <mat-icon>ballot</mat-icon>
             </button>
                         <button mat-icon-button color="accent" (click)="deleteOrganization(row)">
               <mat-icon>delete</mat-icon>
+            </button>
+                        <button mat-icon-button color="primary" (click)="createAdmin(row.id)">
+              <mat-icon>person_pin</mat-icon>
             </button>
                     </mat-cell>
                 </ng-container>
@@ -44,8 +47,8 @@
 
 
             <button mat-fab color="accent" style="float: right" (click)="createOrganization()">
-      <mat-icon>create</mat-icon>
-    </button>
+        <mat-icon>create</mat-icon>
+      </button>
         </div>
     </div>
 </div>
