@@ -36,7 +36,8 @@
                         ],
                         "styles": [
                             "src/themes/my-theme.scss",
-                            "src/styles.scss"
+                            "src/styles.scss",
+                            "node_modules/animate.css/animate.css"
                         ],
                         "scripts": []
                     },
