@@ -73,6 +73,7 @@ export class DeliveryOrderComponent implements OnInit {
   public openDialogAsign(order: OrderBean) {
     let orderSelect = order != null ? order : new OrderBean();
     this.dialog.open(DeliveryOrderAsignComponent, {
+      panelClass: 'app-full-bleed-dialog',
       width: '600px',
       data: orderSelect
     });

@@ -24,8 +24,8 @@
         </ng-container>
 
         <ng-container matColumnDef="cellPhone">
-            <mat-header-cell *matHeaderCellDef> Telefono
-                <div class="elipse" mat-dialog-close><span>X</span></div>
+            <mat-header-cell *matHeaderCellDef> Telefono <div class="spacer"></div>
+                <mat-icon mat-dialog-close>close</mat-icon>
             </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.cellPhone}} </mat-cell>
         </ng-container>
@@ -34,10 +34,10 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
         </mat-row>
     </mat-table>
-
-    <div class="buttons" style="display: inline-block !important;">
-        <button style="width: 100%;" mat-raised-button color="primary" (click)="asignarPedido()">
+    <br>
+    <div class="buttons">
+        <button mat-raised-button color="accent" (click)="asignarPedido()" style="width: 50%; margin-bottom: 10px;">
             Asignar Delivery
-          </button>
-    </div>
+      </button>
+  </div>
 </div>

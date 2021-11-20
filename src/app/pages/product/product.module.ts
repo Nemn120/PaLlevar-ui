@@ -13,6 +13,7 @@ import { FormsModule } from "@angular/forms";
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { SharedModule } from '../../_shared/shared.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const routes: Routes = [
   {
@@ -47,7 +48,8 @@ const routes: Routes = [
     SidebarSidenavModule,
     FormsModule,
     EcoFabSpeedDialModule,
-    SharedModule
+    SharedModule,
+    FlexLayoutModule
   ],
   exports: [RouterModule],
   entryComponents: [ProductFormComponent,

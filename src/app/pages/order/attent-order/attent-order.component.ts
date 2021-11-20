@@ -57,6 +57,7 @@ export class AttentOrderComponent implements OnInit {
       height=height+'px';
     }
       this.dialog.open(AttendOrderDetailComponent, {
+        panelClass: 'app-full-bleed-dialog',
         width: '600px',
         data: orderSelect
       });

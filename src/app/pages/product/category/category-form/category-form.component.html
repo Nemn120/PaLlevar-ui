@@ -1,20 +1,36 @@
-<mat-form-field>
-    <input matInput placeholder="Nombre" [(ngModel)]="categoryProductSelect.name">
-
-</mat-form-field>
-<br>
-<mat-form-field>
-    <input matInput placeholder="Descripcion" [(ngModel)]="categoryProductSelect.description" type="tel">
-</mat-form-field>
-<br>
-<button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
-<input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-<br>
-<img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
-<p>{{labelFile}}</p>
-
-<br>
-<div style="float:right;">
-    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
-    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+<div fxLayout="column" class="full">
+  <h2 fxLayout="row"><span>Editar Producto: {{ categoryProductSelect.name }}</span> <div class="spacer"></div>
+    <mat-icon mat-dialog-close>close</mat-icon></h2>
+  <mat-divider></mat-divider>
+  <div class="container" fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <div class="izq" fxLayout="column" fxFlex="45">
+      <mat-label>Nombre de Categoria</mat-label>
+      <br />
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Bebidas..." [(ngModel)]="categoryProductSelect.name"/>
+      </mat-form-field>
+      <mat-label>Descripción de Categoria</mat-label>
+      <br />
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Es helada..." [(ngModel)]="categoryProductSelect.description"/>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button onclick="document.getElementById('flArchivo').click();" color="accent">Seleccionar Imagen</button>
+    </div>
+    <div class="der" fxLayout="column" fxFlex="52">
+      <br />
+      <img
+        mat-card-image
+        [src]="imagenData"
+        *ngIf="imagenEstado"
+      />
+      <p class="textImagen">{{ labelFile }}</p>
+      <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+    </div>
+  </div>
+  <div class="buttons">
+        <button mat-raised-button color="primary" (click)="save()" style="width: 50%; margin-bottom: 10px;">
+            Aceptar
+      </button>
+  </div>
 </div>

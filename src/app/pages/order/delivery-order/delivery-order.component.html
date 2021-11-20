@@ -65,7 +65,7 @@
             <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
             <ng-container matColumnDef="expandedDetail">
               <mat-cell *matCellDef="let element"
-                [attr.colspan]="displayedColumns.length" style="background-color: #8D8C8B; color: white;">
+                [attr.colspan]="displayedColumns.length" style="background-color: #A7A6A6; color: white;">
                 <div class="example-element-detail"
                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                     <app-delivery-order-detail [data]="element"></app-delivery-order-detail>

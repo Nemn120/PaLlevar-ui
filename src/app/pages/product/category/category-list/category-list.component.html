@@ -1,5 +1,5 @@
 <div class="mat-parent">
-    <h2>Listado de productos
+    <h2>Listado de Categorias
         <button mat-raised-button color="accent" (click)="openDialog()"
             style="float: right;">
             Crear Categoria
@@ -17,17 +17,17 @@
           >
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+            <mat-cell *matCellDef="let row" (click)="openDialog(row)"> {{row.name}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
+            <mat-cell *matCellDef="let row" (click)="openDialog(row)"> {{row.description}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell *matCellDef="let row" (click)="openDialog(row)">
                 <button mat-icon-button color="accent" (click)="openDialog(row)">
         <mat-icon>edit</mat-icon>
       </button>
@@ -40,7 +40,6 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row
               *matRowDef="let row; columns: displayedColumns"
-              (click)="openDialog(row)"
             ></mat-row>
           </mat-table>
   

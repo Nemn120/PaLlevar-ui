@@ -1,172 +1,179 @@
-
-@import '~mapbox-gl/dist/mapbox-gl.css';
-@import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
+@import "~mapbox-gl/dist/mapbox-gl.css";
+@import "~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css";
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 14px;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
+}
+
+.app-full-bleed-dialog .mat-dialog-container {
+  padding: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 html,
 body {
-    overflow-x: hidden;
-    color: black;
-    font-family: 'Opens Sans', helvetica;
-    height: 99%;
-    width: 100.5%;
-    margin: 0px;
-    padding: 0px;
+  overflow-x: hidden;
+  color: black;
+  font-family: "Opens Sans", helvetica;
+  height: 99%;
+  width: 100.5%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .container {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: initial;
-    justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: initial;
+  justify-content: center;
 }
 
 html,
 body {
-    overflow-x: hidden;
-    color: black;
-    font-family: 'Opens Sans', helvetica;
-    height: 100%;
-    width: 101%;
-    margin: 0px;
-    padding: 0px;
+  overflow-x: hidden;
+  color: black;
+  font-family: "Opens Sans", helvetica;
+  height: 100%;
+  width: 101%;
+  margin: 0px;
+  padding: 0px;
 }
 
 .spinner {
-    left: 49%;
-    position: fixed !important;
-    top: 15%;
-    z-index: 9999;
+  left: 49%;
+  position: fixed !important;
+  top: 15%;
+  z-index: 9999;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 
 .login-container {
-    height: 80vh;
+  height: 80vh;
 }
 
 .login-actions {
-    margin-left: unset !important;
+  margin-left: unset !important;
 }
 
 .mat-list-item,
 .mat-menu-item {
-    font-size: 14px !important;
+  font-size: 14px !important;
 }
 
 .command-wrapper button {
-    margin-left: 10px;
-    margin-bottom: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 .mat-dialog-title {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 
 .mat-column-actions {
-    flex: 0 0 60px;
+  flex: 0 0 60px;
 }
 
 .mat-table .mat-row:hover {
-    background-color: rgba(172, 169, 169, 0.075);
+  background-color: rgba(172, 169, 169, 0.075);
 }
 
 .mat-table td.mat-cell a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .mat-table td.mat-cell:first-child,
 .mat-table td.mat-footer-cell:first-child,
 .mat-table th.mat-header-cell:first-child {
-    padding-left: 20px !important;
+  padding-left: 20px !important;
 }
 
 .mat-table td.mat-cell:last-child,
 .mat-table td.mat-footer-cell:last-child,
 .mat-table th.mat-header-cell:last-child {
-    padding-right: 10px !important;
+  padding-right: 10px !important;
 }
 
 .mat-table .mat-cell a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 .no-records {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .refresh-button {
-    margin-top: 8px !important;
+  margin-top: 8px !important;
 }
 
 .no-records .mat-icon {
-    width: 130px;
-    height: 130px;
-    font-size: 130px;
-    color: #c7c7c7;
+  width: 130px;
+  height: 130px;
+  font-size: 130px;
+  color: #c7c7c7;
 }
 
 p .mat-icon {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .mat-slide-toggle.full-width {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .mat-tooltip {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .fixed-fab {
-    position: fixed !important;
-    right: 2%;
-    bottom: 3%;
+  position: fixed !important;
+  right: 2%;
+  bottom: 3%;
 }
 
-.submitted-timesheet-day:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
-
-.submitted-timesheet-day>div:not(.mat-calendar-body-selected) {
-    border-radius: 999px;
-    background-color: rgba(14, 152, 5, 0.25);
+.submitted-timesheet-day:not(.mat-calendar-body-disabled):hover
+  > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
+.submitted-timesheet-day > div:not(.mat-calendar-body-selected) {
+  border-radius: 999px;
+  background-color: rgba(14, 152, 5, 0.25);
 }
 
 .table-wrapper {
-    overflow: auto;
-    height: calc(100vh - 270px);
-    max-height: 450px;
+  overflow: auto;
+  height: calc(100vh - 270px);
+  max-height: 450px;
 }
 
 .animate {
-    animation-name: show;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
+  animation-name: show;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes show {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* .mat-parent {
@@ -177,24 +184,24 @@ p .mat-icon {
 } */
 
 .truncate-text {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .mat-step-icon-state-error .mat-icon {
-    color: crimson !important;
+  color: crimson !important;
 }
 
 .mat-step-label.mat-step-label-active.mat-step-label-error {
-    color: crimson !important;
+  color: crimson !important;
 }
 
 .mat-app-background {
-    background-color: rgb(248, 248, 248);
+  background-color: rgb(248, 248, 248);
 }
 
 .mat-expansion-panel {
-    background: white;
-    color: rgb(195 208 182 / 87%);
+  background: white;
+  color: rgb(195 208 182 / 87%);
 }
