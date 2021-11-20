@@ -67,7 +67,6 @@ export class AttendOrderDetailComponent implements OnInit {
         popup: 'animate__animated animate__fadeOutUp'
       }
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         const numSelected = this.selection.selected;
         let attendODetail = new Array<OrderDetailBean>();

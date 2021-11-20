@@ -13,6 +13,9 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { OrderService } from 'src/app/_service/order.service';
 import { DialogoConfirmacionComponent } from '../../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
+import Swal from "sweetalert2";
+import 'animate.css';
+
 @Component({
   selector: 'app-delivery-order-asign',
   templateUrl: './delivery-order-asign.component.html',
@@ -55,20 +58,21 @@ export class DeliveryOrderAsignComponent implements OnInit {
   }
 
   asignarPedido() : void{
-    
-    let params={
-      title:'Asignar delivery',
-      description:'¿Desea asignar el repartidor al pedido?',
 
-    }
-    this.dialogo
-      .open(DialogoConfirmacionComponent, {
-        data: params
-      })
-      .afterClosed()
-      .subscribe((confirmado: Boolean) => {
-        if (confirmado){
-          this.data.userDeliveryId =this.selection.selected[0].id;
+    Swal.fire({
+      title: "¿Desea atender los pedidos seleccionados?",
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      denyButtonText: `Cancelar`,
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.data.userDeliveryId =this.selection.selected[0].id;
           this.orderService.saveDeliveryOrder(this.data).subscribe(data =>{ 
             this.dataSource.data=  this.dataSource.data.filter(x => { 
               return this.selection.selected.indexOf(x) == -1;
@@ -77,11 +81,8 @@ export class DeliveryOrderAsignComponent implements OnInit {
              this.orderService.orderCambio.next(data); 
            })
           })
-          
-            
-        }
-        this.dialogRef.close();
-  });
+      }
+    })
  }
 
 }
