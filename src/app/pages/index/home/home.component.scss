@@ -78,6 +78,7 @@
                 margin: 0px;
                 justify-items: stretch;
                 width: 340px;
+                padding-left: 40px;
             }
         }
         
@@ -121,7 +122,7 @@
             }
             .card {
                 width: 100px !important;
-                padding-left: 280px;
+                padding-left: 280px !important;
             }
             .mat-list-base .mat-list-item,
             .mat-list-base .mat-list-option {
