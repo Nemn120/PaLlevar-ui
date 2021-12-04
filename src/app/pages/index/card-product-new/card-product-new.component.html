@@ -1,13 +1,32 @@
 <div class="container">
     <div class="responsive hover01 column">
         <div class="gallery">
-            <figure><img class="zoom" [src]="menuSelect.product._foto" alt="Forest" width="400" height="300" /></figure>
+            <!-- <figure><img class="zoom" [src]="menuSelect.product._foto" alt="Forest" width="400" height="300" /></figure>
             <button mat-mini-fab aria-label="Example icon button with a menu icon" (click)="agregarCarrito()">
                 <mat-icon>shopping_cart</mat-icon>
             </button>
             <div class="desc title">{{menuSelect.product.name}}</div>
             <div class="desc subtittle">{{menuSelect.product.description}}</div>
-            <div class="desc price">{{menuSelect.price | currency: 'S/. '}}</div>
+            <div class="desc price">{{menuSelect.price | currency: 'S/. '}}</div> -->
+            <div class="body-card">
+                <mat-card>
+                    <div class="content-body">
+                        <div style="flex-direction: column;">
+                            <figure><img class="zoom" [src]="menuSelect.product._foto" alt="Forest" width="400" height="300" /></figure>
+                            <button mat-mini-fab aria-label="Example icon button with a menu icon" (click)="agregarCarrito()">
+                                <mat-icon>shopping_cart</mat-icon>
+                            </button>
+                        </div>
+                        <div style="flex-direction: column; margin-left: 20px; margin-top: 8px;">
+                        <mat-card-content class="content-product">
+                                <mat-card-title class="desc title">{{menuSelect.product.name}}</mat-card-title>
+                                <mat-card-subtitle class="desc subtittle">{{menuSelect.product.description}}</mat-card-subtitle>
+                                <mat-card-subtitle class="desc price">{{menuSelect.price | currency: 'S/. '}}</mat-card-subtitle>
+                            </mat-card-content>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
         </div>
     </div>
 </div>

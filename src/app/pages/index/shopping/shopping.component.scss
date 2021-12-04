@@ -88,20 +88,33 @@
 }
 
 .menuProduct-container {
-    display: flex;
+    display: inline-block;
     flex-wrap: wrap;
     justify-items: stretch;
     margin: auto;
     justify-content: center;
+    width: 50%;
     .card {
-        flex: 0 0 200px;
+        //flex: 0 0 200px;
         margin: 10px;
+        padding: 1%;
         justify-items: stretch;
-        width: auto;
     }
     @media screen and (min-width:300px) and (max-width:600px) {
         .menuProduct-container {
             display: none;
+        }
+    }
+}
+@media only screen and (max-width: 700px) {
+    .menu-body {
+        width: 100% !important;
+        .menuProduct-container {
+            display: block !important;
+            width: 100%;
+            .card {
+                padding: 0 !important;
+            }
         }
     }
 }

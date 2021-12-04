@@ -1,8 +1,9 @@
 div.gallery {
-    position: relative;
+    //position: relative;
 }
 
 div.gallery img {
+    border-radius: 8px;
     width: 220px;
     height: 120px;
 }
@@ -11,7 +12,7 @@ div.desc {
     padding: 3px;
     text-align: center;
     height: auto;
-    width: initial;
+    //width: initial;
     border-color: #FA7268;
 }
 
@@ -21,25 +22,51 @@ div.desc {
 
 .responsive {
     padding: 0 0px;
-    float: left;
+    //float: left;
     box-shadow: 0 4px 8px 0 rgba(87, 81, 81, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 10px;
-    width: 220px;
-    height: 202px;
+    .gallery {
+        .body-card {
+            min-height: 190px;
+            padding: 3%;
+            .content-body{
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1020px) {
+    .responsive {
+        margin: 6px 0;
+        .body-card {
+            .content-body{
+                display: block !important;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 700px) {
     .responsive {
         margin: 6px 0;
+        .body-card {
+            .content-body{
+                display: block !important;
+            }
+        }
     }
 }
 
 @media only screen and (max-width: 500px) {
-    .responsive {
-        width: 220px;
-    }
     .container {
         padding: 0px !important;
+        .body-card {
+            .content-body{
+                display: block !important;
+            }
+        }
     }
 }
 
@@ -70,7 +97,7 @@ div.desc {
 }
 
 figure {
-    margin: 0;
+    margin: auto;
     padding: 0;
     background: #fff;
     overflow: hidden;
@@ -97,7 +124,7 @@ button {
 }
 
 .subtittle {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 350;
     color: #8b949e !important;
 }

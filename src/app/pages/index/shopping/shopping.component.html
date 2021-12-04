@@ -6,16 +6,13 @@
             <div class="menu-body">
                 <p class="f-headline" class="p-card-product"><strong>Platillos</strong></p>
 
-                <div class="menuProduct-container">
-                    <div *ngFor="let menuDayProduct of menuProductList">
-                        <div class="card">
-                            <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
-                        </div>
+                <div class="menuProduct-container" *ngFor="let menuDayProduct of menuProductList">
+                    <div class="card">
+                        <app-card-product-new [menuProduct]="menuDayProduct"></app-card-product-new>
                     </div>
-
                 </div>
-                <div style="width: 100%; margin-left: auto;
-            margin-right: auto;margin-top:30px;">
+
+                <div style="width: 100%; margin-left: auto; margin-right: auto;margin-top:30px;">
                     <mat-card style="margin-bottom: 10px;">
                         <mat-card-header style="margin-bottom: -15px;">
                             <div mat-card-avatar class="example-header-image"></div>

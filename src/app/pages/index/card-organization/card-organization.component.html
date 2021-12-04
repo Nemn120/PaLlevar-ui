@@ -1,5 +1,5 @@
 <div class="menu-org-detail" (click)="goShop()" style="float: right;">
-    <div class="menu-org-item">
+    <!-- <div class="menu-org-item">
         <div class="image-item">
             <img class="image-position" [src]="orgSelect._foto" />
         </div>
@@ -18,5 +18,24 @@
                   </span>
             </div>
         </div>
-    </div>
+    </div> -->
+    <mat-card>
+        <div class="menu-org-item" style="min-height: 120px;">
+            <div class="image-item">
+                <img class="image-position" [src]="orgSelect._foto" alt="Forest" />
+            </div>
+            <div class="data-item">
+            <mat-card-content class="content-product">
+                    <mat-card-title class="title-item">{{orgSelect.nombre}}</mat-card-title>
+                    <mat-card-subtitle class="description-item">{{orgSelect.description}}</mat-card-subtitle>
+                    <div class="price-item">
+                        <mat-icon style="color:sienna">access_time</mat-icon>
+                        <mat-card-subtitle style="margin-bottom: 3px;">{{orgSelect.estimatedTime}} min</mat-card-subtitle>
+                        <mat-icon style="color:#FFD559">star_rate</mat-icon>
+                        <mat-card-subtitle>{{orgSelect.qualification}}</mat-card-subtitle>
+                    </div>
+                </mat-card-content>
+            </div>
+        </div>
+    </mat-card>
 </div>
