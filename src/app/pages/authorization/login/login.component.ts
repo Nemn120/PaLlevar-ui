@@ -71,9 +71,9 @@ export class LoginComponent implements OnInit {
         const decodedToken = helper.decodeToken(data.access_token);
         this.userService.listarPorUsuario(decodedToken.user_name).subscribe(data => {
           this.sharedService.userSession = new UserBean;
-          this.sharedService.userSession = data; 
+          this.sharedService.userSession = data;
           this.menuService.listarPorProfileId(this.sharedService.userSession.profile.idProfile).subscribe(data => {
-            this.menuService.menuCambio = data; 
+            this.menuService.menuCambio = data;
             if (this.sharedService.userSession.profile.idProfile === 6) {
               this.router.navigate(['index/shop']);
             } else {
@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
                     if (photo.size > 0) {
                       this.sharedService.imagenData = this.convertir(photo);
                     }
-                    this.router.navigate(['suc/show']);
+                      this.router.navigate(['suc/show']);
                   })
                 })
               }

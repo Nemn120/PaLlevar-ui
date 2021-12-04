@@ -25,9 +25,12 @@ export class ServerErrorsInterceptor implements HttpInterceptor {
             })).pipe(catchError((err) => {
                 console.error(err);
                 if (err.status === 400) {
+                  if(err.error.error == 'invalid_grant')
+                  this.snackBar.open('Usuario y/o contraseña incorrectas', 'Credenciales incorrectas', { duration: 5000 });
+                  else
                     this.snackBar.open(err.message, 'ERROR 400', { duration: 5000 });
                 }
-                else if (err.status === 401) {                    
+                else if (err.status === 401) {
                     this.snackBar.open(err.error.message, 'ERROR 401', { duration: 5000 });
                 }
                 else if (err.status === 500) {
