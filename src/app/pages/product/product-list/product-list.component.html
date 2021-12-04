@@ -9,7 +9,7 @@
     <div style="width: 100%">
       <div class="container">
         <div style="display: block; width: 95%">
-          <mat-table
+          <mat-table *ngIf="dataSource"
             [dataSource]="dataSource"
             matSort
             multiTemplateDataRows
@@ -33,6 +33,13 @@
             </mat-cell>
 
         </ng-container>
+            <ng-container matColumnDef="imageUrl">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <img width="50" height="50" [src]="row._foto" />
+
+            </mat-cell>
+            </ng-container>
 
 
         <ng-container matColumnDef="actions">
@@ -46,14 +53,14 @@
       </button>
             </mat-cell>
         </ng-container>
-  
+
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row
               *matRowDef="let row; columns: displayedColumns"
               (click)="openDialog(row)"
             ></mat-row>
           </mat-table>
-  
+
           <mat-paginator
             [pageSize]="10"
             [pageSizeOptions]="[5, 10, 25, 100]"
@@ -62,4 +69,3 @@
       </div>
     </div>
   </div>
-  
