@@ -25,6 +25,7 @@ import { OrderConfirmComponent } from '../index/order-confirm/order-confirm.comp
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClaimListComponent } from './claim-list/claim-list.component';
 import { ClaimDetailComponent } from 'src/app/_shared/claim-detail/claim-detail.component';
+import { DeliveryOrderSearchComponent } from './delivery-order-search/delivery-order-search.component';
 
 const routes: Routes = [
  { path: '', component: SidebarSidenavComponent ,
@@ -42,7 +43,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent, ConfirmDeliveryOrderComponent,DashboardComponent,ClaimListComponent],
+  declarations: [AttentOrderComponent, DeliveryOrderComponent, SearchOrderComponent, SendOrderComponent, AttendOrderDetailComponent, DeliveryOrderDetailComponent, DeliveryOrderAsignComponent, TradeOrderComponent,PedidoAsignadoComponent, DeliverymanDetailComponent, UserDetailComponent, ConfirmDeliveryOrderComponent,DashboardComponent,ClaimListComponent, DeliveryOrderSearchComponent],
   imports: [
     SidebarSidenavModule,
     CommonModule,
@@ -57,6 +58,7 @@ const routes: Routes = [
     AttendOrderDetailComponent, DashboardComponent
   ],
   entryComponents: [AttendOrderDetailComponent,DeliveryOrderDetailComponent,DeliveryOrderAsignComponent,DialogoConfirmacionComponent
-  ,DeliverymanDetailComponent,UserDetailComponent,OrderConfirmComponent,DialogoConfirmacionComponent,ClaimDetailComponent]
+  ,DeliverymanDetailComponent,UserDetailComponent,OrderConfirmComponent,DialogoConfirmacionComponent,ClaimDetailComponent,
+DeliveryOrderSearchComponent]
 })
 export class OrderModule { }

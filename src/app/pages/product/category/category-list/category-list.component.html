@@ -27,7 +27,7 @@
 
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let row" (click)="openDialog(row)">
+            <mat-cell *matCellDef="let row">
                 <button mat-icon-button color="accent" (click)="openDialog(row)">
         <mat-icon>edit</mat-icon>
       </button>
