@@ -51,7 +51,7 @@
                             <div *ngIf="element.profile"> 
                                 <mat-chip-list aria-label="Fish selection">
                                     <mat-chip mat-icon-button [ngStyle]="{ 'background-color':this.setColorStatus2(element.profile.name)}">
-                                        <span [ngStyle]="{color: element.profile.name == 'ADMIN_NEG' || element.profile.name == 'DELIVERY_MAN'|| element.profile.name == 'CHEF_MAIN'? 'white' : 'black'}">{{element.profile.name}}</span>
+                                        <span style="color: white;">{{element.profile.name}}</span>
                                     </mat-chip>
                                 </mat-chip-list>
                             </div>

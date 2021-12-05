@@ -6,6 +6,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import Swal from "sweetalert2";
+import 'animate.css';
+
 
 @Component({
   selector: 'app-category-form',
@@ -45,21 +48,63 @@ export class CategoryFormComponent implements OnInit {
     }
   }
   save(){
-    if (this.selectedFiles != null) {
-      this.currentFileUpload = this.selectedFiles.item(0);
-    } else {
-      this.currentFileUpload = new File([""], "blanco");
+    let title = '';
+    if (this.data.id){
+      title = `¿Desea editar la categoria ${this.data.name}?`
     }
-    this.categoryProductService.saveCategoryProduct(this.categoryProductSelect,this.currentFileUpload).subscribe(data => {
-      this.categoryProductService.getListCategoryProductByOrganization().subscribe(data2 => {
-        this.categoryProductService.ompanyCambio.next(data2);
-        if(this.categoryProductSelect.id)
-        this.categoryProductService.mensajeCambio.next("Se actualizo");
-        else
-        this.categoryProductService.mensajeCambio.next("Se registro");
-      });
-    });
-    this.closeDialog();
+    else{
+      title = `¿Desea crear la categoria ${this.categoryProductSelect.name}?`
+    }
+    Swal.fire({
+      title,
+      showCancelButton: true,
+      confirmButtonText: "Si",
+      denyButtonText: `Cancelar`,
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (this.selectedFiles != null) {
+          this.currentFileUpload = this.selectedFiles.item(0);
+        } else {
+          this.currentFileUpload = new File([""], "blanco");
+        }
+        this.categoryProductService.saveCategoryProduct(this.categoryProductSelect,this.currentFileUpload).subscribe(data => {
+          this.categoryProductService.getListCategoryProductByOrganization().subscribe(data2 => {
+            this.categoryProductService.ompanyCambio.next(data2);
+            if(this.categoryProductSelect.id){
+              Swal.fire({
+                title: 'Se editó la categoría!',
+                icon: 'success',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+            }
+            else{
+              Swal.fire({
+                title: 'Se creó una nueva categoría!',
+                icon: 'success',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+              })
+            }
+          });
+        });
+        this.closeDialog();
+      }
+    })
   }
   closeDialog() {
     this.dialogRef.close();

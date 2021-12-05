@@ -14,6 +14,7 @@ import { UserBean } from 'src/app/_model/UserBean';
 import { DeliverymanDetailComponent } from '../deliveryman-detail/deliveryman-detail.component';
 import { UserDetailComponent } from '../user-detail/user-detail.component';
 import { ProfileBean } from 'src/app/_model/ProfileBean';
+import { DeliveryOrderSearchComponent } from '../delivery-order-search/delivery-order-search.component';
 
 @Component({
   selector: 'app-search-order',
@@ -100,7 +101,7 @@ export class SearchOrderComponent implements OnInit {
 
   public openDialogDetail(order: OrderBean) {
     let orderSelect = order != null ? order : new OrderBean();
-    this.dialog.open(DeliveryOrderDetailComponent, {
+    this.dialog.open(DeliveryOrderSearchComponent, {
       width: '600px',
       data: orderSelect
     });

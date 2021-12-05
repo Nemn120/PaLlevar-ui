@@ -17,17 +17,17 @@
           >
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
+            <mat-cell *matCellDef="let row" (click)="openDialog(row)"> {{row.name}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
+            <mat-cell *matCellDef="let row" (click)="openDialog(row)"> {{row.description}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="category">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Categoria </mat-header-cell>
-            <mat-cell *matCellDef="let row">
+            <mat-cell *matCellDef="let row" (click)="openDialog(row)">
                 <div *ngIf="row.categoryProduct">{{row.categoryProduct.name}}</div>
                 <div *ngIf="!row.categoryProduct">Sin categoria</div>
             </mat-cell>
@@ -57,7 +57,6 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row
               *matRowDef="let row; columns: displayedColumns"
-              (click)="openDialog(row)"
             ></mat-row>
           </mat-table>
 

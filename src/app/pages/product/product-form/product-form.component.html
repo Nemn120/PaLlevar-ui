@@ -1,4 +1,4 @@
-<mat-form-field>
+<!-- <mat-form-field>
     <input matInput placeholder="Nombre" [(ngModel)]="productSelect.name">
 
 </mat-form-field>
@@ -25,9 +25,79 @@
     <p>{{labelFile}}</p>
     <br>
 </div>
-<br>
+<br> -->
 
-<div style="float:left;">
-    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
-    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
-</div>
+<div fxLayout="column" class="full" *ngIf="data.id; else editar">
+    <h2 fxLayout="row">
+      <span>Editar Producto: {{ productSelect.name }}</span>
+      <div class="spacer"></div>
+      <mat-icon mat-dialog-close>close</mat-icon></h2>
+    <mat-divider></mat-divider>
+    <div class="container" fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <div class="izq" fxLayout="column" fxFlex="45">
+        <mat-label>Nombre de Producto</mat-label>
+        <br />
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Bebidas..." [(ngModel)]="productSelect.name" required/>
+        </mat-form-field>
+        <mat-label>Descripción de Producto</mat-label>
+        <br />
+        <mat-form-field appearance="outline">
+          <textarea rows="3" required matInput placeholder="Es helada..." [(ngModel)]="productSelect.description"></textarea>
+        </mat-form-field>
+        <br>
+        
+        <br>
+        <button mat-raised-button onclick="document.getElementById('flArchivo').click();" color="accent">Seleccionar Imagen</button>
+      </div>
+      <div class="der" fxLayout="column" fxFlex="52" fxLayoutAlign="center center" fxHide.xs>
+        <br />
+        <img
+          mat-card-image
+          [src]="imagenData"
+          *ngIf="imagenEstado"
+        />
+        <p class="textImagen">{{ labelFile }}</p>
+        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none" required>
+      </div>
+    </div>
+    <p class="textImagen" fxHide fxShow.xs>{{ labelFile }}</p>
+    <div class="buttons">
+          <button mat-raised-button color="primary" (click)="save()" style="width: 50%; margin-bottom: 10px;">
+              Aceptar
+        </button>
+    </div>
+  </div>
+  
+  <ng-template #editar>
+    <div fxLayout="column" class="full">
+      <h2 fxLayout="row">
+        <span >Crear Producto</span>
+        <div class="spacer"></div>
+        <mat-icon mat-dialog-close>close</mat-icon></h2>
+      <mat-divider></mat-divider>
+      <div class="container" fxFlex fxLayout="row" fxLayout.xs="column" fxLayout.lt-md="column" style="padding: 10px;">
+        <div fxLayout="column" fxFlex="100">
+          <mat-label>Nombre de Producto</mat-label>
+          <br />
+          <mat-form-field appearance="outline">
+            <input matInput placeholder="Bebidas..." [(ngModel)]="productSelect.name" required/>
+          </mat-form-field>
+          <mat-label>Descripción de Producto</mat-label>
+          <br />
+          <mat-form-field appearance="outline">
+            <textarea required rows="3" matInput placeholder="Es helada..." [(ngModel)]="productSelect.description"></textarea>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button onclick="document.getElementById('flArchivo').click();" color="accent">Seleccionar Imagen</button>
+        </div>
+      </div>
+      <input id="flArchivo" required type="file" (change)="selectFile($event)" style="display: none">
+      <p class="textImagen">{{ labelFile }}</p>
+      <div class="buttons">
+            <button mat-raised-button color="primary" (click)="save()" style="width: 50%; margin-bottom: 10px;">
+                Aceptar
+          </button>
+      </div>
+    </div>
+  </ng-template>
