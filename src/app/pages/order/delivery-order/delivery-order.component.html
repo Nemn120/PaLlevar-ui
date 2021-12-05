@@ -13,7 +13,7 @@
                 {{ row.createDate | date: "dd/MM/yyyy HH:mm:ss" }}
               </mat-cell>
             </ng-container>
-  
+
             <ng-container matColumnDef="total">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Total
@@ -22,7 +22,7 @@
                 >S/. {{ row.total }}</mat-cell
               >
             </ng-container>
-  
+
             <ng-container matColumnDef="quantity">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Cantidad
@@ -39,7 +39,7 @@
                 {{ row.phone }}</mat-cell
               >
             </ng-container>
-  
+
             <ng-container matColumnDef="address">
               <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Dirección
@@ -48,7 +48,7 @@
                 {{ row.address }}</mat-cell
               >
             </ng-container>
-  
+
             <ng-container matColumnDef="actions">
               <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
               <mat-cell *matCellDef="let row">
@@ -61,7 +61,7 @@
                 </button>
               </mat-cell>
             </ng-container>
-  
+
             <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
             <ng-container matColumnDef="expandedDetail">
               <mat-cell *matCellDef="let element"
@@ -72,7 +72,7 @@
                 </div>
               </mat-cell>
             </ng-container>
-  
+
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row
               *matRowDef="let element; columns: displayedColumns"
@@ -84,8 +84,8 @@
           <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"
           [class.hidden-detail]="expandedElement !== row"></mat-row>
       </mat-table>
-  
-          <mat-paginator
+
+          <mat-paginator class="mat-elevation-z8"
             [pageSize]="10"
             [pageSizeOptions]="[5, 10, 25, 100]"
           ></mat-paginator>

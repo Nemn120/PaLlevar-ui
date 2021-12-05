@@ -64,7 +64,7 @@ export class ProductListComponent implements OnInit {
   public openDialog(product?: ProductBean) {
     let productSelect = product != null ? product : new ProductBean();
     this.dialog.open(ProductFormComponent, {
-      width: '600',
+      width: '600p',
       height: '600',
       data: productSelect
     });

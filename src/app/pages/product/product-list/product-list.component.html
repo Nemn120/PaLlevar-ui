@@ -1,7 +1,7 @@
 <div class="mat-parent">
     <h2>Listado de productos
         <button mat-raised-button color="accent" (click)="openDialog()"
-            style="float: right;">
+            style="float: right;margin-right: 40px">
             Crear Producto
           </button>
     </h2>
@@ -64,6 +64,7 @@
           <mat-paginator
             [pageSize]="10"
             [pageSizeOptions]="[5, 10, 25, 100]"
+            class="mat-elevation-z8"
           ></mat-paginator>
         </div>
       </div>

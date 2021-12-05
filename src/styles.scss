@@ -205,3 +205,8 @@ p .mat-icon {
   background: white;
   color: rgb(195 208 182 / 87%);
 }
+
+.cdk-global-scrollblock {
+  position: static;
+  overflow: hidden !important;
+}

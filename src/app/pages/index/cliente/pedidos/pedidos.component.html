@@ -4,7 +4,7 @@
 </mat-toolbar>
 
 <div class="container">
-    <mat-table [dataSource]="dataSource" matSort>
+    <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
         <ng-container matColumnDef="companyName">
             <mat-header-cell *matHeaderCellDef> Restaurant </mat-header-cell>
@@ -47,7 +47,7 @@
             <mat-icon>description</mat-icon>
         </button>
                 <button *ngIf="row.status=='Pendiente'" mat-icon-button (click)="cancelOrder(row)">
-            <mat-icon>cancel</mat-icon> 
+            <mat-icon>cancel</mat-icon>
                   </button>
             </mat-cell>
 
@@ -66,5 +66,5 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
-    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" class="mat-elevation-z8"></mat-paginator>
 </div>

@@ -1,7 +1,7 @@
 <div class="mat-parent">
     <h2>Listado de Categorias
         <button mat-raised-button color="accent" (click)="openDialog()"
-            style="float: right;">
+            style="float: right;margin-right: 40px">
             Crear Categoria
           </button>
     </h2>
@@ -17,12 +17,12 @@
           >
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let row" (click)="openDialog(row)"> {{row.name}}</mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.name}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="description">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
-            <mat-cell *matCellDef="let row" (click)="openDialog(row)"> {{row.description}}</mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.description}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
@@ -36,14 +36,14 @@
       </button>
             </mat-cell>
         </ng-container>
-  
+
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row
               *matRowDef="let row; columns: displayedColumns"
             ></mat-row>
           </mat-table>
-  
-          <mat-paginator
+
+          <mat-paginator  class="mat-elevation-z8"
             [pageSize]="10"
             [pageSizeOptions]="[5, 10, 25, 100]"
           ></mat-paginator>
@@ -51,4 +51,3 @@
       </div>
     </div>
   </div>
-  
